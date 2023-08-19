@@ -6,7 +6,7 @@
 
 This is a demo of [mathjslab](https://www.npmjs.com/package/mathjslab) package.
 
-See this demo powered by [Netlify](https://mathjslab.netlify.app/)
+See this demo powered by [Netlify](https://mathjslab.netlify.app/).
 
 # License
 
