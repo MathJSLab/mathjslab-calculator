@@ -1,5 +1,7 @@
-# MathJSLab
+# MathJSLab Calculator
 > Interpreter with language syntax like MATLAB&reg;/Octave
+
+This is a demo of [mathjslab](https://www.npmjs.com/package/mathjslab) package.
 
 # License
 >MIT License
