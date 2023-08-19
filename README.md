@@ -4,7 +4,7 @@
 
 > Interpreter with language syntax like MATLAB&reg;/Octave
 
-This is a demo of [mathjslab](https://www.npmjs.com/package/mathjslab) package.
+This is a demo of [MathJSLab npm package](https://www.npmjs.com/package/mathjslab).
 
 See this demo powered by [Netlify](https://mathjslab.netlify.app/).
 
