@@ -38,8 +38,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "basic-dom-helper": "basic-dom-helper",
-    "mathjslab": "mathjslab"
+    "basic-dom-helper": "^1.0.4",
+    "mathjslab": "^1.0.5"
   },
   "devDependencies": {
     "@types/node": "^20.5.0",
