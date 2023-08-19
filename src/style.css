@@ -1,0 +1,85 @@
+.inputarea {
+    background-color: #e0f0e0;
+    font-family: monospace;
+    font-size: 1.225em;
+    border: 0px thin black;
+    border-radius: 5px;
+    overflow: scroll;
+    padding: 0.2em;
+    line-height: 1.225em;
+    white-space: pre-wrap;
+    width: calc(100% - 3em);
+}
+
+.inputarea:hover {
+    background-color: #f5f5f5;
+    border: 1px solid black;
+}
+
+.inputarea:focus {
+    background-color: #ffffbf;
+    color: #1a1a1a;
+    border: 1px solid black;
+}
+
+.cursor {
+    width: 1em;
+    font-family: 1em monospace;
+    position: relative;
+    top: -0.175em;
+}
+
+.inputprompt {
+    background-color: #e0e0e0;
+    font-family: 1em monospace;
+    overflow: hidden;
+    outline: none;
+    resize: none;
+    white-space: nowrap;
+    height: 1em;
+    width: calc(100% - 3em);
+    line-height: 1em;
+    border-radius: 5px;
+    border: 0px solid #000000;
+    box-shadow: 0 0 0 0;
+    outline: none;
+}
+
+.inputprompt:hover {
+    background-color: #f5f5f5
+}
+
+.inputprompt:focus {
+    background-color: #ffffbf;
+    color: #1A1A1A
+}
+
+.good {
+    background: #d0f0d0;
+    border: 2px solid green;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.bad {
+    background: #f0d0d0;
+    border: 2px solid red;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.info {
+    background: #d0d0f0;
+    border: 2px solid blue;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+canvas {
+    display: block;
+    width: calc(100% - 1em);
+    height: 100%;
+}
