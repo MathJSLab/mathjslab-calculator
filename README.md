@@ -1,9 +1,13 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
+
 # MathJSLab Calculator
+
 > Interpreter with language syntax like MATLAB&reg;/Octave
 
 This is a demo of [mathjslab](https://www.npmjs.com/package/mathjslab) package.
 
 # License
+
 >MIT License
 >
 >Copyright &copy; 2016-2023 Sergio Lindau
