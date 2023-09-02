@@ -48,5 +48,10 @@
     "file": "gauss.m",
     "caption": "Gauss",
     "description": "Test solve linear system by Gauss's method."
+  },
+  "logical": {
+    "file": "logical.m",
+    "caption": "Logical",
+    "description": "Test logical operators."
   }
 }

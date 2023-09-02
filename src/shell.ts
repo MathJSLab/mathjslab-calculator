@@ -1,4 +1,5 @@
 import $ from 'basic-dom-helper';
+import examples from './example.json'
 
 /**
  * Shell evaluator prompt handler
@@ -33,9 +34,9 @@ export interface PromptEntry {
 }
 
 export interface ExampleEntry {
-    file: string;
     caption: string;
     description: string;
+    content: string;
 }
 
 /**
@@ -49,7 +50,6 @@ let that: Shell;
  */
 export class Shell {
 
-    baseUrl: string;
     examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
     evalPrompt: EvalPromptHandler;
@@ -87,14 +87,7 @@ export class Shell {
         }
         this.inputLines = options.inputLines;
         this.isTouch = this.isTouchCapable();
-        this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-        if (window.fetch as Function) {
-            // run my fetch request here
-          } else {
-            // do something with XMLHttpRequest?
-        }
-        const response = await fetch(`${this.baseUrl}example/example.json`);
-        this.examples = await response.json();
+        this.examples = examples;
         this.examplesContainer = $.create('div', this.container, 'examples_' + options.containerId);
         const examplesHeading = $.create('h2', this.examplesContainer);
         examplesHeading.innerHTML = 'Examples';
@@ -172,12 +165,7 @@ export class Shell {
             button.innerHTML = this.examples[example].caption;
             $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
                 const exampleId = (event.target as any).id.substring(8);
-                const response = await fetch(`${this.baseUrl}example/${this.examples[exampleId].file}`);
-                if (!response.ok) {
-                    throw new Error("Network response error.");
-                }
-                const exampleText = await response.text();
-                that.batchInput.value = exampleText;
+                that.batchInput.value = this.examples[exampleId].content;
                 that.batchExec(event);
             });
         }
