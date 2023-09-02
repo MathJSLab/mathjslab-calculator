@@ -1,5 +1,5 @@
 /* Number and matrix operations and functions */
-import { CharString, Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
 
 import { insertOutput, plotData, plotWidth } from './plot-engine';
 
@@ -151,7 +151,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     }
                     plotData.MaxY = 0;
                     plotData.MinY = 0;
-                    for (var i = 0; i < temp.dim[1]; i++) {
+                    for (let i = 0; i < temp.dim[1]; i++) {
                         if (isFinite(temp.array[0][i].re.toNumber()) && isFinite(temp.array[0][i].im.toNumber()) && temp.array[0][i].im.eq(0)) {
                             plotData.data[i] = temp.array[0][i].re.toNumber();
                         } else {
@@ -163,7 +163,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     if (temp.dim[0] == 2) {
                         plotData.MaxX = 0;
                         plotData.MinX = 0;
-                        for (var i = 0; i < temp.dim[1]; i++) {
+                        for (let i = 0; i < temp.dim[1]; i++) {
                             if ('str' in temp.array[1][0]) {
                                 plotData.tag[i] = temp.array[1][i].str;
                             } else {

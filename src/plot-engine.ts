@@ -10,7 +10,7 @@ export type PlotData = {
     MaxY: number;
 };
 
-export var plotData: PlotData = {
+export const plotData: PlotData = {
     data: [],
     tag: [],
     MinX: 0,
@@ -78,13 +78,13 @@ export class CanvasPlot {
         // Y axis tick marks
         const tdelta = 1;
         const twidth = 5;
-        for (var i = 1; i * tdelta < this.MaxY; ++i) {
+        for (let i = 1; i * tdelta < this.MaxY; ++i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(0) - twidth, this.YC(i * tdelta));
             Ctx.lineTo(this.XC(0) + twidth, this.YC(i * tdelta));
             Ctx.stroke();
         }
-        for (var i = 1; i * tdelta > this.MinY; --i) {
+        for (let i = 1; i * tdelta > this.MinY; --i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(0) - twidth, this.YC(i * tdelta));
             Ctx.lineTo(this.XC(0) + twidth, this.YC(i * tdelta));
@@ -98,13 +98,13 @@ export class CanvasPlot {
         Ctx.stroke();
 
         // X tick marks
-        for (var i = 1; i * tdelta < this.MaxX; ++i) {
+        for (let i = 1; i * tdelta < this.MaxX; ++i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(i * tdelta), this.YC(0) - twidth);
             Ctx.lineTo(this.XC(i * tdelta), this.YC(0) + twidth);
             Ctx.stroke();
         }
-        for (var i = 1; i * tdelta > this.MinX; --i) {
+        for (let i = 1; i * tdelta > this.MinX; --i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(i * tdelta), this.YC(0) - twidth);
             Ctx.lineTo(this.XC(i * tdelta), this.YC(0) + twidth);
@@ -184,13 +184,13 @@ export class CanvasHistogram {
         // Y axis tick marks
         const tdelta = 1;
         const twidth = 5;
-        for (var i = 1; i * tdelta < this.MaxY; ++i) {
+        for (let i = 1; i * tdelta < this.MaxY; ++i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(0) - twidth, this.YC(i * tdelta));
             Ctx.lineTo(this.XC(0) + twidth, this.YC(i * tdelta));
             Ctx.stroke();
         }
-        for (var i = 1; i * tdelta > this.MinY; --i) {
+        for (let i = 1; i * tdelta > this.MinY; --i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(0) - twidth, this.YC(i * tdelta));
             Ctx.lineTo(this.XC(0) + twidth, this.YC(i * tdelta));
@@ -204,13 +204,13 @@ export class CanvasHistogram {
         Ctx.stroke();
 
         // X tick marks
-        for (var i = 1; i * tdelta < this.MaxX; ++i) {
+        for (let i = 1; i * tdelta < this.MaxX; ++i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(i * tdelta), this.YC(0) - twidth);
             Ctx.lineTo(this.XC(i * tdelta), this.YC(0) + twidth);
             Ctx.stroke();
         }
-        for (var i = 1; i * tdelta > this.MinX; --i) {
+        for (let i = 1; i * tdelta > this.MinX; --i) {
             Ctx.beginPath();
             Ctx.moveTo(this.XC(i * tdelta), this.YC(0) - twidth);
             Ctx.lineTo(this.XC(i * tdelta), this.YC(0) + twidth);
@@ -235,16 +235,19 @@ export class CanvasHistogram {
     }
 }
 
-export var plotWidth = 550;
-export var plotHeight = 300;
+export const plotWidth = 550;
+export const plotHeight = 300;
 
-export var insertOutput = { type: '' };
+export const insertOutput = { type: '' };
+/* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
     plot: function (parent: string): void {
+        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
         const cv = new CanvasPlot(parent, plotWidth, plotHeight, plotData);
         insertOutput.type = '';
     },
     hist: function (parent: string): void {
+        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
         const cv = new CanvasHistogram(parent, plotWidth, plotHeight, plotData);
         insertOutput.type = '';
     },

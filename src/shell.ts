@@ -1,11 +1,10 @@
 import $ from 'basic-dom-helper';
-import examples from './example.json'
+import examples from './example.json';
 
 /**
  * Shell evaluator prompt handler
  */
 export type EvalPromptHandler = (frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement) => void;
-
 
 export interface BatchOptions {
     cleanOnBlur: boolean;
@@ -49,7 +48,6 @@ let that: Shell;
  * Shell prompt class.
  */
 export class Shell {
-
     examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
     evalPrompt: EvalPromptHandler;
@@ -67,12 +65,13 @@ export class Shell {
     promptIndex: number;
 
     constructor(options: ShellOptions) {
+        /* eslint-disable-next-line @typescript-eslint/no-this-alias */
         that = this;
         this.initialize(options);
     }
 
     public isTouchCapable(): boolean {
-        return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || ((navigator as any).msMaxTouchPoints > 0);
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
     }
 
     public async initialize(options: ShellOptions): Promise<void> {
@@ -112,14 +111,14 @@ export class Shell {
         this.promptUid = [];
         this.promptSet = {};
         this.promptIndex = -1;
-        this.loadExamples();
         this.updateBatch();
         //TLN.append_line_numbers(this.batchInput.id);
         this.batchResize();
         this.promptAppend();
-        this.loadLines();
+        this.loadExamples();
     }
 
+    /* eslint-disable  @typescript-eslint/no-unused-vars */
     public batchResize(event?: Event): void {
         that.batchInput.style.height = '1em';
         that.batchInput.style.height = that.batchInput.scrollHeight + 27 + 'px';
@@ -160,7 +159,8 @@ export class Shell {
     }
 
     public loadExamples(): void {
-        for (let example in this.examples) {
+        let first = true;
+        for (const example in this.examples) {
             const button = $.create('button', this.examplesContainer, 'example-' + example);
             button.innerHTML = this.examples[example].caption;
             $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
@@ -168,6 +168,11 @@ export class Shell {
                 that.batchInput.value = this.examples[exampleId].content;
                 that.batchExec(event);
             });
+            if (first) {
+                that.batchInput.value = this.examples[example].content;
+                that.batchExec(new Event('click'));
+            }
+            first = false;
         }
     }
 
@@ -216,7 +221,7 @@ export class Shell {
         const box = $.create('div', promptFrame, 'p' + uid, 'good');
 
         const table = $.create('table', box);
-        table.style.width = '100%'
+        table.style.width = '100%';
         const tr = $.create('tr', table);
         let td: HTMLTableCellElement;
         td = $.create('td', tr);
@@ -257,20 +262,20 @@ export class Shell {
             container: promptFrame,
             box,
             input,
-            output
+            output,
         };
     }
 
     public promptKeydown(event: KeyboardEvent) {
         let onfocus = document.activeElement as HTMLTextAreaElement;
         if (!event.ctrlKey && !event.altKey && !event.metaKey) {
-            if ((event.key === 'Enter') && !event.shiftKey) {
+            if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();
                 if (onfocus.selectionStart == 0) {
                     // cria prompt anterior se pressionado enter com o cursor em 0
                     const pdiv = document.getElementById('d' + onfocus?.id.substring(1));
-                    var uid = $.uid();
-                    var div = $.create('div', null, 'd' + uid);
+                    const uid = $.uid();
+                    const div = $.create('div', null, 'd' + uid);
                     that.promptCreate(uid, div);
                     that.promptUid.splice(that.promptIndex, 0, uid);
                     that.promptIndex++;
@@ -283,8 +288,8 @@ export class Shell {
                 } else {
                     if (that.promptIndex + 1 == that.promptUid.length) {
                         // adiciona ao final
-                        var uid = $.uid();
-                        var div = $.create('div', that.promptContainer, 'd' + uid);
+                        const uid = $.uid();
+                        const div = $.create('div', that.promptContainer, 'd' + uid);
                         that.promptCreate(uid, div);
                         that.promptUid.push(uid);
                         that.inputLines.push(that.promptSet[onfocus?.id.substring(1)].input.value);
@@ -305,7 +310,7 @@ export class Shell {
                 if (!event.shiftKey) return false;
             } else if (
                 // apaga prompt anterior se for nulo e pressionar backspace na coluna 0
-                (event.key === 'Backspace') &&
+                event.key === 'Backspace' &&
                 onfocus.selectionStart == 0 &&
                 that.promptIndex != 0 &&
                 that.promptSet[that.promptUid[that.promptIndex - 1]].input.value == ''
@@ -325,4 +330,5 @@ export class Shell {
             }
         }
     }
+    /* eslint-enable */
 }

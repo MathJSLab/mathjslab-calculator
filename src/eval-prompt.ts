@@ -9,8 +9,9 @@ import { EvaluatorConfiguration } from './evaluator-configuration';
 const evaluator = new Evaluator(EvaluatorConfiguration);
 
 export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement): void {
+    let tree: any;
     try {
-        var tree = evaluator.Parse(input.value);
+        tree = evaluator.Parse(input.value);
         if (tree) {
             const unparse_input = evaluator.Unparse(tree);
             const eval_input = evaluator.Evaluate(tree);
