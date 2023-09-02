@@ -1,0 +1,52 @@
+{
+  "test": {
+    "file": "test.m",
+    "caption": "Test",
+    "description": "Current test."
+  },
+  "baskara": {
+    "file": "baskara.m",
+    "caption": "Baskara",
+    "description": "Solution of the 2nd degree equation by Bhaskara's formula."
+  },
+  "basic-operation-function": {
+    "file": "basic-operation-function.m",
+    "caption": "Basic operations and functions",
+    "description": "Tests basic operations and functions."
+  },
+  "matrix-operation": {
+    "file": "matrix-operation.m",
+    "caption": "Matrix operations",
+    "description": "Tests matrix operations."
+  },
+  "matrix-concatenation": {
+    "file": "matrix-concatenation.m",
+    "caption": "Matrix Concatenation",
+    "description": "Tests matrix concatenation."
+  },
+  "matrix-function": {
+    "file": "matrix-function.m",
+    "caption": "Matrix functions",
+    "description": "Tests matrix functions."
+  },
+  "matrix-indexing": {
+    "file": "matrix-indexing.m",
+    "caption": "Matrix indexing",
+    "description": "Tests matrix indexing."
+  },
+  "greek": {
+    "file": "greek.m",
+    "caption": "Greek letters",
+    "description": "Tests Greek letters."
+  },
+  "singularity": {
+    "file": "singularity.m",
+    "caption": "Singularities",
+    "description": "Tests singularities."
+  },
+  "gauss": {
+    "file": "gauss.m",
+    "caption": "Gauss",
+    "description": "Test solve linear system by Gauss's method."
+  }
+}

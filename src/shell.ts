@@ -32,6 +32,12 @@ export interface PromptEntry {
     output: HTMLDivElement;
 }
 
+export interface ExampleEntry {
+    file: string;
+    caption: string;
+    description: string;
+}
+
 /**
  * External reference for instantiated class to be used when context 'this' is
  * compromised (like in event listeners).
@@ -43,9 +49,12 @@ let that: Shell;
  */
 export class Shell {
 
+    baseUrl: string;
+    examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
     evalPrompt: EvalPromptHandler;
     isTouch: boolean;
+    examplesContainer: HTMLDivElement;
     batchContainer: HTMLDivElement;
     batchBox: HTMLDivElement;
     batchWrapper: HTMLDivElement;
@@ -66,7 +75,7 @@ export class Shell {
         return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || ((navigator as any).msMaxTouchPoints > 0);
     }
 
-    public initialize(options: ShellOptions): void {
+    public async initialize(options: ShellOptions): Promise<void> {
         this.container = $.i(options.containerId) as HTMLDivElement;
         if (options.evalPrompt) {
             this.evalPrompt = options.evalPrompt;
@@ -78,6 +87,17 @@ export class Shell {
         }
         this.inputLines = options.inputLines;
         this.isTouch = this.isTouchCapable();
+        this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+        if (window.fetch as Function) {
+            // run my fetch request here
+          } else {
+            // do something with XMLHttpRequest?
+        }
+        const response = await fetch(`${this.baseUrl}example/example.json`);
+        this.examples = await response.json();
+        this.examplesContainer = $.create('div', this.container, 'examples_' + options.containerId);
+        const examplesHeading = $.create('h2', this.examplesContainer);
+        examplesHeading.innerHTML = 'Examples';
         this.batchContainer = $.create('div', this.container, 'batch_' + options.containerId);
         this.batchBox = $.create('div', this.batchContainer, 'batchbox_' + options.containerId, 'good');
         this.batchWrapper = $.create('div', this.batchBox, 'batchwrapper_' + options.containerId);
@@ -99,6 +119,7 @@ export class Shell {
         this.promptUid = [];
         this.promptSet = {};
         this.promptIndex = -1;
+        this.loadExamples();
         this.updateBatch();
         //TLN.append_line_numbers(this.batchInput.id);
         this.batchResize();
@@ -142,6 +163,23 @@ export class Shell {
             }
             this.batchResize();
             this.promptSet[this.promptUid[0]].input.focus();
+        }
+    }
+
+    public loadExamples(): void {
+        for (let example in this.examples) {
+            const button = $.create('button', this.examplesContainer, 'example-' + example);
+            button.innerHTML = this.examples[example].caption;
+            $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
+                const exampleId = (event.target as any).id.substring(8);
+                const response = await fetch(`${this.baseUrl}example/${this.examples[exampleId].file}`);
+                if (!response.ok) {
+                    throw new Error("Network response error.");
+                }
+                const exampleText = await response.text();
+                that.batchInput.value = exampleText;
+                that.batchExec(event);
+            });
         }
     }
 

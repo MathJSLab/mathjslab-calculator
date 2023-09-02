@@ -57,7 +57,7 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
             evaluator.UnparseML(tree) +
             '</td></tr></table><br />' +
             e +
-            (evaluator.debug ? '<br /><br />Input   : ' + JSON.stringify(tree) : '');
+            (evaluator.debug ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, null, 2) + '</pre>' : '');
         if (evaluator.debug) throw e;
     }
     MathJaxLoader.renderMathML();

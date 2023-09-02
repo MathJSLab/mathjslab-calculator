@@ -43,7 +43,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         col: /^col(u(na|mn))?$/i,
         ncols: /^n(um)?col(u(na|mn))?s$/i,
         minor: /^m[ie]nor$/i,
-        cofact: /^cofa(c)?t(or)?$/i,
+        cofactor: /^cofa(c)?t(or)?$/i,
         adj: /^adj(unta|oint)?$/i,
         pivot: /^piv[oô]t?$/i,
         lu: /^lu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osi[cç][aã]o|osition)?)?)?lu$/i,
