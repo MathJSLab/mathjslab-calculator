@@ -102,7 +102,7 @@ export class Shell {
         this.batchInput.focus();
         this.batchInput.select();
         this.batchButton = $.create('button', this.batchBox, 'batchbutton_', 'inputbutton');
-        this.batchButton.innerHTML = 'Computar';
+        this.batchButton.innerHTML = 'Evaluate';
         (this.batchButton as any).style = 'width:calc(100% - 3em);height:50px';
         $.addEventListener(this.batchButton, 'click', this.batchExec);
         $.addEventListener(this.batchInput, 'focus', this.batchFocus);
@@ -118,20 +118,24 @@ export class Shell {
         this.loadExamples();
     }
 
-    /* eslint-disable  @typescript-eslint/no-unused-vars */
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchResize(event?: Event): void {
         that.batchInput.style.height = '1em';
         that.batchInput.style.height = that.batchInput.scrollHeight + 27 + 'px';
     }
 
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchDelayedResize(event: Event): void {
         window.setTimeout(that.batchResize, 0);
     }
 
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchFocus(event: Event): void {
+        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
         const onfocus = document.activeElement;
     }
 
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchExec(event: Event): void {
         that.promptClean();
         that.loadBatch();
@@ -176,14 +180,17 @@ export class Shell {
         }
     }
 
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchBlur(event: Event): void {
         that.promptClean();
     }
 
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptFocus(event: Event): void {
         that.promptIndex = that.promptUid.indexOf(document.activeElement?.id.substring(1) as string);
     }
 
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptBlur(event: Event): void {
         const onblur = that.promptSet[that.promptUid[that.promptIndex]].input;
         if (that.isTouch && onblur.value != '') {
@@ -219,13 +226,11 @@ export class Shell {
 
     public promptCreate(uid: string, promptFrame: HTMLDivElement): void {
         const box = $.create('div', promptFrame, 'p' + uid, 'good');
-
         const table = $.create('table', box);
         table.style.width = '100%';
         const tr = $.create('tr', table);
         let td: HTMLTableCellElement;
         td = $.create('td', tr);
-        const cursor = $.create('div', td, null, 'cursor');
         td.innerHTML = '&#x300B;';
         td.style.width = '1em';
         td.style.position = 'relative';
@@ -330,5 +335,4 @@ export class Shell {
             }
         }
     }
-    /* eslint-enable */
 }
