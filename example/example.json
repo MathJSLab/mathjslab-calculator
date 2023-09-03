@@ -2,6 +2,11 @@
   "baskara": {
     "file": "baskara.m",
     "caption": "Baskara",
+    "description": "Mathematical, physical and chemical constants."
+  },
+  "constants": {
+    "file": "constants.m",
+    "caption": "Constants",
     "description": "Solution of the 2nd degree equation by Bhaskara's formula."
   },
   "basic-operation-function": {
@@ -28,6 +33,11 @@
     "file": "matrix-indexing.m",
     "caption": "Matrix indexing",
     "description": "Tests matrix indexing."
+  },
+  "matrix-decomposition": {
+    "file": "matrix-decomposition.m",
+    "caption": "Matrix decomposition",
+    "description": "Tests matrix decomposition."
   },
   "greek": {
     "file": "greek.m",
