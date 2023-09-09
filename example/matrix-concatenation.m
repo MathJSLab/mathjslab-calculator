@@ -8,8 +8,18 @@ horzcat(A,B)
 vertcat(A,B)
 [A, B, C]
 A=[1,2,3;4,5,6]
+size(A)
+size(A,1)
+size(A,2)
+size(A,3)
+size(A,[1,2,3,4,5,6]) # test linearization
+size(A,[1,2,3;4,5,6]) # test linearization
 B=[7,8,9;10,11,12]
+size(B)
 C=[A,B]
+size(C)
+size(C,1)
+size(C,2)
 D=[A;B]
 F=[A;7:9]
 G=[20;30;40]

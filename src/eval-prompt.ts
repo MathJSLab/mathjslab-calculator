@@ -1,4 +1,4 @@
-/* Prompt Executor */
+/* Prompt Evaluator */
 
 import { Evaluator } from 'mathjslab';
 import $ from 'basic-dom-helper';
@@ -6,7 +6,7 @@ import { MathJaxLoader } from './math-jax-loader';
 import { insertOutput, outputFunction } from './plot-engine';
 import { EvaluatorConfiguration } from './evaluator-configuration';
 
-const evaluator = new Evaluator(EvaluatorConfiguration);
+const evaluator = Evaluator.initialize(EvaluatorConfiguration);
 
 export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement): void {
     let tree: any;
@@ -15,10 +15,10 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
         if (tree) {
             const unparse_input = evaluator.Unparse(tree);
             const eval_input = evaluator.Evaluate(tree);
-            if (evaluator.exitStatus == Evaluator.response.OK) {
+            if (evaluator.exitStatus === Evaluator.response.OK) {
                 box.className = 'good';
                 const unparse_eval_input = evaluator.Unparse(eval_input);
-                if (unparse_input != unparse_eval_input) {
+                if (unparse_input !== unparse_eval_input) {
                     output.innerHTML =
                         '<table><tr><td>' +
                         evaluator.UnparseML(tree) +
@@ -28,7 +28,7 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                 } else {
                     output.innerHTML = '<table><tr><td>' + evaluator.UnparseML(tree) + '</td></tr></table>';
                 }
-                if (insertOutput.type != '') {
+                if (insertOutput.type !== '') {
                     const uid = $.uid();
                     $.create('div', output, 'o' + uid);
                     outputFunction[insertOutput.type]('o' + uid);
@@ -46,7 +46,7 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                         unparse_eval_input +
                         '</pre>';
                 }
-            } else if (evaluator.exitStatus == Evaluator.response.INFO) {
+            } else if (evaluator.exitStatus === Evaluator.response.INFO) {
                 box.className = 'info';
                 output.innerHTML = evaluator.exitMessage;
             }

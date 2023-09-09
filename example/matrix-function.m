@@ -8,8 +8,18 @@ F = [2,1,-3;-1,3,2;3,1,-3]
 zeros(3)
 zeros(3,7)
 zeros([3,7])
+ones(3)
+ones(3,7)
+ones([3,7])
 eye(3)
 eye(3,4)
+eye([3,4])
+rand(3)
+rand(3,4)
+rand([3,4])
+randi(5, 3)
+randi(5, 3,4)
+randi(5, [3,4])
 # Determinant
 det(A) # 0
 det(B) # -67

@@ -13,13 +13,13 @@ export const MathJaxLoader = {
     /**
      * Test MathML native suport and load MathJax if need
      */
-    loadMathJaxIfNeed: function (): void {
+    loadMathJaxIfNeed: (): void => {
         if (!window.MathMLElement) {
             MathJaxLoader.usingMathJax = true;
             const script: HTMLScriptElement = document.createElement('script');
             document.head.appendChild(script);
             script.onerror = function (oError: any): void {
-                throw new URIError('MathJax at ' + oError.target.src + " didn't load correctly.");
+                throw new URIError(`MathJax at ${oError.target.src} didn't load correctly.`);
             };
             script.onload = function () {
                 MathJaxLoader.usingMathJax = true;
@@ -32,7 +32,7 @@ export const MathJaxLoader = {
     /**
      * Render MathML after load
      */
-    renderMathML: function (): void {
+    renderMathML: (): void => {
         if (MathJaxLoader.usingMathJax) {
             // MathJax.Hub.Typeset(); // for version 2.7.7
             MathJax.typeset();

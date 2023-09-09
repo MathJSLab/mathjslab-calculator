@@ -6,7 +6,7 @@ import { insertOutput, plotData, plotWidth } from './plot-engine';
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     aliasTable: {
         /* Number functions */
-        abs: /^abs(olut(o|e))?|mod(ul(o|e))?$/i,
+        abs: /^abs(olut(o|e))?$/i,
         arg: /^arg(ument(o)?)?|angle|[aâ]ngulo$/i,
         sign: /^sign(al)?|sinal|sgn$/i,
         conj: /^conj(uga(do|te)?)?$/i,
@@ -46,7 +46,8 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         cofactor: /^cofa(c)?t(or)?$/i,
         adj: /^adj(unta|oint)?$/i,
         pivot: /^piv[oô]t?$/i,
-        lu: /^lu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osi[cç][aã]o|osition)?)?)?lu$/i,
+        // lu: /^lu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osi[cç][aã]o|osition)?)?)?lu$/i,
+        // plu: /^plu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osi[cç][aã]o|osition)?)?)?plu$/i,
         min: /^m[ií]]n(imo)?|min(imum)?$/i,
         max: /^m[aá]x(imo)?|max(imum)?$/i,
         mean: /^m[eé]dia|mean$/i,
