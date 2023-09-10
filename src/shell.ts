@@ -1,5 +1,4 @@
 import $ from 'basic-dom-helper';
-import examples from './example.json';
 
 /**
  * Shell evaluator prompt handler
@@ -33,9 +32,9 @@ export interface PromptEntry {
 }
 
 export interface ExampleEntry {
+    file: string;
     caption: string;
     description: string;
-    content: string;
 }
 
 /**
@@ -48,6 +47,7 @@ let that: Shell;
  * Shell prompt class.
  */
 export class Shell {
+    baseUrl: string;
     examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
     evalPrompt: EvalPromptHandler;
@@ -86,7 +86,12 @@ export class Shell {
         }
         this.inputLines = options.inputLines;
         this.isTouch = this.isTouchCapable();
-        this.examples = examples;
+        this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+        const response = await fetch(`${this.baseUrl}example/example.json`);
+        if (!response.ok) {
+            throw new Error("Network response was not OK");
+        }
+        this.examples = await response.json();
         this.examplesContainer = $.create('div', this.container, 'examples_' + options.containerId);
         const examplesHeading = $.create('h2', this.examplesContainer);
         examplesHeading.innerHTML = 'Examples';
@@ -169,14 +174,17 @@ export class Shell {
             button.innerHTML = this.examples[example].caption;
             $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
                 const exampleId = (event.target as any).id.substring(8);
-                that.batchInput.value = this.examples[exampleId].content;
+                const response = await fetch(`${this.baseUrl}example/${this.examples[exampleId].file}`);
+                if (!response.ok) {
+                    throw new Error("Network response was not OK");
+                }
+                that.batchInput.value = await response.text();
                 that.batchExec(event);
             });
             if (first) {
-                that.batchInput.value = this.examples[example].content;
-                that.batchExec(new Event('click'));
+                button.click();
+                first = false;
             }
-            first = false;
         }
     }
 
