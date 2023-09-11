@@ -6,7 +6,7 @@ import './style.css';
 export const inputLines: string[] = [];
 
 function bootstrap() {
-    new Shell({
+    Shell.initialize({
         containerId: 'calculator',
         evalPrompt,
         inputLines,

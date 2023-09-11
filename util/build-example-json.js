@@ -17,8 +17,18 @@ try {
     }
     fs.copyFileSync(path.resolve(__dirname, '..', 'example', 'example.json'), path.resolve(__dirname, '..', 'dist', 'example', 'example.json'));
     const example = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'example', 'example.json')));
+    let first = true;
     for (let name in example) {
         fs.copyFileSync(path.resolve(__dirname, '..', 'example', example[name].file), path.resolve(__dirname, '..', 'dist', 'example', example[name].file));
+        if (first) {
+            const firstExample = {
+                name,
+                description: example[name].description,
+                content: fs.readFileSync(path.resolve(__dirname, '..', 'example', example[name].file)).toString(),
+            };
+            fs.writeFileSync(path.resolve(__dirname, '..', 'src', 'first-example.json'), JSON.stringify(firstExample, null, 2));
+            first = false;
+        }
     }
 }
 catch (err) {

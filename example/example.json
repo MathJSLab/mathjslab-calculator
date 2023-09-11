@@ -2,12 +2,12 @@
   "baskara": {
     "file": "baskara.m",
     "caption": "Baskara",
-    "description": "Mathematical, physical and chemical constants."
+    "description": "Solution of the 2nd degree equation by Bhaskara's formula."
   },
   "constants": {
     "file": "constants.m",
     "caption": "Constants",
-    "description": "Solution of the 2nd degree equation by Bhaskara's formula."
+    "description": "Mathematical, physical and chemical constants."
   },
   "basic-operation-function": {
     "file": "basic-operation-function.m",

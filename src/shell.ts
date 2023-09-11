@@ -1,4 +1,5 @@
 import $ from 'basic-dom-helper';
+import firstExample from './first-example.json';
 
 /**
  * Shell evaluator prompt handler
@@ -48,10 +49,11 @@ let that: Shell;
  */
 export class Shell {
     baseUrl: string;
+    fileProtocol: boolean;
     examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
     evalPrompt: EvalPromptHandler;
-    isTouch: boolean;
+    isTouchCapable: boolean;
     examplesContainer: HTMLDivElement;
     batchContainer: HTMLDivElement;
     batchBox: HTMLDivElement;
@@ -64,63 +66,63 @@ export class Shell {
     promptSet: Record<string, PromptEntry>;
     promptIndex: number;
 
-    constructor(options: ShellOptions) {
+    private constructor() {
         /* eslint-disable-next-line @typescript-eslint/no-this-alias */
         that = this;
-        this.initialize(options);
+        this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+        this.fileProtocol = this.baseUrl.startsWith('file:');
+        this.isTouchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
     }
 
-    public isTouchCapable(): boolean {
-        return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
-    }
-
-    public async initialize(options: ShellOptions): Promise<void> {
-        this.container = $.i(options.containerId) as HTMLDivElement;
+    public static async initialize(options: ShellOptions): Promise<Shell> {
+        const shell = new Shell();
+        shell.container = $.i(options.containerId) as HTMLDivElement;
         if (options.evalPrompt) {
-            this.evalPrompt = options.evalPrompt;
+            shell.evalPrompt = options.evalPrompt;
         } else {
-            this.evalPrompt = function (div: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement) {
+            shell.evalPrompt = function (div: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement) {
                 console.log(`evalPrompt(${input.value})`);
                 output.innerHTML = `evalPrompt(${input.value})`;
             };
         }
-        this.inputLines = options.inputLines;
-        this.isTouch = this.isTouchCapable();
-        this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-        const response = await fetch(`${this.baseUrl}example/example.json`);
-        if (!response.ok) {
-            throw new Error("Network response was not OK");
+        shell.inputLines = options.inputLines;
+        if (!shell.fileProtocol) {
+            const response = await fetch(`${shell.baseUrl}example/example.json`);
+            if (!response.ok) {
+                throw new Error('Network response error.');
+            }
+            shell.examples = await response.json();
+            shell.examplesContainer = $.create('div', shell.container, 'examples_' + options.containerId);
+            const examplesHeading = $.create('h2', shell.examplesContainer);
+            examplesHeading.innerHTML = 'Examples';
         }
-        this.examples = await response.json();
-        this.examplesContainer = $.create('div', this.container, 'examples_' + options.containerId);
-        const examplesHeading = $.create('h2', this.examplesContainer);
-        examplesHeading.innerHTML = 'Examples';
-        this.batchContainer = $.create('div', this.container, 'batch_' + options.containerId);
-        this.batchBox = $.create('div', this.batchContainer, 'batchbox_' + options.containerId, 'good');
-        this.batchWrapper = $.create('div', this.batchBox, 'batchwrapper_' + options.containerId);
-        this.batchInput = $.create('textarea', this.batchWrapper, 'batchtext_' + options.containerId, 'inputarea');
-        $.addEventListener(this.batchInput, 'change', this.batchResize);
-        $.addEventListener(this.batchInput, 'cut', this.batchDelayedResize);
-        $.addEventListener(this.batchInput, 'paste', this.batchDelayedResize);
-        $.addEventListener(this.batchInput, 'drop', this.batchDelayedResize);
-        $.addEventListener(this.batchInput, 'keydown', this.batchDelayedResize);
-        this.batchInput.focus();
-        this.batchInput.select();
-        this.batchButton = $.create('button', this.batchBox, 'batchbutton_', 'inputbutton');
-        this.batchButton.innerHTML = 'Evaluate';
-        (this.batchButton as any).style = 'width:calc(100% - 3em);height:50px';
-        $.addEventListener(this.batchButton, 'click', this.batchExec);
-        $.addEventListener(this.batchInput, 'focus', this.batchFocus);
-        $.addEventListener(this.batchInput, 'blur', this.batchBlur);
-        this.promptContainer = $.create('div', this.container, 'prompt_' + options.containerId);
-        this.promptUid = [];
-        this.promptSet = {};
-        this.promptIndex = -1;
-        this.updateBatch();
-        //TLN.append_line_numbers(this.batchInput.id);
-        this.batchResize();
-        this.promptAppend();
-        this.loadExamples();
+        shell.batchContainer = $.create('div', shell.container, 'batch_' + options.containerId);
+        shell.batchBox = $.create('div', shell.batchContainer, 'batchbox_' + options.containerId, 'good');
+        shell.batchWrapper = $.create('div', shell.batchBox, 'batchwrapper_' + options.containerId);
+        shell.batchInput = $.create('textarea', shell.batchWrapper, 'batchtext_' + options.containerId, 'inputarea');
+        $.addEventListener(shell.batchInput, 'change', shell.batchResize);
+        $.addEventListener(shell.batchInput, 'cut', shell.batchDelayedResize);
+        $.addEventListener(shell.batchInput, 'paste', shell.batchDelayedResize);
+        $.addEventListener(shell.batchInput, 'drop', shell.batchDelayedResize);
+        $.addEventListener(shell.batchInput, 'keydown', shell.batchDelayedResize);
+        shell.batchInput.focus();
+        shell.batchInput.select();
+        shell.batchButton = $.create('button', shell.batchBox, 'batchbutton_', 'inputbutton');
+        shell.batchButton.innerHTML = 'Evaluate';
+        (shell.batchButton as any).style = 'width:calc(100% - 3em);height:50px';
+        $.addEventListener(shell.batchButton, 'click', shell.batchExec);
+        $.addEventListener(shell.batchInput, 'focus', shell.batchFocus);
+        $.addEventListener(shell.batchInput, 'blur', shell.batchBlur);
+        shell.promptContainer = $.create('div', shell.container, 'prompt_' + options.containerId);
+        shell.promptUid = [];
+        shell.promptSet = {};
+        shell.promptIndex = -1;
+        shell.updateBatch();
+        //TLN.append_line_numbers(shell.batchInput.id);
+        shell.batchResize();
+        shell.promptAppend();
+        shell.loadExamples();
+        return shell;
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
@@ -168,22 +170,27 @@ export class Shell {
     }
 
     public loadExamples(): void {
-        let first = true;
-        for (const example in this.examples) {
-            const button = $.create('button', this.examplesContainer, 'example-' + example);
-            button.innerHTML = this.examples[example].caption;
-            $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
-                const exampleId = (event.target as any).id.substring(8);
-                const response = await fetch(`${this.baseUrl}example/${this.examples[exampleId].file}`);
-                if (!response.ok) {
-                    throw new Error("Network response was not OK");
+        if (this.fileProtocol) {
+            that.batchInput.value = firstExample.content;
+            that.batchExec(new Event('click'));
+        } else {
+            let first = true;
+            for (const example in this.examples) {
+                const button = $.create('button', this.examplesContainer, 'example-' + example);
+                button.innerHTML = this.examples[example].caption;
+                $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
+                    const exampleId = (event.target as any).id.substring(8);
+                    const response = await fetch(`${this.baseUrl}example/${this.examples[exampleId].file}`);
+                    if (!response.ok) {
+                        throw new Error('Network response error.');
+                    }
+                    that.batchInput.value = await response.text();
+                    that.batchExec(event);
+                });
+                if (first) {
+                    button.click();
+                    first = false;
                 }
-                that.batchInput.value = await response.text();
-                that.batchExec(event);
-            });
-            if (first) {
-                button.click();
-                first = false;
             }
         }
     }
@@ -201,7 +208,7 @@ export class Shell {
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptBlur(event: Event): void {
         const onblur = that.promptSet[that.promptUid[that.promptIndex]].input;
-        if (that.isTouch && onblur.value != '') {
+        if (that.isTouchCapable && onblur.value != '') {
             that.evalPrompt(
                 that.promptSet[onblur.id.substring(1)].container,
                 that.promptSet[onblur.id.substring(1)].box,
@@ -225,7 +232,7 @@ export class Shell {
         this.promptUid.push(uid);
         if (text) this.promptSet[uid].input.value = text;
         this.promptSet[uid].input.focus();
-        if (this.isTouch) {
+        if (this.isTouchCapable) {
             this.promptSet[uid].input.blur();
         } else {
             this.evalPrompt(this.promptSet[uid].container, this.promptSet[uid].box, this.promptSet[uid].input, this.promptSet[uid].output);
@@ -259,7 +266,7 @@ export class Shell {
             window.setTimeout(promptResize, 0);
         };
         const inputFocus = () => {
-            if (!this.isTouch) input.focus();
+            if (!this.isTouchCapable) input.focus();
         };
         $.addEventListener(input, 'change', promptResize);
         $.addEventListener(input, 'cut', promptDelayedResize);
