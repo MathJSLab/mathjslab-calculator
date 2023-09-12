@@ -3,7 +3,7 @@
 import { Evaluator } from 'mathjslab';
 import $ from 'basic-dom-helper';
 import { MathJaxLoader } from './math-jax-loader';
-import { insertOutput, outputFunction } from './plot-engine';
+import { insertOutput, outputFunction } from './output-function';
 import { EvaluatorConfiguration } from './evaluator-configuration';
 
 const evaluator = Evaluator.initialize(EvaluatorConfiguration);

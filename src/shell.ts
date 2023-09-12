@@ -49,11 +49,11 @@ let that: Shell;
  */
 export class Shell {
     baseUrl: string;
-    fileProtocol: boolean;
+    isFileProtocol: boolean;
+    isTouchCapable: boolean;
     examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
     evalPrompt: EvalPromptHandler;
-    isTouchCapable: boolean;
     examplesContainer: HTMLDivElement;
     batchContainer: HTMLDivElement;
     batchBox: HTMLDivElement;
@@ -70,7 +70,7 @@ export class Shell {
         /* eslint-disable-next-line @typescript-eslint/no-this-alias */
         that = this;
         this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-        this.fileProtocol = this.baseUrl.startsWith('file:');
+        this.isFileProtocol = this.baseUrl.startsWith('file:');
         this.isTouchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
     }
 
@@ -86,7 +86,7 @@ export class Shell {
             };
         }
         shell.inputLines = options.inputLines;
-        if (!shell.fileProtocol) {
+        if (!shell.isFileProtocol) {
             const response = await fetch(`${shell.baseUrl}example/example.json`);
             if (!response.ok) {
                 throw new Error('Network response error.');
@@ -170,7 +170,7 @@ export class Shell {
     }
 
     public loadExamples(): void {
-        if (this.fileProtocol) {
+        if (this.isFileProtocol) {
             that.batchInput.value = firstExample.content;
             that.batchExec(new Event('click'));
         } else {

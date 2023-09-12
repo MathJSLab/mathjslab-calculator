@@ -1,7 +1,11 @@
 /* Number and matrix operations and functions */
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
 
-import { insertOutput, plotData, plotWidth } from './plot-engine';
+import { insertOutput } from './output-function';
+import { plotData } from './plot/plot-data';
+
+export const plotWidth = 550;
+export const plotHeight = 300;
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     aliasTable: {

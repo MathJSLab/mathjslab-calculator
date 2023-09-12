@@ -2,7 +2,7 @@
 
 # MathJSLab
 
-> Interpreter with language syntax like MATLAB&reg;/Octave written in TypeScript.
+> An interpreter with language syntax like MATLAB&reg;/Octave written in TypeScript.
 
 This is a demo of [MathJSLab npm package](https://www.npmjs.com/package/mathjslab).
 
