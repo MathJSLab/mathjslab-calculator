@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-console.log('Copying examples to /dist directory...')
+console.log('Copying assets to /dist directory...')
 try {
     let directory = path.resolve(__dirname, '..', 'dist');
     if (fs.existsSync(directory)) {
@@ -30,8 +30,23 @@ try {
             first = false;
         }
     }
+    directory = path.resolve(__dirname, '..', 'dist', 'help');
+    if (!fs.existsSync(directory)) {
+        fs.mkdirSync(directory);
+    }
+    const languages = fs.readdirSync(path.resolve(__dirname, '..', 'help'));
+    languages.forEach((language) => {
+        directory = path.resolve(__dirname, '..', 'dist', 'help', language);
+        if (!fs.existsSync(directory)) {
+            fs.mkdirSync(directory);
+        }
+        const files = fs.readdirSync(path.resolve(__dirname, '..', 'help', language));
+        files.forEach((file) => {
+            fs.copyFileSync(path.resolve(__dirname, '..', 'help', language, file), path.resolve(__dirname, '..', 'dist', 'help', language, file));
+        })
+    });
 }
 catch (err) {
     console.error(err);
 }
-console.log('Copying examples to /dist directory done.')
+console.log('Copying assets to /dist directory done.')

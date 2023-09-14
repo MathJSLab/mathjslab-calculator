@@ -78,6 +78,14 @@
     border-radius: 1em;
 }
 
+.warning {
+    background: #b0b0b0;
+    border: 2px solid yellow;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
 canvas {
     display: block;
     width: calc(100% - 1em);

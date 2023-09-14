@@ -46,9 +46,6 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                         unparse_eval_input +
                         '</pre>';
                 }
-            } else if (evaluator.exitStatus === Evaluator.response.INFO) {
-                box.className = 'info';
-                output.innerHTML = evaluator.exitMessage;
             }
         }
     } catch (e) {

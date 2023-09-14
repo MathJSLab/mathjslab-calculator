@@ -42,7 +42,10 @@ export interface ExampleEntry {
  * External reference for instantiated class to be used when context 'this' is
  * compromised (like in event listeners).
  */
-let that: Shell;
+declare global {
+    /* eslint-disable-next-line  no-var */
+    var ShellPointer: Shell;
+}
 
 /**
  * Shell prompt class.
@@ -67,8 +70,7 @@ export class Shell {
     promptIndex: number;
 
     private constructor() {
-        /* eslint-disable-next-line @typescript-eslint/no-this-alias */
-        that = this;
+        global.ShellPointer = this;
         this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
         this.isFileProtocol = this.baseUrl.startsWith('file:');
         this.isTouchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
@@ -125,15 +127,19 @@ export class Shell {
         return shell;
     }
 
+    public get currentPromptSet(): PromptEntry {
+        return this.promptSet[this.promptUid[this.promptIndex]];
+    }
+
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchResize(event?: Event): void {
-        that.batchInput.style.height = '1em';
-        that.batchInput.style.height = that.batchInput.scrollHeight + 27 + 'px';
+        global.ShellPointer.batchInput.style.height = '1em';
+        global.ShellPointer.batchInput.style.height = global.ShellPointer.batchInput.scrollHeight + 27 + 'px';
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchDelayedResize(event: Event): void {
-        window.setTimeout(that.batchResize, 0);
+        window.setTimeout(global.ShellPointer.batchResize, 0);
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
@@ -144,10 +150,10 @@ export class Shell {
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchExec(event: Event): void {
-        that.promptClean();
-        that.loadBatch();
-        that.loadLines();
-        that.batchButton.focus();
+        global.ShellPointer.promptClean();
+        global.ShellPointer.loadBatch();
+        global.ShellPointer.loadLines();
+        global.ShellPointer.batchButton.focus();
     }
 
     public updateBatch(): void {
@@ -171,8 +177,8 @@ export class Shell {
 
     public loadExamples(): void {
         if (this.isFileProtocol) {
-            that.batchInput.value = firstExample.content;
-            that.batchExec(new Event('click'));
+            global.ShellPointer.batchInput.value = firstExample.content;
+            global.ShellPointer.batchExec(new Event('click'));
         } else {
             let first = true;
             for (const example in this.examples) {
@@ -184,8 +190,8 @@ export class Shell {
                     if (!response.ok) {
                         throw new Error('Network response error.');
                     }
-                    that.batchInput.value = await response.text();
-                    that.batchExec(event);
+                    global.ShellPointer.batchInput.value = await response.text();
+                    global.ShellPointer.batchExec(event);
                 });
                 if (first) {
                     button.click();
@@ -197,23 +203,23 @@ export class Shell {
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchBlur(event: Event): void {
-        that.promptClean();
+        global.ShellPointer.promptClean();
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptFocus(event: Event): void {
-        that.promptIndex = that.promptUid.indexOf(document.activeElement?.id.substring(1) as string);
+        global.ShellPointer.promptIndex = global.ShellPointer.promptUid.indexOf(document.activeElement?.id.substring(1) as string);
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptBlur(event: Event): void {
-        const onblur = that.promptSet[that.promptUid[that.promptIndex]].input;
-        if (that.isTouchCapable && onblur.value != '') {
-            that.evalPrompt(
-                that.promptSet[onblur.id.substring(1)].container,
-                that.promptSet[onblur.id.substring(1)].box,
-                that.promptSet[onblur.id.substring(1)].input,
-                that.promptSet[onblur.id.substring(1)].output,
+        const onblur = global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].input;
+        if (global.ShellPointer.isTouchCapable && onblur.value != '') {
+            global.ShellPointer.evalPrompt(
+                global.ShellPointer.promptSet[onblur.id.substring(1)].container,
+                global.ShellPointer.promptSet[onblur.id.substring(1)].box,
+                global.ShellPointer.promptSet[onblur.id.substring(1)].input,
+                global.ShellPointer.promptSet[onblur.id.substring(1)].output,
             );
         }
     }
@@ -296,34 +302,37 @@ export class Shell {
                     const pdiv = document.getElementById('d' + onfocus?.id.substring(1));
                     const uid = $.uid();
                     const div = $.create('div', null, 'd' + uid);
-                    that.promptCreate(uid, div);
-                    that.promptUid.splice(that.promptIndex, 0, uid);
-                    that.promptIndex++;
-                    that.promptContainer.insertBefore(div, pdiv);
+                    global.ShellPointer.promptCreate(uid, div);
+                    global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex, 0, uid);
+                    global.ShellPointer.promptIndex++;
+                    global.ShellPointer.promptContainer.insertBefore(div, pdiv);
                     onfocus.style.width = '90%';
                     onfocus.style.height = '1em';
                     onfocus.style.height = onfocus.scrollHeight + 'px';
-                    that.inputLines.splice(that.promptIndex - 1, 0, onfocus.value);
-                    that.batchInput.value = that.inputLines.join('\n');
+                    global.ShellPointer.inputLines.splice(global.ShellPointer.promptIndex - 1, 0, onfocus.value);
+                    global.ShellPointer.batchInput.value = global.ShellPointer.inputLines.join('\n');
                 } else {
-                    if (that.promptIndex + 1 == that.promptUid.length) {
+                    if (global.ShellPointer.promptIndex + 1 == global.ShellPointer.promptUid.length) {
                         // adiciona ao final
                         const uid = $.uid();
-                        const div = $.create('div', that.promptContainer, 'd' + uid);
-                        that.promptCreate(uid, div);
-                        that.promptUid.push(uid);
-                        that.inputLines.push(that.promptSet[onfocus?.id.substring(1)].input.value);
-                        that.batchInput.value = that.inputLines.join('\n');
-                        that.promptIndex++;
+                        const div = $.create('div', global.ShellPointer.promptContainer, 'd' + uid);
+                        global.ShellPointer.promptCreate(uid, div);
+                        global.ShellPointer.promptUid.push(uid);
+                        global.ShellPointer.inputLines.push(global.ShellPointer.promptSet[onfocus?.id.substring(1)].input.value);
+                        global.ShellPointer.batchInput.value = global.ShellPointer.inputLines.join('\n');
+                        global.ShellPointer.promptIndex++;
                     }
-                    that.evalPrompt(
-                        that.promptSet[onfocus.id.substring(1)].container,
-                        that.promptSet[onfocus.id.substring(1)].box,
-                        that.promptSet[onfocus.id.substring(1)].input,
-                        that.promptSet[onfocus.id.substring(1)].output,
+                    global.ShellPointer.evalPrompt(
+                        global.ShellPointer.promptSet[onfocus.id.substring(1)].container,
+                        global.ShellPointer.promptSet[onfocus.id.substring(1)].box,
+                        global.ShellPointer.promptSet[onfocus.id.substring(1)].input,
+                        global.ShellPointer.promptSet[onfocus.id.substring(1)].output,
                     );
                     // passa ao próximo prompt
-                    onfocus = that.promptSet[that.promptUid[that.promptUid.indexOf(onfocus.id.substring(1)) + 1]].input;
+                    onfocus =
+                        global.ShellPointer.promptSet[
+                            global.ShellPointer.promptUid[global.ShellPointer.promptUid.indexOf(onfocus.id.substring(1)) + 1]
+                        ].input;
                     onfocus.focus();
                     onfocus.selectionStart = onfocus.value.length;
                 }
@@ -332,21 +341,26 @@ export class Shell {
                 // apaga prompt anterior se for nulo e pressionar backspace na coluna 0
                 event.key === 'Backspace' &&
                 onfocus.selectionStart == 0 &&
-                that.promptIndex != 0 &&
-                that.promptSet[that.promptUid[that.promptIndex - 1]].input.value == ''
+                global.ShellPointer.promptIndex != 0 &&
+                global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].input.value == ''
             ) {
                 // apaga prompt anterior
-                that.promptSet[that.promptUid[that.promptIndex - 1]].container.remove();
-                delete that.promptSet[that.promptUid[that.promptIndex - 1]];
-                that.promptUid.splice(that.promptIndex - 1, 1);
-                that.inputLines.splice(that.promptIndex - 1, 1);
-                that.batchInput.value = that.inputLines.join('\n');
-                that.promptIndex--;
+                global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].container.remove();
+                delete global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]];
+                global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex - 1, 1);
+                global.ShellPointer.inputLines.splice(global.ShellPointer.promptIndex - 1, 1);
+                global.ShellPointer.batchInput.value = global.ShellPointer.inputLines.join('\n');
+                global.ShellPointer.promptIndex--;
             } else if (event.key === 'ArrowUp') {
-                if (that.promptIndex > 0) that.promptSet[that.promptUid[that.promptUid.indexOf(onfocus.id.substring(1)) - 1]].input.focus();
+                if (global.ShellPointer.promptIndex > 0)
+                    global.ShellPointer.promptSet[
+                        global.ShellPointer.promptUid[global.ShellPointer.promptUid.indexOf(onfocus.id.substring(1)) - 1]
+                    ].input.focus();
             } else if (event.key === 'ArrowDown') {
-                if (that.promptIndex + 1 < that.promptUid.length)
-                    that.promptSet[that.promptUid[that.promptUid.indexOf(onfocus.id.substring(1)) + 1]].input.focus();
+                if (global.ShellPointer.promptIndex + 1 < global.ShellPointer.promptUid.length)
+                    global.ShellPointer.promptSet[
+                        global.ShellPointer.promptUid[global.ShellPointer.promptUid.indexOf(onfocus.id.substring(1)) + 1]
+                    ].input.focus();
             }
         }
     }

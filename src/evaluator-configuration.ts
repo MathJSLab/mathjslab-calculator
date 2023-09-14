@@ -2,10 +2,13 @@
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
 
 import { insertOutput } from './output-function';
-import { plotData } from './plot/plot-data';
 
+import { plotData } from './plot/plot-data';
 export const plotWidth = 550;
 export const plotHeight = 300;
+
+const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+const lang = navigator.language;
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     aliasTable: {
@@ -65,11 +68,11 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         e: /^cte\.e$/i,
     },
 
-    externalFuctionTable: {
+    externalFunctionTable: {
         sum: {
             // summation
             ev: [false, true, true, false],
-            func: function (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr, that: Evaluator): ComplexDecimal {
+            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr, that: Evaluator): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number sum index');
                 if (!end.im.eq(0)) throw new Error('complex number sum index');
                 let result: ComplexDecimal = ComplexDecimal.zero();
@@ -87,7 +90,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         prod: {
             // productory
             ev: [false, true, true, false],
-            func: function (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr, that: Evaluator): ComplexDecimal {
+            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr, that: Evaluator): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number prod index');
                 if (!end.im.eq(0)) throw new Error('complex number prod index');
                 let result: ComplexDecimal = ComplexDecimal.one();
@@ -105,7 +108,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         plot: {
             // plot 2D
             ev: [false, false, true, true],
-            func: function (expr: NodeExpr, variable: NodeName, minx: ComplexDecimal, maxx: ComplexDecimal, that: Evaluator): NodeExpr {
+            func: (expr: NodeExpr, variable: NodeName, minx: ComplexDecimal, maxx: ComplexDecimal, that: Evaluator): NodeExpr => {
                 insertOutput.type = 'plot';
                 if (!minx.im.eq(0)) {
                     throw new Error('complex number in plot minimum x axis');
@@ -144,7 +147,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         hist: {
             // histogram
             ev: [true],
-            func: function (M: MultiArray, that: Evaluator): NodeExpr {
+            func: (M: MultiArray, that: Evaluator): NodeExpr => {
                 insertOutput.type = 'hist';
                 const DMin = Math.min(M.dim[0], M.dim[1]);
                 let temp: any = M;
@@ -191,4 +194,38 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
             },
         },
     },
+
+    externalCmdWListTable: {
+        help: {
+            func: (...args: string[]): void => {
+                const promptSet = global.ShellPointer.currentPromptSet;
+                if (args.length == 1) {
+                    if (global.ShellPointer.isFileProtocol) {
+                        promptSet.box.className = 'bad';
+                        promptSet.output.innerHTML = 'help command unavailable offline.';
+                    } else {
+                        fetch(`${baseUrl}help/${lang}/${args[0]}.md`)
+                            .then((response) => {
+                                if (response.ok) {
+                                    promptSet.box.className = 'info';
+                                    return response.text();
+                                }
+                                else {
+                                    promptSet.box.className = 'bad';
+                                    return `help ${args[0]} not found.`;
+                                }
+                            })
+                            .then((responseText) => {
+                                promptSet.output.innerHTML = responseText;
+                            });
+                    }
+                }
+                else {
+                    promptSet.box.className = 'bad';
+                    promptSet.output.innerHTML = `usage: help <command>`;
+                }
+            },
+        },
+    },
+
 };
