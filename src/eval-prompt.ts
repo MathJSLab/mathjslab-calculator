@@ -1,13 +1,18 @@
-/* Prompt Evaluator */
-
+/**
+ * Prompt Evaluator
+ */
 import { Evaluator } from 'mathjslab';
 import $ from 'basic-dom-helper';
-import { MathJaxLoader } from './math-jax-loader';
-import { insertOutput, outputFunction } from './output-function';
-import { EvaluatorConfiguration } from './evaluator-configuration';
+import { evaluator, insertOutput, outputFunction } from './evaluator-configuration';
+import { MathMarkdown } from './math-markdown';
 
-const evaluator = Evaluator.initialize(EvaluatorConfiguration);
-
+/**
+ * evalPrompt function
+ * @param frame
+ * @param box
+ * @param input
+ * @param output
+ */
 export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement): void {
     let tree: any;
     try {
@@ -58,5 +63,5 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
             (evaluator.debug ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, null, 2) + '</pre>' : '');
         if (evaluator.debug) throw e;
     }
-    MathJaxLoader.renderMathML();
+    MathMarkdown.typeset();
 }

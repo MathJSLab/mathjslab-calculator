@@ -45,13 +45,13 @@
     "clean": "rimraf dist src/first-example.json"
   },
   "dependencies": {
-    "basic-dom-helper": "file:../basic-dom-helper",
-    "mathjslab": "file:../mathjslab"
+    "basic-dom-helper": "^1.0.6",
+    "mathjslab": "^1.0.15"
   },
   "devDependencies": {
-    "@types/node": "^20.6.0",
+    "@types/node": "^20.6.2",
     "@types/webpack": "^5.28.2",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",

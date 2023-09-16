@@ -1,14 +1,32 @@
 /* Number and matrix operations and functions */
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
 
-import { insertOutput } from './output-function';
-
+import { MathMarkdown } from './math-markdown';
+import { CanvasPlot } from './plot/canvas-plot';
+import { CanvasHistogram } from './plot/canvas-histogram';
 import { plotData } from './plot/plot-data';
+
 export const plotWidth = 550;
 export const plotHeight = 300;
 
-const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-const lang = navigator.language;
+export const insertOutput = { type: '' };
+
+/* eslint-disable-next-line  @typescript-eslint/ban-types */
+export const outputFunction: { [k: string]: Function } = {
+    plot: function (parent: string): void {
+        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+        const cv = new CanvasPlot(parent, plotWidth, plotHeight, plotData);
+        insertOutput.type = '';
+    },
+    hist: function (parent: string): void {
+        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+        const cv = new CanvasHistogram(parent, plotWidth, plotHeight, plotData);
+        insertOutput.type = '';
+    },
+};
+
+export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+export const lang = navigator.language;
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     aliasTable: {
@@ -216,7 +234,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                                 }
                             })
                             .then((responseText) => {
-                                promptSet.output.innerHTML = responseText;
+                                promptSet.output.innerHTML = MathMarkdown.md2html(responseText);
                             });
                     }
                 }
@@ -229,3 +247,11 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
     },
 
 };
+
+/**
+ * Evaluator instance.
+ */
+export const evaluator = Evaluator.initialize(EvaluatorConfiguration);
+
+MathMarkdown.initialize();
+

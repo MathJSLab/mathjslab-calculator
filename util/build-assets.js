@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-console.log('Copying assets to /dist directory...')
+console.log('Copying assets to /dist directory...');
 try {
     let directory = path.resolve(__dirname, '..', 'dist');
     if (fs.existsSync(directory)) {
@@ -49,4 +49,4 @@ try {
 catch (err) {
     console.error(err);
 }
-console.log('Copying assets to /dist directory done.')
+console.log('Copying assets to /dist directory done.');
