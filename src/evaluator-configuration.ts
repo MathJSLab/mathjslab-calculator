@@ -279,6 +279,9 @@ ${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).join(', 
         },
         restart: {
             func: () => {
+                const promptSet = global.ShellPointer.currentPromptSet;
+                promptSet.box.className = 'good';
+                promptSet.output.innerHTML = `restart`;
                 global.EvaluatorPointer.Restart();
             }
         }
