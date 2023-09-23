@@ -1,3 +1,39 @@
+.container {
+    display: flex;
+}
+
+.examples {
+    flex: 1;
+}
+
+.shell {
+    flex: 1;
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Add padding for spacing */
+    max-width: calc(100% - 15% - 2em); /* Calculate max width, considering the fixed panel */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.variables {
+    width: 15%; /* Adjust the width as needed */
+    background-color: #d0f0d0;
+    border: 2px solid green;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    /* Add any other styles for your fixed panel */
+    position: fixed; /* Fix the panel */
+    right: 0; /* Position it on the right side */
+    top: 7em; /* Position it at the top */
+    bottom: 7em; /* Stretch it to the bottom */
+}
+
+.namelist {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
 .inputarea {
     background-color: #e0f0e0;
     font-family: monospace;
@@ -55,7 +91,7 @@
 }
 
 .good {
-    background: #d0f0d0;
+    background-color: #d0f0d0;
     border: 2px solid green;
     margin: 1em;
     padding: 1em;
@@ -63,7 +99,7 @@
 }
 
 .bad {
-    background: #f0d0d0;
+    background-color: #f0d0d0;
     border: 2px solid red;
     margin: 1em;
     padding: 1em;
@@ -71,7 +107,7 @@
 }
 
 .info {
-    background: #d0d0f0;
+    background-color: #d0d0f0;
     border: 2px solid blue;
     margin: 1em;
     padding: 1em;
@@ -79,7 +115,7 @@
 }
 
 .warning {
-    background: #b0b0b0;
+    background-color: #b0b0b0;
     border: 2px solid yellow;
     margin: 1em;
     padding: 1em;

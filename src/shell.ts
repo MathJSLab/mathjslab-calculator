@@ -56,6 +56,10 @@ export class Shell {
     isTouchCapable: boolean;
     examples: Record<string, ExampleEntry>;
     container: HTMLDivElement;
+    shell: HTMLDivElement;
+    variables: HTMLDivElement;
+    nameTable: HTMLDivElement;
+    nameList: HTMLUListElement;
     evalPrompt: EvalPromptHandler;
     examplesContainer: HTMLDivElement;
     batchContainer: HTMLDivElement;
@@ -79,6 +83,7 @@ export class Shell {
     public static async initialize(options: ShellOptions): Promise<Shell> {
         const shell = new Shell();
         shell.container = $.i(options.containerId) as HTMLDivElement;
+        shell.container.className = 'container';
         if (options.evalPrompt) {
             shell.evalPrompt = options.evalPrompt;
         } else {
@@ -88,17 +93,24 @@ export class Shell {
             };
         }
         shell.inputLines = options.inputLines;
+        shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
             const response = await fetch(`${shell.baseUrl}example/example.json`);
             if (!response.ok) {
                 throw new Error('Network response error.');
             }
             shell.examples = await response.json();
-            shell.examplesContainer = $.create('div', shell.container, 'examples_' + options.containerId);
+            shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
             const examplesHeading = $.create('h2', shell.examplesContainer);
             examplesHeading.innerHTML = 'Examples';
         }
-        shell.batchContainer = $.create('div', shell.container, 'batch_' + options.containerId);
+        shell.variables = $.create('div', shell.container, 'variables_' + options.containerId, 'variables');
+        const variable_head = $.create('h2', shell.variables);
+        variable_head.innerHTML = 'Variables';
+        variable_head.setAttribute('align', 'center');
+        shell.nameTable = $.create('div', shell.variables, 'nameTable_' + options.containerId);
+        shell.nameList = $.create('ul', shell.nameTable, null, 'namelist');
+        shell.batchContainer = $.create('div', shell.shell, 'batch_' + options.containerId);
         shell.batchBox = $.create('div', shell.batchContainer, 'batchbox_' + options.containerId, 'good');
         shell.batchWrapper = $.create('div', shell.batchBox, 'batchwrapper_' + options.containerId);
         shell.batchInput = $.create('textarea', shell.batchWrapper, 'batchtext_' + options.containerId, 'inputarea');
@@ -115,7 +127,7 @@ export class Shell {
         $.addEventListener(shell.batchButton, 'click', shell.batchExec);
         $.addEventListener(shell.batchInput, 'focus', shell.batchFocus);
         $.addEventListener(shell.batchInput, 'blur', shell.batchBlur);
-        shell.promptContainer = $.create('div', shell.container, 'prompt_' + options.containerId);
+        shell.promptContainer = $.create('div', shell.shell, 'prompt_' + options.containerId);
         shell.promptUid = [];
         shell.promptSet = {};
         shell.promptIndex = -1;
@@ -154,6 +166,50 @@ export class Shell {
         global.ShellPointer.loadBatch();
         global.ShellPointer.loadLines();
         global.ShellPointer.batchButton.focus();
+    }
+
+    public cleanNameList(): void {
+        this.nameList.remove();
+        this.nameList = $.create('ul', this.nameTable, null, 'namelist');
+    }
+
+    public refreshNameList(): void {
+        this.cleanNameList();
+        for (let name in global.EvaluatorPointer.nameTable) {
+            if (!global.EvaluatorPointer.readonlyNameTable.includes(name)) {
+                const nameTableEntry = global.EvaluatorPointer.nameTable[name];
+                const nameListEntry = $.create('li', this.nameList);
+                if (nameTableEntry.args.length !== 0) {
+                    nameListEntry.innerHTML = `(function) ${name}`;
+                }
+                else {
+                    let resultType: string = '';
+                    if (nameTableEntry.expr['type'] !== undefined) {
+                        if ('array' in nameTableEntry.expr) {
+                            resultType = '[' + nameTableEntry.expr.dim.slice().join('x')+']';
+                        }
+                        else {
+                            resultType = '#';
+                        }
+                        if (nameTableEntry.expr['type'] === 0) {
+                            if (resultType[0] === '#') {
+                                resultType = '¬';
+                            }
+                            else {
+                                resultType += '¬';
+                            }
+                        }
+                        else if (nameTableEntry.expr['type'] === 2) {
+                            resultType += '*';
+                        }
+                    }
+                    else {
+                        console.log(name, nameTableEntry);
+                    }
+                    nameListEntry.innerHTML = `${resultType} ${name}`;
+                }
+            }
+        }
     }
 
     public updateBatch(): void {
@@ -228,6 +284,7 @@ export class Shell {
         for (const i in this.promptSet) {
             this.promptSet[i].container.remove();
         }
+        this.cleanNameList();
     }
 
     public promptAppend(text?: string | null): void {
@@ -290,6 +347,7 @@ export class Shell {
             input,
             output,
         };
+        this.refreshNameList();
     }
 
     public promptKeydown(event: KeyboardEvent) {
@@ -335,6 +393,7 @@ export class Shell {
                         ].input;
                     onfocus.focus();
                     onfocus.selectionStart = onfocus.value.length;
+                    global.ShellPointer.refreshNameList();
                 }
                 if (!event.shiftKey) return false;
             } else if (

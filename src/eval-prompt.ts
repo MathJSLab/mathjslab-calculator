@@ -1,10 +1,8 @@
 /**
  * Prompt Evaluator
  */
-import { Evaluator } from 'mathjslab';
 import $ from 'basic-dom-helper';
-import { evaluator, insertOutput, outputFunction } from './evaluator-configuration';
-import { MathMarkdown } from './math-markdown';
+import { Evaluator, evaluator, insertOutput, outputFunction, MathMarkdown } from './evaluator-configuration';
 
 /**
  * evalPrompt function

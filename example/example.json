@@ -58,5 +58,10 @@
     "file": "logical.m",
     "caption": "Logical",
     "description": "Test logical operators."
+  },
+  "help": {
+    "file": "help.m",
+    "caption": "Help",
+    "description": "Test help command."
   }
 }

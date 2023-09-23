@@ -5,13 +5,16 @@ let usingMathJax = false;
 let usingMarked = false;
 
 export abstract class MathMarkdown {
-
     public static initialize() {
         MathMarkdown.loadMathJaxIfNeed();
         MathMarkdown.loadMarkedIfNeed();
     }
 
-    private static appendScriptToHead(src: string, onload?: ((this: GlobalEventHandlers, ev: Event) => any) | null, onerror?: OnErrorEventHandler): HTMLScriptElement {
+    private static appendScriptToHead(
+        src: string,
+        onload?: ((this: GlobalEventHandlers, ev: Event) => any) | null,
+        onerror?: OnErrorEventHandler,
+    ): HTMLScriptElement {
         const script: HTMLScriptElement = document.createElement('script');
         script.type = 'text/javascript';
         if (onload) {
@@ -29,7 +32,6 @@ export abstract class MathMarkdown {
 
     public static loadMathJaxIfNeed(force = false): void {
         if (!usingMathJax && (force || !window.MathMLElement)) {
-            const script: HTMLScriptElement = document.createElement('script');
             MathMarkdown.appendScriptToHead(
                 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
                 // 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/latest.js?tex-svg.js',
@@ -38,14 +40,13 @@ export abstract class MathMarkdown {
                 },
                 (error) => {
                     throw new URIError(`MathJax didn't load correctly: ${error}`);
-                }
+                },
             );
         }
     }
 
     public static loadMarkedIfNeed(): void {
         if (!usingMarked) {
-            const script: HTMLScriptElement = document.createElement('script');
             MathMarkdown.appendScriptToHead(
                 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
                 () => {
@@ -53,13 +54,37 @@ export abstract class MathMarkdown {
                 },
                 (error) => {
                     throw new URIError(`Marked didn't load correctly: ${error}`);
-                }
+                },
             );
         }
     }
 
+    public static replaceMath(text: string): string {
+        let data = text;
+        let replaced: boolean;
+        const replace = (regexp: RegExp, display: 'inline' | 'block', quotelength: number) => {
+            replaced = true;
+            while (replaced) {
+                const matched = regexp.exec(data);
+                if (matched) {
+                    const reference = matched[2];
+                    data =
+                        data.slice(0, matched.index) +
+                        global.EvaluatorPointer.toMathML(reference, display) +
+                        data.slice(matched.index + matched[2].length + quotelength);
+                    replaced = true;
+                } else {
+                    replaced = false;
+                }
+            }
+        };
+        replace(/(\%\%\%)([^\%]+)(\%\%\%)/gm, 'block', 6);
+        replace(/(\%\%)([^\%]+)(\%\%)/gm, 'inline', 4);
+        return data;
+    }
+
     public static md2html(text: string): string {
-        return marked.parse(text);
+        return marked.parse(MathMarkdown.replaceMath(text));
     }
 
     public static typeset(): void {
@@ -67,5 +92,4 @@ export abstract class MathMarkdown {
             MathJax.typeset();
         }
     }
-
 }

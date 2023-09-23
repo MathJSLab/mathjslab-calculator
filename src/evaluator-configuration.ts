@@ -1,7 +1,10 @@
 /* Number and matrix operations and functions */
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
+export { Evaluator };
 
 import { MathMarkdown } from './math-markdown';
+export { MathMarkdown };
+
 import { CanvasPlot } from './plot/canvas-plot';
 import { CanvasHistogram } from './plot/canvas-histogram';
 import { plotData } from './plot/plot-data';
@@ -77,56 +80,53 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         max: /^m[aá]x(imo)?|max(imum)?$/i,
         mean: /^m[eé]dia|mean$/i,
         /* Special functions */
-        sum: /^soma(t[oó]rio)?|sum(mation)?$/i,
-        prod: /^prod(t[oó]rio|(ctory)?)$/i,
-        plot: /^gr[aá](f(ico)?|ph?(ics?)?)?|plot$/i,
-        hist: /^hist(ogram(a)?)?$/i,
+        summation: /^soma(t[oó]rio)?|sum(mation)?$/i,
+        productory: /^prod(t[oó]rio|(ctory)?)$/i,
+        plot2d: /^gr[aá](f(ico)?|ph?(ics?)?)?$/i,
+        histogram: /^hist(ogram(a)?)?$/i,
         /* Constants */
         pi: /^cte\.pi$/i,
         e: /^cte\.e$/i,
     },
 
     externalFunctionTable: {
-        sum: {
-            // summation
+        summation: {
             ev: [false, true, true, false],
-            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr, that: Evaluator): ComplexDecimal => {
+            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number sum index');
                 if (!end.im.eq(0)) throw new Error('complex number sum index');
                 let result: ComplexDecimal = ComplexDecimal.zero();
-                const sum_function_name = `sum`;
-                that.localTable[sum_function_name] = {};
+                const sum_function_name = `summation`;
+                global.EvaluatorPointer.localTable[sum_function_name] = {};
                 for (let i = start.re.toNumber(); i <= end.re.toNumber(); i++) {
-                    that.localTable[sum_function_name][variable.id] = new ComplexDecimal(i, 0);
-                    result = ComplexDecimal.add(result, that.Evaluator(expr, true, sum_function_name));
+                    global.EvaluatorPointer.localTable[sum_function_name][variable.id] = new ComplexDecimal(i, 0);
+                    result = ComplexDecimal.add(result, global.EvaluatorPointer.Evaluator(expr, true, sum_function_name));
                 }
-                delete that.localTable[sum_function_name];
+                delete global.EvaluatorPointer.localTable[sum_function_name];
                 return result;
             },
         },
 
-        prod: {
-            // productory
+        productory: {
             ev: [false, true, true, false],
-            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr, that: Evaluator): ComplexDecimal => {
+            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number prod index');
                 if (!end.im.eq(0)) throw new Error('complex number prod index');
                 let result: ComplexDecimal = ComplexDecimal.one();
-                const prod_function_name = `prod`;
-                that.localTable[prod_function_name] = {};
+                const prod_function_name = `productory`;
+                global.EvaluatorPointer.localTable[prod_function_name] = {};
                 for (let i = start.re.toNumber(); i <= end.re.toNumber(); i++) {
-                    that.localTable[prod_function_name][variable.id] = new ComplexDecimal(i, 0);
-                    result = ComplexDecimal.mul(result, that.Evaluator(expr, true, prod_function_name));
+                    global.EvaluatorPointer.localTable[prod_function_name][variable.id] = new ComplexDecimal(i, 0);
+                    result = ComplexDecimal.mul(result, global.EvaluatorPointer.Evaluator(expr, true, prod_function_name));
                 }
-                delete that.localTable[prod_function_name];
+                delete global.EvaluatorPointer.localTable[prod_function_name];
                 return result;
             },
         },
 
-        plot: {
-            // plot 2D
+        plot2d: {
             ev: [false, false, true, true],
-            func: (expr: NodeExpr, variable: NodeName, minx: ComplexDecimal, maxx: ComplexDecimal, that: Evaluator): NodeExpr => {
+            func: (expr: NodeExpr, variable: NodeName, minx: ComplexDecimal, maxx: ComplexDecimal): NodeExpr => {
                 insertOutput.type = 'plot';
                 if (!minx.im.eq(0)) {
                     throw new Error('complex number in plot minimum x axis');
@@ -139,15 +139,15 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     plotData.MaxX = maxx.re.toNumber();
                 }
                 const deltaX = (plotData.MaxX - plotData.MinX) / plotWidth;
-                const plot_function_name = `plot`;
-                that.localTable[plot_function_name] = {};
+                const plot_function_name = `plot2d`;
+                global.EvaluatorPointer.localTable[plot_function_name] = {};
                 const save_precision = Decimal.precision;
                 Decimal.set({ precision: 20 });
                 plotData.MaxY = 0;
                 plotData.MinY = 0;
                 for (let i = 0; i < plotWidth; i++) {
-                    that.localTable[plot_function_name][variable.id] = new ComplexDecimal(plotData.MinX + deltaX * i, 0);
-                    const data_y = that.Evaluator(expr, true, 'plot');
+                    global.EvaluatorPointer.localTable[plot_function_name][variable.id] = new ComplexDecimal(plotData.MinX + deltaX * i, 0);
+                    const data_y = global.EvaluatorPointer.Evaluator(expr, true, plot_function_name);
                     if (isFinite(data_y.re.toNumber()) && isFinite(data_y.im.toNumber()) && data_y.im.eq(0)) {
                         plotData.data[i] = data_y.re.toNumber();
                     } else {
@@ -156,16 +156,16 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     plotData.MaxY = Math.max(plotData.MaxY, plotData.data[i]);
                     plotData.MinY = Math.min(plotData.MinY, plotData.data[i]);
                 }
-                delete that.localTable[plot_function_name];
+                delete global.EvaluatorPointer.localTable[plot_function_name];
                 Decimal.set({ precision: save_precision });
-                return that.nodeArgExpr(that.nodeName('plot'), { list: [expr, variable, minx, maxx] });
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('plot'), { list: [expr, variable, minx, maxx] });
             },
         },
 
-        hist: {
+        histogram: {
             // histogram
             ev: [true],
-            func: (M: MultiArray, that: Evaluator): NodeExpr => {
+            func: (M: MultiArray): NodeExpr => {
                 insertOutput.type = 'hist';
                 const DMin = Math.min(M.dim[0], M.dim[1]);
                 let temp: any = M;
@@ -208,7 +208,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         }
                     }
                 }
-                return that.nodeArgExpr(that.nodeName('hist'), { list: [temp] });
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('hist'), { list: [temp] });
             },
         },
     },
@@ -216,36 +216,73 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
     externalCmdWListTable: {
         help: {
             func: (...args: string[]): void => {
+                const encodeName = (name: string): string => {
+                    const result: string[] = [];
+                    for (let i = 0; i < name.length; i++) {
+                        const c = name.charCodeAt(i);
+                        if (
+                            (c >= 48 && c <= 57) || // digit
+                            (c >= 65 && c <= 90) || // Upper case letter
+                            (c >= 97 && c <= 122) // Lower case letter
+                        ) {
+                            result.push(name[i]);
+                        } else {
+                            result.push(`%${name.charCodeAt(i).toString(16).toUpperCase().padStart(2, '0')}`);
+                        }
+                    }
+                    return result.join('');
+                };
                 const promptSet = global.ShellPointer.currentPromptSet;
                 if (args.length == 1) {
                     if (global.ShellPointer.isFileProtocol) {
                         promptSet.box.className = 'bad';
-                        promptSet.output.innerHTML = 'help command unavailable offline.';
+                        promptSet.output.innerHTML = 'help command unavailable <b>offline</b>.';
                     } else {
-                        fetch(`${baseUrl}help/${lang}/${args[0]}.md`)
+                        fetch(`${baseUrl}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
                             .then((response) => {
                                 if (response.ok) {
                                     promptSet.box.className = 'info';
                                     return response.text();
-                                }
-                                else {
+                                } else {
                                     promptSet.box.className = 'bad';
                                     return `help ${args[0]} not found.`;
                                 }
                             })
                             .then((responseText) => {
                                 promptSet.output.innerHTML = MathMarkdown.md2html(responseText);
+                                MathMarkdown.typeset();
                             });
                     }
-                }
-                else {
+                } else if (args.length == 0) {
+                    promptSet.box.className = 'info';
+                    promptSet.output.innerHTML = MathMarkdown.md2html(
+                        `For help with individual commands and functions type
+
+\`help NAME\`
+
+(replace NAME with the name of the command or function you would like to learn more about).
+
+### Operators:
+
+${global.EvaluatorPointer.opList.map((op) => `\`${op}\``).join(', ')}
+
+### Functions:
+
+${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).join(', ')}`,
+                    );
+                    MathMarkdown.typeset();
+                } else {
                     promptSet.box.className = 'bad';
-                    promptSet.output.innerHTML = `usage: help <command>`;
+                    promptSet.output.innerHTML = `help: function called with too many inputs`;
                 }
             },
         },
+        restart: {
+            func: () => {
+                global.EvaluatorPointer.Restart();
+            }
+        }
     },
-
 };
 
 /**
@@ -254,4 +291,3 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 export const evaluator = Evaluator.initialize(EvaluatorConfiguration);
 
 MathMarkdown.initialize();
-
