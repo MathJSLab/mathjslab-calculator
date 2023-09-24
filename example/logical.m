@@ -30,8 +30,12 @@ A!=B
 gt(B,A)
 A = randi(10,[4,5])
 B = mod(A,2)
-B & 1
+C = B & 1
 B | 1
 B && 1
 B || 1
 (B || 1) && 1
+max([1,-1])
+max([1,i,-1,-i])
+max(1)
+max(1,2,3) # erro

@@ -180,13 +180,13 @@ export class Shell {
                 const nameTableEntry = global.EvaluatorPointer.nameTable[name];
                 const nameListEntry = $.create('li', this.nameList);
                 if (nameTableEntry.args.length !== 0) {
-                    nameListEntry.innerHTML = `(function) ${name}`;
+                    nameListEntry.innerHTML = `&#x219B; ${name}(${nameTableEntry.args.map(arg => arg.id).join(',')})`;
                 }
                 else {
                     let resultType: string = '';
                     if (nameTableEntry.expr['type'] !== undefined) {
                         if ('array' in nameTableEntry.expr) {
-                            resultType = '[' + nameTableEntry.expr.dim.slice().join('x')+']';
+                            resultType = '[' + nameTableEntry.expr.dim.slice().join('x') + ']';
                         }
                         else {
                             resultType = '#';
@@ -203,9 +203,6 @@ export class Shell {
                             resultType += '*';
                         }
                     }
-                    else {
-                        console.log(name, nameTableEntry);
-                    }
                     nameListEntry.innerHTML = `${resultType} ${name}`;
                 }
             }
@@ -221,6 +218,9 @@ export class Shell {
     }
 
     public loadLines(): void {
+        if (this.inputLines[this.inputLines.length - 1].trim() !== '') {
+            this.inputLines.push('');
+        }
         if (this.inputLines && this.inputLines.length == 0) this.inputLines = [''];
         if (this.inputLines) {
             for (let i = 0; i < this.inputLines.length; i++) {
@@ -259,6 +259,7 @@ export class Shell {
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchBlur(event: Event): void {
+        global.EvaluatorPointer.Restart();
         global.ShellPointer.promptClean();
     }
 
