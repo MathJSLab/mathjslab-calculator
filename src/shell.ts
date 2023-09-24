@@ -175,31 +175,27 @@ export class Shell {
 
     public refreshNameList(): void {
         this.cleanNameList();
-        for (let name in global.EvaluatorPointer.nameTable) {
+        for (const name in global.EvaluatorPointer.nameTable) {
             if (!global.EvaluatorPointer.readonlyNameTable.includes(name)) {
                 const nameTableEntry = global.EvaluatorPointer.nameTable[name];
                 const nameListEntry = $.create('li', this.nameList);
                 if (nameTableEntry.args.length !== 0) {
-                    nameListEntry.innerHTML = `&#x219B; ${name}(${nameTableEntry.args.map(arg => arg.id).join(',')})`;
-                }
-                else {
+                    nameListEntry.innerHTML = `&#x219B; ${name}(${nameTableEntry.args.map((arg) => arg.id).join(',')})`;
+                } else {
                     let resultType: string = '';
                     if (nameTableEntry.expr['type'] !== undefined) {
                         if ('array' in nameTableEntry.expr) {
                             resultType = '[' + nameTableEntry.expr.dim.slice().join('x') + ']';
-                        }
-                        else {
+                        } else {
                             resultType = '#';
                         }
                         if (nameTableEntry.expr['type'] === 0) {
                             if (resultType[0] === '#') {
                                 resultType = '¬';
-                            }
-                            else {
+                            } else {
                                 resultType += '¬';
                             }
-                        }
-                        else if (nameTableEntry.expr['type'] === 2) {
+                        } else if (nameTableEntry.expr['type'] === 2) {
                             resultType += '*';
                         }
                     }

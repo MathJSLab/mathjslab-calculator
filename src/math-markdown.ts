@@ -1,13 +1,16 @@
 declare const marked: { parse: (text: string) => string };
 declare const MathJax: { typeset: () => void };
+declare const Chart: any;
 
 let usingMathJax = false;
 let usingMarked = false;
+let usingChartJs = false;
 
 export abstract class MathMarkdown {
     public static initialize() {
         MathMarkdown.loadMathJaxIfNeed();
         MathMarkdown.loadMarkedIfNeed();
+        MathMarkdown.loadChartJsIfNeed();
     }
 
     private static appendScriptToHead(
@@ -54,6 +57,26 @@ export abstract class MathMarkdown {
                 },
                 (error) => {
                     throw new URIError(`Marked didn't load correctly: ${error}`);
+                },
+            );
+        }
+    }
+
+    /**
+     * Load Chart.js
+     * homepage: https://www.chartjs.org/docs/latest/
+     */
+    public static loadChartJsIfNeed(): void {
+        if (!usingChartJs) {
+            MathMarkdown.appendScriptToHead(
+                'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js',
+                () => {
+                    if (!!Chart) {
+                        usingChartJs = true;
+                    }
+                },
+                (error) => {
+                    throw new URIError(`Chart.js didn't load correctly: ${error}`);
                 },
             );
         }

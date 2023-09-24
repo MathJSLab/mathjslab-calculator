@@ -49,7 +49,7 @@
     "mathjslab": "^1.0.17"
   },
   "devDependencies": {
-    "@types/node": "^20.6.3",
+    "@types/node": "^20.6.5",
     "@types/webpack": "^5.28.2",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "css-loader": "^6.8.1",

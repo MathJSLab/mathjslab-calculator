@@ -1,3 +1,4 @@
+import $ from 'basic-dom-helper';
 /* Number and matrix operations and functions */
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
 export { Evaluator };
@@ -5,9 +6,27 @@ export { Evaluator };
 import { MathMarkdown } from './math-markdown';
 export { MathMarkdown };
 
-import { CanvasPlot } from './plot/canvas-plot';
-import { CanvasHistogram } from './plot/canvas-histogram';
-import { plotData } from './plot/plot-data';
+declare const Chart: any;
+
+export type PlotData = {
+    data: Array<number>;
+    X: Array<number>;
+    tag: Array<string>;
+    MinX: number;
+    MaxX: number;
+    MinY: number;
+    MaxY: number;
+};
+
+export const plotData: PlotData = {
+    data: [],
+    X: [],
+    tag: [],
+    MinX: 0,
+    MaxX: 0,
+    MinY: 0,
+    MaxY: 0,
+};
 
 export const plotWidth = 550;
 export const plotHeight = 300;
@@ -16,14 +35,40 @@ export const insertOutput = { type: '' };
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
-    plot: function (parent: string): void {
-        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
-        const cv = new CanvasPlot(parent, plotWidth, plotHeight, plotData);
+    plot2d: function (parent: string): void {
+        const ctx = $.create('canvas', parent);
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: plotData.X,
+                datasets: [
+                    {
+                        label: 'Plot',
+                        data: plotData.data,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                    },
+                ],
+            },
+        });
         insertOutput.type = '';
     },
-    hist: function (parent: string): void {
-        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
-        const cv = new CanvasHistogram(parent, plotWidth, plotHeight, plotData);
+    histogram: function (parent: string): void {
+        const ctx = $.create('canvas', parent);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: plotData.X,
+                datasets: [
+                    {
+                        label: 'Histogram',
+                        data: plotData.data,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+        });
         insertOutput.type = '';
     },
 };
@@ -127,14 +172,14 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         plot2d: {
             ev: [false, false, true, true],
             func: (expr: NodeExpr, variable: NodeName, minx: ComplexDecimal, maxx: ComplexDecimal): NodeExpr => {
-                insertOutput.type = 'plot';
+                insertOutput.type = 'plot2d';
                 if (!minx.im.eq(0)) {
-                    throw new Error('complex number in plot minimum x axis');
+                    throw new Error('complex number in plot2d minimum x axis');
                 } else {
                     plotData.MinX = minx.re.toNumber();
                 }
                 if (!maxx.im.eq(0)) {
-                    throw new Error('complex number in plot maximum x axis');
+                    throw new Error('complex number in plot2d maximum x axis');
                 } else {
                     plotData.MaxX = maxx.re.toNumber();
                 }
@@ -145,70 +190,59 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 Decimal.set({ precision: 20 });
                 plotData.MaxY = 0;
                 plotData.MinY = 0;
+                plotData.X = [];
+                plotData.data = [];
                 for (let i = 0; i < plotWidth; i++) {
                     global.EvaluatorPointer.localTable[plot_function_name][variable.id] = new ComplexDecimal(plotData.MinX + deltaX * i, 0);
+                    plotData.X[i] = global.EvaluatorPointer.localTable[plot_function_name][variable.id].re.toNumber();
                     const data_y = global.EvaluatorPointer.Evaluator(expr, true, plot_function_name);
                     if (isFinite(data_y.re.toNumber()) && isFinite(data_y.im.toNumber()) && data_y.im.eq(0)) {
                         plotData.data[i] = data_y.re.toNumber();
                     } else {
-                        throw new Error('non real number in plot y axis');
+                        throw new Error('non real number in plot2d y axis');
                     }
                     plotData.MaxY = Math.max(plotData.MaxY, plotData.data[i]);
                     plotData.MinY = Math.min(plotData.MinY, plotData.data[i]);
                 }
                 delete global.EvaluatorPointer.localTable[plot_function_name];
                 Decimal.set({ precision: save_precision });
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('plot'), { list: [expr, variable, minx, maxx] });
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('plot2d'), { list: [expr, variable, minx, maxx] });
             },
         },
 
         histogram: {
-            // histogram
-            ev: [true],
-            func: (M: MultiArray): NodeExpr => {
-                insertOutput.type = 'hist';
-                const DMin = Math.min(M.dim[0], M.dim[1]);
-                let temp: any = M;
-                if (DMin != 1 && DMin != 2) {
-                    throw new Error('invalid dimensions in hist');
-                } else {
-                    if (DMin == M.dim[1]) {
-                        temp = MultiArray.transpose(M);
-                    }
-                    plotData.MaxY = 0;
-                    plotData.MinY = 0;
-                    for (let i = 0; i < temp.dim[1]; i++) {
-                        if (isFinite(temp.array[0][i].re.toNumber()) && isFinite(temp.array[0][i].im.toNumber()) && temp.array[0][i].im.eq(0)) {
-                            plotData.data[i] = temp.array[0][i].re.toNumber();
-                        } else {
-                            throw new Error('non real number in histogram y axis');
-                        }
-                        plotData.MaxY = Math.max(plotData.MaxY, plotData.data[i]);
-                        plotData.MinY = Math.min(plotData.MinY, plotData.data[i]);
-                    }
-                    if (temp.dim[0] == 2) {
-                        plotData.MaxX = 0;
-                        plotData.MinX = 0;
-                        for (let i = 0; i < temp.dim[1]; i++) {
-                            if ('str' in temp.array[1][0]) {
-                                plotData.tag[i] = temp.array[1][i].str;
-                            } else {
-                                if (
-                                    isFinite(temp.array[1][i].re.toNumber()) &&
-                                    isFinite(temp.array[1][i].im.toNumber()) &&
-                                    temp.array[1][i].im.eq(0)
-                                ) {
-                                    plotData.tag[i] = temp.array[1][i].re.toNumber().toString();
-                                } else {
-                                    throw new Error('non real number in histogram x axis');
-                                }
-                                plotData.MaxX = Math.max(plotData.MaxX, M.array[1][i].re.toNumber());
-                                plotData.MinX = Math.min(plotData.MinX, M.array[1][i].re.toNumber());
-                            }
-                        }
-                    }
+            ev: [true, true],
+            func: (IMAG: MultiArray, DOM?: MultiArray): NodeExpr => {
+                insertOutput.type = 'histogram';
+                if (IMAG.dim[0] !== 1) {
+                    IMAG = MultiArray.transpose(IMAG);
                 }
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('hist'), { list: [temp] });
+                if (DOM && DOM.dim[0] !== 1) {
+                    DOM = MultiArray.transpose(DOM);
+                }
+                plotData.MaxY = 0;
+                plotData.MinY = 0;
+                plotData.X = [];
+                plotData.data = [];
+                for (let i = 0; i < IMAG.dim[1]; i++) {
+                    if (DOM) {
+                        if ('re' in DOM.array[0][i]) {
+                            plotData.X[i] = DOM.array[0][i].re.toNumber();
+                        } else if ('str' in DOM.array[0][i]) {
+                            plotData.X[i] = (DOM.array[0][i] as any).str;
+                        }
+                    } else {
+                        plotData.X[i] = i;
+                    }
+                    if (isFinite(IMAG.array[0][i].re.toNumber()) && isFinite(IMAG.array[0][i].im.toNumber()) && IMAG.array[0][i].im.eq(0)) {
+                        plotData.data[i] = IMAG.array[0][i].re.toNumber();
+                    } else {
+                        throw new Error('non real number in histogram y axis');
+                    }
+                    plotData.MaxY = Math.max(plotData.MaxY, plotData.data[i]);
+                    plotData.MinY = Math.min(plotData.MinY, plotData.data[i]);
+                }
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('histogram'), { list: [IMAG, DOM] });
             },
         },
     },
@@ -283,8 +317,8 @@ ${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).join(', 
                 const promptSet = global.ShellPointer.currentPromptSet;
                 promptSet.box.className = 'good';
                 promptSet.output.innerHTML = `restart`;
-            }
-        }
+            },
+        },
     },
 };
 
