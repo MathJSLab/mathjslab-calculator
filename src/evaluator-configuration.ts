@@ -40,7 +40,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         conj: /^conj(uga(do|te)?)?$/i,
         sqrt: /^r(ai)?z(2|q(uadrada)?)|sqrt$/i,
         root: /^r(ai)?z|r(oo)?t$/i,
-        pow: /^pot([eê]ncia)?|elev(ado)?|pow$/i,
+        power: /^pot([eê]ncia)?|elev(ado)?|pow(er)?$/i,
         exp: /^exp(onen((cial)|(tial)))?$/i,
         ln: /^ln$/i,
         log: /^log$/i,
