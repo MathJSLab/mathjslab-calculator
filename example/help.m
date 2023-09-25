@@ -1,9 +1,27 @@
 help
 help abs
+help acos
+help acosd
+help acosh
+help acot
+help acotd
+help acoth
+help acsc
+help acscd
+help acsch
 help adj
+help and
+help angle
 help arg
+help asec
+help asecd
+help asech
+help atan
+help atand
+help atanh
 help ceil
 help conj
 help ctranspose
 help eye
 help gauss
+help sin

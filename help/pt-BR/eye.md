@@ -29,3 +29,9 @@ argument of 1.  Any negative dimensions are treated as zero.  These
 odd definitions are for compatibility with MATLAB.
 
 See also: `ones`, `zeros`.
+
+### References
+
+* https://www.mathworks.com/help/matlab/ref/eye.html
+* https://mathworld.wolfram.com/IdentityMatrix.html
+* https://en.wikipedia.org/wiki/Identity_matrix

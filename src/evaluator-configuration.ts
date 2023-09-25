@@ -10,8 +10,7 @@ declare const Chart: any;
 
 export type PlotData = {
     data: Array<number>;
-    X: Array<number>;
-    tag: Array<string>;
+    X: Array<number | string>;
     MinX: number;
     MaxX: number;
     MinY: number;
@@ -21,7 +20,6 @@ export type PlotData = {
 export const plotData: PlotData = {
     data: [],
     X: [],
-    tag: [],
     MinX: 0,
     MaxX: 0,
     MinY: 0,

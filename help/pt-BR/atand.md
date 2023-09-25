@@ -2,4 +2,13 @@
 
 Compute the inverse tangent in degrees for each element of `X`.
 
+This is defined as
+
+>> %%atand(z) = rad2deg(atan(z))%%
+
 See also: `tand`, `atan`.
+
+### References
+
+* https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
+* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
