@@ -1,3 +1,4 @@
+clear
 # Solução da equação de 2º grau:  x^2-10*x+24=0
 
 # definição dos coeficientes

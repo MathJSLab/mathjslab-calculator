@@ -30,3 +30,21 @@ factorial(21)
 factorial(22)
 factorial(5.4) # erro
 factorial(999999999999999)
+
+A()=2
+A
+A()
+A(1) # erro
+
+arg(0)
+arg(-0)
+arg(0i)
+arg(-0i)
+arg(0-0i)
+arg(0+0i)
+arg(-0+0i)
+arg(-0-0i)
+arg(1-i)
+arg(-1-i)
+arg(-1+i)
+arg(1+i)

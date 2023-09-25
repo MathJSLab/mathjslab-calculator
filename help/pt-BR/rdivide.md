@@ -1,7 +1,0 @@
-* `C = rdivide (A, B)``
-
-Return the element-by-element right division of `A` and `B`.
-
-This function and `A ./ B` are equivalent.
-
-See also: `ldivide`, `mrdivide`, `times`, `plus`.

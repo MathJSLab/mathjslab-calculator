@@ -26,53 +26,66 @@ export const plotData: PlotData = {
     MaxY: 0,
 };
 
-export const plotWidth = 550;
-export const plotHeight = 300;
+export const plotWidth = 100;
 
 export const insertOutput = { type: '' };
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
     plot2d: function (parent: string): void {
-        const ctx = $.create('canvas', parent);
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: plotData.X,
-                datasets: [
-                    {
-                        label: 'Plot',
-                        data: plotData.data,
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1,
-                    },
-                ],
-            },
-        });
+        if (global.ShellPointer.isFileProtocol) {
+            const promptSet = global.ShellPointer.currentPromptSet;
+            promptSet.box.className = 'bad';
+            promptSet.output.innerHTML = 'plot2d command unavailable <b>offline</b>.';
+        }
+        else {
+            const ctx = $.create('canvas', parent);
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: plotData.X,
+                    datasets: [
+                        {
+                            label: 'Plot',
+                            data: plotData.data,
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1,
+                        },
+                    ],
+                },
+            });
+        }
         insertOutput.type = '';
     },
     histogram: function (parent: string): void {
-        const ctx = $.create('canvas', parent);
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: plotData.X,
-                datasets: [
-                    {
-                        label: 'Histogram',
-                        data: plotData.data,
-                        borderWidth: 1,
-                    },
-                ],
-            },
-        });
+        if (global.ShellPointer.isFileProtocol) {
+            const promptSet = global.ShellPointer.currentPromptSet;
+            promptSet.box.className = 'bad';
+            promptSet.output.innerHTML = 'histogram command unavailable <b>offline</b>.';
+        }
+        else {
+            const ctx = $.create('canvas', parent);
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: plotData.X,
+                    datasets: [
+                        {
+                            label: 'Histogram',
+                            data: plotData.data,
+                            borderWidth: 1,
+                        },
+                    ],
+                },
+            });
+        }
         insertOutput.type = '';
     },
 };
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-export const lang = navigator.language;
+export const lang = navigator.language.split('-')[0];
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     aliasTable: {
@@ -309,12 +322,12 @@ ${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).join(', 
                 }
             },
         },
-        restart: {
+        clear: {
             func: () => {
                 global.EvaluatorPointer.Restart();
                 const promptSet = global.ShellPointer.currentPromptSet;
                 promptSet.box.className = 'good';
-                promptSet.output.innerHTML = `restart`;
+                promptSet.output.innerHTML = `clear variables`;
             },
         },
     },
