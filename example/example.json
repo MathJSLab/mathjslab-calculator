@@ -68,5 +68,10 @@
     "file": "histogram.m",
     "caption": "Histogram",
     "description": "Test histogram command."
+  },
+  "test": {
+    "file": "test.m",
+    "caption": "Test",
+    "description": "Last test."
   }
 }

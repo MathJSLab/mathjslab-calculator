@@ -7,7 +7,7 @@ This function is equivalent to the operator syntax `X & Y`.  If
 more than two arguments are given, the logical **AND** is applied
 cumulatively from left to right:
 
-`(...((X1 & X2) & X3) & ...)`
+>> `(...((X1 & X2) & X3) & ...)`
 
 See also: `or`, `not`, `xor`.
 
