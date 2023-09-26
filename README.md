@@ -8,6 +8,12 @@ This is a demo of [MathJSLab npm package](https://www.npmjs.com/package/mathjsla
 
 See this demo powered by [Netlify](https://mathjslab.netlify.app/).
 
+This demo also uses:
+
+* [MathJax](https://www.mathjax.org/), for browsers without [MathML](https://www.w3.org/Math/) support.
+* [Marked](https://www.npmjs.com/package/marked), to display Markdown files.
+* [Chart.js](https://www.chartjs.org/), to generate plots and histograms.
+
 # License
 
 >MIT License
