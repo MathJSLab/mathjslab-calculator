@@ -88,6 +88,10 @@ export const baseUrl = window.location.href.substring(0, window.location.href.la
 export const lang = navigator.language.split('-')[0];
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
+
+    /**
+     * Alias table
+     */
     aliasTable: {
         /* Number functions */
         abs: /^abs(olut(o|e))?$/i,
@@ -145,6 +149,9 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         e: /^cte\.e$/i,
     },
 
+    /**
+     * External function table
+     */
     externalFunctionTable: {
         summation: {
             ev: [false, true, true, false],
@@ -258,6 +265,9 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         },
     },
 
+    /**
+     * External command word list table
+     */
     externalCmdWListTable: {
         help: {
             func: (...args: string[]): void => {
