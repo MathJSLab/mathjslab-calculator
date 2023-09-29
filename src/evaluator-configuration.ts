@@ -85,7 +85,15 @@ export const outputFunction: { [k: string]: Function } = {
 };
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-export const lang = navigator.language.split('-')[0];
+import languages from './languages.json';
+export const languagesAvailable: string[] = [];
+for (const i in languages) {
+    languagesAvailable.push(i)
+}
+export let lang = navigator.language.split('-')[0];
+if (!(lang in languages)) {
+    lang = languagesAvailable[0];
+}
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
 
@@ -315,15 +323,15 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
 \`help NAME\`
 
-(replace NAME with the name of the command or function you would like to learn more about).
+replace NAME with operator or the name of the command or function you would like to learn more about.
 
 ### Operators:
 
-${global.EvaluatorPointer.opList.map((op) => `\`${op}\``).join(', ')}
+&plus; &nbsp; .+ &nbsp; - &nbsp; .- &nbsp; .\* &nbsp; \* &nbsp; ./ &nbsp; / &nbsp; .\\ &nbsp; \\ &nbsp; .^ &nbsp; ^ &nbsp; \*\* &nbsp; .** &nbsp; .\' &nbsp; \' &nbsp; < &nbsp; <= &nbsp; == &nbsp; >= &nbsp; > &nbsp; != &nbsp; &amp; &nbsp; | &nbsp; ! &nbsp; ~ &nbsp; &amp;&amp; &nbsp; || &nbsp; ~= &nbsp; ++ &nbsp; --
 
 ### Functions:
 
-${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).join(', ')}`,
+${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).sort().join(', ')}`,
                     );
                     MathMarkdown.typeset();
                 } else {

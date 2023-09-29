@@ -1,0 +1,10 @@
+{
+  "en": {
+    "description": "English",
+    "languages": ["en", "en-US"]
+  },
+  "pt": {
+    "description": "Português",
+    "languages": ["pt", "pt-BR"]
+  }
+}
