@@ -37,8 +37,7 @@ export const outputFunction: { [k: string]: Function } = {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
             promptSet.output.innerHTML = 'plot2d command unavailable <b>offline</b>.';
-        }
-        else {
+        } else {
             const ctx = $.create('canvas', parent);
             new Chart(ctx, {
                 type: 'line',
@@ -63,8 +62,7 @@ export const outputFunction: { [k: string]: Function } = {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
             promptSet.output.innerHTML = 'histogram command unavailable <b>offline</b>.';
-        }
-        else {
+        } else {
             const ctx = $.create('canvas', parent);
             new Chart(ctx, {
                 type: 'bar',
@@ -88,7 +86,7 @@ export const baseUrl = window.location.href.substring(0, window.location.href.la
 import languages from './languages.json';
 export const languagesAvailable: string[] = [];
 for (const i in languages) {
-    languagesAvailable.push(i)
+    languagesAvailable.push(i);
 }
 export let lang = navigator.language.split('-')[0];
 if (!(lang in languages)) {
@@ -96,7 +94,6 @@ if (!(lang in languages)) {
 }
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
-
     /**
      * Alias table
      */
@@ -327,11 +324,16 @@ replace NAME with operator or the name of the command or function you would like
 
 ### Operators:
 
-&plus; &nbsp; .+ &nbsp; - &nbsp; .- &nbsp; .\* &nbsp; \* &nbsp; ./ &nbsp; / &nbsp; .\\ &nbsp; \\ &nbsp; .^ &nbsp; ^ &nbsp; \*\* &nbsp; .** &nbsp; .\' &nbsp; \' &nbsp; < &nbsp; <= &nbsp; == &nbsp; >= &nbsp; > &nbsp; != &nbsp; &amp; &nbsp; | &nbsp; ! &nbsp; ~ &nbsp; &amp;&amp; &nbsp; || &nbsp; ~= &nbsp; ++ &nbsp; --
+&plus; &nbsp; - &nbsp; .\* &nbsp; \* &nbsp; ./ &nbsp; / &nbsp; .\\ &nbsp; \\ &nbsp; .^ &nbsp; ^ &nbsp;
+\*\* &nbsp; .** &nbsp; .\' &nbsp; \' &nbsp; < &nbsp; <= &nbsp; == &nbsp; >= &nbsp; > &nbsp; != &nbsp;
+~= &nbsp; &amp; &nbsp; | &nbsp; ! &nbsp; ~ &nbsp; &amp;&amp; &nbsp; || &nbsp; ++ &nbsp; --
 
 ### Functions:
 
-${global.EvaluatorPointer.baseFunctionList.map((func) => `\`${func}\``).sort().join(', ')}`,
+${global.EvaluatorPointer.baseFunctionList
+    .map((func) => `\`${func}\``)
+    .sort()
+    .join(', ')}`,
                     );
                     MathMarkdown.typeset();
                 } else {
