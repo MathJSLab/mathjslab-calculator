@@ -15,7 +15,7 @@ copy the following HTML code:
 ```html
 <head>
     ...
-    <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calc.min.js'></script>
+    <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
     ...
 </head>
 
