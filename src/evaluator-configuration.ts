@@ -7,6 +7,7 @@ import { MathMarkdown } from './math-markdown';
 export { MathMarkdown };
 
 declare const Chart: any;
+declare let MathJSLabCalc: any;
 
 export type PlotData = {
     data: Array<number>;
@@ -83,6 +84,21 @@ export const outputFunction: { [k: string]: Function } = {
 };
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+if (!MathJSLabCalc) {
+    MathJSLabCalc = {
+        assets: baseUrl,
+    }
+}
+else {
+    if (MathJSLabCalc.assets) {
+        if (MathJSLabCalc.assets[MathJSLabCalc.assets.length-1] !== '/') {
+            MathJSLabCalc.assets += '/';
+        }
+    }
+    else {
+        MathJSLabCalc.assets = baseUrl
+    }
+}
 import languages from './languages.json';
 export const languagesAvailable: string[] = [];
 for (const i in languages) {
@@ -298,7 +314,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         promptSet.box.className = 'bad';
                         promptSet.output.innerHTML = 'help command unavailable <b>offline</b>.';
                     } else {
-                        fetch(`${baseUrl}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
+                        fetch(`${MathJSLabCalc.assets}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
                             .then((response) => {
                                 if (response.ok) {
                                     promptSet.box.className = 'info';
