@@ -1,5 +1,6 @@
 import $ from 'basic-dom-helper';
 import firstExample from './first-example.json';
+import buildConfiguration from './build-configuration.json';
 
 /**
  * Shell evaluator prompt handler
@@ -45,6 +46,7 @@ export interface ExampleEntry {
 declare global {
     /* eslint-disable-next-line  no-var */
     var ShellPointer: Shell;
+    var MathJSLabCalcBuildVersion: string;
 }
 
 /**
@@ -76,6 +78,7 @@ export class Shell {
 
     private constructor() {
         global.ShellPointer = this;
+        global.MathJSLabCalcBuildVersion = buildConfiguration.buildTime;
         this.baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
         this.isFileProtocol = this.baseUrl.startsWith('file:');
         this.isTouchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
