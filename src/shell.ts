@@ -46,6 +46,7 @@ export interface ExampleEntry {
 declare global {
     /* eslint-disable-next-line  no-var */
     var ShellPointer: Shell;
+    /* eslint-disable-next-line  no-var */
     var MathJSLabCalcBuildVersion: string;
 }
 
@@ -111,6 +112,7 @@ export class Shell {
                     shell.examples = data;
                     shell.examplesAvailable = true;
                 })
+                /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
                 .catch((error) => {
                     shell.examplesAvailable = false;
                 });

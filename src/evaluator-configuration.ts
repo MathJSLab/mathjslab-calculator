@@ -84,19 +84,17 @@ export const outputFunction: { [k: string]: Function } = {
 };
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-if (!MathJSLabCalc) {
+if (MathJSLabCalc === undefined || MathJSLabCalc == null) {
     MathJSLabCalc = {
         assets: baseUrl,
-    }
-}
-else {
-    if (MathJSLabCalc.assets) {
-        if (MathJSLabCalc.assets[MathJSLabCalc.assets.length-1] !== '/') {
+    };
+} else {
+    if (MathJSLabCalc.assets !== undefined || MathJSLabCalc.assets !== null) {
+        if (MathJSLabCalc.assets[MathJSLabCalc.assets.length - 1] !== '/') {
             MathJSLabCalc.assets += '/';
         }
-    }
-    else {
-        MathJSLabCalc.assets = baseUrl
+    } else {
+        MathJSLabCalc.assets = baseUrl;
     }
 }
 import languages from './languages.json';

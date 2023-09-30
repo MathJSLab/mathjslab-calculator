@@ -45,8 +45,7 @@ const config: webpack.Configuration = {
 
 if (process.env.MODE_ENV?.startsWith('prod')) {
     console.log('Building production bundle.');
-}
-else {
+} else {
     config.devtool = 'inline-source-map';
     config.devServer = {
         static: path.join(__dirname, 'dist'),
