@@ -84,8 +84,8 @@ export const outputFunction: { [k: string]: Function } = {
 };
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-if (MathJSLabCalc === undefined || MathJSLabCalc == null) {
-    MathJSLabCalc = {
+if (typeof (global as any).MathJSLabCalc === 'undefined') {
+    (global as any).MathJSLabCalc = {
         assets: baseUrl,
     };
 } else {
