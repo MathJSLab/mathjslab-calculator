@@ -55,6 +55,7 @@ export class Shell {
     isFileProtocol: boolean;
     isTouchCapable: boolean;
     examples: Record<string, ExampleEntry>;
+    examplesAvailable: boolean;
     container: HTMLDivElement;
     shell: HTMLDivElement;
     variables: HTMLDivElement;
@@ -95,14 +96,21 @@ export class Shell {
         shell.inputLines = options.inputLines;
         shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
-            const response = await fetch(`${shell.baseUrl}example/example.json`);
-            if (!response.ok) {
-                throw new Error('Network response error.');
-            }
-            shell.examples = await response.json();
             shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
-            const examplesHeading = $.create('h2', shell.examplesContainer);
-            examplesHeading.innerHTML = 'Examples';
+            await fetch(`${shell.baseUrl}example/example.json`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response error.');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    shell.examples = data;
+                    shell.examplesAvailable = true;
+                })
+                .catch((error) => {
+                    shell.examplesAvailable = false;
+                });
         }
         shell.variables = $.create('div', shell.container, 'variables_' + options.containerId, 'variables');
         const variable_head = $.create('h2', shell.variables);
@@ -134,8 +142,8 @@ export class Shell {
         shell.updateBatch();
         //TLN.append_line_numbers(shell.batchInput.id);
         shell.batchResize();
-        shell.promptAppend();
         shell.loadExamples();
+        shell.promptAppend();
         return shell;
     }
 
@@ -228,10 +236,12 @@ export class Shell {
     }
 
     public loadExamples(): void {
-        if (this.isFileProtocol) {
+        if (this.isFileProtocol || !this.examplesAvailable) {
             global.ShellPointer.batchInput.value = firstExample.content;
             global.ShellPointer.batchExec(new Event('click'));
         } else {
+            const examplesHeading = $.create('h2', this.examplesContainer);
+            examplesHeading.innerHTML = 'Examples';
             let first = true;
             for (const example in this.examples) {
                 const button = $.create('button', this.examplesContainer, 'example-' + example);

@@ -28,7 +28,7 @@ export abstract class MathMarkdown {
         }
         script.src = src;
         script.async = true;
-        script.defer = true;
+        script.defer = false;
         document.head.appendChild(script);
         return script;
     }
