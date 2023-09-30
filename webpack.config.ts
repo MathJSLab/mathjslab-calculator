@@ -5,7 +5,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const config: webpack.Configuration = {
     entry: './src/index.ts',
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -33,20 +32,28 @@ const config: webpack.Configuration = {
         },
     },
     output: {
-        filename: 'bundle.js',
+        filename: 'mathjslab-calc.js',
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'MathJSLab (Calculator)',
+            title: 'MathJSLab Calculator',
             template: 'src/custom.html',
         }),
     ],
-    devServer: {
+};
+
+if (process.env.MODE_ENV?.startsWith('prod')) {
+    console.log('Building production bundle.');
+}
+else {
+    config.devtool = 'inline-source-map';
+    config.devServer = {
         static: path.join(__dirname, 'dist'),
         compress: true,
         port: 4000,
-    },
-};
+    };
+    console.log('Building development bundle.');
+}
 
 export default config;
