@@ -8,6 +8,23 @@ This is a demo of [MathJSLab npm package](https://www.npmjs.com/package/mathjsla
 
 See this demo powered by [Netlify](https://mathjslab.netlify.app/).
 
+Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network). To embed MathJSLab calculator in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/) copy the following HTML code:
+
+```html
+<head>
+...
+    <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calc.min.js'></script>
+...
+</head>
+
+<body>
+...
+
+    <div id="mathjslab-calc"></div>
+...
+</body>
+```
+
 This demo also uses:
 
 * [MathJax](https://www.mathjax.org/), for browsers without [MathML](https://www.w3.org/Math/) support.
