@@ -19,7 +19,6 @@ Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delive
 
 <body>
 ...
-
     <div id="mathjslab-calc"></div>
 ...
 </body>
