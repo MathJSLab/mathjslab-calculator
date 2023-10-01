@@ -44,8 +44,9 @@
     "prebuild:dev": "npm run build-configuration && npm run assets",
     "build:dev": "set MODE_ENV=development && webpack-dev-server --mode development",
     "prebuild:prod": "npm run build-configuration && npm run assets",
-    "postbuild:prod": "npm run bundle",
     "build:prod": "set MODE_ENV=production && webpack --mode production",
+    "postbuild:prod": "npm run bundle",
+    "build": "npm run build:prod",
     "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calc.min.js"
   },
   "dependencies": {
