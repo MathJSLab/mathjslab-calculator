@@ -71,8 +71,6 @@ Join the community chat:
 
 [![Join the chat at https://matrix.to/#/#mathjslab:gitter.im](https://badges.gitter.im/Join%20Chat.svg)](https://matrix.to/#/#mathjslab:gitter.im?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-![Gitter](https://img.shields.io/gitter/room/sergiolindau/mathjslab)
-
 ## License
 
 >MIT License
