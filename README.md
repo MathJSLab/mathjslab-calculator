@@ -30,7 +30,7 @@ copy the following HTML code:
 For the examples and the `help` command to be available, it is necessary to
 copy the `example` and `help` directories to the root of the web page.
 
-Another option is to configure to use assets directly from repository via
+Another option is to configure to use assets directly from [repository](https://github.com/sergiolindau/mathjslab-calculator) via
 [jsDelivr CDN](https://www.jsdelivr.com/) before load `mathjs-cal.min.js`
 script using:
 
