@@ -7,15 +7,35 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="An interpreter with language syntax like MATLAB/Octave" />
     <meta name="author" content="Sergio Lindau" />
-    <meta name="keywords" content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,yacc,bison,lex,flex,jison" />
+    <meta name="keywords" content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,grammar,yacc,bison,lex,flex,jison" />
     <meta name="robots" content="index,follow">
+    <script>
+        function loadReadme() {
+            const container = document.getElementById('readme');
+            fetch('README.md')
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network error.');
+                    }
+                    return response.text();
+                })
+                .then((readme) => {
+                    container.innerHTML = marked.parse(readme);
+                })
+                .catch((error) => {
+                    console.error(error);
+                })
+
+        }
+    </script>
 </head>
 
-<body>
+<body onload="loadReadme()">
 
     <h1 align="center">MathJSLab</h1>
 
-    <p>This is a demo application of educational <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab npm
+    <p>This is a demo application of educational <a href="https://www.npmjs.com/package/mathjslab"
+            target="_blank">MathJSLab npm
             package</a>.</p>
 
     <div id="mathjslab-calc"></div>
@@ -38,6 +58,8 @@
     <p align="center">&copy; 2016 &mdash;
         <script>document.write((new Date()).getFullYear())</script> Sergio Lindau
     </p>
+
+    <div id="readme"></div>
 
 </body>
 

@@ -4,7 +4,7 @@
 
 > An interpreter with language syntax like [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) written in [Typescript](https://www.typescriptlang.org/).
 
-This is a demo of [MathJSLab npm package](https://www.npmjs.com/package/mathjslab).
+This is a demo application of [MathJSLab npm package](https://www.npmjs.com/package/mathjslab).
 
 See this demo powered by [Netlify](https://mathjslab.netlify.app/).
 
@@ -35,7 +35,21 @@ This demo also uses:
 * [Marked](https://www.npmjs.com/package/marked), to display Markdown files.
 * [Chart.js](https://www.chartjs.org/), to generate plots and histograms.
 
-# License
+## Build
+
+Build `mathjslab-calculator` in development mode:
+
+```bash
+npm run build:dev
+```
+
+Build `mathjslab-calculator` in production mode:
+
+```bash
+npm run build:prod
+```
+
+## License
 
 >MIT License
 >
