@@ -8,4 +8,4 @@ const buildConfiguration = {
     debug: false,
 }
 fs.writeFileSync(path.resolve(__dirname, '..', 'src', 'build-configuration.json'), JSON.stringify(buildConfiguration, null, 2));
-console.log('Copying resulting bundle to project root directory done.');
+console.log('Setting build configuration done.');
