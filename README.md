@@ -65,6 +65,12 @@ Build `mathjslab-calculator` in production mode:
 npm run build:prod
 ```
 
+## Community
+
+Join the community chat:
+
+[![Join the chat at https://matrix.to/#/#mathjslab:gitter.im](https://badges.gitter.im/Join%20Chat.svg)](https://matrix.to/mathjslab?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## License
 
 >MIT License
