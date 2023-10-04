@@ -7,7 +7,7 @@
 
 > An interpreter with language syntax like [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) written in [Typescript](https://www.typescriptlang.org/).
 
->> ### ISBN 978-65-00-82338-7
+**ISBN 978-65-00-82338-7**
 
 This is a demo application of [MathJSLab npm package](https://www.npmjs.com/package/mathjslab).
 
