@@ -50,13 +50,13 @@
     "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calc.min.js"
   },
   "dependencies": {
-    "basic-dom-helper": "file:../basic-dom-helper",
-    "mathjslab": "file:../mathjslab"
+    "basic-dom-helper": "^1.0.6",
+    "mathjslab": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^20.8.0",
+    "@types/node": "^20.8.2",
     "@types/webpack": "^5.28.3",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
     "css-loader": "^6.8.1",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
