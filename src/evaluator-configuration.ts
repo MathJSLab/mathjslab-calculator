@@ -1,4 +1,5 @@
 import $ from 'basic-dom-helper';
+
 /* Number and matrix operations and functions */
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
 export { Evaluator };
