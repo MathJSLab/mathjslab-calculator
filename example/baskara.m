@@ -16,4 +16,4 @@ x2 = (-b - raizq(Delta))/(2*a)
 f(x) = a*x^2+b*x+c
 
 # mostra gráfico das raízes de f(x)
-gráfico(f(x),x,min([x1,x2,0])-1,max([x1,x2,0])+1)
+grafico(f(x),x,min([x1,x2,0])-1,max([x1,x2,0])+1)
