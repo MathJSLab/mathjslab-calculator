@@ -122,7 +122,7 @@ export class Shell {
         variable_head.innerHTML = 'Variables';
         variable_head.setAttribute('align', 'center');
         const setVariablesPanel = () => {
-            let Y = window.scrollY - shell.container.offsetTop;
+            let Y = window.scrollY - shell.container.offsetTop + (window.innerHeight * 0.025);
             const maxY = shell.container.offsetHeight - shell.variables.offsetHeight;
             if (Y < 0) {
                 Y = 0;
@@ -132,6 +132,7 @@ export class Shell {
             }
             shell.variables.style.top = Y + 'px';
             shell.variables.style.left = shell.shell.offsetWidth + 'px';
+            shell.variables.style.height = window.innerHeight * 0.9 + 'px'
         }
         window.addEventListener('scroll', setVariablesPanel);
         window.addEventListener('resize', setVariablesPanel);
