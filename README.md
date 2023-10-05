@@ -1,4 +1,4 @@
-# MathJSLab
+# MathJSLab Calculator
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![DOI](https://zenodo.org/badge/680377395.svg)](https://zenodo.org/badge/latestdoi/680377395)
