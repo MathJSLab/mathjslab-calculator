@@ -1,5 +1,15 @@
+.wrapper {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
 .container {
-    display: flex;
+    position: relative;
 }
 
 .examples {
@@ -9,23 +19,23 @@
 .shell {
     flex: 1;
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 20px; /* Add padding for spacing */
+    padding: 1em; /* Add padding for spacing */
     max-width: calc(100% - 15% - 2em); /* Calculate max width, considering the fixed panel */
     box-sizing: border-box; /* Include padding and border in width calculation */
+    z-index: 1; /* Ensure the content is above the fixed panel */
 }
 
 .variables {
-    width: 15%; /* Adjust the width as needed */
+    width: 14%; /* Adjust the width as needed */
     background-color: #d0f0d0;
     border: 2px solid green;
-    margin: 1em;
     padding: 1em;
     border-radius: 1em;
     /* Add any other styles for your fixed panel */
-    position: fixed; /* Fix the panel */
+    position: absolute; /* Fix the panel */
     right: 0; /* Position it on the right side */
     top: 7em; /* Position it at the top */
-    bottom: 7em; /* Stretch it to the bottom */
+    height: 20em;
 }
 
 .namelist {

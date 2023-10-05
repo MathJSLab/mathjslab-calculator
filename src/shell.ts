@@ -121,6 +121,20 @@ export class Shell {
         const variable_head = $.create('h2', shell.variables);
         variable_head.innerHTML = 'Variables';
         variable_head.setAttribute('align', 'center');
+        const setVariablesPanel = () => {
+            let Y = window.scrollY - shell.container.offsetTop;
+            const maxY = shell.container.offsetHeight - shell.variables.offsetHeight;
+            if (Y < 0) {
+                Y = 0;
+            }
+            else if (Y > maxY) {
+                Y = maxY;
+            }
+            shell.variables.style.top = Y + 'px';
+            shell.variables.style.left = shell.shell.offsetWidth + 'px';
+        }
+        window.addEventListener('scroll', setVariablesPanel);
+        window.addEventListener('resize', setVariablesPanel);
         shell.nameTable = $.create('div', shell.variables, 'nameTable_' + options.containerId);
         shell.nameList = $.create('ul', shell.nameTable, null, 'namelist');
         shell.batchContainer = $.create('div', shell.shell, 'batch_' + options.containerId);
