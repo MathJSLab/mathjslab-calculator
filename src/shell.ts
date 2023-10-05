@@ -133,7 +133,7 @@ export class Shell {
             shell.variables.style.top = Y + 'px';
             shell.variables.style.left = shell.shell.offsetWidth + 'px';
             shell.variables.style.height = window.innerHeight * 0.9 + 'px'
-            console.log(window.scrollY - shell.container.offsetTop, (shell.container.parentElement as HTMLElement).offsetTop);
+            console.log(window.scrollY - shell.container.offsetTop, (shell.container.parentElement as HTMLElement).offsetTop, ((shell.container.parentElement as HTMLElement).parentElement as any).offsetTop);
         }
         window.addEventListener('scroll', setVariablesPanel);
         window.addEventListener('resize', setVariablesPanel);
