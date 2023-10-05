@@ -43,3 +43,4 @@ See also: `ind2sub`, `size`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/sub2ind.html
+* https://octave.sourceforge.io/octave/function/sub2ind.html

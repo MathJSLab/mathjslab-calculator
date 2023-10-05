@@ -11,5 +11,6 @@ See also: `cot`, `acotd`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/acot.html
+* https://octave.sourceforge.io/octave/function/acot.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_trigonometric_functions

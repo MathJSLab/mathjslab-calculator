@@ -25,5 +25,6 @@ See also: `mod`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/rem.html
+* https://octave.sourceforge.io/octave/function/rem.html
 * https://mathworld.wolfram.com/Remainder.html
 * https://en.wikipedia.org/wiki/Remainder

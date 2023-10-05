@@ -11,6 +11,7 @@ See also: `acot`, `cotd`, `coth`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/cot.html
+* https://octave.sourceforge.io/octave/function/cot.html
 * https://mathworld.wolfram.com/Cotangent.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Trigonometric_functions

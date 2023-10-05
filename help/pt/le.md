@@ -7,3 +7,4 @@ See also: `eq`, `ge`, `gt`, `ne`, `lt`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/le.html
+* https://octave.sourceforge.io/octave/function/le.html

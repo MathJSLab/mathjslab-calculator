@@ -12,3 +12,4 @@ See also: `mrdivide`, `ldivide`, `rdivide`, `linsolve`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/mldivide.html
+* https://octave.sourceforge.io/octave/function/mldivide.html

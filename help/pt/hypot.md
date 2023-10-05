@@ -18,5 +18,6 @@ case, the arguments are accumulated from left to right:
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/hypot.html
+* https://octave.sourceforge.io/octave/function/hypot.html
 * https://mathworld.wolfram.com/Hypotenuse.html
 * https://en.wikipedia.org/wiki/Hypotenuse

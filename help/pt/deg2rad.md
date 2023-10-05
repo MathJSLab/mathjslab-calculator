@@ -21,6 +21,7 @@ See also: `rad2deg`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/deg2rad.html
+* https://octave.sourceforge.io/octave/function/deg2rad.html
 * https://en.wikipedia.org/wiki/Angle
 * https://en.wikipedia.org/wiki/Degree_(angle)
 * https://en.wikipedia.org/wiki/Radian

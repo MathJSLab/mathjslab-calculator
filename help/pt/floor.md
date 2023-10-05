@@ -14,5 +14,6 @@ See also: `ceil`, `round`, `fix`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/floor.html
+* https://octave.sourceforge.io/octave/function/floor.html
 * https://mathworld.wolfram.com/FloorFunction.html
 * https://en.wikipedia.org/wiki/Floor_and_ceiling_functions

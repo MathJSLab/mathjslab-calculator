@@ -27,5 +27,6 @@ See also: `rem`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/mod.html
+* https://octave.sourceforge.io/octave/function/mod.html
 * https://mathworld.wolfram.com/Mod.html
 * https://en.wikipedia.org/wiki/Modulo_(mathematics)

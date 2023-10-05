@@ -16,5 +16,6 @@ See also: `gammainc`, `gammaln`, `factorial`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/gamma.html
+* https://octave.sourceforge.io/octave/function/gamma.html
 * https://mathworld.wolfram.com/GammaFunction.html
 * https://en.wikipedia.org/wiki/Gamma_function

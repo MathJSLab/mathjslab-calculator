@@ -9,5 +9,6 @@ See also: `and`, `or`, `xor`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/not.html
+* https://octave.sourceforge.io/octave/function/not.html
 * https://mathworld.wolfram.com/NOT.html
 * https://en.wikipedia.org/wiki/Negation

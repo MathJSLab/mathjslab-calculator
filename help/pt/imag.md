@@ -7,6 +7,7 @@ See also: `real`, `conj`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/imag.html
+* https://octave.sourceforge.io/octave/function/imag.html
 * https://mathworld.wolfram.com/ComplexNumber.html
 * https://mathworld.wolfram.com/ImaginaryNumber.html
 * https://mathworld.wolfram.com/ImaginaryUnit.html

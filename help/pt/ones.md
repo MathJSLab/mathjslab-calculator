@@ -21,4 +21,5 @@ See also: `zeros`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/ones.html
+* https://octave.sourceforge.io/octave/function/ones.html
 * https://en.wikipedia.org/wiki/Matrix_of_ones

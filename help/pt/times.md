@@ -14,6 +14,7 @@ See also: `mtimes`, `rdivide`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/times.htm
+* https://octave.sourceforge.io/octave/function/times.html
 * https://mathworld.wolfram.com/Multiplication.html
 * https://mathworld.wolfram.com/Times.html
 * https://en.wikipedia.org/wiki/Multiplication

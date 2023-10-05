@@ -13,5 +13,6 @@ See also: `mpower`, `realpow`, `realsqrt`, `cbrt`, `nthroot`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/power.html
+* https://octave.sourceforge.io/octave/function/power.html
 * https://mathworld.wolfram.com/Power.html
 * https://en.wikipedia.org/wiki/Exponentiation

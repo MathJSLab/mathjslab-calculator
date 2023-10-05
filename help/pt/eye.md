@@ -33,5 +33,6 @@ See also: `ones`, `zeros`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/eye.html
+* https://octave.sourceforge.io/octave/function/eye.html
 * https://mathworld.wolfram.com/IdentityMatrix.html
 * https://en.wikipedia.org/wiki/Identity_matrix

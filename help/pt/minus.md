@@ -7,6 +7,7 @@ See also: `plus`, `uminus`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/minus.html
+* https://octave.sourceforge.io/octave/function/minus.html
 * https://mathworld.wolfram.com/Minus.html
 * https://mathworld.wolfram.com/Subtraction.html
 * https://mathworld.wolfram.com/Difference.html

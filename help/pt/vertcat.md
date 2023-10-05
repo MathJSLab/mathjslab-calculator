@@ -16,3 +16,4 @@ See also: `cat`, `horzcat`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/vertcat.html
+* https://octave.sourceforge.io/octave/function/vertcat.html

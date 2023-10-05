@@ -13,5 +13,6 @@ See also: `minus`, `uplus`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/plus.html
+* https://octave.sourceforge.io/octave/function/plus.html
 * https://mathworld.wolfram.com/Addition.html
 * https://en.wikipedia.org/wiki/Addition

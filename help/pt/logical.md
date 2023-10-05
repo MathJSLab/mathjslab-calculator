@@ -14,6 +14,7 @@ See also: `char`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/logical.html
+* https://octave.sourceforge.io/octave/function/logical.html
 * https://mathworld.wolfram.com/BooleanAlgebra.html
 * https://mathworld.wolfram.com/BinaryOperation.html
 * https://mathworld.wolfram.com/BinaryOperator.html

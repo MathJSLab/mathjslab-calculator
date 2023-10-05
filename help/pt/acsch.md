@@ -11,5 +11,6 @@ See also: `csch`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/acsch.html
+* https://octave.sourceforge.io/octave/function/acsch.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions

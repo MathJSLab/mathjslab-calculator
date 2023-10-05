@@ -9,3 +9,4 @@ See also: `rdivide`, `mldivide`, `times`, `plus`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/ldivide.html
+* https://octave.sourceforge.io/octave/function/ldivide.html

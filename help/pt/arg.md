@@ -16,3 +16,4 @@ See also: `abs`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/arg.html
+* https://octave.sourceforge.io/octave/function/arg.html

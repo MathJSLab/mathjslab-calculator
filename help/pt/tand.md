@@ -14,6 +14,7 @@ See also: `atand`, `tan`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/tand.html
+* https://octave.sourceforge.io/octave/function/tand.html
 * https://mathworld.wolfram.com/Tangent.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Trigonometric_functions

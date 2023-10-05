@@ -11,5 +11,6 @@ See also: `sin`, `asind`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/asin.html
+* https://octave.sourceforge.io/octave/function/asin.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_trigonometric_functions

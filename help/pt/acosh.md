@@ -11,5 +11,6 @@ See also: `cosh`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/acosh.html
+* https://octave.sourceforge.io/octave/function/acosh.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions

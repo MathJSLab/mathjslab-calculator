@@ -14,5 +14,6 @@ See also: `or`, `not`, `xor`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/and.html
+* https://octave.sourceforge.io/octave/function/and.html
 * https://mathworld.wolfram.com/AND.html
 * https://en.wikipedia.org/wiki/Logical_conjunction

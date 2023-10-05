@@ -16,5 +16,6 @@ See also: `prod`, `gamma`, `gammaln`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/factorial.html
+* https://octave.sourceforge.io/octave/function/factorial.html
 * https://mathworld.wolfram.com/Factorial.html
 * https://en.wikipedia.org/wiki/Factorial

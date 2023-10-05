@@ -11,5 +11,6 @@ See also: `sec`, `asecd`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/asec.html
+* https://octave.sourceforge.io/octave/function/asec.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_trigonometric_functions

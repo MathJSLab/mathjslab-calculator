@@ -14,5 +14,6 @@ See also: `ceil`, `floor`, `fix`, `roundb`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/round.html
+* https://octave.sourceforge.io/octave/function/round.html
 * https://mathworld.wolfram.com/Rounding.html
 * https://en.wikipedia.org/wiki/Rounding

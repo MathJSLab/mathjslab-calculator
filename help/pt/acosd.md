@@ -11,5 +11,6 @@ See also: `cosd`, `acos`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/acosd.html
+* https://octave.sourceforge.io/octave/function/acosd.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_trigonometric_functions

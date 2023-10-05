@@ -12,3 +12,4 @@ See also: `mldivide`, `rdivide`, `plus`, `minus`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/mrdivide.html
+* https://octave.sourceforge.io/octave/function/mrdivide.html

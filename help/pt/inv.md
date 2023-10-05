@@ -12,5 +12,6 @@ See also: `ldivide`, `rdivide`, `pinv`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/inv.html
+* https://octave.sourceforge.io/octave/function/inv.html
 * https://mathworld.wolfram.com/MatrixInverse.html
 * https://en.wikipedia.org/wiki/Invertible_matrix

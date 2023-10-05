@@ -11,6 +11,7 @@ See also: `acsc`, `cscd`, `csch`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/csc.html
+* https://octave.sourceforge.io/octave/function/csc.html
 * https://mathworld.wolfram.com/Cosecant.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Trigonometric_functions

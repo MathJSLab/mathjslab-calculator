@@ -16,5 +16,6 @@ See also: `ones`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/zeros.html
+* https://octave.sourceforge.io/octave/function/zeros.html
 * https://mathworld.wolfram.com/ZeroMatrix.html
 * https://en.wikipedia.org/wiki/Zero_matrix

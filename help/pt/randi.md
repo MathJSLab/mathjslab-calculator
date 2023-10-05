@@ -24,3 +24,4 @@ See also: `rand`, `randn`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/randi.html
+* https://octave.sourceforge.io/octave/function/randi.html

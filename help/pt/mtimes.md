@@ -14,5 +14,6 @@ See also: `times`, `plus`, `minus`, `rdivide`, `mrdivide`, `mldivide`, `mpower`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/mtimes.html
+* https://octave.sourceforge.io/octave/function/mtimes.html
 * https://mathworld.wolfram.com/MatrixMultiplication.html
 * https://en.wikipedia.org/wiki/Matrix_multiplication

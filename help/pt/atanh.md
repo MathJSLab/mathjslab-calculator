@@ -11,5 +11,6 @@ See also: `tanh`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/atanh.html
+* https://octave.sourceforge.io/octave/function/atanh.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
 * https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions

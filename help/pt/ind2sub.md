@@ -68,3 +68,4 @@ See also: `sub2ind`, `size`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/ind2sub.html
+* https://octave.sourceforge.io/octave/function/ind2sub.html

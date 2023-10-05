@@ -11,6 +11,7 @@ See also: `acosd`, `cos`.
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/cosd.html
+* https://octave.sourceforge.io/octave/function/cosd.html
 * https://mathworld.wolfram.com/Cosine.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
 * https://en.wikipedia.org/wiki/Sine_and_cosine

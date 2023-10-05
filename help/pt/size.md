@@ -54,3 +54,4 @@ See also: `numel`, `ndims`, `length`, `rows`, `columns`, `size_equal`,
 ### References
 
 * https://www.mathworks.com/help/matlab/ref/size.html
+* https://octave.sourceforge.io/octave/function/size.html
