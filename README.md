@@ -38,15 +38,17 @@ Another option is to configure to use assets directly from
 script using:
 
 ```html
-...
-<script>
-MathJSLabCalc = {
-    exampleBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
-    helpBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
-}
-</script>
-<script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
-...
+<head>
+    ...
+    <script>
+        MathJSLabCalc = {
+            exampleBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
+            helpBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
+        }
+    </script>
+    <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
+    ...
+</head>
 ```
 
 This demo also uses:
