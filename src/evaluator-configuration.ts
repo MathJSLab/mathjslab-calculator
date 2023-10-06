@@ -95,9 +95,17 @@ export const outputFunction: { [k: string]: Function } = {
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
 if (typeof global.MathJSLabCalc === 'undefined') {
     global.MathJSLabCalc = {
+        exampleBaseUrl: baseUrl,
         helpBaseUrl: baseUrl,
     };
 } else {
+    if (global.MathJSLabCalc.exampleBaseUrl !== undefined || global.MathJSLabCalc.exampleBaseUrl !== null) {
+        if (global.MathJSLabCalc.exampleBaseUrl![global.MathJSLabCalc.exampleBaseUrl!.length - 1] !== '/') {
+            global.MathJSLabCalc.exampleBaseUrl += '/';
+        }
+    } else {
+        global.MathJSLabCalc.exampleBaseUrl = baseUrl;
+    }
     if (global.MathJSLabCalc.helpBaseUrl !== undefined || global.MathJSLabCalc.helpBaseUrl !== null) {
         if (global.MathJSLabCalc.helpBaseUrl![global.MathJSLabCalc.helpBaseUrl!.length - 1] !== '/') {
             global.MathJSLabCalc.helpBaseUrl += '/';
@@ -107,13 +115,9 @@ if (typeof global.MathJSLabCalc === 'undefined') {
     }
 }
 import languages from './languages.json';
-export const languagesAvailable: string[] = [];
-for (const i in languages) {
-    languagesAvailable.push(i);
-}
 export let lang = navigator.language.split('-')[0];
 if (!(lang in languages)) {
-    lang = languagesAvailable[0];
+    lang = 'en';
 }
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
