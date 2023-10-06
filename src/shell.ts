@@ -268,7 +268,7 @@ export class Shell {
                 button.innerHTML = this.examples[example].caption;
                 $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
                     const exampleId = (event.target as any).id.substring(8);
-                    const response = await fetch(`${this.baseUrl}example/${this.examples[exampleId].file}`);
+                    const response = await fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${this.examples[exampleId].file}`);
                     if (!response.ok) {
                         throw new Error('Network response error.');
                     }
