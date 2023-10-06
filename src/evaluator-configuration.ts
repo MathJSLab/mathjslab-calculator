@@ -7,8 +7,16 @@ export { Evaluator };
 import { MathMarkdown } from './math-markdown';
 export { MathMarkdown };
 
+export type MathJSLabCalcConfiguration = {
+    exampleBaseUrl?: string;
+    helpBaseUrl?: string;
+};
+
+declare global {
+    var MathJSLabCalc: MathJSLabCalcConfiguration;
+}
+
 declare const Chart: any;
-declare let MathJSLabCalc: any;
 
 export type PlotData = {
     data: Array<number>;
@@ -85,17 +93,17 @@ export const outputFunction: { [k: string]: Function } = {
 };
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-if (typeof (global as any).MathJSLabCalc === 'undefined') {
-    (global as any).MathJSLabCalc = {
-        assets: baseUrl,
+if (typeof global.MathJSLabCalc === 'undefined') {
+    global.MathJSLabCalc = {
+        helpBaseUrl: baseUrl,
     };
 } else {
-    if (MathJSLabCalc.assets !== undefined || MathJSLabCalc.assets !== null) {
-        if (MathJSLabCalc.assets[MathJSLabCalc.assets.length - 1] !== '/') {
-            MathJSLabCalc.assets += '/';
+    if (global.MathJSLabCalc.helpBaseUrl !== undefined || global.MathJSLabCalc.helpBaseUrl !== null) {
+        if (global.MathJSLabCalc.helpBaseUrl![global.MathJSLabCalc.helpBaseUrl!.length - 1] !== '/') {
+            global.MathJSLabCalc.helpBaseUrl += '/';
         }
     } else {
-        MathJSLabCalc.assets = baseUrl;
+        global.MathJSLabCalc.helpBaseUrl = baseUrl;
     }
 }
 import languages from './languages.json';
@@ -313,7 +321,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         promptSet.box.className = 'bad';
                         promptSet.output.innerHTML = 'help command unavailable <b>offline</b>.';
                     } else {
-                        fetch(`${MathJSLabCalc.assets}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
+                        fetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
                             .then((response) => {
                                 if (response.ok) {
                                     promptSet.box.className = 'info';

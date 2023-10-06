@@ -11,21 +11,22 @@
     <meta name="robots" content="index,follow">
     <script>
         function loadReadme() {
-            const container = document.getElementById('readme');
-            fetch('README.md')
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error('Network error.');
-                    }
-                    return response.text();
-                })
-                .then((readme) => {
-                    container.innerHTML = marked.parse(readme);
-                })
-                .catch((error) => {
-                    console.error(error);
-                })
-
+            if (!document.location.href.startsWith('file:')) {
+                const container = document.getElementById('readme');
+                fetch('README.md')
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error('Network error.');
+                        }
+                        return response.text();
+                    })
+                    .then((readme) => {
+                        container.innerHTML = marked.parse(readme) + '\n<hr />';
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
+            }
         }
     </script>
 </head>
@@ -34,7 +35,7 @@
 
     <h1 id="title" align="center"><a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> Calculator</h1>
 
-    <p>This is a demo application of the <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> <a href="https://en.wikipedia.org/wiki/Npm">npm package</a>, an emulator of a subset of the <a href="https://www.mathworks.com/" target="_blank">MATLAB®</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> language written completely in <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. This application is intended for educational purposes. See the <a href="#notes">notes</a> for detailed information.</p>
+    <p>This is a demo application of the <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> <a href="https://en.wikipedia.org/wiki/Npm">npm package</a>, an emulator of a subset of the <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> language written completely in <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. This application is intended for educational purposes. See the <a href="#notes">notes</a> for detailed information.</p>
 
     <div id="mathjslab-calc"></div>
 
@@ -42,11 +43,7 @@
 
     <hr />
 
-    <a id="notes"></a>
-
-    <div id="readme"></div>
-
-    <hr />
+    <a id="notes"></a><div id="readme"></div>
 
     <p align="center">
         <a title="GitHub repository" href="https://github.com/sergiolindau/mathjslab-calculator" target="_blank">

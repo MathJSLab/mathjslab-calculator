@@ -40,9 +40,11 @@ script using:
 ```html
 <script>
 MathJSLabCalc = {
-    assets: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/',
+    exampleBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/',
+    helpBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/',
 }
 </script>
+<script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
 ```
 
 This demo also uses:

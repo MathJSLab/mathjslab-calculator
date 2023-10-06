@@ -101,10 +101,10 @@ export class Shell {
         shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
             shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
-            await fetch(`${shell.baseUrl}example/example.json`)
+            await fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
                 .then((response) => {
                     if (!response.ok) {
-                        throw new Error('Network response error.');
+                        throw new Error('Examples unavailable.');
                     }
                     return response.json();
                 })
