@@ -12,7 +12,7 @@ This is a demo application of [MathJSLab](https://www.npmjs.com/package/mathjsla
 See this demo powered by [Netlify](https://mathjslab.netlify.app/).
 
 Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
-To embed MathJSLab calculator in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/)
+To embed [MathJSLab](https://www.npmjs.com/package/mathjslab) Calculator in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/)
 copy the following HTML code:
 
 ```html
@@ -34,17 +34,19 @@ copy the `example` and `help` directories to the root of the web page.
 
 Another option is to configure to use assets directly from
 [repository](https://github.com/sergiolindau/mathjslab-calculator) via
-[jsDelivr CDN](https://www.jsdelivr.com/) before load `mathjs-cal.min.js`
+[jsDelivr CDN](https://www.jsdelivr.com/) too before load `mathjs-cal.min.js`
 script using:
 
 ```html
+...
 <script>
 MathJSLabCalc = {
-    exampleBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/',
-    helpBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/',
+    exampleBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
+    helpBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
 }
 </script>
 <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
+...
 ```
 
 This demo also uses:
