@@ -18,7 +18,7 @@ copy the following HTML code:
 ```html
 <head>
     ...
-    <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calc.min.js"></script>
     ...
 </head>
 
@@ -34,7 +34,7 @@ copy the `example` and `help` directories to the root of the web page.
 
 Another option is to configure to use assets directly from
 [repository](https://github.com/sergiolindau/mathjslab-calculator) via
-[jsDelivr CDN](https://www.jsdelivr.com/) too before load `mathjs-cal.min.js`
+[jsDelivr CDN](https://www.jsdelivr.com/) too before load `mathjs-calc.min.js`
 script using:
 
 ```html
@@ -42,19 +42,19 @@ script using:
     ...
     <script>
         MathJSLabCalc = {
-            exampleBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
-            helpBaseUrl: 'https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/',
+            exampleBaseUrl: "https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/",
+            helpBaseUrl: "https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/",
         }
     </script>
-    <script defer="defer" src='https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator@main/mathjslab-calc.min.js'></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calc.min.js"></script>
     ...
 </head>
 ```
 
 This demo also uses:
 
-* [MathJax](https://www.mathjax.org/), for browsers without [MathML](https://www.w3.org/Math/) support.
-* [Marked](https://www.npmjs.com/package/marked), to display Markdown files.
+* [MathJax](https://www.mathjax.org/), for navigators without [MathML](https://www.w3.org/Math/) support.
+* [Marked](https://www.npmjs.com/package/marked), to format [Markdown](https://www.markdownguide.org/) files as [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML).
 * [Chart.js](https://www.chartjs.org/), to generate plots and histograms.
 
 ## Build
