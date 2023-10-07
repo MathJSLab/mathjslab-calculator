@@ -1,7 +1,6 @@
 import $ from 'basic-dom-helper';
 
-/* Number and matrix operations and functions */
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr } from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr, TAliasNameTable } from 'mathjslab';
 export { Evaluator };
 
 import { MathMarkdown } from './math-markdown';
@@ -10,10 +9,103 @@ export { MathMarkdown };
 export type MathJSLabCalcConfiguration = {
     exampleBaseUrl?: string;
     helpBaseUrl?: string;
+    defaultLanguage?: string;
 };
 
 declare global {
+    /* eslint-disable-next-line  no-var */
     var MathJSLabCalc: MathJSLabCalcConfiguration;
+    /* eslint-disable-next-line  no-var */
+    var MathJSLabCalcBuildMessage: string;
+}
+
+export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+if (typeof global.MathJSLabCalc === 'undefined') {
+    global.MathJSLabCalc = {
+        exampleBaseUrl: baseUrl,
+        helpBaseUrl: baseUrl,
+        defaultLanguage: 'en',
+    };
+} else {
+    if (global.MathJSLabCalc.exampleBaseUrl !== undefined || global.MathJSLabCalc.exampleBaseUrl !== null) {
+        if (global.MathJSLabCalc.exampleBaseUrl![global.MathJSLabCalc.exampleBaseUrl!.length - 1] !== '/') {
+            global.MathJSLabCalc.exampleBaseUrl += '/';
+        }
+    } else {
+        global.MathJSLabCalc.exampleBaseUrl = baseUrl;
+    }
+    if (global.MathJSLabCalc.helpBaseUrl !== undefined || global.MathJSLabCalc.helpBaseUrl !== null) {
+        if (global.MathJSLabCalc.helpBaseUrl![global.MathJSLabCalc.helpBaseUrl!.length - 1] !== '/') {
+            global.MathJSLabCalc.helpBaseUrl += '/';
+        }
+    } else {
+        global.MathJSLabCalc.helpBaseUrl = baseUrl;
+    }
+    if (global.MathJSLabCalc.defaultLanguage === undefined || global.MathJSLabCalc.defaultLanguage === null) {
+        global.MathJSLabCalc.defaultLanguage = 'en';
+    }
+}
+
+export let languageAlias: Record<string,TAliasNameTable> = {
+    en: {},
+    pt: {
+        /* Number functions */
+        abs: /^abs(olut(o|e))?$/,
+        arg: /^arg(ument(o)?)?|angle|angulo$/,
+        sign: /^sign(al)?|sinal|sgn$/,
+        conj: /^conj(uga(do|te)?)?$/,
+        sqrt: /^r(ai)?z(2|q(uadrada)?)|sqrt$/,
+        root: /^r(ai)?z|r(oo)?t$/,
+        power: /^pot(encia)?|elev(ado)?|pow(er)?$/,
+        exp: /^exp(onen((cial)|(tial)))?$/,
+        ln: /^ln$/,
+        log: /^log$/,
+        log10: /^log10$/,
+        asin: /^a(rc)?s[ei]n$/,
+        sin: /^s[ei]n$/,
+        acos: /^a(rc)?cos$/,
+        cos: /^cos$/,
+        atan: /^a(rc)?t(g|an)$/,
+        tan: /^t(g|an)$/,
+        asinh: /^a(rc)?s[ei]nh$/,
+        sinh: /^s[ei]nh$/,
+        acosh: /^a(rc)?cosh$/,
+        cosh: /^cosh$/,
+        atanh: /^a(rc)?t(g|an)h$/,
+        tanh: /^t(g|an)h$/,
+        factorial: /^fa(c)?t(orial)?$/,
+        binomial: /^binom(i(o|al))?$/,
+        /* Matrix functions */
+        eye: /^ident(i(dade|ty))?|eye$/,
+        inv: /^inv(er(t(er)?|s[ea])?)?$/,
+        det: /^det(erminant(e)?)?$/,
+        trace: /^tr(aco|ace)$/,
+        ctranspose: /^trans(p((ose)?|(osta)?))?$/,
+        elem: /^elem(ento?)?$/,
+        row: /^lin(ha|e)?|row$/,
+        nrows: /^n(um)?lin(has|es)?|nrows$/,
+        col: /^col(u(na|mn))?$/,
+        ncols: /^n(um)?col(u(na|mn))?s$/,
+        minor: /^m[ie]nor$/,
+        cofactor: /^cofa(c)?t(or)?$/,
+        adj: /^adj(unta|oint)?$/,
+        pivot: /^pivot?$/,
+        // lu: /^lu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osicao|osition)?)?)?lu$/,
+        // plu: /^plu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osicao|osition)?)?)?plu$/,
+        min: /^min(imo)?|min(imum)?$/,
+        max: /^max(imo)?|max(imum)?$/,
+        mean: /^media|mean$/,
+        /* Special functions */
+        summation: /^soma(torio)?|sum(mation)?$/,
+        productory: /^prod(torio|(ctory)?)$/,
+        plot2d: /^gra(f(ico)?|ph?(ics?)?)?$/,
+        histogram: /^hist(ogram(a)?)?$/,
+    }
+}
+
+export let lang = navigator.language.split('-')[0];
+if (!(lang in languageAlias)) {
+    lang = global.MathJSLabCalc.defaultLanguage as string;
 }
 
 declare const Chart: any;
@@ -92,94 +184,11 @@ export const outputFunction: { [k: string]: Function } = {
     },
 };
 
-export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-if (typeof global.MathJSLabCalc === 'undefined') {
-    global.MathJSLabCalc = {
-        exampleBaseUrl: baseUrl,
-        helpBaseUrl: baseUrl,
-    };
-} else {
-    if (global.MathJSLabCalc.exampleBaseUrl !== undefined || global.MathJSLabCalc.exampleBaseUrl !== null) {
-        if (global.MathJSLabCalc.exampleBaseUrl![global.MathJSLabCalc.exampleBaseUrl!.length - 1] !== '/') {
-            global.MathJSLabCalc.exampleBaseUrl += '/';
-        }
-    } else {
-        global.MathJSLabCalc.exampleBaseUrl = baseUrl;
-    }
-    if (global.MathJSLabCalc.helpBaseUrl !== undefined || global.MathJSLabCalc.helpBaseUrl !== null) {
-        if (global.MathJSLabCalc.helpBaseUrl![global.MathJSLabCalc.helpBaseUrl!.length - 1] !== '/') {
-            global.MathJSLabCalc.helpBaseUrl += '/';
-        }
-    } else {
-        global.MathJSLabCalc.helpBaseUrl = baseUrl;
-    }
-}
-import languages from './languages.json';
-export let lang = navigator.language.split('-')[0];
-if (!(lang in languages)) {
-    lang = 'en';
-}
-
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     /**
      * Alias table
      */
-    aliasTable: {
-        /* Number functions */
-        abs: /^abs(olut(o|e))?$/i,
-        arg: /^arg(ument(o)?)?|angle|angulo$/i,
-        sign: /^sign(al)?|sinal|sgn$/i,
-        conj: /^conj(uga(do|te)?)?$/i,
-        sqrt: /^r(ai)?z(2|q(uadrada)?)|sqrt$/i,
-        root: /^r(ai)?z|r(oo)?t$/i,
-        power: /^pot(encia)?|elev(ado)?|pow(er)?$/i,
-        exp: /^exp(onen((cial)|(tial)))?$/i,
-        ln: /^ln$/i,
-        log: /^log$/i,
-        log10: /^log10$/i,
-        asin: /^a(rc)?s[ei]n$/i,
-        sin: /^s[ei]n$/i,
-        acos: /^a(rc)?cos$/i,
-        cos: /^cos$/i,
-        atan: /^a(rc)?t(g|an)$/i,
-        tan: /^t(g|an)$/i,
-        asinh: /^a(rc)?s[ei]nh$/i,
-        sinh: /^s[ei]nh$/i,
-        acosh: /^a(rc)?cosh$/i,
-        cosh: /^cosh$/i,
-        atanh: /^a(rc)?t(g|an)h$/i,
-        tanh: /^t(g|an)h$/i,
-        factorial: /^fa(c)?t(orial)?$/i,
-        binomial: /^binom(i(o|al))?$/i,
-        /* Matrix functions */
-        eye: /^ident(i(dade|ty))?|eye$/i,
-        inv: /^inv(er(t(er)?|s[ea])?)?$/i,
-        det: /^det(erminant(e)?)?$/i,
-        trace: /^tr(aco|ace)$/i,
-        ctranspose: /^trans(p((ose)?|(osta)?))?$/i,
-        elem: /^elem(ento?)?$/i,
-        row: /^lin(ha|e)?|row$/i,
-        nrows: /^n(um)?lin(has|es)?|nrows$/i,
-        col: /^col(u(na|mn))?$/i,
-        ncols: /^n(um)?col(u(na|mn))?s$/i,
-        minor: /^m[ie]nor$/i,
-        cofactor: /^cofa(c)?t(or)?$/i,
-        adj: /^adj(unta|oint)?$/i,
-        pivot: /^pivot?$/i,
-        // lu: /^lu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osi[cç][aã]o|osition)?)?)?lu$/i,
-        // plu: /^plu(dec(omp(osi[cç][aã]o|osition)?)?)?|(dec(omp(osi[cç][aã]o|osition)?)?)?plu$/i,
-        min: /^min(imo)?|min(imum)?$/i,
-        max: /^max(imo)?|max(imum)?$/i,
-        mean: /^media|mean$/i,
-        /* Special functions */
-        summation: /^soma(torio)?|sum(mation)?$/i,
-        productory: /^prod(torio|(ctory)?)$/i,
-        plot2d: /^gra(f(ico)?|ph?(ics?)?)?$/i,
-        histogram: /^hist(ogram(a)?)?$/i,
-        /* Constants */
-        pi: /^cte\.pi$/i,
-        e: /^cte\.e$/i,
-    },
+    aliasTable: languageAlias[lang],
 
     /**
      * External function table
@@ -304,6 +313,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         help: {
             func: (...args: string[]): void => {
                 const encodeName = (name: string): string => {
+                    name = global.EvaluatorPointer.aliasName(name);
                     const result: string[] = [];
                     for (let i = 0; i < name.length; i++) {
                         const c = name.charCodeAt(i);
@@ -381,8 +391,10 @@ ${global.EvaluatorPointer.baseFunctionList
 };
 
 /**
- * Evaluator instance.
+ * Evaluator an MathMarkdown initialization.
  */
 export const evaluator = Evaluator.initialize(EvaluatorConfiguration);
-
+import buildConfiguration from './build-configuration.json';
+evaluator.debug = buildConfiguration.debug;
+global.MathJSLabCalcBuildMessage = buildConfiguration.buildMessage;
 MathMarkdown.initialize();
