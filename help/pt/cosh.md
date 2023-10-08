@@ -2,9 +2,9 @@
 
 Compute the hyperbolic cosine for each element of `X`.
 
-See also: `acosh`, `sinh`, `tanh`.
+Veja também: `acosh`, `sinh`, `tanh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/cosh.html
 * https://octave.sourceforge.io/octave/function/cosh.html

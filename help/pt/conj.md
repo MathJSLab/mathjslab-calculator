@@ -4,9 +4,9 @@ Return the complex conjugate of `Z`.
 
 The complex conjugate is defined as %%conj (Z)' = X - IY%%.
 
-See also: `real`, `imag`.
+Veja também: `real`, `imag`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/conj.html
 * https://octave.sourceforge.io/octave/function/conj.html

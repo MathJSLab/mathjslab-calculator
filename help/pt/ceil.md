@@ -10,9 +10,9 @@ If `X` is complex, return `ceil (real (X)) + ceil (imag (X)) * I`.
 
 >> %%ceil ([-2.7, 2.7]) = [-2, 3]%%
 
-See also: `floor`, `round`, `fix`.
+Veja também: `floor`, `round`, `fix`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/ceil.html
 * https://octave.sourceforge.io/octave/function/ceil.html

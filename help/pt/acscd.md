@@ -6,9 +6,9 @@ This is defined as
 
 >> %%acscd(z) = rad2deg(acsc(z))%%
 
-See also: `cscd`, `acsc`.
+Veja também: `cscd`, `acsc`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acscd.html
 * https://octave.sourceforge.io/octave/function/acscd.html

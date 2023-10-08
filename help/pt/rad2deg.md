@@ -16,9 +16,9 @@ Example:
 
 >> %%[0, 90, 180, 270, 360]%%
 
-See also: `deg2rad`.
+Veja também: `deg2rad`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/rad2deg.html
 * https://octave.sourceforge.io/octave/function/rad2deg.html

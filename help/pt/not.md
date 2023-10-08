@@ -4,9 +4,9 @@ Return the logical **NOT** of `X`.
 
 This function is equivalent to the operator syntax `! X`.
 
-See also: `and`, `or`, `xor`.
+Veja também: `and`, `or`, `xor`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/not.html
 * https://octave.sourceforge.io/octave/function/not.html

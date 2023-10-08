@@ -6,9 +6,9 @@ This is defined as
 
 >> %%asec(z) = acos(1/z)%%
 
-See also: `sec`, `asecd`.
+Veja também: `sec`, `asecd`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/asec.html
 * https://octave.sourceforge.io/octave/function/asec.html

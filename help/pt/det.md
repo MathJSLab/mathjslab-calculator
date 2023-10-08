@@ -2,7 +2,7 @@
 
 Compute the determinant of A.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/det.html
 * https://octave.sourceforge.io/octave/function/det.html

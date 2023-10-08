@@ -9,9 +9,9 @@ cumulatively from left to right:
 
 >> `(...((X1 & X2) & X3) & ...)`
 
-See also: `or`, `not`, `xor`.
+Veja também: `or`, `not`, `xor`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/and.html
 * https://octave.sourceforge.io/octave/function/and.html

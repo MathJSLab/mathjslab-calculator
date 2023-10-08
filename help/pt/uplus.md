@@ -2,9 +2,9 @@
 
 This function and `+ A` are equivalent.
 
-See also: `uminus`, `plus`.
+Veja também: `uminus`, `plus`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/uplus.html
 * https://octave.sourceforge.io/octave/function/uplus.html

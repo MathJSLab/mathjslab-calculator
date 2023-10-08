@@ -6,9 +6,9 @@ This is defined as
 
 >> %%atan(z) = -i/2*ln((i-z)/(i+z))%%
 
-See also: `tan`, `atand`.
+Veja também: `tan`, `atand`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/atan.html
 * https://octave.sourceforge.io/octave/function/atan.html

@@ -4,9 +4,9 @@ Return `true` if the two inputs are equal.
 
 This function is equivalent to `A == B`.
 
-See also: `ne`, `isequal`, `le`, `ge`, `gt`, `ne`, `lt`.
+Veja também: `ne`, `isequal`, `le`, `ge`, `gt`, `ne`, `lt`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/eq.html
 * https://octave.sourceforge.io/octave/function/eq.html

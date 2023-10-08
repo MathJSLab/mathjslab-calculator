@@ -16,9 +16,9 @@ expression such as
 
 >> `val_matrix = val * ones (m, n)`
 
-See also: `zeros`.
+Veja também: `zeros`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/ones.html
 * https://octave.sourceforge.io/octave/function/ones.html

@@ -6,9 +6,9 @@ This is defined as
 
 >> %%sign (x) =  x ./ abs (X)%%
 
-See also: `signbit`.
+Veja também: `signbit`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sign.html
 * https://octave.sourceforge.io/octave/function/sign.html

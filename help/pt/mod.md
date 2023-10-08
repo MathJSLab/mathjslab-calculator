@@ -22,9 +22,9 @@ For the opposite conventions see the `rem` function.  In general,
 `mod` is a better choice than `rem` when any of the inputs are
 negative numbers or when the values are periodic.
 
-See also: `rem`.
+Veja também: `rem`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/mod.html
 * https://octave.sourceforge.io/octave/function/mod.html

@@ -2,9 +2,9 @@
 
 This function and `A - B` are equivalent.
 
-See also: `plus`, `uminus`.
+Veja também: `plus`, `uminus`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/minus.html
 * https://octave.sourceforge.io/octave/function/minus.html

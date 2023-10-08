@@ -8,9 +8,9 @@ from left to right:
 
 `(...((A1 + A2) + A3) + ...)`
 
-See also: `minus`, `uplus`.
+Veja também: `minus`, `uplus`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/plus.html
 * https://octave.sourceforge.io/octave/function/plus.html

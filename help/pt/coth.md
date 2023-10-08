@@ -6,9 +6,9 @@ This is defined as
 
 >> %%coth(z) = cosh(z)/sinh(z)%%
 
-See also: `acoth`.
+Veja também: `acoth`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/coth.html
 * https://octave.sourceforge.io/octave/function/coth.html

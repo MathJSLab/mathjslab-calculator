@@ -15,7 +15,7 @@ case, the arguments are accumulated from left to right:
 
 , etc.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/hypot.html
 * https://octave.sourceforge.io/octave/function/hypot.html

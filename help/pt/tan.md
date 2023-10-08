@@ -6,9 +6,9 @@ This is defined as
 
 >> %%tan(z) = sin(z)/cos(z)%%
 
-See also: `atan`, `tand`, `tanh`.
+Veja também: `atan`, `tand`, `tanh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/tan.html
 * https://octave.sourceforge.io/octave/function/tan.html

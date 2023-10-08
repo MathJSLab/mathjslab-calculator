@@ -2,7 +2,7 @@
 
 Compute LU decomposition of `X`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/lu.html
 * https://octave.sourceforge.io/octave/function/lu.html

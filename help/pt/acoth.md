@@ -1,16 +1,16 @@
 * `Y = acoth (X)`
 
-Compute the inverse hyperbolic cotangent of each element of `X`.
+Calcule a cotangente hiperbólica inversa de cada elemento de `X`.
 
-This is defined as
+A cotangente hiperbólica inversa é definida por
 
 >> %%acoth(z) = atanh(1/z)%%
 
-See also: `coth`.
+Veja também: `coth`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acoth.html
 * https://octave.sourceforge.io/octave/function/acoth.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hiperb%C3%B3lica_inversa

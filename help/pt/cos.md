@@ -2,9 +2,9 @@
 
 Compute the cosine for each element of `X` in radians.
 
-See also: `acos`, `cosd`, `cosh`.
+Veja também: `acos`, `cosd`, `cosh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/cos.html
 * https://octave.sourceforge.io/octave/function/cos.html

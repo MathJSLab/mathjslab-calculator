@@ -6,9 +6,9 @@ This is defined as
 
 >> %%asinh(z) = ln(sqrt(1+z^2)+z)%%
 
-See also: `sinh`.
+Veja também: `sinh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/asinh.html
 * https://octave.sourceforge.io/octave/function/asinh.html

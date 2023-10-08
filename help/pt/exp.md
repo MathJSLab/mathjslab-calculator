@@ -2,9 +2,9 @@
 
 Compute %%e^x%% for each element of `X`.
 
-See also: log.
+Veja também: log.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/exp.html
 * https://octave.sourceforge.io/octave/function/exp.html

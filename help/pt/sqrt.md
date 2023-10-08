@@ -6,9 +6,9 @@ If `X` is negative, a complex result is returned.
 
 To compute the matrix square root, see Linear Algebra.
 
-See also: `realsqrt`, `nthroot`.
+Veja também: `realsqrt`, `nthroot`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sqrt.html
 * https://octave.sourceforge.io/octave/function/sqrt.html

@@ -9,9 +9,9 @@ right:
 
 >> `(...((A1 * A2) * A3) * ...)`
 
-See also: `times`, `plus`, `minus`, `rdivide`, `mrdivide`, `mldivide`, `mpower`.
+Veja também: `times`, `plus`, `minus`, `rdivide`, `mrdivide`, `mldivide`, `mpower`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/mtimes.html
 * https://octave.sourceforge.io/octave/function/mtimes.html

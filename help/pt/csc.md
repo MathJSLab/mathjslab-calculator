@@ -6,9 +6,9 @@ This is defined as
 
 >> %%csc(z)=1/sin(z)%%
 
-See also: `acsc`, `cscd`, `csch`.
+Veja também: `acsc`, `cscd`, `csch`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/csc.html
 * https://octave.sourceforge.io/octave/function/csc.html

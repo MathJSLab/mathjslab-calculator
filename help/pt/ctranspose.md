@@ -4,9 +4,9 @@ Return the complex conjugate transpose of `A`.
 
 This function and `A'` are equivalent.
 
-See also: `transpose`.
+Veja também: `transpose`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/ctranspose.html
 * https://octave.sourceforge.io/octave/function/ctranspose.html

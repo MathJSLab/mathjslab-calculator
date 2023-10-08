@@ -6,9 +6,9 @@ This is defined as
 
 >> %%cot(z) = cos(z)/sin(z)%%
 
-See also: `acot`, `cotd`, `coth`.
+Veja também: `acot`, `cotd`, `coth`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/cot.html
 * https://octave.sourceforge.io/octave/function/cot.html

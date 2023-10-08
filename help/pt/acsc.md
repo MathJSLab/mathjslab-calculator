@@ -6,9 +6,9 @@ This is defined as
 
 >> %%acsc(z) = asin(1/z)%%
 
-See also: `csc`, `acscd`.
+Veja também: `csc`, `acscd`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acsc.html
 * https://octave.sourceforge.io/octave/function/acsc.html

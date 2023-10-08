@@ -16,9 +16,9 @@ Example:
 
 %%deg2rad ([0, 90, 180, 270, 360]) = [0, 1.570796326794896619, 3.141592653589793238, 4.712388980384689857, 6.283185307179586476]%%
 
-See also: `rad2deg`.
+Veja também: `rad2deg`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/deg2rad.html
 * https://octave.sourceforge.io/octave/function/deg2rad.html

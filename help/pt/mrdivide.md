@@ -7,9 +7,9 @@ This function and `A / B` are equivalent.
 If the system is not square, or if the coefficient matrix is
 singular, a minimum norm solution is computed.
 
-See also: `mldivide`, `rdivide`, `plus`, `minus`.
+Veja também: `mldivide`, `rdivide`, `plus`, `minus`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/mrdivide.html
 * https://octave.sourceforge.io/octave/function/mrdivide.html

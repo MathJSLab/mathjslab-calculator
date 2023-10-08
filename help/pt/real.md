@@ -2,9 +2,9 @@
 
 Return the real part of `Z`.
 
-See also: `imag`, `conj`.
+Veja também: `imag`, `conj`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/real.html
 * https://octave.sourceforge.io/octave/function/real.html

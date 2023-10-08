@@ -50,9 +50,9 @@ returns the first index of the minimum value(s).  Thus,
 
 >> %%ix = 3%%
 
-See also: `max`, `cummin`, `cummax`.
+Veja também: `max`, `cummin`, `cummax`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/min.html
 * https://octave.sourceforge.io/octave/function/min.html

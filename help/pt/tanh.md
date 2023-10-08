@@ -6,9 +6,9 @@ This is defined as
 
 >> %%tanh(z) = sinh(z)/cosh(z)%%
 
-See also: `atanh`, `sinh`, `cosh`.
+Veja também: `atanh`, `sinh`, `cosh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/tanh.html
 * https://octave.sourceforge.io/octave/function/tanh.html

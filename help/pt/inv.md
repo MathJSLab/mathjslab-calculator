@@ -7,9 +7,9 @@ directly.  For example, it is both faster and more accurate to
 solve systems of equations %%A*x = b%% with `Y = A \ b`, rather than
 `Y = inv (A) * b`.
 
-See also: `ldivide`, `rdivide`, `pinv`.
+Veja também: `ldivide`, `rdivide`, `pinv`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/inv.html
 * https://octave.sourceforge.io/octave/function/inv.html

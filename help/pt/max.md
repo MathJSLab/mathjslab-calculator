@@ -50,9 +50,9 @@ returns the first index of the maximum value(s).  Thus,
 
 >> %%ix = 3%%
 
-See also: `min`, `cummax`, `cummin`.
+Veja também: `min`, `cummax`, `cummin`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/max.html
 * https://octave.sourceforge.io/octave/function/max.html

@@ -10,9 +10,9 @@ For invertible matrix the following relation is valid:
 
 %%%1/det(X)*adj(X) = inv(X)%%%
 
-See also: `inv`, `cofactor`, `ctranspose`.
+Veja também: `inv`, `cofactor`, `ctranspose`.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/ConjugateTranspose.html
 * https://en.wikipedia.org/wiki/Conjugate_transpose

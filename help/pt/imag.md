@@ -2,9 +2,9 @@
 
 Return the imaginary part of `Z` as a real number.
 
-See also: `real`, `conj`.
+Veja também: `real`, `conj`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/imag.html
 * https://octave.sourceforge.io/octave/function/imag.html

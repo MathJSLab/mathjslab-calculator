@@ -9,9 +9,9 @@ This is defined as
 Returns zero for elements where `X/180` is an integer and `Inf` for
 elements where `(X-90)/180` is an integer.
 
-See also: `atand`, `tan`.
+Veja também: `atand`, `tan`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/tand.html
 * https://octave.sourceforge.io/octave/function/tand.html

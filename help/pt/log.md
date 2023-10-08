@@ -2,9 +2,9 @@
 
 Compute the natural logarithm, %%ln (X)%%, for each element of `X`.
 
-See also: `exp`, `log1p`, `log2`, `log10`, `logspace`.
+Veja também: `exp`, `log1p`, `log2`, `log10`, `logspace`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/log.html
 * https://octave.sourceforge.io/octave/function/log.html

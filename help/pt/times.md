@@ -9,9 +9,9 @@ right:
 
 >> `(...((A1 .* A2) .* A3) .* ...)`
 
-See also: `mtimes`, `rdivide`.
+Veja também: `mtimes`, `rdivide`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/times.htm
 * https://octave.sourceforge.io/octave/function/times.html

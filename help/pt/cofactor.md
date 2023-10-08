@@ -2,9 +2,9 @@
 
 Compute the matrix of cofactors of `X`.
 
-See also: `ctranspose`, `adj`, `inv`.
+Veja também: `ctranspose`, `adj`, `inv`.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/Cofactor.html
 

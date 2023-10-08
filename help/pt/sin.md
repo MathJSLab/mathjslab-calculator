@@ -2,9 +2,9 @@
 
 Compute the sine for each element of X in radians.
 
-See also: `asin`, `sind`, `sinh`.
+Veja também: `asin`, `sind`, `sinh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sin.html
 * https://octave.sourceforge.io/octave/function/sin.html

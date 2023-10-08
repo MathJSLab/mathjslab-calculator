@@ -69,6 +69,11 @@
     "caption": "Histogram",
     "description": "Test histogram command."
   },
+  "load": {
+    "file": "load.m",
+    "caption": "Load",
+    "description": "Test load function."
+  },
   "test": {
     "file": "test.m",
     "caption": "Test",

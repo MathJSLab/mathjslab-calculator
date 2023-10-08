@@ -11,9 +11,9 @@ For example:
 
 >> %%arg (3 + 4i) = 0.927295218001612232%%
 
-See also: `abs`.
+Veja também: `abs`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/arg.html
 * https://octave.sourceforge.io/octave/function/arg.html

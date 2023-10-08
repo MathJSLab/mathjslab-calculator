@@ -6,9 +6,9 @@ This is defined as
 
 >> %%atanh(z) = 1/2*ln((1+z)/(1-z))%%
 
-See also: `tanh`.
+Veja também: `tanh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/atanh.html
 * https://octave.sourceforge.io/octave/function/atanh.html

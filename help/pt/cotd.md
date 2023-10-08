@@ -6,9 +6,9 @@ This is defined as
 
 >> %%cotd(z) = rad2deg(cot(z))%%
 
-See also: `acotd`, `cot`.
+Veja também: `acotd`, `cot`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/cotd.html
 * https://octave.sourceforge.io/octave/function/cotd.html

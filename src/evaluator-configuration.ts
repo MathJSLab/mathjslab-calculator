@@ -1,6 +1,6 @@
 import $ from 'basic-dom-helper';
 
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr, TAliasNameTable } from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr, TAliasNameTable, CharString } from 'mathjslab';
 export { Evaluator };
 
 import { MathMarkdown } from './math-markdown';
@@ -46,7 +46,7 @@ if (typeof global.MathJSLabCalc === 'undefined') {
     }
 }
 
-export let languageAlias: Record<string,TAliasNameTable> = {
+export let languageAlias: Record<string, TAliasNameTable> = {
     en: {},
     pt: {
         /* Number functions */
@@ -181,7 +181,7 @@ export const outputFunction: { [k: string]: Function } = {
             });
         }
         insertOutput.type = '';
-    },
+    }
 };
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
@@ -304,6 +304,58 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('histogram'), { list: [IMAG, DOM] });
             },
         },
+
+        load: {
+            ev: [true],
+            func: (...url: CharString[]): NodeExpr => {
+                const promptSet = global.ShellPointer.currentPromptSet;
+                if (global.ShellPointer.isFileProtocol) {
+                    promptSet.box.className = 'bad';
+                    promptSet.output.innerHTML = 'load function unavailable <b>offline</b>.';
+                }
+                else {
+                    url.forEach((file: CharString) => {
+                        fetch(file.string)
+                            .then((response) => {
+                                if (response.ok) {
+                                    return response.text();
+                                } else {
+                                    throw new Error('Load error.')
+                                }
+                            })
+                            .then((responseFile: string) => {
+                                const lines = responseFile.replace('\r\n', '\n').split('\n');
+                                promptSet.output.innerHTML = '';
+                                lines.forEach((line, lineno) => {
+                                    let error: boolean = false;
+                                    try {
+                                        if (line.trim()) {
+                                            const tree = evaluator.Parse(line);
+                                            const eval_input = evaluator.Evaluate(tree);
+                                            insertOutput.type = '';
+                                        }
+                                    }
+                                    catch (error: any) {
+                                        error = true;
+                                        promptSet.box.className = 'bad';
+                                        promptSet.output.innerHTML = `load: error loading ${file.string} at line ${lineno}`;
+                                    }
+                                    if (!error) {
+                                        promptSet.box.className = 'good';
+                                        promptSet.output.innerHTML = `Loaded ${lineno+1} lines from ${file.string}</ br>`;
+                                    }
+                                    global.ShellPointer.refreshNameList();
+                                })
+                            })
+                            .catch((error) => {
+                                promptSet.box.className = 'bad';
+                                promptSet.output.innerHTML = `load: error loading ${file.string}`;
+                            });
+                    });
+                }
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('load'), { list: [...url.map((url) => global.EvaluatorPointer.nodeString(url.str))] });
+            }
+        }
     },
 
     /**
@@ -352,27 +404,26 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     }
                 } else if (args.length == 0) {
                     promptSet.box.className = 'info';
-                    promptSet.output.innerHTML = MathMarkdown.md2html(
-                        `For help with individual commands and functions type
-
-\`help NAME\`
-
-replace NAME with operator or the name of the command or function you would like to learn more about.
-
-### Operators:
-
-&plus; &nbsp; - &nbsp; .\* &nbsp; \* &nbsp; ./ &nbsp; / &nbsp; .\\ &nbsp; \\ &nbsp; .^ &nbsp; ^ &nbsp;
-\*\* &nbsp; .** &nbsp; .\' &nbsp; \' &nbsp; < &nbsp; <= &nbsp; == &nbsp; >= &nbsp; > &nbsp; != &nbsp;
-~= &nbsp; &amp; &nbsp; | &nbsp; ! &nbsp; ~ &nbsp; &amp;&amp; &nbsp; || &nbsp; ++ &nbsp; --
-
-### Functions:
-
-${global.EvaluatorPointer.baseFunctionList
-    .map((func) => `\`${func}\``)
-    .sort()
-    .join(', ')}`,
-                    );
-                    MathMarkdown.typeset();
+                    fetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/help.md`)
+                        .then((response) => {
+                            if (response.ok) {
+                                promptSet.box.className = 'info';
+                                return response.text();
+                            } else {
+                                promptSet.box.className = 'bad';
+                                return `help ${args[0]} not found.`;
+                            }
+                        })
+                        .then((responseText) => {
+                            promptSet.output.innerHTML = MathMarkdown.md2html(
+                                responseText +
+                                global.EvaluatorPointer.baseFunctionList
+                                    .map((func) => `\`${func}\``)
+                                    .sort()
+                                    .join(', ')
+                            );
+                            MathMarkdown.typeset();
+                        });
                 } else {
                     promptSet.box.className = 'bad';
                     promptSet.output.innerHTML = `help: function called with too many inputs`;
@@ -391,7 +442,7 @@ ${global.EvaluatorPointer.baseFunctionList
 };
 
 /**
- * Evaluator an MathMarkdown initialization.
+ * Evaluator and MathMarkdown initialization.
  */
 export const evaluator = Evaluator.initialize(EvaluatorConfiguration);
 import buildConfiguration from './build-configuration.json';

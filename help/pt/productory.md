@@ -2,6 +2,6 @@
 
 Compute productory.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/Product.html

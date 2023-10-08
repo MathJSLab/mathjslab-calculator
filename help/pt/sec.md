@@ -6,9 +6,9 @@ This is defined as
 
 >> %%sec(z) = 1/cos(z)%%
 
-See also: `asec`, `secd`, `sech`.
+Veja também: `asec`, `secd`, `sech`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sec.html
 * https://octave.sourceforge.io/octave/function/sec.html

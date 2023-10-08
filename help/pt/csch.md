@@ -6,9 +6,9 @@ This is defined as
 
 >> %%csch(z) = 1/sinh(z)%%
 
-See also: `acsch`.
+Veja também: `acsch`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/csch.html
 * https://octave.sourceforge.io/octave/function/csch.html

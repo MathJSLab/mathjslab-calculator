@@ -8,9 +8,9 @@ If several complex results are possible, returns the one with
 smallest non-negative argument (angle).  Use `realpow`, `realsqrt`,
 `cbrt`, or `nthroot` if a real result is preferred.
 
-See also: `mpower`, `realpow`, `realsqrt`, `cbrt`, `nthroot`.
+Veja também: `mpower`, `realpow`, `realsqrt`, `cbrt`, `nthroot`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/power.html
 * https://octave.sourceforge.io/octave/function/power.html

@@ -5,9 +5,9 @@ diagonal.
 
 The implementation is straightforward: `sum (diag (A))`.
 
-See also: `eig`.
+Veja também: `eig`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/double.trace.html
 * https://octave.sourceforge.io/octave/function/trace.html

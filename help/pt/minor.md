@@ -2,7 +2,7 @@
 
 Compute minor of matrix `X`.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/Minor.html
 * https://en.wikipedia.org/wiki/Minor_(linear_algebra)

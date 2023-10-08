@@ -9,9 +9,9 @@ complex, return %%floor (real (X)) + floor (imag (X)) * I%%.
 
 >> %%floor ([-2.7, 2.7]) = [-3, 2]%%
 
-See also: `ceil`, `round`, `fix`.
+Veja também: `ceil`, `round`, `fix`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/floor.html
 * https://octave.sourceforge.io/octave/function/floor.html

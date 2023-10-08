@@ -38,9 +38,9 @@ with a single call to `sub2ind`.
 
 >> %%ind =  [2, 8]%%
 
-See also: `ind2sub`, `size`.
+Veja também: `ind2sub`, `size`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sub2ind.html
 * https://octave.sourceforge.io/octave/function/sub2ind.html

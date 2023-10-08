@@ -11,9 +11,9 @@ Note that the factorial function grows large quite quickly, and
 even with double precision values overflow will occur if `N > 171`.
 For such cases consider `gammaln`.
 
-See also: `prod`, `gamma`, `gammaln`.
+Veja também: `prod`, `gamma`, `gammaln`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/factorial.html
 * https://octave.sourceforge.io/octave/function/factorial.html

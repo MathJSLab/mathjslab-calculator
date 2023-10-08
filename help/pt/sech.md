@@ -6,9 +6,9 @@ This is defined as
 
 >> %%sech(z) = 1/cosh(z)%%
 
-See also: `asech`.
+Veja também: `asech`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sech.html
 * https://octave.sourceforge.io/octave/function/sech.html

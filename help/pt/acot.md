@@ -1,16 +1,16 @@
 * `Y = acot (X)`
 
-Compute the inverse cotangent in radians for each element of `X`.
+Calcula a cotangente inversa em radianos para cada elemento de `X`.
 
-This is defined as
+A cotangente inversa é definido por
 
 >> %%acot(z) = atan(1/z)%%
 
-See also: `cot`, `acotd`.
+Veja também: `cot`, `acotd`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acot.html
 * https://octave.sourceforge.io/octave/function/acot.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%B5es_trigonom%C3%A9tricas_inversas

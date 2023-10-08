@@ -2,7 +2,7 @@
 
 Display histogram.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/Histogram.html
 * https://mathworld.wolfram.com/FrequencyCurve.html

@@ -6,9 +6,9 @@ This is defined as
 
 >> %%acsch(z) = asinh(1/z)%%
 
-See also: `csch`.
+Veja também: `csch`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acsch.html
 * https://octave.sourceforge.io/octave/function/acsch.html

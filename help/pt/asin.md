@@ -6,9 +6,9 @@ This is defined as
 
 >> %%asin(z) = i*ln(sqrt(1-z^2)-I*z)%%
 
-See also: `sin`, `asind`.
+Veja também: `sin`, `asind`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/asin.html
 * https://octave.sourceforge.io/octave/function/asin.html

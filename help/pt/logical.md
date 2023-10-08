@@ -9,9 +9,9 @@ be converted and will produce an error.
 Compatibility Note: MthJSLab accepts complex values as input, whereas
 MATLAB issues an error.
 
-See also: `char`.
+Veja também: `char`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/logical.html
 * https://octave.sourceforge.io/octave/function/logical.html

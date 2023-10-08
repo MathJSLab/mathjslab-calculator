@@ -20,9 +20,9 @@ For the opposite conventions see the `mod` function.  In general,
 *positive* numbers.  For negative numbers, or when the values are
 periodic, `mod` is a better choice.
 
-See also: `mod`.
+Veja também: `mod`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/rem.html
 * https://octave.sourceforge.io/octave/function/rem.html

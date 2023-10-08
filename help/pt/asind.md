@@ -6,9 +6,9 @@ This is defined as
 
 >> %%asind(z) = rad2deg(asin(z))%%
 
-See also: `sind`, `asin`.
+Veja também: `sind`, `asin`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/asind.html
 * https://octave.sourceforge.io/octave/function/asind.html

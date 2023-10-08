@@ -7,9 +7,9 @@ The argument `A` is a square matrix representing equations coeficients and `B` r
 
 This algorithm is adapted from: https://github.com/itsravenous/gaussian-elimination
 
-See also: `lu`, `plu`.
+Veja também: `lu`, `plu`.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/GaussianElimination.html
 * https://en.wikipedia.org/wiki/Gaussian_elimination

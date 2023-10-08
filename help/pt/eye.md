@@ -28,9 +28,9 @@ Calling `eye` with no arguments is equivalent to calling it with an
 argument of 1.  Any negative dimensions are treated as zero.  These
 odd definitions are for compatibility with MATLAB.
 
-See also: `ones`, `zeros`.
+Veja também: `ones`, `zeros`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/eye.html
 * https://octave.sourceforge.io/octave/function/eye.html

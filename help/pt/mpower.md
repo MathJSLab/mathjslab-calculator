@@ -4,9 +4,9 @@ Return the matrix power operation of `A` raised to the `B` power.
 
 This function and `A ^ B` are equivalent.
 
-See also: `power`, `mtimes`, `plus`, `minus`.
+Veja também: `power`, `mtimes`, `plus`, `minus`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/mpower.html
 * https://octave.sourceforge.io/octave/function/mpower.html

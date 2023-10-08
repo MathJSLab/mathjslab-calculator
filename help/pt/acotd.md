@@ -1,16 +1,16 @@
 * `Y = acotd (X)`
 
-Compute the inverse cotangent in degrees for each element of `X`.
+Calcula a cotangente inversa em graus para cada elemento de `X`.
 
-This is defined as
+A cotangente inversa é definido por
 
 >> %%acotd(z) = rad2deg(acot(z))%%
 
-See also: `cotd`, `acot`.
+Veja também: `cotd`, `acot`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acotd.html
 * https://octave.sourceforge.io/octave/function/acotd.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%B5es_trigonom%C3%A9tricas_inversas

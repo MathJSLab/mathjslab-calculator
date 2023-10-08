@@ -11,9 +11,9 @@ If invoked with a single scalar integer argument, return a square
 If invoked with two or more scalar integer arguments, or a vector
 of integer values, return an array with the given dimensions.
 
-See also: `ones`.
+Veja também: `ones`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/zeros.html
 * https://octave.sourceforge.io/octave/function/zeros.html

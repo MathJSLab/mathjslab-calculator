@@ -2,8 +2,8 @@
 
 See `arg`.
 
-See also: `arg`.
+Veja também: `arg`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/angle.html

@@ -63,9 +63,9 @@ For clarity, consider the following examples:
 
 >> %%r =  [2, 8]%%
 
-See also: `sub2ind`, `size`.
+Veja também: `sub2ind`, `size`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/ind2sub.html
 * https://octave.sourceforge.io/octave/function/ind2sub.html

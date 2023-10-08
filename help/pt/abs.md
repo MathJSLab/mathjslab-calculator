@@ -1,20 +1,22 @@
 * `Z = abs(X)`
 
-Compute the magnitude of `X`.
+Calcula o módulo de `X`.
 
-The magnitude is defined as %%abs(Z) = sqrt(x^2 + y^2)%%.
+O módulo é definido por
 
-For example:
+>> %%abs(Z) = sqrt(x^2 + y^2)%%.
+
+Por exemplo:
 
 >> `abs(3 + 4i)`
 
 >> %%abs(3+4i)=5%%
 
-See also: `arg`.
+Veja também: `arg`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/abs.html
 * https://octave.sourceforge.io/octave/function/abs.html
 * https://mathworld.wolfram.com/AbsoluteValue.html
-* https://en.wikipedia.org/wiki/Absolute_value
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_modular

@@ -7,9 +7,9 @@ interval (0, 1).
 
 The arguments are handled the same as the arguments for `eye`.
 
-See also: `randn`, `rande`, `randg`, `randp`.
+Veja também: `randn`, `rande`, `randg`, `randp`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/rand.html
 * https://octave.sourceforge.io/octave/function/rand.html

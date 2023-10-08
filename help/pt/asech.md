@@ -6,9 +6,9 @@ This is defined as
 
 >> %%asech(z) = acosh(1/z)%%
 
-See also: `sech`.
+Veja também: `sech`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/asech.html
 * https://octave.sourceforge.io/octave/function/asech.html

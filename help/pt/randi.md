@@ -19,9 +19,9 @@ The following example returns 150 integers in the range 1-10.
 
 >> `ri = randi (10, 150, 1)`
 
-See also: `rand`, `randn`.
+Veja também: `rand`, `randn`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/randi.html
 * https://octave.sourceforge.io/octave/function/randi.html

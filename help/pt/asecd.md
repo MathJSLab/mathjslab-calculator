@@ -6,9 +6,9 @@ This is defined as
 
 >> %%asecd(z) = rad2deg(asec(z))%%
 
-See also: `secd`, `asec`.
+Veja também: `secd`, `asec`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/asecd.html
 * https://octave.sourceforge.io/octave/function/asecd.html

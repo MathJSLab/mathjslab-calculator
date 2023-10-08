@@ -11,9 +11,9 @@ small input values.  In many cases it may be preferable to use the
 natural logarithm of the gamma function (`gammaln`) in calculations
 to minimize loss of precision.  The final result is then `exp (RESULT_USING_GAMMALN)`.
 
-See also: `gammainc`, `gammaln`, `factorial`.
+Veja também: `gammainc`, `gammaln`, `factorial`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/gamma.html
 * https://octave.sourceforge.io/octave/function/gamma.html

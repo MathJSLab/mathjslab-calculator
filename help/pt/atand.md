@@ -6,9 +6,9 @@ This is defined as
 
 >> %%atand(z) = rad2deg(atan(z))%%
 
-See also: `tand`, `atan`.
+Veja também: `tand`, `atan`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/atand.html
 * https://octave.sourceforge.io/octave/function/atand.html

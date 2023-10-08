@@ -6,9 +6,9 @@ This is defined as
 
 >> %%cosd(z) = rad2deg(dos(z))%%
 
-See also: `acosd`, `cos`.
+Veja também: `acosd`, `cos`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/cosd.html
 * https://octave.sourceforge.io/octave/function/cosd.html

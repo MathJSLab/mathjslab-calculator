@@ -9,9 +9,9 @@ zero.
 >> `round ([-2.7, 2.7])`
 >> %% [-3, 3]%%
 
-See also: `ceil`, `floor`, `fix`, `roundb`.
+Veja também: `ceil`, `floor`, `fix`, `roundb`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/round.html
 * https://octave.sourceforge.io/octave/function/round.html

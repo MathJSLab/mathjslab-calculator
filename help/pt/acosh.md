@@ -1,16 +1,16 @@
 * `Y = acosh (X)`
 
-Compute the inverse hyperbolic cosine for each element of `X`.
+Calcula o cosseno hiperbólico inverso para cada elemento de `X`.
 
-This is defined as
+O cosseno hiperbólico inverso é definido por
 
 >> %%acosh(z) = ln(sqrt(-1+z^2)+z)%%
 
-See also: `cosh`.
+Veja também: `cosh`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/acosh.html
 * https://octave.sourceforge.io/octave/function/acosh.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hiperb%C3%B3lica_inversa

@@ -2,9 +2,9 @@
 
 Compute the `N`-th root of `X`.
 
-See also: `sqrt`, `cbrt`.
+Veja também: `sqrt`, `cbrt`.
 
-### References
+### Referências
 
 * https://mathworld.wolfram.com/nthRoot.html
 * https://en.wikipedia.org/wiki/Nth_root

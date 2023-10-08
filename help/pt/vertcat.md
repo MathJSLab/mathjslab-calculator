@@ -11,9 +11,9 @@ creating new matrices.  For example:
 This syntax is slightly more efficient because the MathJSLab parser
 can concatenate the arrays without the overhead of a function call.
 
-See also: `cat`, `horzcat`.
+Veja também: `cat`, `horzcat`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/vertcat.html
 * https://octave.sourceforge.io/octave/function/vertcat.html

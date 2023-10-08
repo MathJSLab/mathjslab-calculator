@@ -10,9 +10,9 @@ The function is more accurate than `sin` for large values of `X` and
 for multiples of 180 degrees (`X/180` is an integer) where `sind`
 returns 0 rather than a small value on the order of eps.
 
-See also: `asind`, `sin`.
+Veja também: `asind`, `sin`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/sin.html
 * https://octave.sourceforge.io/octave/function/sind.html

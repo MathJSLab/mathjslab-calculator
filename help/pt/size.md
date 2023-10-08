@@ -48,10 +48,10 @@ Example 4: number of output arguments < number of dimensions
 
 >> %%remainder = 60%%
 
-See also: `numel`, `ndims`, `length`, `rows`, `columns`, `size_equal`,
+Veja também: `numel`, `ndims`, `length`, `rows`, `columns`, `size_equal`,
 `common_size`.
 
-### References
+### Referências
 
 * https://www.mathworks.com/help/matlab/ref/size.html
 * https://octave.sourceforge.io/octave/function/size.html
