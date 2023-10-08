@@ -6,3 +6,4 @@ DAY
 
 # Load file using relative path
 load('example/test.m')
+A
