@@ -1,2 +1,3 @@
-clear
-YEAR = 2023
+
+MONTH = 3
+DAY = 19
