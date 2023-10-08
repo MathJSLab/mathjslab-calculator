@@ -2,7 +2,7 @@
 % Purpose: Calculate Easter Sunday for a given year.
 % Source: Jean Meeus, Astronomical Algorithms ; Richmond (Virginia, États-Unis), Willmann-Bell, 1998, pp. 67–68.
 % preconditions: variable YEAR defined.
-n = mod(YEAR, 19)                                % Metonic cycle
+n = mod(YEAR, 19)                                % metonic cycle
 c = fix(YEAR / 100)                              % number of centuries completed
 u = mod(YEAR, 100)                               % past years beyond complete centuries
 s = fix(c / 4)                                   % number of completed leap centuries Gregorian cycles (400 year cycles, 97 leap years)
@@ -15,4 +15,4 @@ d = mod(u, 4)                                    % years beyond the Julian cycle
 L = mod((32 + 2 * t + 2 * b - E - d), 7)         % dominical letter
 h = fix((n + 11 * E + 22 * L) / 451)             % correction
 MONTH = fix((E + L - 7 * h + 114) / 31) - 1      % month
-DAY = mod(1 + (E + L - 7 * h + 114), 31)         % day
+DATE = mod(1 + (E + L - 7 * h + 114), 31)        % date
