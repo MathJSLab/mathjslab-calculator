@@ -46,8 +46,53 @@ if (typeof global.MathJSLabCalc === 'undefined') {
     }
 }
 
-export let languageAlias: Record<string, TAliasNameTable> = {
-    en: {},
+export const languageAlias: Record<string, TAliasNameTable> = {
+    en: {
+        /* Number functions */
+        abs: /^abs(olute)?$/,
+        arg: /^arg(ument)?|angle$/,
+        sign: /^sign(al)?|sgn$/,
+        conj: /^conj(ugate)?$/,
+        sqrt: /^sq(uare)?r(oo)?t$/,
+        root: /^r(oo)?t$/,
+        power: /^pow(er)?$/,
+        exp: /^exp(onential)?$/,
+        ln: /^l((og)?arithm)n(atural)?$/,
+        log: /^l((og)?arithm)$/,
+        log10: /^l((og)?arithm)10$/,
+        asin: /^a(rc)?sine?$/,
+        sin: /^sin$/,
+        acos: /^a(rc)?cos(ine)?$/,
+        cos: /^cos(ine)?$/,
+        atan: /^a(rc)?tan(gent)?$/,
+        tan: /^tan(gent)?$/,
+        asinh: /^a(rea)?sine?h(((yp)?erb)?olic)?$/,
+        sinh: /^sine?h(((yp)?erb)?olic)?$/,
+        acosh: /^a(rea)?cos(ine)?h(((yp)?erb)?olic)?$/,
+        cosh: /^cos(ine)?h(((yp)?erb)?olic)?$/,
+        atanh: /^a(rea)?tan(gent)?h(((yp)?erb)?olic)?$/,
+        tanh: /^tan(gent)?h(((yp)?erb)?olic)?$/,
+        factorial: /^fact(orial)?$/,
+        /* Matrix functions */
+        eye: /^ident(ity)?$/,
+        inv: /^inv(erse)?$/,
+        det: /^det(erminant)?$/,
+        trace: /^tr(ace)?$/,
+        ctranspose: /^trans(p((ose)?)?)?$/,
+        elem: /^elem(ent)?$/,
+        row: /^line?$/,
+        nrows: /^n(um)?lin(es)?$/,
+        col: /^col(umn)?$/,
+        ncols: /^n(um)?col(umn)?s$/,
+        adj: /^adj(oint)?$/,
+        lu: /^lu(dec(omp(osition)?)?)?$/,
+        plu: /^plu(dec(omp(osition)?)?)?$/,
+        min: /^min(imum)?$/,
+        max: /^max(imum)?$/,
+        /* Special functions */
+        plot2d: /^graph(ics?)?$/,
+        histogram: /^hist(ogram)?$/,
+    },
     pt: {
         /* Number functions */
         abs: /^abs(olut(o|e))?$/,
@@ -100,8 +145,8 @@ export let languageAlias: Record<string, TAliasNameTable> = {
         productory: /^prod(torio|(ctory)?)$/,
         plot2d: /^gra(f(ico)?|ph?(ics?)?)?$/,
         histogram: /^hist(ogram(a)?)?$/,
-    }
-}
+    },
+};
 
 export let lang = navigator.language.split('-')[0];
 if (!(lang in languageAlias)) {
@@ -181,7 +226,7 @@ export const outputFunction: { [k: string]: Function } = {
             });
         }
         insertOutput.type = '';
-    }
+    },
 };
 
 export const EvaluatorConfiguration: TEvaluatorConfig = {
@@ -312,50 +357,51 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 if (global.ShellPointer.isFileProtocol) {
                     promptSet.box.className = 'bad';
                     promptSet.output.innerHTML = 'load function unavailable <b>offline</b>.';
-                }
-                else {
+                } else {
                     url.forEach((file: CharString) => {
                         fetch(file.string)
                             .then((response) => {
                                 if (response.ok) {
                                     return response.text();
                                 } else {
-                                    throw new Error('Load error.')
+                                    throw new Error('Load error.');
                                 }
                             })
                             .then((responseFile: string) => {
                                 const lines = responseFile.replace('\r\n', '\n').split('\n');
                                 promptSet.output.innerHTML = '';
                                 lines.forEach((line, lineno) => {
-                                    let error: boolean = false;
+                                    const error: boolean = false;
                                     try {
                                         if (line.trim()) {
                                             const tree = evaluator.Parse(line);
-                                            const eval_input = evaluator.Evaluate(tree);
+                                            evaluator.Evaluate(tree);
                                             insertOutput.type = '';
                                         }
-                                    }
-                                    catch (error: any) {
+                                    } catch (error: any) {
                                         error = true;
                                         promptSet.box.className = 'bad';
                                         promptSet.output.innerHTML = `load: error loading ${file.string} at line ${lineno}`;
                                     }
                                     if (!error) {
                                         promptSet.box.className = 'good';
-                                        promptSet.output.innerHTML = `Loaded ${lineno+1} lines from ${file.string}</ br>`;
+                                        promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.string}</ br>`;
                                     }
                                     global.ShellPointer.refreshNameList();
-                                })
+                                });
                             })
+                            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                             .catch((error) => {
                                 promptSet.box.className = 'bad';
                                 promptSet.output.innerHTML = `load: error loading ${file.string}`;
                             });
                     });
                 }
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('load'), { list: [...url.map((url) => global.EvaluatorPointer.nodeString(url.str))] });
-            }
-        }
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('load'), {
+                    list: [...url.map((url) => global.EvaluatorPointer.nodeString(url.str))],
+                });
+            },
+        },
     },
 
     /**
@@ -417,10 +463,10 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         .then((responseText) => {
                             promptSet.output.innerHTML = MathMarkdown.md2html(
                                 responseText +
-                                global.EvaluatorPointer.baseFunctionList
-                                    .map((func) => `\`${func}\``)
-                                    .sort()
-                                    .join(', ')
+                                    global.EvaluatorPointer.baseFunctionList
+                                        .map((func) => `\`${func}\``)
+                                        .sort()
+                                        .join(', '),
                             );
                             MathMarkdown.typeset();
                         });
@@ -432,6 +478,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         },
         clear: {
             func: () => {
+                insertOutput.type = '';
                 global.EvaluatorPointer.Restart();
                 const promptSet = global.ShellPointer.currentPromptSet;
                 promptSet.box.className = 'good';
