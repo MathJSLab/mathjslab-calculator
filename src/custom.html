@@ -13,7 +13,7 @@
         function loadReadme() {
             if (!document.location.href.startsWith('file:')) {
                 const container = document.getElementById('readme');
-                fetch('README.md')
+                window.compatibleFetch('README.md')
                     .then((response) => {
                         if (!response.ok) {
                             throw new Error('Network error.');

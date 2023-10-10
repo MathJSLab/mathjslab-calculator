@@ -1,4 +1,4 @@
-import $ from 'basic-dom-helper';
+import $, { Tfetch } from 'basic-dom-helper';
 
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr, TAliasNameTable, CharString } from 'mathjslab';
 export { Evaluator };
@@ -17,7 +17,10 @@ declare global {
     var MathJSLabCalc: MathJSLabCalcConfiguration;
     /* eslint-disable-next-line  no-var */
     var MathJSLabCalcBuildMessage: string;
+    /* eslint-disable-next-line  no-var */
+    var compatibleFetch: Tfetch;
 }
+global.compatibleFetch = $.fetch;
 
 export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
 if (typeof global.MathJSLabCalc === 'undefined') {
@@ -359,7 +362,8 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     promptSet.output.innerHTML = 'load function unavailable <b>offline</b>.';
                 } else {
                     url.forEach((file: CharString) => {
-                        fetch(file.string)
+                        global
+                            .compatibleFetch(file.string)
                             .then((response) => {
                                 if (response.ok) {
                                     return response.text();
@@ -433,7 +437,8 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         promptSet.box.className = 'bad';
                         promptSet.output.innerHTML = 'help command unavailable <b>offline</b>.';
                     } else {
-                        fetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
+                        global
+                            .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
                             .then((response) => {
                                 if (response.ok) {
                                     promptSet.box.className = 'info';
@@ -450,7 +455,8 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     }
                 } else if (args.length == 0) {
                     promptSet.box.className = 'info';
-                    fetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/help.md`)
+                    global
+                        .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/help.md`)
                         .then((response) => {
                             if (response.ok) {
                                 promptSet.box.className = 'info';

@@ -71,6 +71,12 @@ Build `mathjslab-calculator` in development mode:
 npm run build:dev
 ```
 
+Build `mathjslab-calculator` in debug mode:
+
+```bash
+npm run build:debug
+```
+
 Build `mathjslab-calculator` in production mode:
 
 ```bash

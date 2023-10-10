@@ -34,7 +34,7 @@
     "git:commit:initial": "git commit -m \"Initial Commit\"",
     "git:push": "git push",
     "git:add:commit:push": "npm run git:add:all && npm run git:commit:initial && npm run git:push",
-    "update": "npx ncu -u",
+    "update": "npx ncu -u && npm install",
     "lint": "eslint \"**/*.ts{,x}\" --fix",
     "format": "prettier --write \"**/*.ts\"",
     "format:lint": "npm run format && npm run lint",
@@ -52,13 +52,13 @@
     "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calc.min.js"
   },
   "dependencies": {
-    "basic-dom-helper": "^1.0.6",
+    "basic-dom-helper": "^1.0.8",
     "mathjslab": "^1.1.7"
   },
   "devDependencies": {
-    "@types/node": "^20.8.3",
+    "@types/node": "^20.8.4",
     "@types/webpack": "^5.28.3",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
     "css-loader": "^6.8.1",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",

@@ -97,7 +97,8 @@ export class Shell {
         shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
             shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
-            await fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
+            await global
+                .compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error('Examples unavailable.');
@@ -263,7 +264,7 @@ export class Shell {
                 button.innerHTML = this.examples[example].caption;
                 $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
                     const exampleId = (event.target as any).id.substring(8);
-                    const response = await fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${this.examples[exampleId].file}`);
+                    const response = await global.compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${this.examples[exampleId].file}`);
                     if (!response.ok) {
                         throw new Error('Network response error.');
                     }
