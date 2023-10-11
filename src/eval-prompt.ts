@@ -51,15 +51,15 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                 }
             }
         }
-    } catch (e) {
+    } catch (error) {
         box.className = 'bad';
         output.innerHTML =
             "<table><tr><td align='left'>" +
             evaluator.UnparseML(tree) +
             '</td></tr></table><br />' +
-            e +
+            error +
             (evaluator.debug ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, null, 2) + '</pre>' : '');
-        if (evaluator.debug) throw e;
+        if (evaluator.debug) throw error;
     }
     MathMarkdown.typeset();
 }

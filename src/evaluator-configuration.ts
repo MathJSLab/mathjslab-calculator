@@ -483,12 +483,12 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
             },
         },
         clear: {
-            func: () => {
-                insertOutput.type = '';
-                global.EvaluatorPointer.Restart();
+            func: (...args: string[]): void => {
                 const promptSet = global.ShellPointer.currentPromptSet;
+                insertOutput.type = '';
+                global.EvaluatorPointer.Clear(...args);
                 promptSet.box.className = 'good';
-                promptSet.output.innerHTML = `clear variables`;
+                promptSet.output.innerHTML = `clear ${args.length > 0 ? args.join(', ') : 'variables'}`;
             },
         },
     },

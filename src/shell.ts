@@ -152,11 +152,14 @@ export class Shell {
         $.addEventListener(shell.batchInput, 'focus', shell.batchFocus);
         $.addEventListener(shell.batchInput, 'blur', shell.batchBlur);
         shell.promptContainer = $.create('div', shell.shell, 'prompt_' + options.containerId);
+        if (global.EvaluatorPointer.debug) {
+            const promptFoot = $.create('p', shell.shell);
+            promptFoot.innerHTML = global.MathJSLabCalcBuildMessage;
+        }
         shell.promptUid = [];
         shell.promptSet = {};
         shell.promptIndex = -1;
         shell.updateBatch();
-        //TLN.append_line_numbers(shell.batchInput.id);
         shell.batchResize();
         shell.loadExamples();
         shell.promptAppend();
