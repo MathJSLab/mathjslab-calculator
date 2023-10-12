@@ -106,6 +106,7 @@ help plot2d
 help plu
 help plus
 help power
+help prod
 help productory
 help qr
 help rad2deg
@@ -126,7 +127,9 @@ help sinh
 help size
 help sqrt
 help sub2ind
+help sum
 help summation
+help sumsq
 help tan
 help tand
 help tanh

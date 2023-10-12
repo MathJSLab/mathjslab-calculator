@@ -1,7 +1,7 @@
 {
   "name": "mathjslab-calculator",
   "version": "1.1.0",
-  "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB/Octave",
+  "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB®/Octave",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sergiolindau/mathjslab-calculator.git"
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.8",
-    "mathjslab": "^1.1.8"
+    "mathjslab": "^1.1.9"
   },
   "devDependencies": {
     "@types/node": "^20.8.4",

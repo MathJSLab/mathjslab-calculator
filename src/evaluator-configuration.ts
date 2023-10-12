@@ -144,8 +144,8 @@ export const languageAlias: Record<string, TAliasNameTable> = {
         max: /^max(imo)?|max(imum)?$/,
         mean: /^media|mean$/,
         /* Special functions */
-        summation: /^soma(torio)?|sum(mation)?$/,
-        productory: /^prod(torio|(ctory)?)$/,
+        summation: /^somatorio$/,
+        productory: /^produtorio$/,
         plot2d: /^gra(f(ico)?|ph?(ics?)?)?$/,
         histogram: /^hist(ogram(a)?)?$/,
     },
@@ -256,6 +256,18 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 }
                 delete global.EvaluatorPointer.localTable[sum_function_name];
                 return result;
+            },
+            unparserML: (tree: any): string => {
+                return (
+                    '<mrow><munderover><mo>&#x2211;</mo><mrow>' +
+                    global.EvaluatorPointer.unparserML(tree.args[0]) +
+                    '<mo>=</mo>' +
+                    global.EvaluatorPointer.unparserML(tree.args[1]) +
+                    '</mrow>' +
+                    global.EvaluatorPointer.unparserML(tree.args[2]) +
+                    '</munderover></mrow>' +
+                    global.EvaluatorPointer.unparserML(tree.args[3])
+                );
             },
         },
 

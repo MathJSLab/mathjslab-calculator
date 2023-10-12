@@ -39,3 +39,6 @@ trace(E) # 15
 min(E)
 max(E)
 mean(E)
+A = [1+i, 2+2i, 3+3i; 4+4i, 5+5i, 6+6i; 7+7i, 8+8i, 9+9i]
+min(A)
+max(A)
