@@ -1,3 +1,4 @@
+clear
 # Matrices to concatenation
 A = [1,2,0;1,1,0;-1,4,0]
 B = [1,2,3;1,1,-1;2,2,2]
