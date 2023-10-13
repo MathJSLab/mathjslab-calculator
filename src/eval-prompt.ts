@@ -22,10 +22,11 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                 box.className = 'good';
                 const unparse_eval_input = evaluator.Unparse(eval_input);
                 if (unparse_input !== unparse_eval_input) {
+                    const evalsign = tree.list[0].type.substring(tree.list[0].type.length-1,tree.list[0].type.length) === '=' ? '&rArr;' : '=';
                     output.innerHTML =
                         '<table><tr><td>' +
                         evaluator.UnparseML(tree) +
-                        "</td><td><math xmlns = 'http://www.w3.org/1998/Math/MathML' display='block'><mo>=</mo></math></td><td>" +
+                        `</td><td><math xmlns = 'http://www.w3.org/1998/Math/MathML' display='block'><mo>${evalsign}</mo></math></td><td>` +
                         evaluator.UnparseML(eval_input) +
                         '</td></tr></table>';
                 } else {
