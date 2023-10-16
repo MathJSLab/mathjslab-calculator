@@ -386,24 +386,33 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                             .then((responseFile: string) => {
                                 const lines = responseFile.replace('\r\n', '\n').split('\n');
                                 promptSet.output.innerHTML = '';
-                                lines.forEach((line, lineno) => {
-                                    let error: boolean = false;
+                                let error: boolean = false;
+                                let errorMessage: string = '';
+                                let lineno: number;
+                                insertOutput.type = '';
+                                for (lineno=0; lineno<lines.length; lineno++) {
                                     try {
-                                        if (line.trim()) {
-                                            const tree = evaluator.Parse(line);
-                                            evaluator.Evaluate(tree);
-                                            insertOutput.type = '';
+                                        if (lines[lineno].trim()) {
+                                            const tree = evaluator.Parse(lines[lineno]);
+                                            if (tree) {
+                                                evaluator.Evaluate(tree);
+                                            }
                                         }
-                                    } catch (e) {
+                                    }
+                                    catch(e) {
                                         error = true;
-                                        promptSet.box.className = 'bad';
-                                        promptSet.output.innerHTML = `load: error loading ${file.string} at line ${lineno}: ${e}`;
+                                        errorMessage = `load: error loading ${file.string} at line ${lineno+1}: ${e}`;
+                                        break;
                                     }
-                                    if (!error) {
-                                        promptSet.box.className = 'good';
-                                        promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.string}</ br>`;
-                                    }
-                                });
+                                }
+                                if (error) {
+                                    promptSet.box.className = 'bad';
+                                    promptSet.output.innerHTML = errorMessage;
+                                }
+                                else {
+                                    promptSet.box.className = 'good';
+                                    promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.string}</ br>`;
+                                }
                                 global.ShellPointer.refreshNameList();
                             })
                             /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
