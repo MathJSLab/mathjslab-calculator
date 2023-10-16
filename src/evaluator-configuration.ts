@@ -387,24 +387,24 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                                 const lines = responseFile.replace('\r\n', '\n').split('\n');
                                 promptSet.output.innerHTML = '';
                                 lines.forEach((line, lineno) => {
-                                    const error: boolean = false;
+                                    let error: boolean = false;
                                     try {
                                         if (line.trim()) {
                                             const tree = evaluator.Parse(line);
                                             evaluator.Evaluate(tree);
                                             insertOutput.type = '';
                                         }
-                                    } catch (error: any) {
+                                    } catch (e) {
                                         error = true;
                                         promptSet.box.className = 'bad';
-                                        promptSet.output.innerHTML = `load: error loading ${file.string} at line ${lineno}`;
+                                        promptSet.output.innerHTML = `load: error loading ${file.string} at line ${lineno}: ${e}`;
                                     }
                                     if (!error) {
                                         promptSet.box.className = 'good';
                                         promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.string}</ br>`;
                                     }
-                                    global.ShellPointer.refreshNameList();
                                 });
+                                global.ShellPointer.refreshNameList();
                             })
                             /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                             .catch((error) => {

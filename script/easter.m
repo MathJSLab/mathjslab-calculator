@@ -16,3 +16,4 @@ L = mod((32 + 2 * t + 2 * b - E - d), 7)         % dominical letter
 h = fix((n + 11 * E + 22 * L) / 451)             % correction
 MONTH = fix((E + L - 7 * h + 114) / 31) - 1      % month
 DATE = mod(1 + (E + L - 7 * h + 114), 31)        % date
+clear n c u s t p q E b d L h
