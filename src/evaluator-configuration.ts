@@ -390,7 +390,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                                 let errorMessage: string = '';
                                 let lineno: number;
                                 insertOutput.type = '';
-                                for (lineno=0; lineno<lines.length; lineno++) {
+                                for (lineno = 0; lineno < lines.length; lineno++) {
                                     try {
                                         if (lines[lineno].trim()) {
                                             const tree = evaluator.Parse(lines[lineno]);
@@ -398,18 +398,16 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                                                 evaluator.Evaluate(tree);
                                             }
                                         }
-                                    }
-                                    catch(e) {
+                                    } catch (e) {
                                         error = true;
-                                        errorMessage = `load: error loading ${file.string} at line ${lineno+1}: ${e}`;
+                                        errorMessage = `load: error loading ${file.string} at line ${lineno + 1}: ${e}`;
                                         break;
                                     }
                                 }
                                 if (error) {
                                     promptSet.box.className = 'bad';
                                     promptSet.output.innerHTML = errorMessage;
-                                }
-                                else {
+                                } else {
                                     promptSet.box.className = 'good';
                                     promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.string}</ br>`;
                                 }
