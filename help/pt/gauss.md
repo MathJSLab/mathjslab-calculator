@@ -1,15 +1,15 @@
 * `RS = gauss (A,B)`
 
-Compute solution of system of linear equation using gaussian elimination
-algorithm.
+Calcula a solução do sistema de equações lineares usando  o algorítmos de eliminação gaussiana.
 
-The argument `A` is a square matrix representing equations coeficients and `B` representing equation result.
+O argumento `A` é uma matriz quadrada que representa os coeficientes das equações e `B` representa o resultado da equação.
 
-This algorithm is adapted from: https://github.com/itsravenous/gaussian-elimination
+Este algoritmo é adaptado da primeira referência.
 
 Veja também: `lu`, `plu`.
 
 ### Referências
 
+* https://github.com/itsravenous/gaussian-elimination
 * https://mathworld.wolfram.com/GaussianElimination.html
 * https://en.wikipedia.org/wiki/Gaussian_elimination

@@ -87,6 +87,7 @@ help log10
 help logb
 help logical
 help lu
+help markdown
 help max
 help mean
 help min

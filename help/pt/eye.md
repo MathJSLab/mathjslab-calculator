@@ -21,7 +21,7 @@ Todas as expressões a seguir produzem o mesmo resultado:
 
 >> `eye (2, 2)`
 
->> `eye (size([1, 2; 3, 4]))`
+>> `eye (size ([1, 2; 3, 4]))`
 
 Chamar a função `eye` sem argumentos é equivalente a chamar com o
 argumento `1`. Quaisquer dimensões negativas são tratadas como zero. Essas

@@ -1,6 +1,6 @@
 * `TF = gt (A, B)`
 
-This function is equivalent to `A > B`.
+Essa função é equivalente a `A > B`.
 
 Veja também: `le`, `eq`, `ge`, `ne`, `lt`.
 

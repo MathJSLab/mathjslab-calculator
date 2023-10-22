@@ -1,15 +1,15 @@
 * `V = gamma (Z)`
 
-Compute the Gamma function.
+Calcula a função Gama.
 
-The Gamma function is defined as
+A função Gama é definida como
 
-%%gamma (z) = integral (t^(z-1) * exp (-t), t, 0, Ininity)%%
+%%gamma (z) = integral (t ^ (z-1) * exp (-t), t, 0, Inf)%%
 
-Programming Note: The `gamma` function can grow quite large even for
-small input values.  In many cases it may be preferable to use the
-natural logarithm of the gamma function (`gammaln`) in calculations
-to minimize loss of precision.  The final result is then `exp (RESULT_USING_GAMMALN)`.
+Observação: A função `gamma` pode crescer bastante, mesmo para
+pequenos valores de entrada. Em muitos casos, pode ser preferível usar o
+logaritmo natural da função gama (`gammaln`) em cálculos
+para minimizar a perda de precisão. O resultado final é então `exp (RESULT_USING_GAMMALN)`.
 
 Veja também: `gammainc`, `gammaln`, `factorial`.
 
