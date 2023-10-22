@@ -1,6 +1,6 @@
 * `Y = cosh (X)`
 
-Compute the hyperbolic cosine for each element of `X`.
+Calcula o cosseno hiperbólico para cada elemento de `X`.
 
 Veja também: `acosh`, `sinh`, `tanh`.
 
@@ -9,4 +9,4 @@ Veja também: `acosh`, `sinh`, `tanh`.
 * https://www.mathworks.com/help/matlab/ref/cosh.html
 * https://octave.sourceforge.io/octave/function/cosh.html
 * https://mathworld.wolfram.com/HyperbolicFunctions.html
-* https://en.wikipedia.org/wiki/Hyperbolic_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hiperb%C3%B3lica

@@ -1,10 +1,10 @@
 * `Y = cosd (X)`
 
-Compute the cosine for each element of `X` in degrees.
+Calcula o cosseno para cada elemento de `X` em graus.
 
-This is defined as
+O cosseno em graus é definido por
 
->> %%cosd(z) = rad2deg(dos(z))%%
+>> %%cosd(z) = rad2deg(cos(z))%%
 
 Veja também: `acosd`, `cos`.
 
@@ -14,5 +14,4 @@ Veja também: `acosd`, `cos`.
 * https://octave.sourceforge.io/octave/function/cosd.html
 * https://mathworld.wolfram.com/Cosine.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Sine_and_cosine
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

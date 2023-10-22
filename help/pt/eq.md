@@ -1,8 +1,8 @@
 * `TF = eq (A, B)`
 
-Return `true` if the two inputs are equal.
+Retorna `true` se as duas entradas forem iguais.
 
-This function is equivalent to `A == B`.
+Esta função é equivalente a `A == B`.
 
 Veja também: `ne`, `isequal`, `le`, `ge`, `gt`, `ne`, `lt`.
 
@@ -12,4 +12,4 @@ Veja também: `ne`, `isequal`, `le`, `ge`, `gt`, `ne`, `lt`.
 * https://octave.sourceforge.io/octave/function/eq.html
 * https://mathworld.wolfram.com/Equal.html
 * https://mathworld.wolfram.com/Equality.html
-* https://en.wikipedia.org/wiki/Equality_(mathematics)
+* https://pt.wikipedia.org/wiki/Igualdade_matem%C3%A1tica

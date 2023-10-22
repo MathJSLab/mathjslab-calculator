@@ -1,8 +1,8 @@
 * `Y = asec (X)`
 
-Compute the inverse secant in radians for each element of `X`.
+Calcula a secante inversa em radianos para cada elemento de `X`.
 
-This is defined as
+A secante inversa é definida por
 
 >> %%asec(z) = acos(1/z)%%
 
@@ -13,4 +13,4 @@ Veja também: `sec`, `asecd`.
 * https://www.mathworks.com/help/matlab/ref/asec.html
 * https://octave.sourceforge.io/octave/function/asec.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%B5es_trigonom%C3%A9tricas_inversas

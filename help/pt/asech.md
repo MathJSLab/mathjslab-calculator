@@ -1,8 +1,8 @@
 * `Y = asech (X)`
 
-Compute the inverse hyperbolic secant of each element of `X`.
+Calcula a secante hiperbólica inversa de cada elemento de `X`.
 
-This is defined as
+A secante hiperbólica inversa é definida por
 
 >> %%asech(z) = acosh(1/z)%%
 
@@ -13,4 +13,4 @@ Veja também: `sech`.
 * https://www.mathworks.com/help/matlab/ref/asech.html
 * https://octave.sourceforge.io/octave/function/asech.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hiperb%C3%B3lica_inversa

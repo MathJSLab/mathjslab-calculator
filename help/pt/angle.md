@@ -1,6 +1,6 @@
 * `THETA = angle (Z)`
 
-See `arg`.
+Veja `arg`.
 
 Veja também: `arg`.
 

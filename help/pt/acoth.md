@@ -1,6 +1,6 @@
 * `Y = acoth (X)`
 
-Calcule a cotangente hiperbólica inversa de cada elemento de `X`.
+Calcula a cotangente hiperbólica inversa de cada elemento de `X`.
 
 A cotangente hiperbólica inversa é definida por
 

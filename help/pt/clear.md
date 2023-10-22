@@ -1,6 +1,7 @@
 * `clear`
+* `clear name1 ... nameN`
 
-Clear variables.
+Apaga variáveis.
 
 ### Referências
 

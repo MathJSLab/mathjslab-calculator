@@ -42,28 +42,28 @@ a+A
 A+B
 A+C
 A+D
-A+F # erro
-A+G # erro
+A+F % error
+A+G % error
 A-a
 a-A
 A-B
 A-C
 A-D
-A-F # erro
-A-G # erro
+A-F % error
+A-G % error
 A*B
 3*A
 A*3
 A=[1,2,4;4,5,6]
 B=[1,2;3,4;5,6]
 A*B
-A.*B # erro
-A*[1,2,3] # erro
+A.*B % error
+A*[1,2,3] % error
 A.*[1,2,3]
 A=[1:3;4:6;7:9]
-[1:3;4,5,6,7;7,8,9] # erro
-A=[1:3;4,5,6,7;7,8,9] # erro
-A=[1,2,3;4,5;7,8,9,10] # erro
+[1:3;4,5,6,7;7,8,9] % error
+A=[1:3;4,5,6,7;7,8,9] % error
+A=[1,2,3;4,5;7,8,9,10] % error
 A=[pi/6,pi/2,3*pi/2]
 size(A)
 size(A')
@@ -82,17 +82,17 @@ a.^b
 A = -1
 B = 1/3
 C = A.^B
-A(1,1,3) # erro
-A(1) # erro
-A(1,1) # erro
-A(1,1)=100 # erro
+A(1,1,3) % error
+A(1) % error
+A(1,1) % error
+A(1,1)=100 % error
 A+B
 A+C
 A+D
 A+E #erro
 A+F
 A+G
-A+H # erro
+A+H % error
 1*D
 D*1
 2*C

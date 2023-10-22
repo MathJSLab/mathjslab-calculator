@@ -1,11 +1,11 @@
 * `THETA = arg (Z)`
 * `THETA = angle (Z)`
 
-Compute the argument, i.e., angle of `Z`.
+Calcula o argumento, ou seja, o ângulo de `Z`.
 
-This is defined as, %%Theta = atan2(Y, X)%%, in radians.
+O argumento, ou ângulo, é definido por %%Theta = atan2(Y, X)%%, em radianos.
 
-For example:
+Por exemplo:
 
 >> `arg (3 + 4i)`
 

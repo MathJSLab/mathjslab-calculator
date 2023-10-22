@@ -1,8 +1,8 @@
 * `Y = acsch (X)`
 
-Compute the inverse hyperbolic cosecant of each element of `X`.
+Calcula a cossecante hiperbólica inversa de cada elemento de `X`.
 
-This is defined as
+A cossecante hiperbólica inversa é definida por
 
 >> %%acsch(z) = asinh(1/z)%%
 
@@ -13,4 +13,4 @@ Veja também: `csch`.
 * https://www.mathworks.com/help/matlab/ref/acsch.html
 * https://octave.sourceforge.io/octave/function/acsch.html
 * https://mathworld.wolfram.com/InverseHyperbolicFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_hyperbolic_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_hiperb%C3%B3lica_inversa

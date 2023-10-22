@@ -1,11 +1,11 @@
 * `TF = and (X, Y)`
 * `TF = and (X1, X2, ...)`
 
-Return the logical **AND** of `X` and `Y`.
+Retorna a operação lógica **AND** entre `X` e `Y`.
 
-This function is equivalent to the operator syntax `X & Y`.  If
-more than two arguments are given, the logical **AND** is applied
-cumulatively from left to right:
+Esta função é equivalente à sintaxe do operador `X & Y`. Se
+mais de dois argumentos são fornecidos, a operação lógica **AND** é aplicada
+cumulativamente da esquerda para a direita:
 
 >> `(...((X1 & X2) & X3) & ...)`
 
@@ -16,4 +16,4 @@ Veja também: `or`, `not`, `xor`.
 * https://www.mathworks.com/help/matlab/ref/and.html
 * https://octave.sourceforge.io/octave/function/and.html
 * https://mathworld.wolfram.com/AND.html
-* https://en.wikipedia.org/wiki/Logical_conjunction
+* https://pt.wikipedia.org/wiki/Conjun%C3%A7%C3%A3o_l%C3%B3gica

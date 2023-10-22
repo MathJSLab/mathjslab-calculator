@@ -1,8 +1,8 @@
 * `Y = cot (X)`
 
-Compute the cotangent for each element of `X` in radians.
+Calcula a cotangente para cada elemento de `X` em radianos.
 
-This is defined as
+A cotangente é definida por
 
 >> %%cot(z) = cos(z)/sin(z)%%
 
@@ -14,4 +14,4 @@ Veja também: `acot`, `cotd`, `coth`.
 * https://octave.sourceforge.io/octave/function/cot.html
 * https://mathworld.wolfram.com/Cotangent.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

@@ -1,8 +1,8 @@
 * `ZC = conj (Z)`
 
-Return the complex conjugate of `Z`.
+Retorna o conjugado complexo de `Z`.
 
-The complex conjugate is defined as %%conj (Z)' = X - IY%%.
+O complexo conjugado é definido por %%conj (Z)' = X - IY%%.
 
 Veja também: `real`, `imag`.
 
@@ -11,4 +11,4 @@ Veja também: `real`, `imag`.
 * https://www.mathworks.com/help/matlab/ref/conj.html
 * https://octave.sourceforge.io/octave/function/conj.html
 * https://mathworld.wolfram.com/ComplexConjugate.html
-* https://en.wikipedia.org/wiki/Complex_conjugate
+* https://pt.wikipedia.org/wiki/Conjugado_de_um_n%C3%BAmero_complexo

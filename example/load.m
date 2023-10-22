@@ -1,4 +1,6 @@
-# Load file using CDN
+clear
+% Load file using CDN
+
 YEAR = 2023
 load('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/script/easter.m')
 MONTH
@@ -9,6 +11,6 @@ DATE = 8
 load('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/script/weekday.m')
 WEEKDAY
 
-# Load file using relative path
-load('example/test.m')
+% Load file using relative path
+load('example/matrix-indexing.m')
 A

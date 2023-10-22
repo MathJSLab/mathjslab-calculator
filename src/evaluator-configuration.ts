@@ -365,6 +365,37 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
             },
         },
 
+        markdown: {
+            ev: [true],
+            func: (url: CharString): void => {
+                const promptSet = global.ShellPointer.currentPromptSet;
+                if (global.ShellPointer.isFileProtocol) {
+                    promptSet.box.className = 'bad';
+                    promptSet.output.innerHTML = 'markdown function unavailable <b>offline</b>.';
+                } else {
+                    global
+                        .compatibleFetch(url.string)
+                        .then((response) => {
+                            if (response.ok) {
+                                return response.text();
+                            } else {
+                                throw new URIError('Load error.');
+                            }
+                        })
+                        .then((responseFile: string) => {
+                            promptSet.box.className = 'info';
+                            promptSet.output.innerHTML = MathMarkdown.md2html(responseFile);
+                            MathMarkdown.typeset();
+                        })
+                        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+                        .catch((error) => {
+                            promptSet.box.className = 'bad';
+                            promptSet.output.innerHTML = `markdown: error loading ${url.string}`;
+                        });
+                }
+            },
+        },
+
         load: {
             ev: [true],
             func: (...url: CharString[]): NodeExpr => {
@@ -380,7 +411,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                                 if (response.ok) {
                                     return response.text();
                                 } else {
-                                    throw new Error('Load error.');
+                                    throw new URIError('Load error.');
                                 }
                             })
                             .then((responseFile: string) => {

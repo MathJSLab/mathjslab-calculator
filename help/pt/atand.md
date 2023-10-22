@@ -1,8 +1,8 @@
 * `Y = atand (X)`
 
-Compute the inverse tangent in degrees for each element of `X`.
+CalculA a tangente inversa em graus para cada elemento de `X`.
 
-This is defined as
+A tangente inversa em graus é definida por
 
 >> %%atand(z) = rad2deg(atan(z))%%
 
@@ -13,4 +13,4 @@ Veja também: `tand`, `atan`.
 * https://www.mathworks.com/help/matlab/ref/atand.html
 * https://octave.sourceforge.io/octave/function/atand.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%B5es_trigonom%C3%A9tricas_inversas

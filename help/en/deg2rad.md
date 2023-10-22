@@ -2,10 +2,9 @@
 
 Convert degrees to radians.
 
-The input `DEG` must be a scalar, vector, or N-dimensional array of
-double or single floating point values. `DEG` may be complex in
-which case the real and imaginary components are converted
-separately.
+The input `DEG` must be a scalar, vector, or N-dimensional array.
+`DEG` may be complex in which case the real and imaginary components
+are converted separately.
 
 The output `RAD` is the same size and shape as `DEG` with degrees
 converted to radians using the conversion constant %%pi/180%%.

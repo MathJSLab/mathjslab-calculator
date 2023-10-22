@@ -74,9 +74,19 @@
     "caption": "Load",
     "description": "Test load function."
   },
-  "test": {
-    "file": "test.m",
-    "caption": "Test",
-    "description": "Last test."
+  "markdown": {
+    "file": "markdown.m",
+    "caption": "Markdow",
+    "description": "Test markdown function."
+  },
+  "test1": {
+    "file": "test1.m",
+    "caption": "Test 1",
+    "description": "Test 1."
+  },
+  "test2": {
+    "file": "test2.m",
+    "caption": "Test 2",
+    "description": "Test 2."
   }
 }

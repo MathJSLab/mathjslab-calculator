@@ -1,8 +1,8 @@
 * `Y = cscd (X)`
 
-Compute the cosecant for each element of `X` in degrees.
+Calcula a cossecante para cada elemento de `X` em graus.
 
-This is defined as
+A cossecante em graus é definida por
 
 >> %%cscd(z) = rad2deg(csc(z))%%
 
@@ -14,4 +14,4 @@ Veja também: `acscd`, `csc`.
 * https://octave.sourceforge.io/octave/function/cscd.html
 * https://mathworld.wolfram.com/Cosecant.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

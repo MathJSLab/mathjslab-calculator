@@ -7,4 +7,5 @@ See also: `ctranspose`, `adj`, `inv`.
 ### References
 
 * https://mathworld.wolfram.com/Cofactor.html
+* https://en.wikipedia.org/wiki/Minor_(linear_algebra)#Inverse_of_a_matrix
 

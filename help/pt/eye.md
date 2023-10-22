@@ -2,31 +2,30 @@
 * `I = eye (M, N)`
 * `I = eye ([M N])`
 
-Return an identity matrix.
+Retorna a matriz identidade.
 
-If invoked with a single scalar argument `N`, return a square `N x N`
-identity matrix.
+Com um único argumento escalar `N`, retorna uma matriz de identidade quadrada `N x N`.
 
-If supplied two scalar arguments `(M, N)`, `eye` takes them to be the
-number of rows and columns.  If given a vector with two elements,
-`eye` uses the values of the elements as the number of rows and
-columns, respectively.  For example:
+Se forem dados dois argumentos escalares `(M, N)`, `eye` os considera como o
+número de linhas e colunas. Se for dado um vetor com dois elementos,
+`eye` usa os valores dos elementos como o número de linhas e
+colunas, respectivamente. Por exemplo:
 
 >> `eye (3)`
 
 >> %%eye (3) = [1,0,0;0,1,0;0,0,1]%%
 
-The following expressions all produce the same result:
+Todas as expressões a seguir produzem o mesmo resultado:
 
 >> `eye (2)`
 
 >> `eye (2, 2)`
 
->> `eye (size ([1, 2; 3, 4]))`
+>> `eye (size([1, 2; 3, 4]))`
 
-Calling `eye` with no arguments is equivalent to calling it with an
-argument of 1.  Any negative dimensions are treated as zero.  These
-odd definitions are for compatibility with MATLAB.
+Chamar a função `eye` sem argumentos é equivalente a chamar com o
+argumento `1`. Quaisquer dimensões negativas são tratadas como zero. Essas
+definições ímpares são para compatibilidade com o MATLAB&reg;/Octave.
 
 Veja também: `ones`, `zeros`.
 
@@ -35,4 +34,4 @@ Veja também: `ones`, `zeros`.
 * https://www.mathworks.com/help/matlab/ref/eye.html
 * https://octave.sourceforge.io/octave/function/eye.html
 * https://mathworld.wolfram.com/IdentityMatrix.html
-* https://en.wikipedia.org/wiki/Identity_matrix
+* https://pt.wikipedia.org/wiki/Matriz_identidade

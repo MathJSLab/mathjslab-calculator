@@ -1,10 +1,10 @@
 * `Y = ceil (X)`
 
-Return the smallest integer not less than `X`.
+Retorna o menor número inteiro não inferior a `X`.
 
-This is equivalent to rounding towards positive infinity.
+Isso equivale a arredondar para o infinito positivo.
 
-If `X` is complex, return `ceil (real (X)) + ceil (imag (X)) * I`.
+Se `X` é complexo, retorna `ceil (real (X)) + ceil (imag (X)) * I`.
 
 >> `ceil ([-2.7, 2.7])`
 
@@ -17,4 +17,4 @@ Veja também: `floor`, `round`, `fix`.
 * https://www.mathworks.com/help/matlab/ref/ceil.html
 * https://octave.sourceforge.io/octave/function/ceil.html
 * https://mathworld.wolfram.com/CeilingFunction.html
-* https://en.wikipedia.org/wiki/Floor_and_ceiling_functions
+* https://pt.wikipedia.org/wiki/Parte_inteira

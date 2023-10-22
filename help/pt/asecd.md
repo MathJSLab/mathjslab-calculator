@@ -1,8 +1,8 @@
 * `Y = asecd (X)`
 
-Compute the inverse secant in degrees for each element of `X`.
+Calcula a secante inversa em graus para cada elemento de `X`.
 
-This is defined as
+A secante inversa em graus é definida por
 
 >> %%asecd(z) = rad2deg(asec(z))%%
 
@@ -13,4 +13,4 @@ Veja também: `secd`, `asec`.
 * https://www.mathworks.com/help/matlab/ref/asecd.html
 * https://octave.sourceforge.io/octave/function/asecd.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%B5es_trigonom%C3%A9tricas_inversas

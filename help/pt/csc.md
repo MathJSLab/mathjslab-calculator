@@ -1,8 +1,8 @@
 * `Y = csc (X)`
 
-Compute the cosecant for each element of `X` in radians.
+Calcula a cossecante para cada elemento de `X` em radianos.
 
-This is defined as
+A cossecante é definida por
 
 >> %%csc(z)=1/sin(z)%%
 
@@ -14,5 +14,5 @@ Veja também: `acsc`, `cscd`, `csch`.
 * https://octave.sourceforge.io/octave/function/csc.html
 * https://mathworld.wolfram.com/Cosecant.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica
 

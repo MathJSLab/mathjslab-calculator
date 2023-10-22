@@ -1,12 +1,12 @@
 * `Y = adj (X)`
 
-Compute the adjugate (adjoint) matrix for a square matrix `X`.
+Calcula a matriz adjunta para uma matriz quadrada `X`.
 
-The adjoint matrix is defined as
+A matriz adjunta é definida por
 
 >> %%adj (X) = cofactor (X)'%%.
 
-For invertible matrix the following relation is valid:
+Para a matriz inversível `X` a segunte relação é válida:
 
 %%%1/det(X)*adj(X) = inv(X)%%%
 
@@ -15,4 +15,4 @@ Veja também: `inv`, `cofactor`, `ctranspose`.
 ### Referências
 
 * https://mathworld.wolfram.com/ConjugateTranspose.html
-* https://en.wikipedia.org/wiki/Conjugate_transpose
+* https://pt.wikipedia.org/wiki/Matriz_adjunta

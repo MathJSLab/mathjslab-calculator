@@ -1,8 +1,8 @@
 * `Y = asin (X)`
 
-Compute the inverse sine in radians for each element of `X`.
+Calcula o seno inverso em radianos para cada elemento de `X`.
 
-This is defined as
+O seno inverso em radianos é definido por
 
 >> %%asin(z) = i*ln(sqrt(1-z^2)-I*z)%%
 
@@ -13,4 +13,4 @@ Veja também: `sin`, `asind`.
 * https://www.mathworks.com/help/matlab/ref/asin.html
 * https://octave.sourceforge.io/octave/function/asin.html
 * https://mathworld.wolfram.com/InverseTrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Inverse_trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%B5es_trigonom%C3%A9tricas_inversas

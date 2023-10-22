@@ -1,6 +1,6 @@
 * `Y = cos (X)`
 
-Compute the cosine for each element of `X` in radians.
+Calcula o cosseno para cada elemento de `X` em radianos.
 
 Veja também: `acos`, `cosd`, `cosh`.
 
@@ -10,5 +10,4 @@ Veja também: `acos`, `cosd`, `cosh`.
 * https://octave.sourceforge.io/octave/function/cos.html
 * https://mathworld.wolfram.com/Cosine.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Sine_and_cosine
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

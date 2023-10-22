@@ -1,16 +1,15 @@
 * `RAD = deg2rad (DEG)`
 
-Convert degrees to radians.
+Converte graus em radianos.
 
-The input `DEG` must be a scalar, vector, or N-dimensional array of
-double or single floating point values. `DEG` may be complex in
-which case the real and imaginary components are converted
-separately.
+A entrada `DEG` deve ser escalar ou matriz. `DEG` pode ser complexo em
+caso em que os componentes reais e imaginários são convertidos
+separadamente.
 
-The output `RAD` is the same size and shape as `DEG` with degrees
-converted to radians using the conversion constant %%pi/180%%.
+A saída `RAD` tem as mesmas dimensões que `DEG` com graus
+convertidos em radianos usando a constante de conversão %%pi/180%%.
 
-Example:
+Exemplo:
 
 `deg2rad ([0, 90, 180, 270, 360])`
 
@@ -22,6 +21,6 @@ Veja também: `rad2deg`.
 
 * https://www.mathworks.com/help/matlab/ref/deg2rad.html
 * https://octave.sourceforge.io/octave/function/deg2rad.html
-* https://en.wikipedia.org/wiki/Angle
-* https://en.wikipedia.org/wiki/Degree_(angle)
-* https://en.wikipedia.org/wiki/Radian
+* https://pt.wikipedia.org/wiki/%C3%82ngulo
+* https://pt.wikipedia.org/wiki/Grau_(geometria)
+* https://pt.wikipedia.org/wiki/Radiano
