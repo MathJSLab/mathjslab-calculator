@@ -367,7 +367,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
         markdown: {
             ev: [true],
-            func: (url: CharString): void => {
+            func: (url: CharString): NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
                 if (global.ShellPointer.isFileProtocol) {
                     promptSet.box.className = 'bad';
@@ -393,6 +393,10 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                             promptSet.output.innerHTML = `markdown: error loading ${url.string}`;
                         });
                 }
+                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('markdown'), {
+                    list: [url.string],
+                });
+
             },
         },
 
