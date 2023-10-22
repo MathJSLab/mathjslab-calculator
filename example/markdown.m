@@ -1,2 +1,2 @@
 clear
-mardown('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/doc/en/trigonometric-functions.md')
+markdown('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/doc/en/trigonometric-functions.md')
