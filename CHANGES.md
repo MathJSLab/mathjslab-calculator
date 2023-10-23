@@ -6,3 +6,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Project launch.
 - Translation of portuguese help completed.
 - `markdown` function.
+- Bug correction in aliasTable (remove some overlaps).
