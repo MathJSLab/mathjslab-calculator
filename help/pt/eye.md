@@ -25,7 +25,7 @@ Todas as expressões a seguir produzem o mesmo resultado:
 
 Chamar a função `eye` sem argumentos é equivalente a chamar com o
 argumento `1`. Quaisquer dimensões negativas são tratadas como zero. Essas
-definições ímpares são para compatibilidade com o MATLAB&reg;/Octave.
+definições ímpares são para compatibilidade com o [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/).
 
 Veja também: `ones`, `zeros`.
 

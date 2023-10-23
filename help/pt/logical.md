@@ -7,7 +7,7 @@ serão convertidos para falso (0). O valor não numérico NaN não pode
 ser convertido e produzirá um erro.
 
 Nota de compatibilidade: MthJSLab aceita valores complexos como entrada, enquanto
-MATLAB&reg;/Octave emite um erro.
+[MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) emite um erro.
 
 Veja também: `char`.
 

@@ -26,7 +26,7 @@ The following expressions all produce the same result:
 
 Calling `eye` with no arguments is equivalent to calling it with an
 argument of 1.  Any negative dimensions are treated as zero.  These
-odd definitions are for compatibility with MATLAB&reg;/Octave.
+odd definitions are for compatibility with [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/).
 
 See also: `ones`, `zeros`.
 
