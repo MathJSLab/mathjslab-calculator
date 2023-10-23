@@ -1,7 +1,7 @@
 * `M = min (X)`
-* M = `min (X, [], DIM)`
-* [M, IM] = `min (X)`
-* M = `min (X, Y)`
+* `M = min (X, [], DIM)`
+* `[M, IM] = min (X)`
+* `M = min (X, Y)`
 
 Find minimum values in the array `X`.
 

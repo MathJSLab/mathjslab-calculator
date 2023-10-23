@@ -1,48 +1,48 @@
 * `M = min (X)`
-* M = `min (X, [], DIM)`
-* [M, IM] = `min (X)`
-* M = `min (X, Y)`
+* `M = min (X, [], DIM)`
+* `[M, IM] = min (X)`
+* `M = min (X, Y)`
 
-Find minimum values in the array `X`.
+Encontra valores mínimos na matriz `X`.
 
-For a vector argument, return the minimum value.  For a matrix
-argument, return a row vector with the minimum value of each
-column.  For a multi-dimensional array, `min` operates along the
-first non-singleton dimension.
+Para um vetor como argumento, retorna o valor mínimo. Para uma matriz como
+argumento, retorna um vetor linha com o valor mínimo de cada
+coluna. Para uma matriz multidimensional, `min` opera ao longo do
+primeira dimensão não singular.
 
-If the optional third argument `DIM` is present then operate along
-this dimension.  In this case the second argument is ignored and
-should be set to the empty matrix.
+Se o terceiro argumento opcional `DIM` estiver presente, opera junto a
+esta dimensão. Neste caso o segundo argumento é ignorado e
+deve ser definido como uma matriz vazia.
 
-For two inputs (`X` and `Y`), return the pairwise minimum according to
-the rules for Broadcasting.
+Para duas entradas (`X` e `Y`), retorna o mínimo do par de acordo com
+as regras de broadcasting.
 
-Thus,
+Por isso,
 
 >> `min (min (X))`
 
-returns the smallest element of the 2-D matrix `X`, and
+retorna o menor elemento da matriz 2-D `X` e
 
 >> `min (2:5, pi)`
 
 >> %%[2, 3, 3.1416, 3.1416]%%
 
-compares each element of the range `2:5` with `pi`, and returns a
-row vector of the minimum values.
+compara cada elemento do intervalo `2:5` com `pi` e retorna um
+vetor linha dos valores mínimos.
 
-For complex arguments, the magnitude of the elements are used for
-comparison.  If the magnitudes are identical, then the results are
-ordered by phase angle in the range (-pi, pi].  Hence,
+Para argumentos complexos, a magnitude dos elementos é usada para
+comparação. Se as magnitudes forem idênticas, então os resultados são
+ordenados pelo ângulo de fase no intervalo (-pi, pi]. Portanto,
 
 >> `min ([-1 i 1 -i])`
 
 >> %%-i%%
 
-because all entries have magnitude 1, but -i has the smallest phase
-angle with value -pi/2.
+porque todas as entradas têm magnitude 1, mas -i tem a menor fase
+ângulo com valor -pi/2.
 
-If called with one input and two output arguments, `min` also
-returns the first index of the minimum value(s).  Thus,
+Se chamado com um argumento de entrada e dois argumentos de saída, `min` também
+retorna o primeiro índice do(s) valor(es) mínimo(s). Por isso,
 
 >> `[x, ix] = min ([1, 3, 0, 2, 0])`
 

@@ -25,14 +25,14 @@ retorna o maior elemento da matriz 2-D `X` e
 
 >> `max (2:5, pi)`
 
->> %%[3.1416, 3.1416, 4.0000, 5.0000]%%
+>> %%[3.1416, 3.1416, 4, 5]%%
 
 compara cada elemento do intervalo `2:5` com `pi` e retorna um
 vetor linha dos valores máximos.
 
 Para argumentos complexos, a magnitude dos elementos é usada para
 comparação. Se as magnitudes forem idênticas, então os resultados são
-ordenado pelo ângulo de fase no intervalo (-pi, pi). Portanto,
+ordenados pelo ângulo de fase no intervalo (-pi, pi). Portanto,
 
 >> `max ([-1 i 1 -i])`
 

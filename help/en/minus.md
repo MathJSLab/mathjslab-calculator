@@ -1,4 +1,4 @@
-* `C = minus (A, B)
+* `C = minus (A, B)`
 
 This function and `A - B` are equivalent.
 
