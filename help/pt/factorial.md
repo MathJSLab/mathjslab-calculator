@@ -1,21 +1,17 @@
 * `F = factorial (N)`
 
-Return the factorial of `N` where `N` is a real non-negative integer.
+Retorna o fatorial de `N` onde `N` é um número inteiro real não negativo.
 
-If `N` is a scalar, this is equivalent to `prod (1:N)`.  For vector
-or matrix arguments, return the factorial of each element in the
-array.
+Se `N` for um escalar, isso é equivalente a `prod (1:N)`. Para argumentos vetor
+ou matriz, retorna o fatorial de cada elemento no array.
 
-For non-integers see the generalized factorial function `gamma`.
-Note that the factorial function grows large quite quickly, and
-even with double precision values overflow will occur if `N > 171`.
-For such cases consider `gammaln`.
-
-Veja também: `prod`, `gamma`, `gammaln`.
+Para argumentos não inteiros, consulte a função fatorial generalizada `gamma`.
+Observe que a função fatorial cresce muito rapidamente e o estouro ocorrerá se `N > 171`.
+Para tais casos, considere `gammaln`.
 
 ### Referências
 
 * https://www.mathworks.com/help/matlab/ref/factorial.html
 * https://octave.sourceforge.io/octave/function/factorial.html
 * https://mathworld.wolfram.com/Factorial.html
-* https://en.wikipedia.org/wiki/Factorial
+* https://pt.wikipedia.org/wiki/Fatorial

@@ -1,10 +1,10 @@
 * `Y = sqrt (X)`
 
-Compute the square root of each element of `X`.
+Calcula a raiz quadrada de cada elemento de `X`.
 
-If `X` is negative, a complex result is returned.
+Se `X` for negativo, um resultado complexo será retornado.
 
-To compute the matrix square root, see Linear Algebra.
+Para calcular a raiz quadrada da matriz, consulte Álgebra Linear.
 
 Veja também: `realsqrt`, `nthroot`.
 
@@ -13,4 +13,4 @@ Veja também: `realsqrt`, `nthroot`.
 * https://www.mathworks.com/help/matlab/ref/sqrt.html
 * https://octave.sourceforge.io/octave/function/sqrt.html
 * https://mathworld.wolfram.com/SquareRoot.html
-* https://en.wikipedia.org/wiki/Square_root
+* https://pt.wikipedia.org/wiki/Raiz_quadrada

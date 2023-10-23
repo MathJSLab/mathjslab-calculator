@@ -1,9 +1,8 @@
 * `Y = prod (X)`
 * `Y = prod (X, DIM)`
 
-Product of elements along dimension DIM.
+Produto de elementos ao longo da dimensão `DIM`.
 
-If DIM is omitted, it defaults to the first non-singleton
-dimension.
+Se `DIM` for omitido, o padrão é a primeira dimensão não singular.
 
 Veja também: `cumprod`, `sum`.

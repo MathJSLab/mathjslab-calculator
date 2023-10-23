@@ -1,9 +1,8 @@
 * `T = trace (A)`
 
-Compute the trace of `A`, the sum of the elements along the main
-diagonal.
+Calcula o traço de `A`, a soma dos elementos ao longo da linha diagonal principal.
 
-The implementation is straightforward: `sum (diag (A))`.
+A implementação é diretamente: `sum (diag (A))`.
 
 Veja também: `eig`.
 
@@ -12,4 +11,4 @@ Veja também: `eig`.
 * https://www.mathworks.com/help/matlab/ref/double.trace.html
 * https://octave.sourceforge.io/octave/function/trace.html
 * https://mathworld.wolfram.com/MatrixTrace.html
-* https://en.wikipedia.org/wiki/Trace_(linear_algebra)
+* https://pt.wikipedia.org/wiki/Tra%C3%A7o_(%C3%A1lgebra_linear)

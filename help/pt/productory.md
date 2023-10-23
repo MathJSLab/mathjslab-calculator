@@ -1,6 +1,6 @@
 * `productory (X, )`
 
-Compute productory.
+Calcula o produtório.
 
 ### Referências
 

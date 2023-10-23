@@ -3,19 +3,19 @@
 * `R = randi (IMAX, M, N, ...)`
 * `R = randi ([IMIN IMAX], ...)`
 
-Return random integers in the range `1:IMAX`.
+Retorna números inteiros aleatórios no intervalo `1:IMAX`.
 
-Additional arguments determine the shape of the return matrix.
-When no arguments are specified a single random integer is
-returned.  If one argument N is specified then a square matrix
-(N x N) is returned.  Two or more arguments will return a
-multi-dimensional matrix (M x N x ...).
+Argumentos adicionais determinam as dimensões da matriz de retorno.
+Quando nenhum argumento é especificado, um único número inteiro aleatório é
+devolvida. Se um argumento `N` for especificado, então uma matriz quadrada
+(N x N) é retornada. Dois ou mais argumentos retornarão uma
+matriz multidimensional (M x N x ...).
 
-The integer range may optionally be described by a two-element
-matrix with a lower and upper bound in which case the returned
-integers will be on the interval [IMIN, IMAX].
+O intervalo inteiro pode opcionalmente ser descrito por uma matriz
+com um limite inferior e superior, nesse caso os inteiros retornados
+estarão no intervalo [IMIN, IMAX].
 
-The following example returns 150 integers in the range 1-10.
+O exemplo a seguir retorna 150 números inteiros no intervalo de 1 a 10.
 
 >> `ri = randi (10, 150, 1)`
 

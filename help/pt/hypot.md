@@ -1,14 +1,13 @@
 * `H = hypot (X, Y)`
 * `H = hypot (X, Y, Z, ...)`
 
-Compute the element-by-element square root of the sum of the
-squares of `X` and `Y`.
+Calcula a raiz quadrada da soma dos quadrados de `X` e `Y`.
 
-This is equivalent to `sqrt (X.^2 + Y.^2)`, but is calculated in a
-manner that avoids overflows for large values of X or Y.
+Isso é equivalente a `sqrt (X.^2 + Y.^2)`, mas é calculado de uma
+maneira que evita estouros para grandes valores de X ou Y.
 
-`hypot` can also be called with more than 2 arguments; in this
-case, the arguments are accumulated from left to right:
+`hypot` também pode ser chamado com mais de 2 argumentos; nesse
+caso, os argumentos são aplicados cumulativamente da esquerda para a direita:
 
 >> `hypot (hypot (X, Y), Z)`
 >> `hypot (hypot (hypot (X, Y), Z), W)`
@@ -20,4 +19,4 @@ case, the arguments are accumulated from left to right:
 * https://www.mathworks.com/help/matlab/ref/hypot.html
 * https://octave.sourceforge.io/octave/function/hypot.html
 * https://mathworld.wolfram.com/Hypotenuse.html
-* https://en.wikipedia.org/wiki/Hypotenuse
+* https://pt.wikipedia.org/wiki/Hipotenusa

@@ -1,6 +1,6 @@
 * `X = inv (A)`
 
-Compute the inverse of the square matrix A.
+Compute the inverse of the square matrix `A`.
 
 In general it is best to avoid calculating the inverse of a matrix
 directly.  For example, it is both faster and more accurate to

@@ -1,34 +1,34 @@
 * `IND = sub2ind (DIMS, I, J)`
 * `IND = sub2ind (DIMS, S1, S2, ..., SN)`
 
-Convert subscripts to linear indices.
+Converte subscritos em índices lineares.
 
-The input `DIMS` is a dimension vector where each element is the size
-of the array in the respective dimension (see `size`).  The
-remaining inputs are scalars or vectors of subscripts to be
-converted.
+O argumento `DIMS` é um vetor de dimensão onde cada elemento tem o tamanho
+do array na respectiva dimensão (veja `size`). Os argumentos de
+entradas restantes são escalares ou vetores de subscritos a serem
+convertidos.
 
-The output vector `IND` contains the converted linear indices.
+O vetor de saída `IND` contém os índices lineares convertidos.
 
-Background: Array elements can be specified either by a linear
-index which starts at 1 and runs through the number of elements in
-the array, or they may be specified with subscripts for the row,
-column, page, etc.  The functions `ind2sub` and `sub2ind`
-interconvert between the two forms.
+Observação: os elementos da matriz podem ser especificados por um método linear
+índice que começa em 1 e percorre o número de elementos em
+a matriz, ou eles podem ser especificados com subscritos para a linha,
+coluna, página, etc. As funções `ind2sub` e `sub2ind`
+interconverter entre as duas formas.
 
-The linear index traverses dimension 1 (rows), then dimension 2
-(columns), then dimension 3 (pages), etc. until it has numbered all
-of the elements.  Consider the following 3-by-3 matrices:
+O índice linear atravessa a dimensão 1 (linhas) e depois a dimensão 2
+(colunas), depois dimensão 3 (páginas), etc. até numerar todos
+dos elementos. Considere as seguintes matrizes 3 por 3:
 
 >> %%['1,1', '1,2', '1,3'; '2,1', '2,2', '2,3'; '3,1', '3,2', '3,3'] = [1, 4, 7; 2, 5, 8; 3, 6, 9]%%
 
-The left matrix contains the subscript tuples for each matrix
-element.  The right matrix shows the linear indices for the same
-matrix.
+A matriz esquerda contém as tuplas subscritas para cada matriz
+elemento. A matriz direita mostra os índices lineares para o mesmo
+matriz.
 
-The following example shows how to convert the two-dimensional
-indices `(2,1)` and `(2,3)` of a 3-by-3 matrix to linear indices
-with a single call to `sub2ind`.
+O exemplo a seguir mostra como converter o bidimensional
+índices `(2,1)` e `(2,3)` de uma matriz 3 por 3 para índices lineares
+com uma única chamada para `sub2ind`.
 
 >> `s1 = [2, 2]`
 

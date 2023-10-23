@@ -1,9 +1,8 @@
 * `Y = sum (X)`
 * `Y = sum (X, DIM)`
 
-Sum of elements along dimension `DIM`.
+Soma dos elementos ao longo da dimensão `DIM`.
 
-If `DIM` is omitted, it defaults to the first non-singleton
-dimension.
+Se `DIM` for omitido, o padrão é a primeira dimensão não singular.
 
 Veja também: `cumsum`, `sumsq`, `prod`.

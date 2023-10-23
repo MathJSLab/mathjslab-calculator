@@ -4,19 +4,19 @@
 * `[ROWS, COLS, ..., DIM_N_SZ] = size (...)`
 
 Return a row vector with the size (number of elements) of each
-dimension for the object A.
+dimension for the object `A`.
 
-When given a second argument, DIM, return the size of the
-corresponding dimension.  If DIM is a vector, return each of the
+When given a second argument, `DIM`, return the size of the
+corresponding dimension.  If `DIM` is a vector, return each of the
 corresponding dimensions.  Multiple dimensions may also be
 specified as separate arguments.
 
-With a single output argument, 'size' returns a row vector.  When
-called with multiple output arguments, 'size' returns the size of
-dimension N in the Nth argument.  The number of rows, dimension 1,
+With a single output argument, '`size`' returns a row vector.  When
+called with multiple output arguments, '`size`' returns the size of
+dimension `N` in the `N`th argument.  The number of rows, dimension 1,
 is returned in the first argument, the number of columns, dimension
 2, is returned in the second argument, etc.  If there are more
-dimensions in A than there are output arguments, 'size' returns the
+dimensions in A than there are output arguments, '`size`' returns the
 total number of elements in the remaining dimensions in the final
 output argument.
 

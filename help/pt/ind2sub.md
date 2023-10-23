@@ -1,33 +1,33 @@
 * `[S1, S2, ..., SN] = ind2sub (DIMS, IND)
 
-Convert linear indices to subscripts.
+Converte índices lineares em subscritos.
 
-The input `DIMS` is a dimension vector where each element is the size
-of the array in the respective dimension (see `size`).  The second
-input IND contains linear indices to be converted.
+O argumento `DIMS` é um vetor de dimensão onde cada elemento tem o tamanho
+do array na respectiva dimensão (veja `size`). O segundo
+argumento `IND` contém índices lineares a serem convertidos.
 
-The outputs `S1`, ..., `SN` contain the converted subscripts.
+As saídas `S1`, ..., `SN` contêm os subscritos convertidos.
 
-Background: Array elements can be specified either by a linear
-index which starts at 1 and runs through the number of elements in
-the array, or they may be specified with subscripts for the row,
-column, page, etc.  The functions `ind2sub` and `sub2ind`
-interconvert between the two forms.
+Observação: os elementos da matriz podem ser especificados por um método linear
+índice que começa em 1 e percorre o número de elementos na
+matriz, ou eles podem ser especificados com subscritos para a linha,
+coluna, página, etc. As funções `ind2sub` e `sub2ind`
+interconvertem entre as duas formas.
 
-The linear index traverses dimension 1 (rows), then dimension 2
-(columns), then dimension 3 (pages), etc. until it has numbered all
-of the elements.  Consider the following 3-by-3 matrices:
+O índice linear atravessa a dimensão 1 (linhas) e depois a dimensão 2
+(colunas), depois dimensão 3 (páginas), etc. até numerar todos
+dos elementos. Considere as seguintes matrizes 3 por 3:
 
 >> %%[1,4,7;2,5,8;3,6,9]%%
 
 >> %%['1,1', '1,2', '1,3'; '2,1', '2,2', '2,3'; '3,1', '3,2', '3,3']%%
 
-The first matrix contains the linear indices for each matrix
-element.  The second matrix shows the subscript tuples for the same
-matrix.
+A primeira matriz contém os índices lineares para cada elemento da matriz.
+A segunda matriz mostra as tuplas subscritas para a mesma
+matriz.
 
-The following example shows how to convert the linear indices '2'
-and '8' to appropriate subscripts of a 3-by-3 matrix.
+O exemplo a seguir mostra como converter os índices lineares '2'
+e '8' para subscritos apropriados de uma matriz 3 por 3.
 
 >> `ind = [2, 8]`
 
@@ -37,11 +37,11 @@ and '8' to appropriate subscripts of a 3-by-3 matrix.
 
 >> %%c =  [1, 3]%%
 
-If the number of output subscripts exceeds the number of
-dimensions, the exceeded dimensions are set to '1'.  On the other
-hand, if fewer subscripts than dimensions are provided, the
-exceeding dimensions are merged into the final requested dimension.
-For clarity, consider the following examples:
+Se o número de subscritos de saída exceder o número de
+dimensões, as dimensões excedidas são definidas como '1'.
+Por outro lado, se menos subscritos do que dimensões forem fornecidos,
+as dimensões excedentes são mescladas na dimensão final solicitada.
+Para maior clareza, considere os seguintes exemplos:
 
 >> `ind  = [2, 8]`
 
@@ -69,3 +69,4 @@ Veja também: `sub2ind`, `size`.
 
 * https://www.mathworks.com/help/matlab/ref/ind2sub.html
 * https://octave.sourceforge.io/octave/function/ind2sub.html
+* https://pt.wikipedia.org/wiki/Ordem_principal_de_linha_e_de_coluna

@@ -1,6 +1,6 @@
 * `Y = log (X)`
 
-Compute the natural logarithm, %%ln (X)%%, for each element of `X`.
+Calcula o logaritmo natural, %%ln (X)%%, para cada elemento de `X`.
 
 Veja também: `exp`, `log1p`, `log2`, `log10`, `logspace`.
 
@@ -8,5 +8,5 @@ Veja também: `exp`, `log1p`, `log2`, `log10`, `logspace`.
 
 * https://www.mathworks.com/help/matlab/ref/log.html
 * https://octave.sourceforge.io/octave/function/log.html
-* https://en.wikipedia.org/wiki/Natural_logarithm
 * https://mathworld.wolfram.com/NaturalLogarithm.html
+* https://pt.wikipedia.org/wiki/Logaritmo_natural

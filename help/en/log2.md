@@ -1,6 +1,6 @@
 * `Y = log2 (X)`
 
-Compute the base-2 logarithm of each element of X.
+Compute the base-2 logarithm of each element of `X`.
 
 See also: `pow2`, `log`, `log10`, `exp`.
 

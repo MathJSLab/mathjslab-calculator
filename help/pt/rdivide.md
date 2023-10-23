@@ -1,8 +1,8 @@
 * `C = rdivide (A, B)``
 
-Return the element-by-element right division of `A` and `B`.
+Retorne a divisão direita de `A` e `B` elemento por elemento.
 
-This function and `A ./ B` are equivalent.
+Esta função e `A ./ B` são equivalentes.
 
 Veja também: `ldivide`, `mrdivide`, `times`, `plus`.
 

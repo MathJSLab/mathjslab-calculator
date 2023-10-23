@@ -1,6 +1,6 @@
 * `B = uplus (A)`
 
-This function and `+ A` are equivalent.
+Esta função e `+ A` são equivalentes.
 
 Veja também: `uminus`, `plus`.
 

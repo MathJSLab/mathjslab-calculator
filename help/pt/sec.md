@@ -1,8 +1,8 @@
 * `Y = sec (X)`
 
-Compute the secant for each element of `X` in radians.
+Calcula a secante para cada elemento de `X` em radianos.
 
-This is defined as
+A secante é definida por
 
 >> %%sec(z) = 1/cos(z)%%
 
@@ -13,4 +13,4 @@ Veja também: `asec`, `secd`, `sech`.
 * https://www.mathworks.com/help/matlab/ref/sec.html
 * https://octave.sourceforge.io/octave/function/sec.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

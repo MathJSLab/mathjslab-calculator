@@ -1,24 +1,24 @@
 *  `R = rem (X, Y)`
 
-Return the remainder of the division `X / Y`.
+Retorna o resto da divisão `X / Y`.
 
-The remainder is computed using the expression
+O resto é calculado usando a expressão
 
 >> `x - y .* fix (x ./ y)`
 
-An error message is printed if the dimensions of the arguments do
-not agree, or if either argument is complex.
+Uma mensagem de erro será exibida se as dimensões dos argumentos
+forem não-conformes, ou se algum dos argumentos for complexo.
 
-By convention,
+Por convenção,
 
->> `rem (X, 0) = NaN`  if X is a floating point variable
->> `rem (X, 0) = 0`    if X is an integer variable
->> `rem (X, Y)`  returns a value with the signbit from X
+>> `rem (X, 0) = NaN` se X for um número
+>> `rem (X, 0) = 0` se X for um número inteira
+>> `rem (X, Y)` retorna um valor com o signbit de X
 
-For the opposite conventions see the `mod` function.  In general,
-`rem` is best when computing the remainder after division of two
-*positive* numbers.  For negative numbers, or when the values are
-periodic, `mod` is a better choice.
+Para as convenções opostas, consulte a função `mod`. Em geral,
+`rem` é melhor ao calcular o resto após a divisão de dois
+números *positivos*. Para números negativos, ou quando os valores são
+periódico, `mod` é uma escolha melhor.
 
 Veja também: `mod`.
 
@@ -27,4 +27,4 @@ Veja também: `mod`.
 * https://www.mathworks.com/help/matlab/ref/rem.html
 * https://octave.sourceforge.io/octave/function/rem.html
 * https://mathworld.wolfram.com/Remainder.html
-* https://en.wikipedia.org/wiki/Remainder
+* https://pt.wikipedia.org/wiki/Resto_da_divis%C3%A3o_inteira

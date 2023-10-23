@@ -1,8 +1,8 @@
 * `Y = tan (Z)`
 
-Compute the tangent for each element of `X` in radians.
+Calcula a tangente para cada elemento de `X` em radianos.
 
-This is defined as
+A tangente é definida por
 
 >> %%tan(z) = sin(z)/cos(z)%%
 
@@ -14,4 +14,4 @@ Veja também: `atan`, `tand`, `tanh`.
 * https://octave.sourceforge.io/octave/function/tan.html
 * https://mathworld.wolfram.com/Tangent.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

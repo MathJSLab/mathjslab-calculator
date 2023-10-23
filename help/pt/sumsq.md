@@ -1,15 +1,14 @@
 * `Y = sumsq (X)`
 * `Y = sumsq (X, DIM)`
 
-Sum of squares of elements along dimension `DIM`.
+Soma dos quadrados dos elementos ao longo da dimensão `DIM`.
 
-If `DIM` is omitted, it defaults to the first non-singleton
-dimension.
+Se `DIM` for omitido, o padrão é a primeira dimensão não singular.
 
-This function is conceptually equivalent to computing
+Esta função é conceitualmente equivalente à
 
 >> `sum (x .* conj (x), dim)`
 
-but it uses less memory and avoids calling 'conj' if X is real.
+mas usa menos memória e evita chamar '`conj`' se `X` for real.
 
 Veja também: `sum`, `prod`.

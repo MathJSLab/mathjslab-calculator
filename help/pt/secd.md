@@ -1,8 +1,8 @@
 * `Y = secd (X)`
 
-Compute the secant for each element of `X` in degrees.
+Calcula a secante para cada elemento de `X` em graus.
 
-This is defined as
+A secante em graus é definida por
 
 >> %%secd(z) = rad2deg(sec(z))%%
 
@@ -13,4 +13,4 @@ Veja também: `asecd`, `sec`.
 * https://www.mathworks.com/help/matlab/ref/sec.html
 * https://octave.sourceforge.io/octave/function/secd.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

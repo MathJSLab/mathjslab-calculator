@@ -1,8 +1,8 @@
 * `Z = not (X)`
 
-Return the logical **NOT** of `X`.
+Retorna o **NOT** lógico de `X`.
 
-This function is equivalent to the operator syntax `! X`.
+Esta função é equivalente à sintaxe do operador `! X`.
 
 Veja também: `and`, `or`, `xor`.
 
@@ -11,4 +11,4 @@ Veja também: `and`, `or`, `xor`.
 * https://www.mathworks.com/help/matlab/ref/not.html
 * https://octave.sourceforge.io/octave/function/not.html
 * https://mathworld.wolfram.com/NOT.html
-* https://en.wikipedia.org/wiki/Negation
+* https://pt.wikipedia.org/wiki/Nega%C3%A7%C3%A3o

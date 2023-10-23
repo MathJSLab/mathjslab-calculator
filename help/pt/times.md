@@ -1,11 +1,11 @@
 * `C = times (A, B)`
 * `C = times (A1, A2, ...)`
 
-Return the element-by-element multiplication product of inputs.
+Retorna o produto da multiplicação elemento por elemento das entradas.
 
-This function and `A .* B` are equivalent.  If more arguments are
-given, the multiplication is applied cumulatively from left to
-right:
+Esta função e `A .* B` são equivalentes. Se mais argumentos forem
+dados, a multiplicação é aplicada cumulativamente da esquerda para a
+direita:
 
 >> `(...((A1 .* A2) .* A3) .* ...)`
 
@@ -17,6 +17,5 @@ Veja também: `mtimes`, `rdivide`.
 * https://octave.sourceforge.io/octave/function/times.html
 * https://mathworld.wolfram.com/Multiplication.html
 * https://mathworld.wolfram.com/Times.html
-* https://en.wikipedia.org/wiki/Multiplication
-* https://en.wikipedia.org/wiki/Product_(mathematics)
-* https://en.wikipedia.org/wiki/Multiplication_sign
+* https://pt.wikipedia.org/wiki/Multiplica%C3%A7%C3%A3o
+* https://pt.wikipedia.org/wiki/Sinal_de_multiplica%C3%A7%C3%A3o

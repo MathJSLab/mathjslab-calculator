@@ -4,7 +4,7 @@ Convert linear indices to subscripts.
 
 The input `DIMS` is a dimension vector where each element is the size
 of the array in the respective dimension (see `size`).  The second
-input IND contains linear indices to be converted.
+input `IND` contains linear indices to be converted.
 
 The outputs `S1`, ..., `SN` contain the converted subscripts.
 
@@ -69,3 +69,4 @@ See also: `sub2ind`, `size`.
 
 * https://www.mathworks.com/help/matlab/ref/ind2sub.html
 * https://octave.sourceforge.io/octave/function/ind2sub.html
+* https://en.wikipedia.org/wiki/Row-_and_column-major_order

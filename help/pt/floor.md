@@ -1,9 +1,9 @@
 * `Y = floor (X)`
 
-Return the largest integer not greater than `X`.
+Retorna o maior número inteiro não maior que `X`.
 
-This is equivalent to rounding towards negative infinity.  If `X` is
-complex, return %%floor (real (X)) + floor (imag (X)) * I%%.
+Isso equivale a arredondar para o infinito negativo. Se `X` for
+complexo, retorna %%floor (real (X)) + floor (imag (X)) * I%%.
 
 >> `floor ([-2.7, 2.7])`
 
@@ -16,4 +16,4 @@ Veja também: `ceil`, `round`, `fix`.
 * https://www.mathworks.com/help/matlab/ref/floor.html
 * https://octave.sourceforge.io/octave/function/floor.html
 * https://mathworld.wolfram.com/FloorFunction.html
-* https://en.wikipedia.org/wiki/Floor_and_ceiling_functions
+* https://pt.wikipedia.org/wiki/Parte_inteira

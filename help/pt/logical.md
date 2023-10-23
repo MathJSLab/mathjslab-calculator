@@ -1,13 +1,13 @@
 * `logical (X)`
 
-Convert the numeric object `X` to logical type.
+Converte o objeto numérico `X` em tipo lógico.
 
-Any nonzero values will be converted to true (1) while zero values
-will be converted to false (0).  The non-numeric value NaN cannot
-be converted and will produce an error.
+Quaisquer valores diferentes de zero serão convertidos em verdadeiro (1), enquanto valores zero
+serão convertidos para falso (0). O valor não numérico NaN não pode
+ser convertido e produzirá um erro.
 
-Compatibility Note: MthJSLab accepts complex values as input, whereas
-MATLAB issues an error.
+Nota de compatibilidade: MthJSLab aceita valores complexos como entrada, enquanto
+MATLAB&reg;/Octave emite um erro.
 
 Veja também: `char`.
 
@@ -19,4 +19,4 @@ Veja também: `char`.
 * https://mathworld.wolfram.com/BinaryOperation.html
 * https://mathworld.wolfram.com/BinaryOperator.html
 * https://mathworld.wolfram.com/TruthTable.html
-* https://en.wikipedia.org/wiki/Truth_value
+* https://pt.wikipedia.org/wiki/Valor_de_verdade

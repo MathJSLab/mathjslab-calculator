@@ -1,6 +1,6 @@
 * `Y = imag (Z)`
 
-Return the imaginary part of `Z` as a real number.
+Retorna a parte imaginária de `Z` como um número real.
 
 Veja também: `real`, `conj`.
 
@@ -11,6 +11,6 @@ Veja também: `real`, `conj`.
 * https://mathworld.wolfram.com/ComplexNumber.html
 * https://mathworld.wolfram.com/ImaginaryNumber.html
 * https://mathworld.wolfram.com/ImaginaryUnit.html
-* https://en.wikipedia.org/wiki/Complex_number
-* https://en.wikipedia.org/wiki/Imaginary_number
-* https://en.wikipedia.org/wiki/Imaginary_unit
+* https://pt.wikipedia.org/wiki/N%C3%BAmero_complexo
+* https://pt.wikipedia.org/wiki/N%C3%BAmero_imagin%C3%A1rio
+* https://pt.wikipedia.org/wiki/Unidade_imagin%C3%A1ria

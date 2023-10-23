@@ -1,6 +1,6 @@
 * `B = uminus (A)`
 
-This function and `- A` are equivalent.
+Esta função e `- A` são equivalentes.
 
 Veja também: `uplus`, `minus`.
 

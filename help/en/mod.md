@@ -16,7 +16,7 @@ or if either of the arguments is complex.
 By convention,
 
 >> `mod (X, 0) = X`
->> `mod (X, Y)`      returns a value with the signbit from Y
+>> `mod (X, Y)`      returns a value with the signbit from `Y`
 
 For the opposite conventions see the `rem` function.  In general,
 `mod` is a better choice than `rem` when any of the inputs are
@@ -30,3 +30,4 @@ See also: `rem`.
 * https://octave.sourceforge.io/octave/function/mod.html
 * https://mathworld.wolfram.com/Mod.html
 * https://en.wikipedia.org/wiki/Modulo_(mathematics)
+* https://en.wikipedia.org/wiki/Modular_arithmetic

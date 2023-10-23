@@ -396,7 +396,6 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('markdown'), {
                     list: [url.string],
                 });
-
             },
         },
 

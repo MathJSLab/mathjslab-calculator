@@ -1,3 +1,3 @@
 * `pivot (X)`
 
-Compute pivot matrix of `X`.
+Calcula a matriz pivô de `X`.

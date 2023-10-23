@@ -10,6 +10,6 @@ This function is conceptually equivalent to computing
 
 >> `sum (x .* conj (x), dim)`
 
-but it uses less memory and avoids calling 'conj' if X is real.
+but it uses less memory and avoids calling '`conj`' if `X` is real.
 
 See also: `sum`, `prod`.

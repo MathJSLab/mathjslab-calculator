@@ -1,13 +1,13 @@
 * `Y = tand (X)`
 
-Compute the tangent for each element of `X` in degrees.
+Calcula a tangente para cada elemento de `X` em graus.
 
-This is defined as
+A tangente em graus é definida por
 
 >> %%tand(z) = rad2deg(tan(z))%%
 
-Returns zero for elements where `X/180` is an integer and `Inf` for
-elements where `(X-90)/180` is an integer.
+Retorna zero para elementos onde `X/180` é um número inteiro e `Inf` para
+elementos onde `(X-90)/180` é um número inteiro.
 
 Veja também: `atand`, `tan`.
 
@@ -17,4 +17,4 @@ Veja também: `atand`, `tan`.
 * https://octave.sourceforge.io/octave/function/tand.html
 * https://mathworld.wolfram.com/Tangent.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

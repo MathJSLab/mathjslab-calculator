@@ -1,26 +1,26 @@
 * `M = mod (X, Y)`
 
-Compute the modulo of `X` and `Y`.
+Calcula o módulo de `X` e `Y`.
 
-Conceptually this is given by
+Conceitualmente isso é dado por
 
 >> `x - y .* floor (x ./ y)`
 
-and is written such that the correct modulus is returned for
-integer types.  This function handles negative values correctly.
-That is, `mod (-1, 3)` is 2, not -1, as `rem (-1, 3)` returns.
+e é escrito de forma que o módulo correto seja retornado para
+tipos inteiros. Esta função trata valores negativos corretamente.
+Ou seja, `mod (-1, 3)` é 2, não -1, como `rem (-1, 3)` retorna.
 
-An error results if the dimensions of the arguments do not agree,
-or if either of the arguments is complex.
+Ocorre um erro se as dimensões dos argumentos não concordarem,
+ou se algum dos argumentos for complexo.
 
-By convention,
+Por convenção,
 
 >> `mod (X, 0) = X`
->> `mod (X, Y)`      returns a value with the signbit from Y
+>> `mod (X, Y)` retorna um valor com o signbit de `Y`
 
-For the opposite conventions see the `rem` function.  In general,
-`mod` is a better choice than `rem` when any of the inputs are
-negative numbers or when the values are periodic.
+Para as convenções opostas, consulte a função `rem`. Em geral,
+`mod` é uma escolha melhor do que `rem` quando qualquer uma das entradas são
+números negativos ou quando os valores são periódicos.
 
 Veja também: `rem`.
 
@@ -29,4 +29,5 @@ Veja também: `rem`.
 * https://www.mathworks.com/help/matlab/ref/mod.html
 * https://octave.sourceforge.io/octave/function/mod.html
 * https://mathworld.wolfram.com/Mod.html
-* https://en.wikipedia.org/wiki/Modulo_(mathematics)
+* https://pt.wikipedia.org/wiki/Opera%C3%A7%C3%A3o_m%C3%B3dulo
+* https://pt.wikipedia.org/wiki/Aritm%C3%A9tica_modular

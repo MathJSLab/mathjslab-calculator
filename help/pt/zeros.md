@@ -3,13 +3,12 @@
 * `VAL = zeros (M, N, K, ...)`
 * `VAL = zeros ([M N ...])`
 
-Return a matrix or N-dimensional array whose elements are all 0.
+Retorna uma matriz N-dimensional cujos elementos são todos 0 (matriz nula).
 
-If invoked with a single scalar integer argument, return a square
-`N x N` matrix.
+Se invocado com um único argumento inteiro escalar, retorna umamatriz quadrada `N x N`.
 
-If invoked with two or more scalar integer arguments, or a vector
-of integer values, return an array with the given dimensions.
+Se invocado com dois ou mais argumentos inteiros escalares ou um vetor
+de valores inteiros, retorne uma matriz com as dimensões fornecidas.
 
 Veja também: `ones`.
 
@@ -18,4 +17,4 @@ Veja também: `ones`.
 * https://www.mathworks.com/help/matlab/ref/zeros.html
 * https://octave.sourceforge.io/octave/function/zeros.html
 * https://mathworld.wolfram.com/ZeroMatrix.html
-* https://en.wikipedia.org/wiki/Zero_matrix
+* https://pt.wikipedia.org/wiki/Matriz_nula

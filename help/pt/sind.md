@@ -1,14 +1,14 @@
 * `Y = sind (X)`
 
-Compute the sine for each element of `X` in degrees.
+Calcula o seno para cada elemento de `X` em graus.
 
-This is defined as
+O seno em graus é definido por
 
 >> %%sind(z) = rad2deg(sin(z))%%
 
-The function is more accurate than `sin` for large values of `X` and
-for multiples of 180 degrees (`X/180` is an integer) where `sind`
-returns 0 rather than a small value on the order of eps.
+A função é mais precisa que `sin` para valores grandes de `X` e
+para múltiplos de 180 graus (`X/180` é um número inteiro) onde `sind`
+retorna `0` em vez de um valor pequeno na ordem de eps.
 
 Veja também: `asind`, `sin`.
 
@@ -18,5 +18,4 @@ Veja também: `asind`, `sin`.
 * https://octave.sourceforge.io/octave/function/sind.html
 * https://mathworld.wolfram.com/Sine.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Sine_and_cosine
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

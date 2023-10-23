@@ -1,8 +1,10 @@
 * `minor (X)`
 
-Compute minor of matrix `X`.
+Calcula o menor da matriz `X`.
+
+Veja também: `cofactor`
 
 ### Referências
 
 * https://mathworld.wolfram.com/Minor.html
-* https://en.wikipedia.org/wiki/Minor_(linear_algebra)
+* https://pt.wikipedia.org/wiki/Menor_(%C3%A1lgebra_linear)

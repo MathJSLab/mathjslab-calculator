@@ -2,8 +2,8 @@
 
 Converte graus em radianos.
 
-A entrada `DEG` deve ser escalar ou matriz. `DEG` pode ser complexo em
-caso em que os componentes reais e imaginários são convertidos
+A entrada `DEG` deve ser escalar ou matriz. `DEG` pode ser complexo,
+caso em que os componentes reais e imaginários serão convertidos
 separadamente.
 
 A saída `RAD` tem as mesmas dimensões que `DEG` com graus

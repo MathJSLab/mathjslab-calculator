@@ -1,10 +1,10 @@
 * `X = inv (A)`
 
-Compute the inverse of the square matrix A.
+Calcula a matriz inversa da matriz quadrada `A`.
 
-In general it is best to avoid calculating the inverse of a matrix
-directly.  For example, it is both faster and more accurate to
-solve systems of equations %%A*x = b%% with `Y = A \ b`, rather than
+Em geral é melhor evitar calcular o inverso de uma matriz
+diretamente. Por exemplo, é mais rápido e mais preciso
+resolver sistemas de equações %%A*x = b%% com `Y = A \ b`, em vez de
 `Y = inv (A) * b`.
 
 Veja também: `ldivide`, `rdivide`, `pinv`.
@@ -14,4 +14,4 @@ Veja também: `ldivide`, `rdivide`, `pinv`.
 * https://www.mathworks.com/help/matlab/ref/inv.html
 * https://octave.sourceforge.io/octave/function/inv.html
 * https://mathworld.wolfram.com/MatrixInverse.html
-* https://en.wikipedia.org/wiki/Invertible_matrix
+* https://pt.wikipedia.org/wiki/Matriz_inversa

@@ -1,8 +1,8 @@
 * `TF = ne (A, B)`
 
-Return true if the two inputs are not equal.
+Retorna `true` se as duas entradas não forem iguais.
 
-This function is equivalent to `A != B`.
+Esta função é equivalente a `A!= B`.
 
 Veja também: `eq`, `isequal`, `le`, `ge`, `lt`.
 
@@ -12,4 +12,4 @@ Veja também: `eq`, `isequal`, `le`, `ge`, `lt`.
 * https://octave.sourceforge.io/octave/function/ne.html
 * https://mathworld.wolfram.com/Equal.html
 * https://mathworld.wolfram.com/Equality.html
-* https://en.wikipedia.org/wiki/Equality_(mathematics)
+* https://pt.wikipedia.org/wiki/Igualdade_matem%C3%A1tica

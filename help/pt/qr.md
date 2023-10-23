@@ -1,3 +1,3 @@
 * `qr (X)`
 
-Compute QR decomposition.
+Calcula a decomposição QR de `X`.

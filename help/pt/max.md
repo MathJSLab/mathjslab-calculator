@@ -3,46 +3,46 @@
 * `[M, IM] = max (X)`
 * `M = max (X, Y)`
 
-Find maximum values in the array `X`.
+Encontra os valores máximos na matriz `X`.
 
-For a vector argument, return the maximum value.  For a matrix
-argument, return a row vector with the maximum value of each
-column.  For a multi-dimensional array, `max` operates along the
-first non-singleton dimension.
+Para um vetor como argumento, retorna o valor máximo. Para uma matriz como
+argumento, retorna um vetor linha com o valor máximo de cada
+coluna. Para uma matriz multidimensional, `max` opera ao longo do
+primeira dimensão não singular.
 
-If the optional third argument DIM is present then operate along
-this dimension.  In this case the second argument is ignored and
-should be set to the empty matrix.
+Se o terceiro argumento opcional `DIM` estiver presente, opera junto a
+esta dimensão. Neste caso o segundo argumento é ignorado e
+deve ser definido como uma matriz vazia.
 
-For two inputs (`X` and `Y`), return the pairwise maximum according to
-the rules for Broadcasting.
+Para duas entradas (`X` e `Y`), retorna o máximo do par de acordo com
+as regras de broadcasting.
 
-Thus,
+Por isso,
 
 >> `max (max (X))`
 
-returns the largest element of the 2-D matrix `X`, and
+retorna o maior elemento da matriz 2-D `X` e
 
 >> `max (2:5, pi)`
 
->> %%[3.1416,  3.1416,  4.0000,  5.0000]%%
+>> %%[3.1416, 3.1416, 4.0000, 5.0000]%%
 
-compares each element of the range `2:5` with `pi`, and returns a
-row vector of the maximum values.
+compara cada elemento do intervalo `2:5` com `pi` e retorna um
+vetor linha dos valores máximos.
 
-For complex arguments, the magnitude of the elements are used for
-comparison.  If the magnitudes are identical, then the results are
-ordered by phase angle in the range (-pi, pi].  Hence,
+Para argumentos complexos, a magnitude dos elementos é usada para
+comparação. Se as magnitudes forem idênticas, então os resultados são
+ordenado pelo ângulo de fase no intervalo (-pi, pi). Portanto,
 
 >> `max ([-1 i 1 -i])`
 
 >> $$-1$$
 
-because all entries have magnitude 1, but -1 has the largest phase
-angle with value pi.
+porque todas as entradas têm magnitude 1, mas -1 tem o maior ângulo de fase
+com valor pi.
 
-If called with one input and two output arguments, `max` also
-returns the first index of the maximum value(s).  Thus,
+Se chamado com um argumento de entrada e dois argumentos de saída, `max` também
+retorna o primeiro índice do(s) valor(es) máximo(s). Por isso,
 
 >> `[x, ix] = max ([1, 3, 5, 2, 5])`
 
@@ -57,4 +57,4 @@ Veja também: `min`, `cummax`, `cummin`.
 * https://www.mathworks.com/help/matlab/ref/max.html
 * https://octave.sourceforge.io/octave/function/max.html
 * https://mathworld.wolfram.com/Maximum.html
-* https://en.wikipedia.org/wiki/Maximum_and_minimum
+* https://pt.wikipedia.org/wiki/Pontos_extremos_de_uma_fun%C3%A7%C3%A3o

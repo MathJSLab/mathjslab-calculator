@@ -1,9 +1,9 @@
 * `Y = round (X)`
 
-Return the integer nearest to `X`.
+Retorna o número inteiro mais próximo de `X`.
 
-If `X` is complex, return `round (real (X)) + round (imag (X)) * I`.
-If there are two nearest integers, return the one further away from
+Se `X` for complexo, retorna `round (real (X)) + round (imag (X)) * I`.
+Se houver dois números inteiros mais próximos, retorna aquele que estiver mais distante
 zero.
 
 >> `round ([-2.7, 2.7])`
@@ -16,4 +16,4 @@ Veja também: `ceil`, `floor`, `fix`, `roundb`.
 * https://www.mathworks.com/help/matlab/ref/round.html
 * https://octave.sourceforge.io/octave/function/round.html
 * https://mathworld.wolfram.com/Rounding.html
-* https://en.wikipedia.org/wiki/Rounding
+* https://pt.wikipedia.org/wiki/Arredondamento

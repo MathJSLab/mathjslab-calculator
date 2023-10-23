@@ -10,7 +10,7 @@ argument, return a row vector with the maximum value of each
 column.  For a multi-dimensional array, `max` operates along the
 first non-singleton dimension.
 
-If the optional third argument DIM is present then operate along
+If the optional third argument `DIM` is present then operate along
 this dimension.  In this case the second argument is ignored and
 should be set to the empty matrix.
 

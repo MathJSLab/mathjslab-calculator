@@ -1,6 +1,6 @@
 * `Y = log10 (X)`
 
-Compute the base-10 logarithm of each element of `X`.
+Calcule o logaritmo de base 10 de cada elemento de `X`.
 
 Veja também: `log`, `log2`, `logspace`, `exp`.
 
@@ -9,4 +9,4 @@ Veja também: `log`, `log2`, `logspace`, `exp`.
 * https://www.mathworks.com/help/matlab/ref/log10.html
 * https://octave.sourceforge.io/octave/function/log10.html
 * https://mathworld.wolfram.com/Logarithm.html
-* https://en.wikipedia.org/wiki/Logarithm
+* https://pt.wikipedia.org/wiki/Logaritmo

@@ -1,6 +1,6 @@
 * `C = minus (A, B)
 
-This function and `A - B` are equivalent.
+Essa função e `A - B` são equivalentes.
 
 Veja também: `plus`, `uminus`.
 
@@ -11,5 +11,5 @@ Veja também: `plus`, `uminus`.
 * https://mathworld.wolfram.com/Minus.html
 * https://mathworld.wolfram.com/Subtraction.html
 * https://mathworld.wolfram.com/Difference.html
-* https://en.wikipedia.org/wiki/Plus_and_minus_signs
-* https://en.wikipedia.org/wiki/Subtraction
+* https://pt.wikipedia.org/wiki/Sinais_de_mais_e_menos
+* https://pt.wikipedia.org/wiki/Subtra%C3%A7%C3%A3o

@@ -1,15 +1,15 @@
 * `A = vertcat (ARRAY1, ARRAY2, ..., ARRAYN)`
 
-Return the vertical concatenation of N-D array objects, ARRAY1,
-ARRAY2, ..., ARRAYN along dimension 1.
+Retorna a concatenação vertical de matrizes 'N'-dimensionais, ARRAY1,
+ARRAY2, ..., ARRAYN ao longo da dimensão 1.
 
-Arrays may also be concatenated vertically using the syntax for
-creating new matrices.  For example:
+Matrizes também podem ser concatenados verticalmente usando a sintaxe para a
+criação de novas matrizes. Por exemplo:
 
->> `A = [ ARRAY1; ARRAY2; ... ]`
+>> `A = [MATRIZ1; MATRIZ2; ... ]`
 
-This syntax is slightly more efficient because the MathJSLab parser
-can concatenate the arrays without the overhead of a function call.
+Esta sintaxe é um pouco mais eficiente porque o parser do MathJSLab
+pode concatenar as matrizes sem a sobrecarga de uma chamada de função.
 
 Veja também: `cat`, `horzcat`.
 

@@ -1,12 +1,12 @@
 * `C = power (A, B)`
 
-Return the element-by-element operation of `A` raised to the `B` power.
+Retorna a operação elemento por elemento de `A` elevada à potência de `B`.
 
-This function and `A .^ B` are equivalent.
+Esta função e `A .^ B` são equivalentes.
 
-If several complex results are possible, returns the one with
-smallest non-negative argument (angle).  Use `realpow`, `realsqrt`,
-`cbrt`, or `nthroot` if a real result is preferred.
+Se vários resultados complexos forem possíveis, retorna aquele com
+menor argumento não negativo (ângulo). Use `realpow`, `realsqrt`,
+`cbrt` ou `nthroot` se um resultado real for preferido.
 
 Veja também: `mpower`, `realpow`, `realsqrt`, `cbrt`, `nthroot`.
 

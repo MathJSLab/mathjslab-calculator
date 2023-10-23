@@ -3,36 +3,35 @@
 * `DIM_SZ = size (A, D1, D2, ...)`
 * `[ROWS, COLS, ..., DIM_N_SZ] = size (...)`
 
-Return a row vector with the size (number of elements) of each
-dimension for the object A.
+Retorna um vetor linha com o tamanho (número de elementos) de cada
+dimensão para o objeto `A`.
 
-When given a second argument, DIM, return the size of the
-corresponding dimension.  If DIM is a vector, return each of the
-corresponding dimensions.  Multiple dimensions may also be
-specified as separate arguments.
+Quando recebe um segundo argumento, `DIM`, retorna o tamanho da
+dimensão correspondente. Se `DIM` for um vetor, retorna cada uma das
+dimensões correspondentes. Múltiplas dimensões também podem ser
+especificados como argumentos separados.
 
-With a single output argument, 'size' returns a row vector.  When
-called with multiple output arguments, 'size' returns the size of
-dimension N in the Nth argument.  The number of rows, dimension 1,
-is returned in the first argument, the number of columns, dimension
-2, is returned in the second argument, etc.  If there are more
-dimensions in A than there are output arguments, 'size' returns the
-total number of elements in the remaining dimensions in the final
-output argument.
+Com um único argumento de saída, '`size`' retorna um vetor linha. Quando
+chamado com vários argumentos de saída, '`size`' retorna o tamanho de
+dimensão `N` no enésimo argumento. O número de linhas, dimensão 1,
+é retornado no primeiro argumento, o número de colunas, dimensão
+2, é retornado no segundo argumento, etc. Se houver mais
+dimensões em `A` do que existem argumentos de saída, '`size`' retorna o
+número total de elementos nas dimensões restantes no argumento final de saída.
 
-Example 1: single row vector output
+Exemplo 1: saída vetorial de linha única
 
 >> `size ([1, 2; 3, 4; 5, 6])`
 
 >> %%[ 3, 2 ]%%
 
-Example 2: number of elements in 2nd dimension (columns)
+Exemplo 2: número de elementos na 2ª dimensão (colunas)
 
 >> `size ([1, 2; 3, 4; 5, 6], 2)`
 
 >> %%2%%
 
-Example 3: number of output arguments == number of dimensions
+Exemplo 3: número de argumentos de saída == número de dimensões
 
 >> `[nr, nc] = size ([1, 2; 3, 4; 5, 6])`
 
@@ -40,7 +39,7 @@ Example 3: number of output arguments == number of dimensions
 
 >> %%nc = 2%%
 
-Example 4: number of output arguments < number of dimensions
+Exemplo 4: número de argumentos de saída < número de dimensões
 
 >> `[nr, remainder] = size (ones (2, 3, 4, 5))`
 

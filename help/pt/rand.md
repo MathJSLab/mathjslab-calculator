@@ -2,10 +2,10 @@
 * `X = rand (M, N, ...)`
 * `X = rand ([M N ...])`
 
-Return a matrix with random elements uniformly distributed on the
-interval (0, 1).
+Retorna uma matriz com valores aleatórios distribuídos uniformemente no
+intervalo (0, 1).
 
-The arguments are handled the same as the arguments for `eye`.
+Os argumentos são tratados da mesma forma que os argumentos para `eye`.
 
 Veja também: `randn`, `rande`, `randg`, `randp`.
 

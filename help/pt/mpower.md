@@ -1,8 +1,8 @@
 * `C = mpower (A, B)`
 
-Return the matrix power operation of `A` raised to the `B` power.
+Retorna a operação de potência da matriz `A` elevada à potência de `B`.
 
-This function and `A ^ B` are equivalent.
+Esta função e `A ^ B` são equivalentes.
 
 Veja também: `power`, `mtimes`, `plus`, `minus`.
 
@@ -11,5 +11,5 @@ Veja também: `power`, `mtimes`, `plus`, `minus`.
 * https://www.mathworks.com/help/matlab/ref/mpower.html
 * https://octave.sourceforge.io/octave/function/mpower.html
 * https://mathworld.wolfram.com/MatrixPower.html
-* https://en.wikipedia.org/wiki/Matrix_multiplication
+* https://pt.wikipedia.org/wiki/Produto_de_matrizes
 

@@ -2,6 +2,8 @@
 
 Compute minor of matrix `X`.
 
+See also: `cofactor`
+
 ### References
 
 * https://mathworld.wolfram.com/Minor.html

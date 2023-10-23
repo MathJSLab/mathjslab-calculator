@@ -1,9 +1,9 @@
 * `Y = prod (X)`
 * `Y = prod (X, DIM)`
 
-Product of elements along dimension DIM.
+Product of elements along dimension `DIM`.
 
-If DIM is omitted, it defaults to the first non-singleton
+If `DIM` is omitted, it defaults to the first non-singleton
 dimension.
 
 See also: `cumprod`, `sum`.

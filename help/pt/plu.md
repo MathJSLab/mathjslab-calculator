@@ -1,3 +1,3 @@
 * `plu(X)`
 
-Compute PLU decomposition of `X`.
+Calcula a decomposição PLU de `X`.

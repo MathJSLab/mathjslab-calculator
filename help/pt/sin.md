@@ -1,6 +1,6 @@
 * `Y = sin (X)`
 
-Compute the sine for each element of X in radians.
+Calcula o seno para cada elemento de `X` em radianos.
 
 Veja também: `asin`, `sind`, `sinh`.
 
@@ -10,5 +10,4 @@ Veja também: `asin`, `sind`, `sinh`.
 * https://octave.sourceforge.io/octave/function/sin.html
 * https://mathworld.wolfram.com/Sine.html
 * https://mathworld.wolfram.com/TrigonometricFunctions.html
-* https://en.wikipedia.org/wiki/Sine_and_cosine
-* https://en.wikipedia.org/wiki/Trigonometric_functions
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_trigonom%C3%A9trica

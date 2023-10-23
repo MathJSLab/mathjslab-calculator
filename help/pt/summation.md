@@ -1,6 +1,6 @@
 * `summation (function, variable)`
 
-Compute summation series.
+Computa somatório.
 
 ### Referências
 

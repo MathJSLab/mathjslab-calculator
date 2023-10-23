@@ -1,11 +1,11 @@
 * `C = mldivide (A, B)`
 
-Return the matrix left division of `A` and `B`.
+Retorna a divisão à esquerda da matriz de `A` e `B`.
 
-This function and `A \ B` are equivalent.
+Esta função e `A \ B` são equivalentes.
 
-If the system is not square, or if the coefficient matrix is
-singular, a minimum norm solution is computed.
+Se o sistema não for quadrado, ou se a matriz de coeficientes for
+singular, uma solução de norma mínima é calculada.
 
 Veja também: `mrdivide`, `ldivide`, `rdivide`, `linsolve`.
 

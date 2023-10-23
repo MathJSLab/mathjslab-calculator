@@ -1,16 +1,15 @@
 * `DEG = rad2deg (RAD)`
 
-Convert radians to degrees.
+Converte radianos em graus.
 
-The input `RAD` must be a scalar, vector, or N-dimensional array of
-double or single floating point values. `RAD` may be complex in
-which case the real and imaginary components are converted
-separately.
+A entrada `RAD` deve ser escalar ou matriz.
+`RAD` pode ser complexo, caso em que os componentes reais e imaginários serão convertidos
+separadamente.
 
-The output `DEG` is the same size and shape as `RAD` with radians
-converted to degrees using the conversion constant `180/pi`.
+A saída `DEG` tem as mesmas dimensões de `RAD` com radianos
+convertido em graus usando a constante de conversão `180/pi`.
 
-Example:
+Exemplo:
 
 >> `rad2deg ([0, pi/2, pi, 3/2*pi, 2*pi])`
 

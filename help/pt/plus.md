@@ -1,10 +1,10 @@
 * `C = plus(A, B)`
 * `C = plus (A1, A2, ...)`
 
-This function and `A + B` are equivalent.
+Esta função e `A + B` são equivalentes.
 
-If more arguments are given, the summation is applied cumulatively
-from left to right:
+Se mais argumentos forem fornecidos, a soma é aplicada cumulativamente
+da esquerda para a direita:
 
 `(...((A1 + A2) + A3) + ...)`
 
