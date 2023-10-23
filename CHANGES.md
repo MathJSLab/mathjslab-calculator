@@ -7,3 +7,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Translation of portuguese help completed.
 - `markdown` function.
 - Bug fix in aliasTable (remove some overlaps).
+- doc folder created with some markdown files for tests.
