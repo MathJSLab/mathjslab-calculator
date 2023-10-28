@@ -1,4 +1,4 @@
-# Testando funções e operações básicas
+% Testing basic operations and functions
 10^2
 (-10)^2
 2^2
@@ -28,13 +28,13 @@ factorial(5)
 factorial(13)
 factorial(21)
 factorial(22)
-factorial(5.4) # erro
+factorial(5.4) % error
 factorial(999999999999999)
 
 A()=2
 A
 A()
-A(1) # erro
+A(1) % error
 
 arg(0)
 arg(-0)

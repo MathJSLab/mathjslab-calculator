@@ -89,7 +89,7 @@ A(1,1)=100 % error
 A+B
 A+C
 A+D
-A+E #erro
+A+E % error
 A+F
 A+G
 A+H % error

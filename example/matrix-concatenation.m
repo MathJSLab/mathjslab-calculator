@@ -1,5 +1,5 @@
 clear
-# Matrices to concatenation
+% Matrices to concatenation
 A = [1,2,0;1,1,0;-1,4,0]
 B = [1,2,3;1,1,-1;2,2,2]
 C = [1,2,3;1,1,-1;1,1,1]
@@ -13,8 +13,8 @@ size(A)
 size(A,1)
 size(A,2)
 size(A,3)
-size(A,[1,2,3,4,5,6]) # test linearization
-size(A,[1,2,3;4,5,6]) # test linearization
+size(A,[1,2,3,4,5,6]) % test linearization
+size(A,[1,2,3;4,5,6]) % test linearization
 B=[7,8,9;10,11,12]
 size(B)
 C=[A,B]
@@ -34,5 +34,5 @@ P=O.'
 Q=O'
 R=P.'
 S=P'
-O=[1:4;A] # erro
-[1,2;3,4;6,6,7] # erro
+O=[1:4;A] % error
+[1,2;3,4;6,6,7] % error

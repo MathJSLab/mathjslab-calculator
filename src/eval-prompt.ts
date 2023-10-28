@@ -45,9 +45,9 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                     output.innerHTML +=
                         '<pre>' +
                         '<br /><br />Input   : ' +
-                        JSON.stringify(tree, null, 2) +
+                        JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) +
                         '<br /><br />Evaluate: ' +
-                        JSON.stringify(eval_input, null, 2) +
+                        JSON.stringify(eval_input, (key: string, value: any) => (key !== 'parent' ? value : true), 2) +
                         '<br /><br />Unparse Input   :' +
                         unparse_input +
                         '<br /><br />Unparse Evaluate:' +
@@ -58,12 +58,10 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
         }
     } catch (error) {
         box.className = 'bad';
-        output.innerHTML =
-            "<table><tr><td align='left'>" +
-            evaluator.UnparseML(tree) +
-            '</td></tr></table><br />' +
-            error +
-            (evaluator.debug ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, null, 2) + '</pre>' : '');
+        output.innerHTML = "<table><tr><td align='left'>" + evaluator.UnparseML(tree) + '</td></tr></table><br />' + error; // +
+        evaluator.debug
+            ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) + '</pre>'
+            : '';
         if (evaluator.debug) throw error;
     }
     MathMarkdown.typeset();

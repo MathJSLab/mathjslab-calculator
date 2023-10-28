@@ -53,10 +53,10 @@
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.8",
-    "mathjslab": "^1.1.17"
+    "mathjslab": "^1.1.18"
   },
   "devDependencies": {
-    "@types/node": "^20.8.7",
+    "@types/node": "^20.8.9",
     "@types/webpack": "^5.28.4",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "css-loader": "^6.8.1",

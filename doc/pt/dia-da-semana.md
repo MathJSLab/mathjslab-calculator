@@ -8,11 +8,17 @@ A grande questão no calendário, que motivou a criação dos calendários cada 
 
 Para elaborar um algoritmo que calcule o dia da semana algumas considerações históricas devem ser observadas. Em especial a consideração do início do ano na antiguidade. Desde a antiguidade tardia em Roma, o primeiro dia do ano era 1º de março. Por isso a regra do **ano bissexto** insere um dia no final de fevereiro, que era o último mês do ano.
 
-A regra antiga do ano bissexto, no calendário juliano, era que os anos divisíveis por 4 teriam um dia acrescentado ao final de fevereiro. Isso incluía 1 dia a cada 4 anos no calendário.
+A regra antiga, no calendário juliano, era
+
+> O ano é bissexto se é divisível por 4, e neste caso terá um dia acrescentado ao final de fevereiro.
+
+Isso incluía 1 dia a cada 4 anos no calendário.
 
 A regra do ano bissexto no atual calendário gregoriano é a seguinte:
 
-> O ano é bissexto se for divisível por 4, mas não se for dividido por 100, exceto se for divisível por 400, neste caso será bissexto. Isso inclui 97 dias a cada 400 anos.
+> O ano é bissexto se for divisível por 4, mas não se for dividido por 100, exceto se for divisível por 400, neste caso será bissexto.
+
+Isso inclui 97 dias a cada 400 anos.
 
 No calendário juliano o ano tem em média 365.25 dias. No calendário gregoriano o ano tem em média 365.2425 dias, que é mais próximo do valor do ano trópico. O valor do ano trópico varia lentamente ao longo do tempo (esta variação mínima não é considerada no calendário). No ano 2000 o ano trópico tinha em média 365.24219 dias.
 
