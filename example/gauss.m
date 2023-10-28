@@ -1,4 +1,4 @@
-# Testando função gauss
+% Testando função gauss
 A=[2,1,-3;-1,3,2;3,1,-3]
 X=[-1,12,0]
 gauss(A,X)

@@ -52,8 +52,8 @@
     "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calc.min.js"
   },
   "dependencies": {
-    "basic-dom-helper": "^1.0.8",
-    "mathjslab": "^1.1.18"
+    "basic-dom-helper": "file:../basic-dom-helper",
+    "mathjslab": "file:../mathjslab"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",

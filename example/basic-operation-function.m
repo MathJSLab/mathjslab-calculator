@@ -30,12 +30,12 @@ factorial(21)
 factorial(22)
 factorial(5.4) % error
 factorial(999999999999999)
-
+%
 A()=2
 A
 A()
 A(1) % error
-
+%
 arg(0)
 arg(-0)
 arg(0i)

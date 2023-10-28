@@ -85,7 +85,7 @@ Somente o mês de outubro resultou num número negativo. Vamos somar 7, resultan
 
 O resultado é:
 
-| Mês       | Dias | Acumulado | Resto Acumulado/7 | Índice ano | subtração | Resultado |
+| Mês       | Dias | Acumulado | Resto Acumulado/7 | Avanço ano | subtração | Resultado |
 | --------- | ---- | --------- | ----------------- | ---------- | --------- | --------- |
 | Janeiro   | 31   | 0         | 0                 | 0          |  0        | 0         |
 | Fevereiro | 28   | 31        | 3                 | 0          |  3        | 3         |
@@ -106,31 +106,33 @@ Com base nos resultados anteriores, vamos delinear o algoritmo para computar o d
 
 Considere a sequência
 
-MD = 0,3,2,5,0,3,5,1,4,6,2,4
+> `MD = 0,3,2,5,0,3,5,1,4,6,2,4`
 
 indexada de 1 a 12, representando o resultado anterior. Assim, por exemplo, MD[3] = 2, representando o avanço de dias da semana no início de março.
 
 Considere o ano na variável A, o mês na variável M e o dia na variável D. Os meses são indicados de 1 a 12.
 
-A = ano
-M = mês
-D = data
+> `A = ano`
+
+> `M = mês`
+
+> `D = data`
 
 Então fazemos:
 
-se M<3 então A = A - 1
+> `se M<3 então A = A - 1`
 
 Esta é a correção da passagem do ano em 1º de março.
 
 Então calculamos o número de dias acrescidos pelos anos bissextos:
 
-B = A/4 - A/100 + A/400
+> `B = A/4 - A/100 + A/400`
 
 Onde cada divisão resulta em inteiro.
 
 Para calcular um número (o resultado não é único) de dias na semana acrescidos na data atual fazemos
 
-T = A + B + MD[M] + D
+> `T = A + B + MD[M] + D`
 
 Tomamos o resto da divisão deste resultado por 7 e somamos 1. O resultado corresponde ao dia da semana, começando no domingo, contando de 1 a 7.
 

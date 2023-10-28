@@ -1,4 +1,4 @@
-# Testando substituição de letras gregas
+% Testando substituição de letras gregas
 alpha=1
 nalphax=1
 alphax=1
