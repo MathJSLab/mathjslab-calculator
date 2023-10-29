@@ -106,6 +106,13 @@ export abstract class MathMarkdown {
         return data;
     }
 
+    public static processMarkdownCode(markdown: string, language: string, processor: (input: string) => string): string {
+        const regexp: RegExp = new RegExp(`(\`\`\`${language}\*(\n|\r\n))([^\%]+)(\`\`\`(\n|\r\n))`, 'gm');
+        let replaced: boolean;
+
+        return processor(markdown);
+    }
+
     public static md2html(text: string): string {
         return marked.parse(MathMarkdown.replaceMath(text));
     }

@@ -383,7 +383,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                             }
                         })
                         .then((responseFile: string) => {
-                            promptSet.box.className = 'info';
+                            promptSet.box.className = 'doc';
                             promptSet.output.innerHTML = MathMarkdown.md2html(responseFile);
                             MathMarkdown.typeset();
                         })
