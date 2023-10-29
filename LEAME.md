@@ -6,11 +6,11 @@
 
 > Un intérprete con sintaxis de lenguaje como [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) escrito en [Typescript](https://www.typescriptlang.org/).
 
-Esta es una aplicación de demostración de [MathJSLab](https://www.npmjs.com/package/mathjslab) [paquete npm](https://en.wikipedia.org/wiki/Npm).
+Esta es una aplicación de demostración de [MathJSLab](https://www.npmjs.com/package/mathjslab) [paquete npm](https://es.wikipedia.org/wiki/Npm).
 
 Vea esta demostración alojada en [Netlify](https://mathjslab.netlify.app/).
 
-Obtenga una versión minimizada de un [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
+Obtenga una versión minimizada de un [CDN](https://es.wikipedia.org/wiki/Red_de_distribuci%C3%B3n_de_contenidos).
 Para insertar la calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) en una página web usando [jsDelivr CDN](https://www.jsdelivr.com/)
 copie el siguiente código HTML:
 
@@ -58,7 +58,7 @@ Otra opción es configurar para usar directamente desde
 Esta demostración también utiliza:
 
 * [MathJax](https://www.mathjax.org/), para navegadores sin soporte [MathML](https://www.w3.org/Math/).
-* [Marcado](https://www.npmjs.com/package/marked), para formatear archivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML).
+* [Marked](https://www.npmjs.com/package/marked), para formatear archivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/es/docs/Web/HTML).
 * [Chart.js](https://www.chartjs.org/), para generar gráficos e histogramas.
 
 ## Compilacion
