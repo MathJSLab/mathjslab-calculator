@@ -283,7 +283,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
     /**
      * Alias table
      */
-    aliasTable: languageAlias[lang],
+    aliasTable: languageAlias[global.lang],
 
     /**
      * External function table
@@ -538,7 +538,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         promptSet.output.innerHTML = 'help command unavailable <b>offline</b>.';
                     } else {
                         global
-                            .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
+                            .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${global.lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
                             .then((response) => {
                                 if (response.ok) {
                                     promptSet.box.className = 'info';
@@ -556,7 +556,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 } else if (args.length == 0) {
                     promptSet.box.className = 'info';
                     global
-                        .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${lang}/help.md`)
+                        .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${global.lang}/help.md`)
                         .then((response) => {
                             if (response.ok) {
                                 promptSet.box.className = 'info';

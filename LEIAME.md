@@ -11,7 +11,7 @@ Este é um aplicativo de demonstração do [pacote npm](https://pt.wikipedia.org
 Veja esta demonstração hospedada na [Netlify](https://mathjslab.netlify.app/).
 
 Obtenha uma versão reduzida através de [CDN](https://pt.wikipedia.org/wiki/Rede_de_fornecimento_de_conte%C3%BAdo).
-Para incorporar a calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) em uma página da web usando o [jsDelivr CDN](https://www.jsdelivr.com/)
+Para incorporar a calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) em uma página da web usando [CDN jsDelivr](https://www.jsdelivr.com/)
 copie o seguinte código HTML:
 
 ```html
@@ -33,7 +33,7 @@ copiar os diretórios `example` e `help` para a raiz da página web.
 
 Outra opção é configurar para usar diretamente do
 [repositório](https://github.com/sergiolindau/mathjslab-calculator) via
-[jsDelivr CDN](https://www.jsdelivr.com/) também, antes de carregar o script `mathjs-calculator.min.js` usando:
+[CDN jsDelivr](https://www.jsdelivr.com/) também, antes de carregar o script `mathjs-calculator.min.js` usando:
 
 ```html
 <head>

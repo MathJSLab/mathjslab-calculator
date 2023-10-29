@@ -6,12 +6,12 @@
 
 > Un intérprete con sintaxis de lenguaje como [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) escrito en [Typescript](https://www.typescriptlang.org/).
 
-Esta es una aplicación de demostración de [MathJSLab](https://www.npmjs.com/package/mathjslab) [paquete npm](https://es.wikipedia.org/wiki/Npm).
+Esta es una aplicación de demostración del [paquete npm](https://es.wikipedia.org/wiki/Npm) [MathJSLab](https://www.npmjs.com/package/mathjslab) .
 
 Vea esta demostración alojada en [Netlify](https://mathjslab.netlify.app/).
 
 Obtenga una versión minimizada de un [CDN](https://es.wikipedia.org/wiki/Red_de_distribuci%C3%B3n_de_contenidos).
-Para insertar la calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) en una página web usando [jsDelivr CDN](https://www.jsdelivr.com/)
+Para insertar la calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) en una página web usando [CDN jsDelivr](https://www.jsdelivr.com/)
 copie el siguiente código HTML:
 
 ```html
@@ -29,11 +29,11 @@ copie el siguiente código HTML:
 ```
 
 Para que los ejemplos y el comando `help` estén disponibles, es necesario
-Copie los directorios `example` y `help` a la raíz de la página web.
+copiar los directorios `example` y `help` a la raíz de la página web.
 
 Otra opción es configurar para usar directamente desde
 [repositorio](https://github.com/sergiolindau/mathjslab-calculator) vía
-[jsDelivr CDN](https://www.jsdelivr.com/) también antes de cargar `mathjs-calculator.min.js` script usando:
+[CDN jsDelivr](https://www.jsdelivr.com/) también antes de cargar `mathjs-calculator.min.js` script usando:
 
 ```html
 <head>
