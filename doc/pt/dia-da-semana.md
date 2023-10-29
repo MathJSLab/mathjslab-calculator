@@ -33,7 +33,7 @@ Assim, um algoritmo que calcule o dia da semana no calendário gregoriano deve c
 Iniciaremos considerando o número de *dias em cada mês* no ano e o número de *dias acumulados no início de cada mês* (num ano não bissexto).
 
 | Mês       | Dias | Acumulado |
-| :-------- | :--: | --------- |
+| --------- | ---- | --------- |
 | Janeiro   | 31   | 0         |
 | Fevereiro | 28   | 31        |
 | Março     | 31   | 59        |
@@ -50,7 +50,7 @@ Iniciaremos considerando o número de *dias em cada mês* no ano e o número de 
 Tomando o resto da divisão por 7 (o número de dias na semana) da coluna 'Acumulado' teremos o número de dias da semana "deslocados" no início de cada mês, ou seja, quantos dias a avançar no dia da semana do início do mês anterior para equivaler ao primeiro dia da semana do mês atual.
 
 | Mês       | Dias | Acumulado | Resto Acumulado/7 |
-| :-------- | :--: | --------- | ----------------- |
+| --------- | ---- | --------- | ----------------- |
 | Janeiro   | 31   | 0         | 0                 |
 | Fevereiro | 28   | 31        | 3                 |
 | Março     | 31   | 59        | 3                 |
@@ -67,7 +67,7 @@ Tomando o resto da divisão por 7 (o número de dias na semana) da coluna 'Acumu
 No caso de um ano (não bissexto) o avanço é de 1 dia no dia da semana pois o resto da divisão de 365 por 7 é 1. Considerando o antigo início do ano romano em 1º de março, vamos colocar uma coluna de dias a avançar no dia da semana pela passagem do ano. Por exemplo, considere que a tabela mostra a passagem de dois anos sucessivos. Vamos fazer isso para subtrair o avanço pelo ano do 'Resto Acumulado/7'.
 
 | Mês       | Dias | Acumulado | Resto Acumulado/7 | Avanço ano | Subtração |
-| :-------- | :--: | --------- | ----------------- | ---------- | --------- |
+| --------- | ---- | --------- | ----------------- | ---------- | --------- |
 | Janeiro   | 31   | 0         | 0                 | 0          |  0        |
 | Fevereiro | 28   | 31        | 3                 | 0          |  3        |
 | Março     | 31   | 59        | 3                 | 1          |  2        |
@@ -85,8 +85,8 @@ Somente o mês de outubro resultou num número negativo. Vamos somar 7, resultan
 
 O resultado é:
 
-| Mês       | Dias | Acumulado | Resto Acumulado/7 | Avanço ano | subtração | Resultado |
-| :-------- | :--: | --------- | ----------------- | ---------- | --------- | --------- |
+| Mês       | Dias | Acumulado | Resto Acumulado/7 | Avanço ano | Subtração | Resultado |
+| --------- | ---- | --------- | ----------------- | ---------- | --------- | --------- |
 | Janeiro   | 31   | 0         | 0                 | 0          |  0        | 0         |
 | Fevereiro | 28   | 31        | 3                 | 0          |  3        | 3         |
 | Março     | 31   | 59        | 3                 | 1          |  2        | 2         |
@@ -108,14 +108,12 @@ Considere a sequência
 
 > `MD = 0,3,2,5,0,3,5,1,4,6,2,4`
 
-indexada de 1 a 12, representando o resultado anterior. Assim, por exemplo, MD[3] = 2, representando o avanço de dias da semana no início de março.
+indexada de 1 a 12, representando o resultado anterior. Assim, por exemplo, `MD[8] = 1`, representando o avanço de dias da semana, em relação a 1º de janeiro, no início de agosto.
 
-Considere o ano na variável A, o mês na variável M e o dia na variável D. Os meses são indicados de 1 a 12.
+Considere o ano na variável `A`, o mês na variável `M` e o dia na variável `D`. Os meses, de janeiro a dezembro, são indicados de 1 a 12, como na squência `MD`.
 
 > `A = ano`
-
 > `M = mês`
-
 > `D = data`
 
 Então fazemos:
@@ -134,7 +132,7 @@ Para calcular um número (o resultado não é único) de dias na semana acrescid
 
 > `T = A + B + MD[M] + D`
 
-Tomamos o resto da divisão deste resultado por 7 e somamos 1. O resultado corresponde ao dia da semana, começando no domingo, contando de 1 a 7.
+Tomamos o resto da divisão deste resultado por 7 e somamos 1. O resultado corresponde ao dia da semana, contando de 1 a 7, começando no domingo.
 
 Este é o algoritmo mais simples conhecido para calcular o dia da semana no calendário gregoriano.
 
