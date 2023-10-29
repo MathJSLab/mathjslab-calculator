@@ -1,6 +1,6 @@
 {
   "name": "mathjslab-calculator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB®/Octave",
   "repository": {
     "type": "git",
@@ -49,7 +49,7 @@
     "build:prod": "set MODE_ENV=production && webpack --mode production",
     "postbuild:prod": "npm run bundle",
     "build": "npm run build:prod",
-    "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calc.min.js"
+    "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calculator.min.js"
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.8",

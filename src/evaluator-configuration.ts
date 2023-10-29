@@ -19,6 +19,8 @@ declare global {
     var MathJSLabCalcBuildMessage: string;
     /* eslint-disable-next-line  no-var */
     var compatibleFetch: Tfetch;
+    /* eslint-disable-next-line  no-var */
+    var lang: string;
 }
 global.compatibleFetch = $.fetch;
 
@@ -149,11 +151,56 @@ export const languageAlias: Record<string, TAliasNameTable> = {
         plot2d: /^gra(f(ico)?|ph?(ics?)?)?$/,
         histogram: /^hist(ogram(a)?)?$/,
     },
+    es: {
+        /* Number functions */
+        abs: /^abs(olute)?$/,
+        arg: /^arg(ument)?$|^angle$/,
+        sign: /^sign(al)?$|^sgn$/,
+        conj: /^conj(ugate)?$/,
+        sqrt: /^sq(uare)?r(oo)?t$/,
+        root: /^r(oo)?t$/,
+        power: /^pow(er)?$/,
+        exp: /^exp(onential)?$/,
+        log: /^ln$/,
+        log10: /^l((og)?arithm)10$/,
+        asin: /^a(rc)?sine?$/,
+        sin: /^sin$/,
+        acos: /^a(rc)?cos(ine)?$/,
+        cos: /^cos(ine)?$/,
+        atan: /^a(rc)?tan(gent)?$/,
+        tan: /^tan(gent)?$/,
+        asinh: /^a(rea)?sine?h(((yp)?erb)?olic)?$/,
+        sinh: /^sine?h(((yp)?erb)?olic)?$/,
+        acosh: /^a(rea)?cos(ine)?h(((yp)?erb)?olic)?$/,
+        cosh: /^cos(ine)?h(((yp)?erb)?olic)?$/,
+        atanh: /^a(rea)?tan(gent)?h(((yp)?erb)?olic)?$/,
+        tanh: /^tan(gent)?h(((yp)?erb)?olic)?$/,
+        factorial: /^fact(orial)?$/,
+        /* Matrix functions */
+        eye: /^ident(ity)?$/,
+        inv: /^inv(erse)?$/,
+        det: /^det(erminant)?$/,
+        trace: /^tr(ace)?$/,
+        ctranspose: /^trans(p((ose)?)?)?$/,
+        elem: /^elem(ent)?$/,
+        row: /^line?$/,
+        nrows: /^n(um)?lin(es)?$/,
+        col: /^col(umn)?$/,
+        ncols: /^n(um)?col(umn)?s$/,
+        adj: /^adj(oint)?$/,
+        lu: /^lu(dec(omp(osition)?)?)?$/,
+        plu: /^plu(dec(omp(osition)?)?)?$/,
+        min: /^min(imum)??!(us)$/,
+        max: /^max(imum)?$/,
+        /* Special functions */
+        plot2d: /^graph(ics?)?$/,
+        histogram: /^hist(ogram)?$/,
+    },
 };
 
-export let lang = navigator.language.split('-')[0];
-if (!(lang in languageAlias)) {
-    lang = global.MathJSLabCalc.defaultLanguage as string;
+global.lang = navigator.language.split('-')[0];
+if (!(global.lang in languageAlias)) {
+    global.lang = global.MathJSLabCalc.defaultLanguage as string;
 }
 
 declare const Chart: any;

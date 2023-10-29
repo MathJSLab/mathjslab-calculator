@@ -32,7 +32,7 @@ const config: webpack.Configuration = {
         },
     },
     output: {
-        filename: 'mathjslab-calc.js',
+        filename: 'mathjslab-calculator.js',
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [

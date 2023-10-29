@@ -1,6 +1,6 @@
 # A general proposal for an extension to the Markdown format aimed at educational purposes
 
-> Sergio Lindau
+> Sergio Lindau, october 2023
 
 Markdown is a plain text format for writing structured documents, based on conventions for indicating formatting in email and usenet posts. It was developed by John Gruber (with help from Aaron Swartz) and released in 2004 in the form of a syntax description and a Perl script (`Markdown.pl`) for converting Markdown to HTML.
 

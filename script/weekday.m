@@ -1,4 +1,5 @@
 % Name: weekday.m
+% Author: Sergio Lindau, license MIT.
 % Purpose: Calculate weekday for a given date.
 % preconditions: variable YEAR, MONTH and  DATE defined.
 t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]

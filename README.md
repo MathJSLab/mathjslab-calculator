@@ -8,7 +8,7 @@
 
 This is a demo application of [MathJSLab](https://www.npmjs.com/package/mathjslab) [npm package](https://en.wikipedia.org/wiki/Npm).
 
-See this demo powered by [Netlify](https://mathjslab.netlify.app/).
+See this demo hosted on [Netlify](https://mathjslab.netlify.app/).
 
 Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
 To embed [MathJSLab](https://www.npmjs.com/package/mathjslab) Calculator in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/)
@@ -17,13 +17,13 @@ copy the following HTML code:
 ```html
 <head>
     ...
-    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calc.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calculator.min.js"></script>
     ...
 </head>
 
 <body>
     ...
-    <div id="mathjslab-calc"></div>
+    <div id="mathjslab-calculator"></div>
     ...
 </body>
 ```
@@ -33,7 +33,7 @@ copy the `example` and `help` directories to the root of the web page.
 
 Another option is to configure to use assets directly from
 [repository](https://github.com/sergiolindau/mathjslab-calculator) via
-[jsDelivr CDN](https://www.jsdelivr.com/) too before load `mathjs-calc.min.js`
+[jsDelivr CDN](https://www.jsdelivr.com/) too before load `mathjs-calculator.min.js`
 script using:
 
 ```html
@@ -45,13 +45,13 @@ script using:
             helpBaseUrl: "https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/",
         }
     </script>
-    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calc.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calculator.min.js"></script>
     ...
 </head>
 
 <body>
     ...
-    <div id="mathjslab-calc"></div>
+    <div id="mathjslab-calculator"></div>
     ...
 </body>
 ```

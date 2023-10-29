@@ -6,7 +6,7 @@ export const inputLines: string[] = [];
 
 function bootstrap() {
     Shell.initialize({
-        containerId: 'mathjslab-calc',
+        containerId: 'mathjslab-calculator',
         evalPrompt,
         inputLines,
         batch: true,
