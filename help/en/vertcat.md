@@ -1,7 +1,6 @@
 * `A = vertcat (ARRAY1, ARRAY2, ..., ARRAYN)`
 
-Return the vertical concatenation of N-D array objects, ARRAY1,
-ARRAY2, ..., ARRAYN along dimension 1.
+Return the vertical concatenation of N-D array objects, `ARRAY1, ARRAY2, ..., ARRAYN` along dimension 1.
 
 Arrays may also be concatenated vertically using the syntax for
 creating new matrices.  For example:

@@ -1,6 +1,6 @@
 * `A = vertcat (ARRAY1, ARRAY2, ..., ARRAYN)`
 
-Devuelve la concatenación vertical de matrices `N`-dimensionales, ARRAY1, ARRAY2, ..., ARRYN a lo largo de la dimensión 1.
+Devuelve la concatenación vertical de matrices `N`-dimensionales, `ARRAY1, ARRAY2, ..., ARRAYN` a lo largo de la dimensión 1.
 
 Las matrices también se pueden concatenar verticalmente utilizando la sintaxis para crear nuevas matrices. Por ejemplo:
 
