@@ -2,7 +2,7 @@
  * Prompt Evaluator
  */
 import $ from 'basic-dom-helper';
-import { Evaluator, evaluator, insertOutput, outputFunction, MathMarkdown } from './evaluator-configuration';
+import { Evaluator, insertOutput, outputFunction, MathMarkdown } from './evaluator-configuration';
 
 /**
  * evalPrompt function
@@ -14,13 +14,13 @@ import { Evaluator, evaluator, insertOutput, outputFunction, MathMarkdown } from
 export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement): void {
     let tree: any;
     try {
-        tree = evaluator.Parse(input.value);
+        tree = global.EvaluatorPointer.Parse(input.value);
         if (tree) {
-            const unparse_input = evaluator.Unparse(tree);
-            const eval_input = evaluator.Evaluate(tree);
-            if (evaluator.exitStatus === Evaluator.response.OK) {
+            const unparse_input = global.EvaluatorPointer.Unparse(tree);
+            const eval_input = global.EvaluatorPointer.Evaluate(tree);
+            if (global.EvaluatorPointer.exitStatus === Evaluator.response.OK) {
                 box.className = 'good';
-                const unparse_eval_input = evaluator.Unparse(eval_input);
+                const unparse_eval_input = global.EvaluatorPointer.Unparse(eval_input);
                 if (unparse_input !== unparse_eval_input) {
                     const evalsign =
                         typeof tree.list[0].type === 'string' &&
@@ -29,19 +29,19 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                             : '=';
                     output.innerHTML =
                         '<table><tr><td>' +
-                        evaluator.UnparseML(tree) +
+                        global.EvaluatorPointer.UnparseML(tree) +
                         `</td><td><math xmlns = 'http://www.w3.org/1998/Math/MathML' display='block'><mo>${evalsign}</mo></math></td><td>` +
-                        evaluator.UnparseML(eval_input) +
+                        global.EvaluatorPointer.UnparseML(eval_input) +
                         '</td></tr></table>';
                 } else {
-                    output.innerHTML = '<table><tr><td>' + evaluator.UnparseML(tree) + '</td></tr></table>';
+                    output.innerHTML = '<table><tr><td>' + global.EvaluatorPointer.UnparseML(tree) + '</td></tr></table>';
                 }
                 if (insertOutput.type !== '') {
                     const uid = $.uid();
                     $.create('div', output, 'o' + uid);
                     outputFunction[insertOutput.type]('o' + uid);
                 }
-                if (evaluator.debug) {
+                if (global.EvaluatorPointer.debug) {
                     output.innerHTML +=
                         '<pre>' +
                         '<br /><br />Input   : ' +
@@ -58,11 +58,15 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
         }
     } catch (error) {
         box.className = 'bad';
-        output.innerHTML = "<table><tr><td align='left'>" + evaluator.UnparseML(tree) + '</td></tr></table><br />' + error; // +
-        evaluator.debug
-            ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) + '</pre>'
-            : '';
-        if (evaluator.debug) throw error;
+        output.innerHTML =
+            "<table><tr><td align='left'>" +
+            global.EvaluatorPointer.UnparseML(tree) +
+            '</td></tr></table><br />' +
+            error +
+            global.EvaluatorPointer.debug
+                ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) + '</pre>'
+                : '';
+        if (global.EvaluatorPointer.debug) throw error;
     }
     MathMarkdown.typeset();
 }

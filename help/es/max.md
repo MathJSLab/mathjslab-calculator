@@ -36,7 +36,7 @@ comparar. Si las magnitudes son idénticas, los resultados se ordenan por
 
 >> `max ([-1 i 1 -i])`
 
->> $$-1$$
+>> %%-1%%
 
 porque todas las entradas tienen magnitud 1, pero -1 tiene el ángulo de
 fase más grande con valor pi.

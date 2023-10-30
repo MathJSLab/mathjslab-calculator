@@ -7,7 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="An interpreter with language syntax like MATLAB®/Octave" />
     <meta name="author" content="Sergio Lindau" />
-    <meta name="keywords" content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,grammar,yacc,bison,lex,flex,jison" />
+    <meta name="keywords"
+        content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,grammar,yacc,bison,lex,flex,jison" />
     <meta name="robots" content="index,follow">
     <script>
         function loadText() {
@@ -32,34 +33,45 @@
                     });
             }
             document.getElementById('title').innerHTML = {
-                    en: '<a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> Calculator',
-                    es: 'Calculadora <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a>',
-                    pt: 'Calculadora <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a>',
-                }[window.lang];
+                en: '<a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> Calculator',
+                es: 'Calculadora <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a>',
+                pt: 'Calculadora <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a>',
+            }[window.lang];
             document.getElementById('abstract').innerHTML = {
-                    en: 'This is a demo application of the <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> <a href="https://en.wikipedia.org/wiki/Npm" target="_blank">npm package</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank">repository</a>), an emulator of a subset of the <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> language written completely in <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. This application is intended for educational purposes. See the <a href="#notes">notes</a> below for detailed information.',
-                    es: 'Esta es una aplicación de demostración del <a href="https://es.wikipedia.org/wiki/Npm" target="_blank">paquete npm</a> <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank">repositorio</a>), un emulador de un subconjunto del lenguaje <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> escrito completamente en <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. Esta aplicación está destinada a fines educativos. Consulte las <a href="#notes">notas</a> a continuación para obtener información detallada.',
-                    pt: 'Este é um aplicativo de demonstação do <a href="https://pt.wikipedia.org/wiki/Npm_(software)" target="_blank">pacote npm</a> <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank">repositório</a>), um emulador de um subconjunto da linguagem <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> escrito completamente em <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. Este aplicativo é destinado a fins educacionais. Consulte as <a href="#notes">notas</a> abaixo para obter informações detalhadas.',
-                }[window.lang];
+                en: 'This is a demo application of the <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> <a href="https://en.wikipedia.org/wiki/Npm" target="_blank">npm package</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank">repository</a>), an emulator of a subset of the <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> language written completely in <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. This application is intended for educational purposes. See the <a href="#notes">notes</a> below for detailed information.',
+                es: 'Esta es una aplicación de demostración del <a href="https://es.wikipedia.org/wiki/Npm" target="_blank">paquete npm</a> <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank">repositorio</a>), un emulador de un subconjunto del lenguaje <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> escrito completamente en <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. Esta aplicación está destinada a fines educativos. Consulte las <a href="#notes">notas</a> a continuación para obtener información detallada.',
+                pt: 'Este é um aplicativo de demonstação do <a href="https://pt.wikipedia.org/wiki/Npm_(software)" target="_blank">pacote npm</a> <a href="https://www.npmjs.com/package/mathjslab" target="_blank">MathJSLab</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank">repositório</a>), um emulador de um subconjunto da linguagem <a href="https://www.mathworks.com/" target="_blank">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank">Octave</a> escrito completamente em <a href="https://www.typescriptlang.org/" target="_blank">Typescript</a>. Este aplicativo é destinado a fins educacionais. Consulte as <a href="#notes">notas</a> abaixo para obter informações detalhadas.',
+            }[window.lang];
             document.getElementById('github-repository').innerHTML = {
-                    en: 'GitHub Repository',
-                    es: 'Repositorio GitHub',
-                    pt: 'Repositório GitHub',
-                }[window.lang];
+                en: 'GitHub Repository',
+                es: 'Repositorio GitHub',
+                pt: 'Repositório GitHub',
+            }[window.lang];
             document.getElementById('curriculum').innerHTML = {
-                    en: 'Curriculum',
-                    es: 'Currículum',
-                    pt: 'Currículo Lattes',
-                }[window.lang];
+                en: 'Curriculum',
+                es: 'Currículum',
+                pt: 'Currículo Lattes',
+            }[window.lang];
         }
     </script>
 </head>
 
-<body onload="javascript:loadText()">
+<body onload="javascript:loadText();document.getElementById('language').value=window.lang;">
 
     <h1 id="title" align="center"></h1>
 
     <p id="abstract"></p>
+
+    <div align="right">
+        <div class="good" style="width:6em;" align="center">
+            <select id="language"
+                onchange="javascript:window.setLanguage(document.getElementById('language').value);loadText();">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+    </div>
 
     <div id="mathjslab-calculator"></div>
 
@@ -67,7 +79,8 @@
 
     <hr />
 
-    <a id="notes"></a><div id="readme"></div>
+    <a id="notes"></a>
+    <div id="readme"></div>
 
     <p align="center">
         <a title="GitHub repository" href="https://github.com/sergiolindau/mathjslab-calculator" target="_blank">
@@ -77,10 +90,14 @@
                 </path>
             </svg>
             <span id="github-repository"></span>
-    </a>
+        </a>
     </p>
 
-    <p align="center">&copy; 2016 &mdash; <script>document.write((new Date()).getFullYear())</script> <a href="mailto:sergiolindau@gmail.com" target="_blank">Sergio Lindau</a> (<a href="http://lattes.cnpq.br/3843370693067429" target="_blank"><span id="curriculum"></span></a>)</p>
+    <p align="center">&copy; 2016 &mdash;
+        <script>document.write((new Date()).getFullYear())</script> <a href="mailto:sergiolindau@gmail.com"
+            target="_blank">Sergio Lindau</a> (<a href="http://lattes.cnpq.br/3843370693067429" target="_blank"><span
+                id="curriculum"></span></a>)
+    </p>
 </body>
 
 </html>

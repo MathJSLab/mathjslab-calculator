@@ -104,7 +104,6 @@ help ones
 help or
 help pivot
 help plot2d
-help plu
 help plus
 help power
 help prod

@@ -6,6 +6,8 @@ The difference between the methods lies in which elements of an array are contig
 
 ![Row- and column-major order](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Row_and_column_major_order.svg/180px-Row_and_column_major_order.svg.png "Row- and column-major order")
 
+%%summation(m,1,s,(i(m)-1)*productory(n,1,m-1,d(n)))%%
+
 ## References
 
 * [Wikipedia: Row- and column-major order](https://en.wikipedia.org/wiki/Row-_and_column-major_order)

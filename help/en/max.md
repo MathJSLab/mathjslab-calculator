@@ -36,7 +36,7 @@ ordered by phase angle in the range (-pi, pi].  Hence,
 
 >> `max ([-1 i 1 -i])`
 
->> $$-1$$
+>> %%-1%%
 
 because all entries have magnitude 1, but -1 has the largest phase
 angle with value pi.

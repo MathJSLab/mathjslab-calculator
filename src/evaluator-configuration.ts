@@ -21,38 +21,58 @@ declare global {
     var compatibleFetch: Tfetch;
     /* eslint-disable-next-line  no-var */
     var lang: string;
+    /* eslint-disable-next-line  no-var */
+    var setLanguage: (lang?: string) => void;
 }
 global.compatibleFetch = $.fetch;
 
-export const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-if (typeof global.MathJSLabCalc === 'undefined') {
-    global.MathJSLabCalc = {
-        exampleBaseUrl: baseUrl,
-        helpBaseUrl: baseUrl,
-        defaultLanguage: 'en',
-    };
-} else {
-    if (global.MathJSLabCalc.exampleBaseUrl !== undefined || global.MathJSLabCalc.exampleBaseUrl !== null) {
-        if (global.MathJSLabCalc.exampleBaseUrl![global.MathJSLabCalc.exampleBaseUrl!.length - 1] !== '/') {
-            global.MathJSLabCalc.exampleBaseUrl += '/';
-        }
-    } else {
-        global.MathJSLabCalc.exampleBaseUrl = baseUrl;
-    }
-    if (global.MathJSLabCalc.helpBaseUrl !== undefined || global.MathJSLabCalc.helpBaseUrl !== null) {
-        if (global.MathJSLabCalc.helpBaseUrl![global.MathJSLabCalc.helpBaseUrl!.length - 1] !== '/') {
-            global.MathJSLabCalc.helpBaseUrl += '/';
-        }
-    } else {
-        global.MathJSLabCalc.helpBaseUrl = baseUrl;
-    }
-    if (global.MathJSLabCalc.defaultLanguage === undefined || global.MathJSLabCalc.defaultLanguage === null) {
-        global.MathJSLabCalc.defaultLanguage = 'en';
-    }
-}
-
 export const languageAlias: Record<string, TAliasNameTable> = {
     en: {
+        /* Number functions */
+        abs: /^abs(olute)?$/,
+        arg: /^arg(ument)?$|^angle$/,
+        sign: /^sign(al)?$|^sgn$/,
+        conj: /^conj(ugate)?$/,
+        sqrt: /^sq(uare)?r(oo)?t$/,
+        root: /^r(oo)?t$/,
+        power: /^pow(er)?$/,
+        exp: /^exp(onential)?$/,
+        log: /^ln$/,
+        log10: /^l((og)?arithm)10$/,
+        asin: /^a(rc)?sine?$/,
+        sin: /^sin$/,
+        acos: /^a(rc)?cos(ine)?$/,
+        cos: /^cos(ine)?$/,
+        atan: /^a(rc)?tan(gent)?$/,
+        tan: /^tan(gent)?$/,
+        asinh: /^a(rea)?sine?h(((yp)?erb)?olic)?$/,
+        sinh: /^sine?h(((yp)?erb)?olic)?$/,
+        acosh: /^a(rea)?cos(ine)?h(((yp)?erb)?olic)?$/,
+        cosh: /^cos(ine)?h(((yp)?erb)?olic)?$/,
+        atanh: /^a(rea)?tan(gent)?h(((yp)?erb)?olic)?$/,
+        tanh: /^tan(gent)?h(((yp)?erb)?olic)?$/,
+        factorial: /^fact(orial)?$/,
+        /* Matrix functions */
+        eye: /^ident(ity)?$/,
+        inv: /^inv(erse)?$/,
+        det: /^det(erminant)?$/,
+        trace: /^tr(ace)?$/,
+        ctranspose: /^trans(p((ose)?)?)?$/,
+        elem: /^elem(ent)?$/,
+        row: /^line?$/,
+        nrows: /^n(um)?lin(es)?$/,
+        col: /^col(umn)?$/,
+        ncols: /^n(um)?col(umn)?s$/,
+        adj: /^adj(oint)?$/,
+        lu: /^lu(dec(omp(osition)?)?)?$/,
+        plu: /^plu(dec(omp(osition)?)?)?$/,
+        min: /^min(imum)??!(us)$/,
+        max: /^max(imum)?$/,
+        /* Special functions */
+        plot2d: /^graph(ics?)?$/,
+        histogram: /^hist(ogram)?$/,
+    },
+    es: {
         /* Number functions */
         abs: /^abs(olute)?$/,
         arg: /^arg(ument)?$|^angle$/,
@@ -151,57 +171,7 @@ export const languageAlias: Record<string, TAliasNameTable> = {
         plot2d: /^gra(f(ico)?|ph?(ics?)?)?$/,
         histogram: /^hist(ogram(a)?)?$/,
     },
-    es: {
-        /* Number functions */
-        abs: /^abs(olute)?$/,
-        arg: /^arg(ument)?$|^angle$/,
-        sign: /^sign(al)?$|^sgn$/,
-        conj: /^conj(ugate)?$/,
-        sqrt: /^sq(uare)?r(oo)?t$/,
-        root: /^r(oo)?t$/,
-        power: /^pow(er)?$/,
-        exp: /^exp(onential)?$/,
-        log: /^ln$/,
-        log10: /^l((og)?arithm)10$/,
-        asin: /^a(rc)?sine?$/,
-        sin: /^sin$/,
-        acos: /^a(rc)?cos(ine)?$/,
-        cos: /^cos(ine)?$/,
-        atan: /^a(rc)?tan(gent)?$/,
-        tan: /^tan(gent)?$/,
-        asinh: /^a(rea)?sine?h(((yp)?erb)?olic)?$/,
-        sinh: /^sine?h(((yp)?erb)?olic)?$/,
-        acosh: /^a(rea)?cos(ine)?h(((yp)?erb)?olic)?$/,
-        cosh: /^cos(ine)?h(((yp)?erb)?olic)?$/,
-        atanh: /^a(rea)?tan(gent)?h(((yp)?erb)?olic)?$/,
-        tanh: /^tan(gent)?h(((yp)?erb)?olic)?$/,
-        factorial: /^fact(orial)?$/,
-        /* Matrix functions */
-        eye: /^ident(ity)?$/,
-        inv: /^inv(erse)?$/,
-        det: /^det(erminant)?$/,
-        trace: /^tr(ace)?$/,
-        ctranspose: /^trans(p((ose)?)?)?$/,
-        elem: /^elem(ent)?$/,
-        row: /^line?$/,
-        nrows: /^n(um)?lin(es)?$/,
-        col: /^col(umn)?$/,
-        ncols: /^n(um)?col(umn)?s$/,
-        adj: /^adj(oint)?$/,
-        lu: /^lu(dec(omp(osition)?)?)?$/,
-        plu: /^plu(dec(omp(osition)?)?)?$/,
-        min: /^min(imum)??!(us)$/,
-        max: /^max(imum)?$/,
-        /* Special functions */
-        plot2d: /^graph(ics?)?$/,
-        histogram: /^hist(ogram)?$/,
-    },
 };
-
-global.lang = navigator.language.split('-')[0];
-if (!(global.lang in languageAlias)) {
-    global.lang = global.MathJSLabCalc.defaultLanguage as string;
-}
 
 declare const Chart: any;
 
@@ -474,9 +444,9 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                                 for (lineno = 0; lineno < lines.length; lineno++) {
                                     try {
                                         if (lines[lineno].trim()) {
-                                            const tree = evaluator.Parse(lines[lineno]);
+                                            const tree = global.EvaluatorPointer.Parse(lines[lineno]);
                                             if (tree) {
-                                                evaluator.Evaluate(tree);
+                                                global.EvaluatorPointer.Evaluate(tree);
                                             }
                                         }
                                     } catch (e) {
@@ -594,11 +564,61 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
     },
 };
 
+import buildConfiguration from './build-configuration.json';
+
+/**
+ * To change the language after load (to be used in a language selection menu, for example).
+ * @param lang
+ */
+global.setLanguage = (lang?: string) => {
+    if (lang) {
+        global.lang = lang in languageAlias ? lang : (MathJSLabCalc.defaultLanguage as string);
+    }
+    global.ShellPointer.setLanguage();
+    EvaluatorConfiguration.aliasTable = languageAlias[global.lang];
+    const evaluator = Evaluator.initialize(EvaluatorConfiguration);
+    evaluator.debug = buildConfiguration.debug;
+    global.ShellPointer.batchExec(new Event('click'));
+};
+
 /**
  * Evaluator and MathMarkdown initialization.
  */
-export const evaluator = Evaluator.initialize(EvaluatorConfiguration);
-import buildConfiguration from './build-configuration.json';
-evaluator.debug = buildConfiguration.debug;
-global.MathJSLabCalcBuildMessage = buildConfiguration.buildMessage;
-MathMarkdown.initialize();
+function bootstrap() {
+    const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+    if (typeof global.MathJSLabCalc === 'undefined') {
+        global.MathJSLabCalc = {
+            exampleBaseUrl: baseUrl,
+            helpBaseUrl: baseUrl,
+            defaultLanguage: 'en',
+        };
+    } else {
+        if (global.MathJSLabCalc.exampleBaseUrl !== undefined || global.MathJSLabCalc.exampleBaseUrl !== null) {
+            if (global.MathJSLabCalc.exampleBaseUrl![global.MathJSLabCalc.exampleBaseUrl!.length - 1] !== '/') {
+                global.MathJSLabCalc.exampleBaseUrl += '/';
+            }
+        } else {
+            global.MathJSLabCalc.exampleBaseUrl = baseUrl;
+        }
+        if (global.MathJSLabCalc.helpBaseUrl !== undefined || global.MathJSLabCalc.helpBaseUrl !== null) {
+            if (global.MathJSLabCalc.helpBaseUrl![global.MathJSLabCalc.helpBaseUrl!.length - 1] !== '/') {
+                global.MathJSLabCalc.helpBaseUrl += '/';
+            }
+        } else {
+            global.MathJSLabCalc.helpBaseUrl = baseUrl;
+        }
+        if (global.MathJSLabCalc.defaultLanguage === undefined || global.MathJSLabCalc.defaultLanguage === null) {
+            global.MathJSLabCalc.defaultLanguage = 'en';
+        }
+    }
+    global.lang = navigator.language.split('-')[0];
+    if (!(global.lang in languageAlias)) {
+        global.lang = global.MathJSLabCalc.defaultLanguage as string;
+    }
+    EvaluatorConfiguration.aliasTable = languageAlias[global.lang];
+    const evaluator = Evaluator.initialize(EvaluatorConfiguration);
+    evaluator.debug = buildConfiguration.debug;
+    global.MathJSLabCalcBuildMessage = buildConfiguration.buildMessage;
+    MathMarkdown.initialize();
+}
+bootstrap();

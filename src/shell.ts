@@ -54,11 +54,14 @@ export class Shell {
     baseUrl: string;
     isFileProtocol: boolean;
     isTouchCapable: boolean;
+    options: ShellOptions;
     examples: Record<string, ExampleEntry>;
     examplesAvailable: boolean;
+    examplesHeading: HTMLHeadingElement;
     container: HTMLDivElement;
     shell: HTMLDivElement;
     variables: HTMLDivElement;
+    variablesHeading: HTMLHeadingElement;
     nameTable: HTMLDivElement;
     nameList: HTMLUListElement;
     evalPrompt: EvalPromptHandler;
@@ -83,7 +86,11 @@ export class Shell {
 
     public static async initialize(options: ShellOptions): Promise<Shell> {
         const shell = new Shell();
+        shell.options = options;
         shell.container = $.i(options.containerId) as HTMLDivElement;
+        while (shell.container.firstChild) {
+            shell.container.removeChild(shell.container.firstChild);
+        }
         shell.container.className = 'container';
         if (options.evalPrompt) {
             shell.evalPrompt = options.evalPrompt;
@@ -115,13 +122,8 @@ export class Shell {
                 });
         }
         shell.variables = $.create('div', shell.container, 'variables_' + options.containerId, 'variables');
-        const variable_head = $.create('h2', shell.variables);
-        variable_head.innerHTML = {
-            en: 'Variables',
-            es: 'Variables',
-            pt: 'Variáveis',
-        }[global.lang] as string;
-        variable_head.setAttribute('align', 'center');
+        shell.variablesHeading = $.create('h2', shell.variables);
+        shell.variablesHeading.setAttribute('align', 'center');
         const setVariablesPanel = () => {
             let Y = window.scrollY - shell.container.offsetTop + window.innerHeight * 0.025;
             const maxY = shell.container.offsetHeight - shell.variables.offsetHeight;
@@ -150,11 +152,6 @@ export class Shell {
         shell.batchInput.focus();
         shell.batchInput.select();
         shell.batchButton = $.create('button', shell.batchBox, 'batchbutton_', 'inputbutton');
-        shell.batchButton.innerHTML = {
-            en: 'Evaluate',
-            es: 'Computar',
-            pt: 'Computar',
-        }[global.lang] as string;
         (shell.batchButton as any).style = 'width:calc(100% - 3em);height:50px';
         $.addEventListener(shell.batchButton, 'click', shell.batchExec);
         $.addEventListener(shell.batchInput, 'focus', shell.batchFocus);
@@ -169,9 +166,54 @@ export class Shell {
         shell.promptIndex = -1;
         shell.updateBatch();
         shell.batchResize();
-        shell.loadExamples();
+        if (shell.isFileProtocol || !shell.examplesAvailable) {
+            global.ShellPointer.batchInput.value = firstExample.content;
+            global.ShellPointer.batchExec(new Event('click'));
+        } else {
+            shell.examplesHeading = $.create('h2', shell.examplesContainer);
+            let first = true;
+            for (const example in shell.examples) {
+                const button = $.create('button', shell.examplesContainer, 'example-' + example);
+                button.innerHTML = shell.examples[example].caption;
+                $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
+                    const exampleId = (event.target as any).id.substring(8);
+                    const response = await global.compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${shell.examples[exampleId].file}`);
+                    if (!response.ok) {
+                        throw new Error('Network response error.');
+                    }
+                    global.ShellPointer.batchInput.value = await response.text();
+                    global.ShellPointer.batchExec(event);
+                });
+                if (first) {
+                    button.click();
+                    first = false;
+                }
+            }
+        }
+        shell.setLanguage();
         shell.promptAppend();
         return shell;
+    }
+
+    public setLanguage(lang?: string) {
+        if (lang) {
+            global.lang = lang;
+        }
+        this.variablesHeading.innerHTML = {
+            en: 'Variables',
+            es: 'Variables',
+            pt: 'Variáveis',
+        }[global.lang] as string;
+        this.batchButton.innerHTML = {
+            en: 'Evaluate',
+            es: 'Computar',
+            pt: 'Computar',
+        }[global.lang] as string;
+        this.examplesHeading.innerHTML = {
+            en: 'Examples',
+            es: 'Ejemplos',
+            pt: 'Exemplos',
+        }[global.lang] as string;
     }
 
     public get currentPromptSet(): PromptEntry {
@@ -259,38 +301,6 @@ export class Shell {
             }
             this.batchResize();
             this.promptSet[this.promptUid[0]].input.focus();
-        }
-    }
-
-    public loadExamples(): void {
-        if (this.isFileProtocol || !this.examplesAvailable) {
-            global.ShellPointer.batchInput.value = firstExample.content;
-            global.ShellPointer.batchExec(new Event('click'));
-        } else {
-            const examplesHeading = $.create('h2', this.examplesContainer);
-            examplesHeading.innerHTML = {
-                en: 'Examples',
-                es: 'Ejemplos',
-                pt: 'Exemplos',
-            }[global.lang] as string;
-            let first = true;
-            for (const example in this.examples) {
-                const button = $.create('button', this.examplesContainer, 'example-' + example);
-                button.innerHTML = this.examples[example].caption;
-                $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
-                    const exampleId = (event.target as any).id.substring(8);
-                    const response = await global.compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${this.examples[exampleId].file}`);
-                    if (!response.ok) {
-                        throw new Error('Network response error.');
-                    }
-                    global.ShellPointer.batchInput.value = await response.text();
-                    global.ShellPointer.batchExec(event);
-                });
-                if (first) {
-                    button.click();
-                    first = false;
-                }
-            }
         }
     }
 

@@ -4,7 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.1.1
 - Translations of README.md file to portuguese LEIAME.md an spanish LEAME.md
-- Multiple languages in `custom.html` file.
+- Multiple languages and menu of selection.
+- bootstrap function in evaluator-configuration.ts file.
 
 ## 1.1.0
 - Project launch.
