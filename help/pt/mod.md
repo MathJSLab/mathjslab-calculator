@@ -2,7 +2,7 @@
 
 Calcula o módulo de `X` e `Y`.
 
-Conceitualmente isso é dado por
+Conceitualmente o módulo é definido por
 
 >> `x - y .* floor (x ./ y)`
 

@@ -32,7 +32,7 @@ Example 2: number of elements in 2nd dimension (columns)
 
 >> %%2%%
 
-Example 3: number of output arguments == number of dimensions
+Example 3: number of output arguments `==` number of dimensions
 
 >> `[nr, nc] = size ([1, 2; 3, 4; 5, 6])`
 
@@ -40,7 +40,7 @@ Example 3: number of output arguments == number of dimensions
 
 >> %%nc = 2%%
 
-Example 4: number of output arguments < number of dimensions
+Example 4: number of output arguments `<` number of dimensions
 
 >> `[nr, remainder] = size (ones (2, 3, 4, 5))`
 

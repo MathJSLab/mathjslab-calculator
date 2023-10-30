@@ -1,6 +1,6 @@
 * `Y = cotd (X)`
 
-Calcula a cotangente para cada elemento de `X` em graus.
+Calcula a cotangente em graus para cada elemento de `X`.
 
 A cotangente em graus é definida por
 

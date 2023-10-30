@@ -26,8 +26,8 @@ A matriz esquerda contém as tuplas subscritas para cada matriz
 elemento. A matriz direita mostra os índices lineares para o mesmo
 matriz.
 
-O exemplo a seguir mostra como converter o bidimensional
-índices `(2,1)` e `(2,3)` de uma matriz 3 por 3 para índices lineares
+O exemplo a seguir mostra como converter os índices bidimensionais
+`(2,1)` e `(2,3)` de uma matriz 3 por 3 para índices lineares
 com uma única chamada para `sub2ind`.
 
 >> `s1 = [2, 2]`

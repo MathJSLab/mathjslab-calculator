@@ -1,6 +1,6 @@
 * `Y = atand (X)`
 
-CalculA a tangente inversa em graus para cada elemento de `X`.
+Calcula a tangente inversa em graus para cada elemento de `X`.
 
 A tangente inversa em graus é definida por
 

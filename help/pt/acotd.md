@@ -2,7 +2,7 @@
 
 Calcula a cotangente inversa em graus para cada elemento de `X`.
 
-A cotangente inversa é definido por
+A cotangente inversa em graus é definida por
 
 >> %%acotd(z) = rad2deg(acot(z))%%
 

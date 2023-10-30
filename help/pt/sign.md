@@ -1,8 +1,8 @@
 * `Y = sign (X)`
 
-Calcule a função "signum".
+Calcula a função sinal.
 
-A função `sign` é definida por
+A função sinal é definida por
 
 >> %%sign (x) =  x ./ abs (X)%%
 

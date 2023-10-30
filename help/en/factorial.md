@@ -11,7 +11,7 @@ Note that the factorial function grows large quite quickly, and
 even with double precision values overflow will occur if `N > 171`.
 For such cases consider `gammaln`.
 
-See also: `prod`, `gamma`, `gammaln`.
+See also: `prod`, `gamma`, `gammainc`, `gammaln`.
 
 ### References
 

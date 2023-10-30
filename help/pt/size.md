@@ -31,7 +31,7 @@ Exemplo 2: número de elementos na 2ª dimensão (colunas)
 
 >> %%2%%
 
-Exemplo 3: número de argumentos de saída == número de dimensões
+Exemplo 3: número de argumentos de saída `==` número de dimensões
 
 >> `[nr, nc] = size ([1, 2; 3, 4; 5, 6])`
 
@@ -39,7 +39,7 @@ Exemplo 3: número de argumentos de saída == número de dimensões
 
 >> %%nc = 2%%
 
-Exemplo 4: número de argumentos de saída < número de dimensões
+Exemplo 4: número de argumentos de saída `<` número de dimensões
 
 >> `[nr, remainder] = size (ones (2, 3, 4, 5))`
 

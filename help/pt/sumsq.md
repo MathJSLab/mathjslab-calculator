@@ -12,3 +12,8 @@ Esta função é conceitualmente equivalente à
 mas usa menos memória e evita chamar '`conj`' se `X` for real.
 
 Veja também: `sum`, `prod`.
+
+### Referências
+
+* https://www.mathworks.com/help/matlab/ref/sumsq.html
+* https://octave.sourceforge.io/octave/function/sumsq.html

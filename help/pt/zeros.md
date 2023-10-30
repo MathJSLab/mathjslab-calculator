@@ -5,7 +5,7 @@
 
 Retorna uma matriz N-dimensional cujos elementos são todos 0 (matriz nula).
 
-Se invocado com um único argumento inteiro escalar, retorna umamatriz quadrada `N x N`.
+Se invocado com um único argumento inteiro escalar, retorna uma matriz quadrada `N x N`.
 
 Se invocado com dois ou mais argumentos inteiros escalares ou um vetor
 de valores inteiros, retorne uma matriz com as dimensões fornecidas.

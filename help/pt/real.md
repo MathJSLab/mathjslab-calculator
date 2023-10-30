@@ -1,4 +1,4 @@
-* `X = real (Z)``
+* `X = real (Z)`
 
 Retorna a parte real de `Z`.
 

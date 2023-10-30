@@ -57,4 +57,4 @@ Veja também: `max`, `cummin`, `cummax`.
 * https://www.mathworks.com/help/matlab/ref/min.html
 * https://octave.sourceforge.io/octave/function/min.html
 * https://mathworld.wolfram.com/Minimum.html
-* https://en.wikipedia.org/wiki/Maximum_and_minimum
+* https://pt.wikipedia.org/wiki/Pontos_extremos_de_uma_fun%C3%A7%C3%A3o

@@ -18,4 +18,4 @@ Veja também: `gammainc`, `gammaln`, `factorial`.
 * https://www.mathworks.com/help/matlab/ref/gamma.html
 * https://octave.sourceforge.io/octave/function/gamma.html
 * https://mathworld.wolfram.com/GammaFunction.html
-* https://en.wikipedia.org/wiki/Gamma_function
+* https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_gama

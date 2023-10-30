@@ -1,6 +1,6 @@
 * `C = mldivide (A, B)`
 
-Retorna a divisão à esquerda da matriz de `A` e `B`.
+Retorna a divisão à esquerda entre as matrizes `A` e `B`.
 
 Esta função e `A \ B` são equivalentes.
 

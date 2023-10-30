@@ -9,6 +9,8 @@ Para argumentos não inteiros, consulte a função fatorial generalizada `gamma`
 Observe que a função fatorial cresce muito rapidamente e o estouro ocorrerá se `N > 171`.
 Para tais casos, considere `gammaln`.
 
+Veja também: `prod`, `gamma`, `gammainc`, `gammaln`.
+
 ### Referências
 
 * https://www.mathworks.com/help/matlab/ref/factorial.html

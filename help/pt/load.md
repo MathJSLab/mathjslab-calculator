@@ -2,4 +2,4 @@
 
 Carrega arquivos de URLs (absolutas ou relativas) e executa de maneira assíncrona.
 
-veja também: `markdown`.
+Veja também: `markdown`.

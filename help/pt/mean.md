@@ -5,7 +5,7 @@
 
 Calcula a média dos elementos de `X`.
 
-* Se X for um vetor, então `mean (X)` retorna a média do
+* Se X for um vetor, então `mean (X)` retorna a média dos
 elementos em `X` definidos como
 
 >> `média (X) = SOMA_i X(i) / N`

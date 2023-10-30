@@ -1,6 +1,6 @@
 * `C = rdivide (A, B)``
 
-Retorne a divisão direita de `A` e `B` elemento por elemento.
+Retorna a divisão direita de `A` e `B` elemento por elemento.
 
 Esta função e `A ./ B` são equivalentes.
 
