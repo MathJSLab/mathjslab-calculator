@@ -30,11 +30,13 @@
   },
   "homepage": "https://github.com/sergiolindau/mathjslab-calculator#readme",
   "scripts": {
-    "git:add:all": "git add .",
-    "git:commit:initial": "git commit -m \"Initial Commit\"",
-    "git:push": "git push",
-    "git:add:commit:push": "npm run git:add:all && npm run git:commit:initial && npm run git:push",
+    "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calculator.min.js",
     "update": "npx ncu -u && npm install",
+    "git:add": "git add .",
+    "git:commit": "git commit -m \"Initial Commit\"",
+    "git:push": "git push",
+    "git:add:commit:push": "npm run git:add && npm run git:commit && npm run git:push",
+    "npm:publish": "npm publish --access public",
     "lint": "eslint \"**/*.ts{,x}\" --fix",
     "format": "prettier --write \"**/*.ts\"",
     "format:lint": "npm run format && npm run lint",
@@ -48,17 +50,16 @@
     "prebuild:prod": "npm run prebuild:dev",
     "build:prod": "set MODE_ENV=production && webpack --mode production",
     "postbuild:prod": "npm run bundle",
-    "build": "npm run build:prod",
-    "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calculator.min.js"
+    "build": "npm run build:prod"
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.8",
-    "mathjslab": "^1.1.18"
+    "mathjslab": "^1.1.19"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",
     "@types/webpack": "^5.28.4",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
     "css-loader": "^6.8.1",
     "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",

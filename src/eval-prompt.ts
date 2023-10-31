@@ -63,9 +63,9 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
             global.EvaluatorPointer.UnparseML(tree) +
             '</td></tr></table><br />' +
             error +
-            global.EvaluatorPointer.debug
+            (global.EvaluatorPointer.debug
                 ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) + '</pre>'
-                : '';
+                : '');
         if (global.EvaluatorPointer.debug) throw error;
     }
     MathMarkdown.typeset();

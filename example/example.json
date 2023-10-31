@@ -76,7 +76,7 @@
   },
   "markdown": {
     "file": "markdown.m",
-    "caption": "Markdow",
+    "caption": "Markdown",
     "description": "Test markdown function."
   },
   "test1": {
@@ -88,5 +88,10 @@
     "file": "test2.m",
     "caption": "Test 2",
     "description": "Test 2."
+  },
+  "test3": {
+    "file": "test3.m",
+    "caption": "Test 3",
+    "description": "Test 3."
   }
 }

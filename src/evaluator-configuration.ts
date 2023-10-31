@@ -276,14 +276,16 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
             },
             unparserML: (tree: any): string => {
                 return (
-                    '<mrow><munderover><mo>&#x2211;</mo><mrow>' +
+                    '<mstyle displaystyle="true"><munderover><mo>&sum;</mo><mrow>' +
                     global.EvaluatorPointer.unparserML(tree.args[0]) +
                     '<mo>=</mo>' +
                     global.EvaluatorPointer.unparserML(tree.args[1]) +
-                    '</mrow>' +
+                    '</mrow><mrow>' +
                     global.EvaluatorPointer.unparserML(tree.args[2]) +
-                    '</munderover></mrow>' +
-                    global.EvaluatorPointer.unparserML(tree.args[3])
+                    '</mrow>' +
+                    '</munderover>' +
+                    global.EvaluatorPointer.unparserML(tree.args[3]) +
+                    '</mstyle>'
                 );
             },
         },
@@ -302,6 +304,20 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 }
                 delete global.EvaluatorPointer.localTable[prod_function_name];
                 return result;
+            },
+            unparserML: (tree: any): string => {
+                return (
+                    '<mstyle displaystyle="true"><munderover><mo>&prod;</mo><mrow>' +
+                    global.EvaluatorPointer.unparserML(tree.args[0]) +
+                    '<mo>=</mo>' +
+                    global.EvaluatorPointer.unparserML(tree.args[1]) +
+                    '</mrow><mrow>' +
+                    global.EvaluatorPointer.unparserML(tree.args[2]) +
+                    '</mrow>' +
+                    '</munderover>' +
+                    global.EvaluatorPointer.unparserML(tree.args[3]) +
+                    '</mstyle>'
+                );
             },
         },
 
