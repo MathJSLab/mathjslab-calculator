@@ -248,7 +248,7 @@ export const outputFunction: { [k: string]: Function } = {
         insertOutput.type = '';
     },
 };
-
+declare const mermaid: { initialize: (config: any) => void };
 export const EvaluatorConfiguration: TEvaluatorConfig = {
     /**
      * Alias table
@@ -419,6 +419,16 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                             promptSet.box.className = 'doc';
                             promptSet.output.innerHTML = MathMarkdown.md2html(responseFile);
                             MathMarkdown.typeset();
+                                const config = {
+                                    startOnLoad: true,
+                                };
+                                if (typeof mermaid !== 'undefined') {
+                                    mermaid.initialize(config);
+                                }
+                                else {
+                                    console.log('Mermaid not found')
+                                }
+
                         })
                         /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                         .catch((error) => {

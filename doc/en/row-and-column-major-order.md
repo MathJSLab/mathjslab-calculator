@@ -24,7 +24,7 @@ sequenceDiagram
 
 Testing!
 
-```mermaid*
+```mermaid
 sequenceDiagram
     participant Alice
     participant Bob

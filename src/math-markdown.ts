@@ -2,6 +2,7 @@ import $ from 'basic-dom-helper';
 
 declare const marked: { parse: (text: string) => string };
 declare const MathJax: { typeset: () => void };
+declare const mermaid: { initialize: (config: any) => void };
 
 export interface Resource {
     name: string;
