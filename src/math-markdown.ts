@@ -1,85 +1,79 @@
+import $ from 'basic-dom-helper';
+
 declare const marked: { parse: (text: string) => string };
 declare const MathJax: { typeset: () => void };
-declare const Chart: any;
 
-let usingMathJax = false;
-let usingMarked = false;
-let usingChartJs = false;
+export interface Resource {
+    name: string;
+    extendedName: string;
+    linkURI?: string;
+    scriptURI?: string;
+    loaded: boolean;
+}
+
+export const ResourceTable: Record<string, Resource> = {
+    mathjax: {
+        name: 'mathjax',
+        extendedName: 'MathJax',
+        scriptURI: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
+        // scriptURI: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/latest.js?tex-svg.js',
+        loaded: false,
+    },
+    marked: {
+        name: 'marked',
+        extendedName: 'Marked',
+        scriptURI: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+        loaded: false,
+    },
+    chartjs: {
+        /* homepage: https://www.chartjs.org/docs/latest/ */
+        name: 'chartjs',
+        extendedName: 'Chart.js',
+        scriptURI: 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js',
+        loaded: false,
+    },
+    mermaid: {
+        name: 'mermaid',
+        extendedName: 'Mermaid',
+        linkURI: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css',
+        scriptURI: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.js',
+        loaded: false,
+    },
+};
 
 export abstract class MathMarkdown {
+    public static loadIfNeed(name: string, aditionalTest = true): void {
+        if (!ResourceTable[name].loaded && aditionalTest) {
+            if (!!ResourceTable[name].linkURI) {
+                $.appendLinkToHeadSync(
+                    ResourceTable[name].linkURI as string,
+                    () => {
+                        ResourceTable[name].loaded = true;
+                    },
+                    (error) => {
+                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
+                    },
+                );
+            }
+            if (!!ResourceTable[name].scriptURI) {
+                $.appendScriptToHeadSync(
+                    ResourceTable[name].scriptURI as string,
+                    () => {
+                        ResourceTable[name].loaded = true;
+                    },
+                    (error) => {
+                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
+                    },
+                );
+            }
+        }
+    }
+
     public static initialize() {
-        MathMarkdown.loadMathJaxIfNeed();
-        MathMarkdown.loadMarkedIfNeed();
-        MathMarkdown.loadChartJsIfNeed();
-    }
-
-    private static appendScriptToHead(
-        src: string,
-        onload?: ((this: GlobalEventHandlers, ev: Event) => any) | null,
-        onerror?: OnErrorEventHandler,
-    ): HTMLScriptElement {
-        const script: HTMLScriptElement = document.createElement('script');
-        script.type = 'text/javascript';
-        if (onload) {
-            script.onload = onload;
-        }
-        if (onerror) {
-            script.onerror = onerror;
-        }
-        script.src = src;
-        script.async = true;
-        script.defer = false;
-        document.head.appendChild(script);
-        return script;
-    }
-
-    public static loadMathJaxIfNeed(force = false): void {
-        if (!usingMathJax && (force || !window.MathMLElement)) {
-            MathMarkdown.appendScriptToHead(
-                'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
-                // 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/latest.js?tex-svg.js',
-                () => {
-                    usingMathJax = true;
-                },
-                (error) => {
-                    throw new URIError(`MathJax didn't load correctly: ${error}`);
-                },
-            );
-        }
-    }
-
-    public static loadMarkedIfNeed(): void {
-        if (!usingMarked) {
-            MathMarkdown.appendScriptToHead(
-                'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
-                () => {
-                    usingMarked = true;
-                },
-                (error) => {
-                    throw new URIError(`Marked didn't load correctly: ${error}`);
-                },
-            );
-        }
-    }
-
-    /**
-     * Load Chart.js
-     * homepage: https://www.chartjs.org/docs/latest/
-     */
-    public static loadChartJsIfNeed(): void {
-        if (!usingChartJs) {
-            MathMarkdown.appendScriptToHead(
-                'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js',
-                () => {
-                    if (!!Chart) {
-                        usingChartJs = true;
-                    }
-                },
-                (error) => {
-                    throw new URIError(`Chart.js didn't load correctly: ${error}`);
-                },
-            );
-        }
+        MathMarkdown.loadIfNeed('mathjax', !window.MathMLElement);
+        MathMarkdown.loadIfNeed('marked');
+        MathMarkdown.loadIfNeed('chartjs');
+        MathMarkdown.loadIfNeed('mermaid');
     }
 
     public static replaceMath(text: string): string {
@@ -118,7 +112,7 @@ export abstract class MathMarkdown {
     }
 
     public static typeset(): void {
-        if (usingMathJax) {
+        if (ResourceTable['mathjax'].loaded) {
             MathJax.typeset();
         }
     }
