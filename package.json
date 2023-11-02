@@ -37,6 +37,7 @@
     "git:push": "git push",
     "git:add:commit:push": "npm run git:add && npm run git:commit && npm run git:push",
     "npm:publish": "npm publish --access public",
+    "add:commit:push:publish": "npm run git:add:commit:push && npm run npm:publish",
     "lint": "eslint \"**/*.ts{,x}\" --fix",
     "format": "prettier --write \"**/*.ts\"",
     "format:lint": "npm run format && npm run lint",
@@ -50,14 +51,15 @@
     "prebuild:prod": "npm run prebuild:dev",
     "build:prod": "set MODE_ENV=production && webpack --mode production",
     "postbuild:prod": "npm run bundle",
-    "build": "npm run build:prod"
+    "build": "npm run build:prod",
+    "do:all": "npm run clean && npm run update && npm run format:lint && npm run build:prod && npm run add:commit:push:publish"
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.9",
-    "mathjslab": "^1.1.19"
+    "mathjslab": "^1.1.20"
   },
   "devDependencies": {
-    "@types/node": "^20.8.9",
+    "@types/node": "^20.8.10",
     "@types/webpack": "^5.28.4",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "css-loader": "^6.8.1",

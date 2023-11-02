@@ -94,3 +94,20 @@ A = [1,2,3; 4,5,6; 7,8,9]
 A(2, [1,2,3])+=[11,12,13]
 A(2, [1,2,3])+=[11;12;13] % error
 F(5) = 9
+% test special indexing
+clear
+A = [1,2,8; 4,4,6; 1,8,9]
+A(2,1:end)
+A(2,:)
+% test multiple assignement
+clear
+[Z,N]=ind2sub([3,3],5)
+X = ind2sub([3,3],5)
+[Z,N,M]=ind2sub([3,3],[5,6;7,8])
+A = [1,2; 3,4]
+[L,U] = lu(A)
+A = [10, -7, 0; -3, 2, 6; 5, -1, 5]
+[L,U,P] = lu(A)
+[B]=1
+[~]=1
+[~,U,P] = lu(A)
