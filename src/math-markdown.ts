@@ -1,14 +1,13 @@
-import $ from 'basic-dom-helper';
+import $, { LoadScriptOptions, LoadLinkOptions } from 'basic-dom-helper';
 
 declare const marked: { parse: (text: string) => string };
 declare const MathJax: { typeset: () => void };
-declare const mermaid: { initialize: (config: any) => void };
 
 export interface Resource {
     name: string;
     extendedName: string;
-    linkURI?: string;
-    scriptURI?: string;
+    linkOptions?: LoadLinkOptions;
+    scriptOptions?: LoadScriptOptions;
     loaded: boolean;
 }
 
@@ -16,28 +15,26 @@ export const ResourceTable: Record<string, Resource> = {
     mathjax: {
         name: 'mathjax',
         extendedName: 'MathJax',
-        scriptURI: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
-        // scriptURI: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/latest.js?tex-svg.js',
+        scriptOptions: {
+            src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
+        },
         loaded: false,
     },
     marked: {
         name: 'marked',
         extendedName: 'Marked',
-        scriptURI: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+        scriptOptions: {
+            src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+        },
         loaded: false,
     },
     chartjs: {
         /* homepage: https://www.chartjs.org/docs/latest/ */
         name: 'chartjs',
         extendedName: 'Chart.js',
-        scriptURI: 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js',
-        loaded: false,
-    },
-    mermaid: {
-        name: 'mermaid',
-        extendedName: 'Mermaid',
-        linkURI: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css',
-        scriptURI: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.js',
+        scriptOptions: {
+            src: 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js',
+        },
         loaded: false,
     },
 };
@@ -45,9 +42,9 @@ export const ResourceTable: Record<string, Resource> = {
 export abstract class MathMarkdown {
     public static loadIfNeed(name: string, aditionalTest = true): void {
         if (!ResourceTable[name].loaded && aditionalTest) {
-            if (!!ResourceTable[name].linkURI) {
+            if (!!ResourceTable[name].linkOptions) {
                 $.appendLinkToHeadSync(
-                    ResourceTable[name].linkURI as string,
+                    ResourceTable[name].linkOptions as LoadLinkOptions,
                     () => {
                         ResourceTable[name].loaded = true;
                     },
@@ -56,9 +53,9 @@ export abstract class MathMarkdown {
                     },
                 );
             }
-            if (!!ResourceTable[name].scriptURI) {
+            if (!!ResourceTable[name].scriptOptions) {
                 $.appendScriptToHeadSync(
-                    ResourceTable[name].scriptURI as string,
+                    ResourceTable[name].scriptOptions as LoadScriptOptions,
                     () => {
                         ResourceTable[name].loaded = true;
                     },
@@ -74,7 +71,6 @@ export abstract class MathMarkdown {
         MathMarkdown.loadIfNeed('mathjax', !window.MathMLElement);
         MathMarkdown.loadIfNeed('marked');
         MathMarkdown.loadIfNeed('chartjs');
-        MathMarkdown.loadIfNeed('mermaid');
     }
 
     public static replaceMath(text: string): string {

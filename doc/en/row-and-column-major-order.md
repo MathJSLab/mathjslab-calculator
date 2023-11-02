@@ -8,7 +8,7 @@ The difference between the methods lies in which elements of an array are contig
 
 %%summation(m,1,s,(i(m)-1)*productory(n,1,m-1,d(n)))%%
 
-<div class="mermaid">
+<code class="language-mermaid">
 sequenceDiagram
     participant Alice
     participant Bob
@@ -20,7 +20,7 @@ sequenceDiagram
     John-->>Alice: Great!
     John->>Bob: How about you?
     Bob-->>John: Jolly good!
-</div>
+</code>
 
 Testing!
 
