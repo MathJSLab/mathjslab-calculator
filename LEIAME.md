@@ -6,6 +6,8 @@
 
 > Um interpretador com sintaxe de linguagem tipo [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) escrito em [Typescript](https://www.typescriptlang.org/).
 
+**ISBN 978-65-00-84828-1**
+
 Este é um aplicativo de demonstração do [pacote npm](https://pt.wikipedia.org/wiki/Npm_(software)) [MathJSLab](https://www.npmjs.com/package/mathjslab).
 
 Veja esta demonstração hospedada na [Netlify](https://mathjslab.netlify.app/).
@@ -91,7 +93,7 @@ Participe do bate-papo da comunidade:
 
 >MIT License
 >
->Copyright &copy; 2016-2023 Sergio Lindau
+>Copyright &copy; 2016-2023 Sergio Lindau, ISBN 978-65-00-84828-1
 >
 >Permission is hereby granted, free of charge, to any person obtaining a copy
 >of this software and associated documentation files (the "Software"), to deal
