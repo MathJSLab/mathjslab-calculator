@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Multiple languages and menu of selection.
 - bootstrap function in evaluator-configuration.ts file.
 - changes in build scripts of package.json.
+- script folder with some examples
 
 ## 1.1.0
 - Project launch.

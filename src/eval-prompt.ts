@@ -45,9 +45,9 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                     output.innerHTML +=
                         '<pre>' +
                         '<br /><br />Input   : ' +
-                        JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) +
+                        JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : value === null ? 'root' : true), 2) +
                         '<br /><br />Evaluate: ' +
-                        JSON.stringify(eval_input, (key: string, value: any) => (key !== 'parent' ? value : true), 2) +
+                        JSON.stringify(eval_input, (key: string, value: any) => (key !== 'parent' ? value : value === null ? 'root' : true), 2) +
                         '<br /><br />Unparse Input   :' +
                         unparse_input +
                         '<br /><br />Unparse Evaluate:' +
@@ -64,7 +64,9 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
             '</td></tr></table><br />' +
             error +
             (global.EvaluatorPointer.debug
-                ? '<br /><br /><pre>Input   : ' + JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : true), 2) + '</pre>'
+                ? '<br /><br /><pre>Input   : ' +
+                  JSON.stringify(tree, (key: string, value: any) => (key !== 'parent' ? value : value === null ? 'root' : true), 2) +
+                  '</pre>'
                 : '');
         if (global.EvaluatorPointer.debug) throw error;
     }

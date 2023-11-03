@@ -1,13 +1,13 @@
 clear
-% Load file using CDN
+% Load file from GitHub
 YEAR = 2023
-load('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/script/easter.m')
+load('https://raw.githubusercontent.com/sergiolindau/mathjslab-calculator/main/script/easter.m')
 MONTH
 DATE
-% Load file from GitHub
+% Load file using CDN
 MONTH = 10
 DATE = 8
-load('https://raw.githubusercontent.com/sergiolindau/mathjslab-calculator/main/script/weekday.m')
+load('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/script/weekday.m')
 WEEKDAY
 % Load file using relative path
 load('example/matrix-indexing.m')

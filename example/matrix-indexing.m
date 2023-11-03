@@ -99,7 +99,7 @@ clear
 A = [1,2,8; 4,4,6; 1,8,9]
 A(2,1:end)
 A(2,:)
-% test multiple assignement
+% test multiple assignment
 clear
 [Z,N]=ind2sub([3,3],5)
 X = ind2sub([3,3],5)
