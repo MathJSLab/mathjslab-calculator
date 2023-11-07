@@ -63,6 +63,15 @@ Esta demostración también utiliza:
 * [Marked](https://www.npmjs.com/package/marked), para formatear archivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/es/docs/Web/HTML).
 * [Chart.js](https://www.chartjs.org/), para generar gráficos e histogramas.
 
+## Contribuyendo
+
+Para contribuir a este proyecto, consulte nuestras
+[pautas de contribución](https://github.com/sergiolindau/mathjslab-calculator/blob/main/CONTRIBUTING.md).
+
+Únase al chat de la comunidad:
+
+[![Únase al chat en https://matrix.to/#/#mathjslab:gitter.im](https://badges.gitter.im/Join%20Chat.svg)](https://matrix.to/#/#mathjslab:gitter.im?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Compilacion
 
 Compile `mathjslab-calculator` en modo de desarrollo:

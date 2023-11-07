@@ -97,5 +97,6 @@ A+H % error
 D*1
 2*C
 C*2
-D*D
-A*D
+D*D % error
+D.*D' % brodcasting
+A*D % error

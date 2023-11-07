@@ -137,3 +137,17 @@ Tomamos o resto da divisão deste resultado por 7 e somamos 1. O resultado corre
 Este é o algoritmo mais simples conhecido para calcular o dia da semana no calendário gregoriano.
 
 Para codificar este algoritmo em uma linguagem de programação algumas alterações no intervalo de índices representando os meses e a semana devem ser observados, caso necessário, já que em quase a totalidade das linguagens o primeiro elemento de uma sequência (um array) recebe o índice 0.
+
+Abaixo está um exemplo usando a linguagem MATLAB (cujos arrays são indexados começando em 1).
+
+```matlab
+% Name: weekday.m
+% Author: Sergio Lindau, license MIT.
+% Purpose: Calculate weekday for a given date.
+% preconditions: variable YEAR, MONTH and  DATE defined.
+t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4]
+W = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+year = YEAR - (MONTH < 3)
+WEEKDAY = W(mod(year + fix(year/4) - fix(year/100) + fix(year/400) + t(MONTH) + DATE, 7) + 1)
+clear t W year
+```

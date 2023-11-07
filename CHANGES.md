@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - bootstrap function in evaluator-configuration.ts file.
 - changes in build scripts of package.json.
 - script folder with some examples
+- Creation of CONTRIBUTING.md and CODE_OF_CONDUCT.md files.
+- Cration of 'Contributing' session in README.md file (in LEIAME.md and LEAME.md too).
 
 ## 1.1.0
 - Project launch.
