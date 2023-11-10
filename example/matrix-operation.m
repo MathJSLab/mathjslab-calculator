@@ -98,5 +98,5 @@ D*1
 2*C
 C*2
 D*D % error
-D.*D' % brodcasting
+D.*D' % broadcasting
 A*D % error
