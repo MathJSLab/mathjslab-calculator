@@ -99,4 +99,10 @@ D*1
 C*2
 D*D % error
 D.*D' % broadcasting
-A*D % error
+A = [1, 1, 1; 2, 2, 2; 3, 3, 3]
+m = [2, 4, 6]
+A - m
+a = [1, 2, 3, 4]
+b = [5; 6; 7]
+a + b
+A*D
