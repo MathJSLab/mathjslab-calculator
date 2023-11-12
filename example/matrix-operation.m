@@ -85,7 +85,7 @@ C = A.^B
 A(1,1,3) % error
 A(1) % error
 A(1,1) % error
-A(1,1)=100 % error
+A(1,1)=100
 A+B
 A+C
 A+D

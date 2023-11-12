@@ -79,6 +79,11 @@
     "caption": "Markdown",
     "description": "Test markdown function."
   },
+  "broadcasting": {
+    "file": "broadcasting.m",
+    "caption": "Broadcasting",
+    "description": "Test broadcasting rules."
+  },
   "test1": {
     "file": "test1.m",
     "caption": "Test 1",

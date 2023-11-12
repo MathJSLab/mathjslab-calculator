@@ -30,11 +30,7 @@ det(F) % 11
 % Inverse
 inv(A)
 inv(D)
-1/det(E)*adj(E) == inv(E) % testing adjoint relation
 E
-minor(E,3,2)
-minor(E,2,3)
-cofactor(E)
 trace(E) % 15
 min(E)
 max(E)

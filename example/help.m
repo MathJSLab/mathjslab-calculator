@@ -38,7 +38,6 @@ help acoth
 help acsc
 help acscd
 help acsch
-help adj
 help and
 help angle
 help arg
@@ -50,7 +49,6 @@ help atand
 help atanh
 help ceil
 help clear
-help cofactor
 help conj
 help cos
 help cosd
@@ -91,7 +89,6 @@ help markdown
 help max
 help mean
 help min
-help minor
 help minus
 help mldivide
 help mod

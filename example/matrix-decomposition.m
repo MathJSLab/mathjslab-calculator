@@ -18,6 +18,4 @@ P*G==L*U
 %
 A = [1,2,3;4,5,6;7,8,9]
 det(A)
-B=pivot(A)*A
-det(B)
-C = lu(B)
+
