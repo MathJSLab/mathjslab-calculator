@@ -60,6 +60,8 @@ help csc
 help cscd
 help csch
 help ctranspose
+help cummax
+help cummin
 help deg2rad
 help det
 help eq
