@@ -29,12 +29,12 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
                             : '=';
                     output.innerHTML =
                         '<table><tr><td>' +
-                        global.EvaluatorPointer.UnparseML(tree) +
+                        global.EvaluatorPointer.UnparseMathML(tree) +
                         `</td><td><math xmlns = 'http://www.w3.org/1998/Math/MathML' display='block'><mo>${evalsign}</mo></math></td><td>` +
-                        global.EvaluatorPointer.UnparseML(eval_input) +
+                        global.EvaluatorPointer.UnparseMathML(eval_input) +
                         '</td></tr></table>';
                 } else {
-                    output.innerHTML = '<table><tr><td>' + global.EvaluatorPointer.UnparseML(tree) + '</td></tr></table>';
+                    output.innerHTML = '<table><tr><td>' + global.EvaluatorPointer.UnparseMathML(tree) + '</td></tr></table>';
                 }
                 if (insertOutput.type !== '') {
                     const uid = $.uid();
@@ -60,7 +60,7 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
         box.className = 'bad';
         output.innerHTML =
             "<table><tr><td align='left'>" +
-            global.EvaluatorPointer.UnparseML(tree) +
+            global.EvaluatorPointer.UnparseMathML(tree) +
             '</td></tr></table><br />' +
             error +
             (global.EvaluatorPointer.debug

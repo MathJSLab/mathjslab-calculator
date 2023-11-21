@@ -1,6 +1,17 @@
 import $, { Tfetch } from 'basic-dom-helper';
 
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, TEvaluatorConfig, NodeName, NodeExpr, TAliasNameTable, CharString } from 'mathjslab';
+import {
+    Decimal,
+    ComplexDecimal,
+    MultiArray,
+    Evaluator,
+    TEvaluatorConfig,
+    NodeName,
+    NodeExpr,
+    TAliasNameTable,
+    CharString,
+    LinearAlgebra,
+} from 'mathjslab';
 export { Evaluator };
 
 import { MathMarkdown } from './math-markdown';
@@ -268,17 +279,17 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 delete global.EvaluatorPointer.localTable[sum_function_name];
                 return result;
             },
-            unparserML: (tree: any): string => {
+            unparserMathML: (tree: any): string => {
                 return (
                     '<mstyle displaystyle="true"><munderover><mo>&sum;</mo><mrow>' +
-                    global.EvaluatorPointer.unparserML(tree.args[0]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[0]) +
                     '<mo>=</mo>' +
-                    global.EvaluatorPointer.unparserML(tree.args[1]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[1]) +
                     '</mrow><mrow>' +
-                    global.EvaluatorPointer.unparserML(tree.args[2]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[2]) +
                     '</mrow>' +
                     '</munderover>' +
-                    global.EvaluatorPointer.unparserML(tree.args[3]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[3]) +
                     '</mstyle>'
                 );
             },
@@ -299,17 +310,17 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 delete global.EvaluatorPointer.localTable[prod_function_name];
                 return result;
             },
-            unparserML: (tree: any): string => {
+            unparserMathML: (tree: any): string => {
                 return (
                     '<mstyle displaystyle="true"><munderover><mo>&prod;</mo><mrow>' +
-                    global.EvaluatorPointer.unparserML(tree.args[0]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[0]) +
                     '<mo>=</mo>' +
-                    global.EvaluatorPointer.unparserML(tree.args[1]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[1]) +
                     '</mrow><mrow>' +
-                    global.EvaluatorPointer.unparserML(tree.args[2]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[2]) +
                     '</mrow>' +
                     '</munderover>' +
-                    global.EvaluatorPointer.unparserML(tree.args[3]) +
+                    global.EvaluatorPointer.unparserMathML(tree.args[3]) +
                     '</mstyle>'
                 );
             },
@@ -361,10 +372,10 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
             func: (IMAG: MultiArray, DOM?: MultiArray): NodeExpr => {
                 insertOutput.type = 'histogram';
                 if (IMAG.dim[0] !== 1) {
-                    IMAG = MultiArray.transpose(IMAG);
+                    IMAG = LinearAlgebra.transpose(IMAG);
                 }
                 if (DOM && DOM.dim[0] !== 1) {
-                    DOM = MultiArray.transpose(DOM);
+                    DOM = LinearAlgebra.transpose(DOM);
                 }
                 plotData.MaxY = 0;
                 plotData.MinY = 0;

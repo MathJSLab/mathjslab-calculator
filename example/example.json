@@ -14,30 +14,70 @@
     "caption": "Basic operations and functions",
     "description": "Tests basic operations and functions."
   },
-  "matrix-operation": {
-    "file": "matrix-operation.m",
-    "caption": "Matrix operations",
-    "description": "Tests matrix operations."
+  "logical": {
+    "file": "logical.m",
+    "caption": "Logical",
+    "description": "Test logical operators."
   },
-  "matrix-concatenation": {
-    "file": "matrix-concatenation.m",
-    "caption": "Matrix Concatenation",
-    "description": "Tests matrix concatenation."
+  "array-operation": {
+    "file": "array-operation.m",
+    "caption": "Array operations",
+    "description": "Tests array operations."
   },
-  "matrix-function": {
-    "file": "matrix-function.m",
-    "caption": "Matrix functions",
-    "description": "Tests matrix functions."
+  "array-concatenation": {
+    "file": "array-concatenation.m",
+    "caption": "Concatenation",
+    "description": "Tests array concatenation."
   },
-  "matrix-indexing": {
-    "file": "matrix-indexing.m",
-    "caption": "Matrix indexing",
-    "description": "Tests matrix indexing."
+  "array-function": {
+    "file": "array-function.m",
+    "caption": "Array functions",
+    "description": "Tests array functions."
   },
-  "matrix-decomposition": {
-    "file": "matrix-decomposition.m",
-    "caption": "Matrix decomposition",
-    "description": "Tests matrix decomposition."
+  "indexing-right": {
+    "file": "indexing-right.m",
+    "caption": "Indexing right",
+    "description": "Tests indexing at right side."
+  },
+  "indexing-left": {
+    "file": "indexing-left.m",
+    "caption": "Indexing left",
+    "description": "Tests indexing at left side."
+  },
+  "indsubsize": {
+    "file": "indexing-function.m",
+    "caption": "Indexing function",
+    "description": "Tests indexing functions."
+  },
+  "multiple-assignment": {
+    "file": "multiple-assignment.m",
+    "caption": "Multiple assignment",
+    "description": "Tests multiple assignment."
+  },
+  "linear-algebra": {
+    "file": "linear-algebra.m",
+    "caption": "Linear Algebra",
+    "description": "Tests LinearAlgebra class methods."
+  },
+  "multidimensional": {
+    "file": "multidimensional.m",
+    "caption": "Multidimensional",
+    "description": "Tests multidimensional arrays."
+  },
+  "broadcasting": {
+    "file": "broadcasting.m",
+    "caption": "Broadcasting",
+    "description": "Test broadcasting rules."
+  },
+  "reduce-functions": {
+    "file": "reduce-functions.m",
+    "caption": "Reduce",
+    "description": "Test reduce functions."
+  },
+  "min-max": {
+    "file": "min-max.m",
+    "caption": "MinMax",
+    "description": "Test min and max functions."
   },
   "greek": {
     "file": "greek.m",
@@ -48,16 +88,6 @@
     "file": "singularity.m",
     "caption": "Singularities",
     "description": "Tests singularities."
-  },
-  "gauss": {
-    "file": "gauss.m",
-    "caption": "Gauss",
-    "description": "Test solve linear system by Gauss's method."
-  },
-  "logical": {
-    "file": "logical.m",
-    "caption": "Logical",
-    "description": "Test logical operators."
   },
   "help": {
     "file": "help.m",
@@ -78,11 +108,6 @@
     "file": "markdown.m",
     "caption": "Markdown",
     "description": "Test markdown function."
-  },
-  "broadcasting": {
-    "file": "broadcasting.m",
-    "caption": "Broadcasting",
-    "description": "Test broadcasting rules."
   },
   "test1": {
     "file": "test1.m",

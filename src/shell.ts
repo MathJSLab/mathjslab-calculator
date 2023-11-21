@@ -1,5 +1,6 @@
 import $ from 'basic-dom-helper';
 import firstExample from './first-example.json';
+import { MultiArray } from 'mathjslab';
 
 /**
  * Shell evaluator prompt handler
@@ -261,8 +262,8 @@ export class Shell {
                 } else {
                     let resultType: string = '';
                     if (nameTableEntry.expr['type'] !== undefined) {
-                        if ('array' in nameTableEntry.expr) {
-                            resultType = '[' + nameTableEntry.expr.dim.slice().join('x') + ']';
+                        if (MultiArray.isThis(nameTableEntry.expr)) {
+                            resultType = '[' + nameTableEntry.expr.dim.join('x') + ']';
                         } else {
                             resultType = '#';
                         }

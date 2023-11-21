@@ -10,5 +10,5 @@ DATE = 8
 load('https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/script/weekday.m')
 WEEKDAY
 % Load file using relative path
-load('example/matrix-indexing.m')
+load('example/indexing-right.m')
 A

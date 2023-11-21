@@ -38,4 +38,4 @@ B || 1
 max([1,-1])
 max([1,i,-1,-i])
 max(1)
-max(1,2,3) # error
+max(1,2,3) % error
