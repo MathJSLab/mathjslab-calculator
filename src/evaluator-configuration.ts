@@ -371,17 +371,17 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
             ev: [true, true],
             func: (IMAG: MultiArray, DOM?: MultiArray): NodeExpr => {
                 insertOutput.type = 'histogram';
-                if (IMAG.dim[0] !== 1) {
+                if (IMAG.dimension[0] !== 1) {
                     IMAG = LinearAlgebra.transpose(IMAG);
                 }
-                if (DOM && DOM.dim[0] !== 1) {
+                if (DOM && DOM.dimension[0] !== 1) {
                     DOM = LinearAlgebra.transpose(DOM);
                 }
                 plotData.MaxY = 0;
                 plotData.MinY = 0;
                 plotData.X = [];
                 plotData.data = [];
-                for (let i = 0; i < IMAG.dim[1]; i++) {
+                for (let i = 0; i < IMAG.dimension[1]; i++) {
                     if (DOM) {
                         if ('re' in DOM.array[0][i]) {
                             plotData.X[i] = DOM.array[0][i].re.toNumber();

@@ -263,7 +263,7 @@ export class Shell {
                     let resultType: string = '';
                     if (nameTableEntry.expr['type'] !== undefined) {
                         if (MultiArray.isThis(nameTableEntry.expr)) {
-                            resultType = '[' + nameTableEntry.expr.dim.join('x') + ']';
+                            resultType = '[' + nameTableEntry.expr.dimension.join('x') + ']';
                         } else {
                             resultType = '#';
                         }
