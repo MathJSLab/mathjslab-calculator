@@ -1,4 +1,5 @@
-% Testing basic operations and functions
+clear
+% Test basic operations and functions
 10^2
 (-10)^2
 2^2

@@ -3,7 +3,7 @@
 
 Calcula la raíz cuadrada de la suma de los cuadrados de `X` e `Y`.
 
-Esto es equivalente a `sqrt (X.^2 + Y.^2)`, pero se calcula en un
+Esta función es equivalente a `sqrt (X.^2 + Y.^2)`, pero se calcula en un
 forma que evita desbordamientos para valores grandes de X o Y.
 
 `hypot` también se puede llamar con más de 2 argumentos; en este caso,

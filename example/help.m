@@ -49,6 +49,7 @@ help atand
 help atanh
 help ceil
 help clear
+help columns
 help conj
 help cos
 help cosd
@@ -62,6 +63,8 @@ help csch
 help ctranspose
 help cummax
 help cummin
+help cumprod
+help cumsum
 help deg2rad
 help det
 help eq
@@ -82,6 +85,7 @@ help ind2sub
 help inv
 help ldivide
 help le
+help length
 help log
 help log10
 help logb
@@ -97,8 +101,10 @@ help mod
 help mpower
 help mrdivide
 help mtimes
+help ndims
 help ne
 help not
+help numel
 help ones
 help or
 help pivot
@@ -114,8 +120,10 @@ help randi
 help rdivide
 help real
 help rem
+help reshape
 help root
 help round
+help rows
 help sec
 help secd
 help sech

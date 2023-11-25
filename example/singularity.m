@@ -1,14 +1,15 @@
-% Testando singularidades
-A=Inf
-A=inf
-B=-Inf
-B=-inf
-C=1/0 % Inf
-D=i/0 % NaN + Infi
-E=(1+i)/0 % Inf + Infi
-F=(-1+i)/0 % -Inf + Infi
-G=(1-i)/0 % Inf - Infi
-H=(-1-i)/0 % -Inf - Infi
+clear
+% Test singularities
+A = Inf
+A = inf
+B = -Inf
+B = -inf
+C = 1/0 % Inf
+D = i/0 % NaN + Infi
+E = (1+i)/0 % Inf + Infi
+F = (-1+i)/0 % -Inf + Infi
+G = (1-i)/0 % Inf - Infi
+H = (-1-i)/0 % -Inf - Infi
 %
 0/0 % NaN
 Inf/0 % Inf
@@ -53,7 +54,7 @@ Inf^Inf % Inf
 Inf^-Inf % 0
 Inf^i % NaN - NaNi
 i^Inf % NaN - NaNi
-%%%%%%%%%%%%%%%%%%%%%%%%% Ainda falta implementação
+%%% Not yet implemented.
 1^Inf % 1
 1^(-Inf) % 1
 1^(Inf*i) % NaN - NaNi

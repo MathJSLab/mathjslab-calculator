@@ -34,6 +34,11 @@
     "caption": "Array functions",
     "description": "Tests array functions."
   },
+  "array-shape": {
+    "file": "array-shape.m",
+    "caption": "Array shape functions",
+    "description": "Tests array shape functions."
+  },
   "indexing-right": {
     "file": "indexing-right.m",
     "caption": "Indexing right",
@@ -44,7 +49,7 @@
     "caption": "Indexing left",
     "description": "Tests indexing at left side."
   },
-  "indsubsize": {
+  "indexing-function": {
     "file": "indexing-function.m",
     "caption": "Indexing function",
     "description": "Tests indexing functions."
@@ -73,6 +78,11 @@
     "file": "reduce-functions.m",
     "caption": "Reduce",
     "description": "Test reduce functions."
+  },
+  "map-dimension-functions": {
+    "file": "map-dimension-functions.m",
+    "caption": "Map dimension",
+    "description": "Test map dimension functions."
   },
   "min-max": {
     "file": "min-max.m",

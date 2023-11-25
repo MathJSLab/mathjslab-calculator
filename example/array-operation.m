@@ -1,24 +1,19 @@
-% Testando operações de matrizes
 clear
-% Cria a matriz 3x3 com elementos nulos
-zeros(3)
-ones([3,7])
-zeros(4,9)
-% Define matrizes para operar
+% Test array operations
 A = [1,2,0;1,1,0;-1,4,0]
 B = [1,2,3;1,1,-1;2,2,2]
 C = [1,2,3;1,1,-1;1,1,1]
 D = [1,3,-9,5;2,-3,-5,5;2,8,-1,7;3,-4,3,6]
-% Soma
-F = A+B
-% Produto escalar
-G = 2*A
-H = A*2
-% Divisão
+% Sum
+F = A + B
+% Scalar product
+G = 2 * A
+H = A * 2
+% Division
 M = A/B
-% Negativo
+% Negative
 -M
-% mapear função
+% Mapping
 sin(M)
 clear
 a=2

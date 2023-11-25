@@ -1,4 +1,5 @@
 clear
+% Test functions based on reduce MultiArray functions.
 A = [1,2,3;4,5,6;7,8,9]
 B = A
 B(:,:,2) = A + 9

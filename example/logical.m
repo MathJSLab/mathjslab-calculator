@@ -1,3 +1,5 @@
+clear
+% Test logical operations.
 3>2
 (3>2)+1
 A=[1,2,3;4,5,6;7,8,9]
@@ -35,7 +37,3 @@ B | 1
 B && 1
 B || 1
 (B || 1) && 1
-max([1,-1])
-max([1,i,-1,-i])
-max(1)
-max(1,2,3) % error

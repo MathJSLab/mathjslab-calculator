@@ -1,4 +1,5 @@
 clear
+% Test load function.
 % Load file from GitHub
 YEAR = 2023
 load('https://raw.githubusercontent.com/sergiolindau/mathjslab-calculator/main/script/easter.m')

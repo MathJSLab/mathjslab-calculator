@@ -14,3 +14,7 @@ max(A, B)
 max(A, C)
 max(B, C)
 max(A, D)
+max([1,-1])
+max([1,i,-1,-i]) % -1 has greater argument than 1 (and same absolute value)
+max(1)
+max(1,2,3) % error

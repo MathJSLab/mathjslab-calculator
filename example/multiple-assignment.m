@@ -1,5 +1,5 @@
-% test multiple assignment
 clear
+% Test multiple assignment
 [Z,N]=ind2sub([3,3],5)
 X = ind2sub([3,3],5)
 [Z,N,M]=ind2sub([3,3],[5,6;7,8])

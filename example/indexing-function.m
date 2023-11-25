@@ -1,4 +1,5 @@
 clear
+% Test indexing function.
 [A,B,C,D]=ind2sub([4, 3], [1, 2; 3, 4; 5, 6])
 [a,b,c,d,E,f]=ind2sub([4, 3], 1)
 [a,b,c,d,E,f]=ind2sub([4, 3], 2)
@@ -59,3 +60,11 @@ size(A, [1, 2; 3, 4]) % test linearization
 size(A, 1, 2, 3)
 size(A, 1, [2, 3, 1], 3)
 size(A, 1, 2, 3, 4, 5, 6)
+%
+A = ones(4,3)
+numel(A)
+numel(A,[99,23],2)
+numel(A,[99,23],[4,5,6,7],[90,91,92])
+numel(1,[99,23],[4,5,6,7],[90,91,92])
+numel(A,2,":")
+numel(A,":",2)

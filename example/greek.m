@@ -1,6 +1,7 @@
-% Testando substituição de letras gregas
-alpha=1
-nalphax=1
-alphax=1
-q_alpha_3=1
-alfa=1
+% Test greek letters and symbols substitution.
+epsilon = 1
+nepsilonx = 1
+epsilonx = 1
+q_epsilon_3 = 1
+epsilon = 1
+Epsilon = 1

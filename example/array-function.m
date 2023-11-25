@@ -1,4 +1,5 @@
 clear
+% test array functions.
 zeros(3)
 zeros(3,7)
 zeros([3,7])

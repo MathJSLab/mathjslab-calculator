@@ -11,9 +11,11 @@ forem não-conformes, ou se algum dos argumentos for complexo.
 
 Por convenção,
 
->> `rem (X, 0) = NaN` se X for um número
->> `rem (X, 0) = 0` se X for um número inteiro
->> `rem (X, Y)` retorna um valor com o signbit de X
+>> `rem (X, 0) = NaN` se `X` for um número
+
+>> `rem (X, 0) = 0` se `X` for um número inteiro
+
+>> `rem (X, Y)` retorna um valor com o signbit de `X`
 
 Para as convenções opostas, consulte a função `mod`. Em geral,
 `rem` é melhor ao calcular o resto após a divisão de dois

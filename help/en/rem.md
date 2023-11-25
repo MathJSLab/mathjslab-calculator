@@ -11,9 +11,11 @@ not agree, or if either argument is complex.
 
 By convention,
 
->> `rem (X, 0) = NaN`  if X is a floating point variable
->> `rem (X, 0) = 0`    if X is an integer variable
->> `rem (X, Y)`  returns a value with the signbit from X
+>> `rem (X, 0) = NaN` if `X` is a floating point variable
+
+>> `rem (X, 0) = 0` if `X` is an integer variable
+
+>> `rem (X, Y)` returns a value with the signbit from `X`
 
 For the opposite conventions see the `mod` function.  In general,
 `rem` is best when computing the remainder after division of two
