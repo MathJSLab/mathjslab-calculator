@@ -18,7 +18,7 @@ ejemplo,
 >> `numel(A,B)`
 
 devolverá 6 ya que esta es la cantidad de formas de indexar con `B`. O
-el índice puede ser la cadena `":"` que representa el operador de dos puntos.
+el índice puede ser la string `":"` que representa el operador de dos puntos.
 Por ejemplo,
 
 >> `A = ones (5, 3);`

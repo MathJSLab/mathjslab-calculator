@@ -50,6 +50,7 @@ help atanh
 help ceil
 help clear
 help columns
+help configure
 help conj
 help cos
 help cosd
@@ -76,6 +77,7 @@ help floor
 help gamma
 help gauss
 help ge
+help getconfig
 help gt
 help histogram
 help horzcat
@@ -83,6 +85,7 @@ help hypot
 help imag
 help ind2sub
 help inv
+help isempty
 help ldivide
 help le
 help length

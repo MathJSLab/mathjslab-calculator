@@ -119,6 +119,11 @@
     "caption": "Markdown",
     "description": "Test markdown function."
   },
+  "configuration": {
+    "file": "configuration.m",
+    "caption": "Configuration",
+    "description": "Test configure function."
+  },
   "test1": {
     "file": "test1.m",
     "caption": "Test 1",

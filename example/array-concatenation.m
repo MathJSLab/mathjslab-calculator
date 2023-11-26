@@ -1,5 +1,6 @@
 clear
 % Test array concatenation
+[[1,2];[3,4]]
 A = zeros(3,3)
 B = ones(3,3)
 C = 2 * ones(3,3)

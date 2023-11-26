@@ -1,17 +1,6 @@
 import $, { Tfetch } from 'basic-dom-helper';
 
-import {
-    Decimal,
-    ComplexDecimal,
-    MultiArray,
-    Evaluator,
-    TEvaluatorConfig,
-    NodeName,
-    NodeExpr,
-    TAliasNameTable,
-    CharString,
-    LinearAlgebra,
-} from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra } from 'mathjslab';
 export { Evaluator };
 
 import { MathMarkdown } from './math-markdown';
@@ -37,7 +26,7 @@ declare global {
 }
 global.compatibleFetch = $.fetch;
 
-export const languageAlias: Record<string, TAliasNameTable> = {
+export const languageAlias: Record<string, Evaluator.TAliasNameTable> = {
     en: {
         /* Number functions */
         abs: /^abs(olute)?$/,
@@ -249,7 +238,7 @@ export const outputFunction: { [k: string]: Function } = {
     },
 };
 
-export const EvaluatorConfiguration: TEvaluatorConfig = {
+export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
     /**
      * Alias table
      */
@@ -261,7 +250,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
     externalFunctionTable: {
         summation: {
             ev: [false, true, true, false],
-            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr): ComplexDecimal => {
+            func: (variable: Evaluator.NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: Evaluator.NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number sum index');
                 if (!end.im.eq(0)) throw new Error('complex number sum index');
                 let result: ComplexDecimal = ComplexDecimal.zero();
@@ -292,7 +281,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
         productory: {
             ev: [false, true, true, false],
-            func: (variable: NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: NodeExpr): ComplexDecimal => {
+            func: (variable: Evaluator.NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: Evaluator.NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number prod index');
                 if (!end.im.eq(0)) throw new Error('complex number prod index');
                 let result: ComplexDecimal = ComplexDecimal.one();
@@ -323,7 +312,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
         plot2d: {
             ev: [false, false, true, true],
-            func: (expr: NodeExpr, variable: NodeName, minx: ComplexDecimal, maxx: ComplexDecimal): NodeExpr => {
+            func: (expr: Evaluator.NodeExpr, variable: Evaluator.NodeName, minx: ComplexDecimal, maxx: ComplexDecimal): Evaluator.NodeExpr => {
                 insertOutput.type = 'plot2d';
                 if (!minx.im.eq(0)) {
                     throw new Error('complex number in plot2d minimum x axis');
@@ -364,7 +353,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
         histogram: {
             ev: [true, true],
-            func: (IMAG: MultiArray, DOM?: MultiArray): NodeExpr => {
+            func: (IMAG: MultiArray, DOM?: MultiArray): Evaluator.NodeExpr => {
                 insertOutput.type = 'histogram';
                 if (IMAG.dimension[0] !== 1) {
                     IMAG = LinearAlgebra.transpose(IMAG);
@@ -400,7 +389,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
         markdown: {
             ev: [true],
-            func: (url: CharString): NodeExpr => {
+            func: (url: CharString): Evaluator.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
                 if (global.ShellPointer.isFileProtocol) {
                     promptSet.box.className = 'bad';
@@ -433,7 +422,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
 
         load: {
             ev: [true],
-            func: (...url: CharString[]): NodeExpr => {
+            func: (...url: CharString[]): Evaluator.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
                 if (global.ShellPointer.isFileProtocol) {
                     promptSet.box.className = 'bad';
