@@ -18,7 +18,7 @@ export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HT
         if (tree) {
             const unparse_input = global.EvaluatorPointer.Unparse(tree);
             const eval_input = global.EvaluatorPointer.Evaluate(tree);
-            if (global.EvaluatorPointer.exitStatus === Evaluator.response.OK) {
+            if (global.EvaluatorPointer.exitStatus === global.EvaluatorPointer.response.OK) {
                 box.className = 'good';
                 const unparse_eval_input = global.EvaluatorPointer.Unparse(eval_input);
                 if (unparse_input !== unparse_eval_input) {

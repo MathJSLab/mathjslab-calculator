@@ -5,6 +5,6 @@ reshape(A, 1, 24)
 reshape(A, 2, 6, 2)
 reshape(A, 3, [], 2)
 reshape(A, 2, 3, [])
-reshape(A, 4, 4, [])
-reshape(A, 2, 5, 2)
-reshape(A, [], 6, [])
+reshape(A, 4, 4, []) % error
+reshape(A, 2, 5, 2) % error
+reshape(A, [], 6, []) % error

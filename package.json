@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.9",
-    "mathjslab": "^1.2.3"
+    "mathjslab": "^1.2.4"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",
