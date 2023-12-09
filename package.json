@@ -53,8 +53,8 @@
     "do:all": "npm run clean && npm run update && npm run format:lint && npm run build:prod && npm run git:add:commit:push"
   },
   "dependencies": {
-    "basic-dom-helper": "file:../basic-dom-helper",
-    "mathjslab": "file:../mathjslab"
+    "basic-dom-helper": "^1.0.9",
+    "mathjslab": "^1.3.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.4",
