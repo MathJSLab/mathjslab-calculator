@@ -1,6 +1,7 @@
 import $, { Tfetch } from 'basic-dom-helper';
 
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra } from 'mathjslab';
+import { AST } from 'mathjslab';
 export { Evaluator };
 
 import { MathMarkdown } from './math-markdown';
@@ -250,7 +251,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
     externalFunctionTable: {
         summation: {
             ev: [false, true, true, false],
-            func: (variable: Evaluator.NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: Evaluator.NodeExpr): ComplexDecimal => {
+            func: (variable: AST.NodeIdentifier, start: ComplexDecimal, end: ComplexDecimal, expr: AST.NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number sum index');
                 if (!end.im.eq(0)) throw new Error('complex number sum index');
                 let result: ComplexDecimal = ComplexDecimal.zero();
@@ -281,7 +282,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
 
         productory: {
             ev: [false, true, true, false],
-            func: (variable: Evaluator.NodeName, start: ComplexDecimal, end: ComplexDecimal, expr: Evaluator.NodeExpr): ComplexDecimal => {
+            func: (variable: AST.NodeIdentifier, start: ComplexDecimal, end: ComplexDecimal, expr: AST.NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number prod index');
                 if (!end.im.eq(0)) throw new Error('complex number prod index');
                 let result: ComplexDecimal = ComplexDecimal.one();
@@ -312,7 +313,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
 
         plot2d: {
             ev: [false, false, true, true],
-            func: (expr: Evaluator.NodeExpr, variable: Evaluator.NodeName, minx: ComplexDecimal, maxx: ComplexDecimal): Evaluator.NodeExpr => {
+            func: (expr: AST.NodeExpr, variable: AST.NodeIdentifier, minx: ComplexDecimal, maxx: ComplexDecimal): AST.NodeExpr => {
                 insertOutput.type = 'plot2d';
                 if (!minx.im.eq(0)) {
                     throw new Error('complex number in plot2d minimum x axis');
@@ -347,13 +348,13 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                 }
                 delete global.EvaluatorPointer.localTable[plot_function_name];
                 Decimal.set({ precision: save_precision });
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('plot2d'), { list: [expr, variable, minx, maxx] });
+                return AST.nodeArgExpr(AST.nodeIdentifier('plot2d'), { list: [expr, variable, minx, maxx] });
             },
         },
 
         histogram: {
             ev: [true, true],
-            func: (IMAG: MultiArray, DOM?: MultiArray): Evaluator.NodeExpr => {
+            func: (IMAG: MultiArray, DOM?: MultiArray): AST.NodeExpr => {
                 insertOutput.type = 'histogram';
                 if (IMAG.dimension[0] !== 1) {
                     IMAG = LinearAlgebra.transpose(IMAG);
@@ -383,13 +384,13 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                     plotData.MaxY = Math.max(plotData.MaxY, plotData.data[i]);
                     plotData.MinY = Math.min(plotData.MinY, plotData.data[i]);
                 }
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('histogram'), { list: [IMAG, DOM] });
+                return AST.nodeArgExpr(AST.nodeIdentifier('histogram'), { list: [IMAG, DOM] });
             },
         },
 
         markdown: {
             ev: [true],
-            func: (url: CharString): Evaluator.NodeExpr => {
+            func: (url: CharString): AST.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
                 if (global.ShellPointer.isFileProtocol) {
                     promptSet.box.className = 'bad';
@@ -414,7 +415,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                             promptSet.output.innerHTML = `markdown: error loading ${url.string}`;
                         });
                 }
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('markdown'), {
+                return AST.nodeArgExpr(AST.nodeIdentifier('markdown'), {
                     list: [url.string],
                 });
             },
@@ -422,7 +423,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
 
         load: {
             ev: [true],
-            func: (...url: CharString[]): Evaluator.NodeExpr => {
+            func: (...url: CharString[]): AST.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
                 if (global.ShellPointer.isFileProtocol) {
                     promptSet.box.className = 'bad';
@@ -449,7 +450,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                                     try {
                                         if (lines[lineno].trim()) {
                                             const tree = global.EvaluatorPointer.Parse(lines[lineno]);
-                                            if (tree) {
+                                            if (tree as any) {
                                                 global.EvaluatorPointer.Evaluate(tree);
                                             }
                                         }
@@ -475,8 +476,8 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                             });
                     });
                 }
-                return global.EvaluatorPointer.nodeArgExpr(global.EvaluatorPointer.nodeName('load'), {
-                    list: [...url.map((url) => global.EvaluatorPointer.nodeString(url.str))],
+                return AST.nodeArgExpr(AST.nodeIdentifier('load'), {
+                    list: [...url.map((url) => AST.nodeString(url.str))],
                 });
             },
         },
