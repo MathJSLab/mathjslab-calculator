@@ -1,4 +1,4 @@
-# Matrix Indexing in MATLAB
+# Matrix Indexing in MathJSLab
 
 > By Steve Eddins and Loren Shure, MathWorks, Source: https://www.mathworks.com/company/newsletters/articles/matrix-indexing-in-matlab.html
 

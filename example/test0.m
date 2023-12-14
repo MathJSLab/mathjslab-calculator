@@ -1,4 +1,8 @@
 A = 1
-B = 2
-C = 3
-clear A B
+if A>2 % test condition
+    x = true
+else
+    x = false
+end % end test
+% testando!
+x

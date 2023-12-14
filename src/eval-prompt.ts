@@ -11,7 +11,7 @@ import { insertOutput, outputFunction, MathMarkdown } from './evaluator-configur
  * @param input
  * @param output
  */
-export function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement): void {
+export default function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement): void {
     let tree: any;
     try {
         tree = global.EvaluatorPointer.Parse(input.value);

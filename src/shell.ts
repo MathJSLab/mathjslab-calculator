@@ -1,29 +1,21 @@
 import $ from 'basic-dom-helper';
 import firstExample from './first-example.json';
-import { MultiArray } from 'mathjslab';
+import { AST, MultiArray } from 'mathjslab';
 
 /**
- * Shell evaluator prompt handler
+ * Evaluator handlers
  */
+export type EvalInputHandler = (input: HTMLTextAreaElement) => [string[], string[]];
 export type EvalPromptHandler = (frame: HTMLDivElement, box: HTMLDivElement, input: HTMLTextAreaElement, output: HTMLDivElement) => void;
-
-export interface BatchOptions {
-    cleanOnBlur: boolean;
-}
-
-export interface PromptOptions {
-    cleanOnBlur: boolean;
-}
 
 /**
  * Shell instantiation options.
  */
 export interface ShellOptions {
     containerId: string;
+    evalInput?: EvalInputHandler;
     evalPrompt?: EvalPromptHandler;
-    inputLines: string[];
-    batch?: BatchOptions | boolean;
-    prompt?: PromptOptions | boolean;
+    input: string;
 }
 
 export interface PromptEntry {
@@ -65,6 +57,7 @@ export class Shell {
     variablesHeading: HTMLHeadingElement;
     nameTable: HTMLDivElement;
     nameList: HTMLUListElement;
+    evalInput: EvalInputHandler;
     evalPrompt: EvalPromptHandler;
     examplesContainer: HTMLDivElement;
     batchContainer: HTMLDivElement;
@@ -74,6 +67,8 @@ export class Shell {
     batchButton: HTMLButtonElement;
     promptContainer: HTMLDivElement;
     inputLines: string[];
+    input: string;
+    statements: string[];
     promptUid: string[];
     promptSet: Record<string, PromptEntry>;
     promptIndex: number;
@@ -93,6 +88,14 @@ export class Shell {
             shell.container.removeChild(shell.container.firstChild);
         }
         shell.container.className = 'container';
+        if (options.evalInput) {
+            shell.evalInput = options.evalInput;
+        } else {
+            shell.evalInput = function (input: HTMLTextAreaElement): [string[], string[]] {
+                console.log(`evalInput(${input.value})`);
+                return [[], input.value.split(/\r?\n/)];
+            };
+        }
         if (options.evalPrompt) {
             shell.evalPrompt = options.evalPrompt;
         } else {
@@ -101,7 +104,6 @@ export class Shell {
                 output.innerHTML = `evalPrompt(${input.value})`;
             };
         }
-        shell.inputLines = options.inputLines;
         shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
             shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
@@ -165,7 +167,7 @@ export class Shell {
         shell.promptUid = [];
         shell.promptSet = {};
         shell.promptIndex = -1;
-        shell.updateBatch();
+        shell.batchInput.value = shell.input = options.input;
         shell.batchResize();
         if (shell.isFileProtocol || !shell.examplesAvailable) {
             global.ShellPointer.batchInput.value = firstExample.content;
@@ -182,7 +184,7 @@ export class Shell {
                     if (!response.ok) {
                         throw new Error('Network response error.');
                     }
-                    global.ShellPointer.batchInput.value = await response.text();
+                    global.ShellPointer.batchInput.value = global.ShellPointer.input = await response.text();
                     global.ShellPointer.batchExec(event);
                 });
                 if (first) {
@@ -241,8 +243,7 @@ export class Shell {
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchExec(event: Event): void {
         global.ShellPointer.promptClean();
-        global.ShellPointer.loadBatch();
-        global.ShellPointer.loadLines();
+        global.ShellPointer.loadInput();
         global.ShellPointer.batchButton.focus();
     }
 
@@ -283,26 +284,20 @@ export class Shell {
         }
     }
 
-    public updateBatch(): void {
-        this.batchInput.value = this.inputLines.join('\n');
-    }
-
-    public loadBatch(): void {
-        this.inputLines = this.batchInput.value.split('\n');
-    }
-
-    public loadLines(): void {
-        if (this.inputLines[this.inputLines.length - 1].trim() !== '') {
-            this.inputLines.push('');
+    public loadInput(): void {
+        const [statements, lines] = this.evalInput(this.batchInput);
+        this.statements = statements;
+        this.inputLines = lines;
+        if (this.statements.length === 0) {
+            this.statements = [''];
+        } else if (this.statements[this.statements.length - 1].trim() !== '') {
+            this.statements.push('');
         }
-        if (this.inputLines && this.inputLines.length == 0) this.inputLines = [''];
-        if (this.inputLines) {
-            for (let i = 0; i < this.inputLines.length; i++) {
-                this.promptAppend(this.inputLines[i]);
-            }
-            this.batchResize();
-            this.promptSet[this.promptUid[0]].input.focus();
+        for (let i = 0; i < this.statements.length; i++) {
+            this.promptAppend(this.statements[i]);
         }
+        this.batchResize();
+        this.promptSet[this.promptUid[0]].input.focus();
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
@@ -342,7 +337,10 @@ export class Shell {
         this.promptCreate(uid, div);
         this.promptIndex++;
         this.promptUid.push(uid);
-        if (text) this.promptSet[uid].input.value = text;
+        this.promptSet[uid].input.value = text ?? '';
+        this.promptSet[uid].input.style.width = '97%';
+        this.promptSet[uid].input.style.height = '1em';
+        this.promptSet[uid].input.style.height = this.promptSet[uid].input.scrollHeight + 'px';
         this.promptSet[uid].input.focus();
         if (this.isTouchCapable) {
             this.promptSet[uid].input.blur();
@@ -416,8 +414,6 @@ export class Shell {
                     onfocus.style.width = '90%';
                     onfocus.style.height = '1em';
                     onfocus.style.height = onfocus.scrollHeight + 'px';
-                    global.ShellPointer.inputLines.splice(global.ShellPointer.promptIndex - 1, 0, onfocus.value);
-                    global.ShellPointer.batchInput.value = global.ShellPointer.inputLines.join('\n');
                 } else {
                     if (global.ShellPointer.promptIndex + 1 == global.ShellPointer.promptUid.length) {
                         // adiciona ao final
@@ -425,8 +421,6 @@ export class Shell {
                         const div = $.create('div', global.ShellPointer.promptContainer, 'd' + uid);
                         global.ShellPointer.promptCreate(uid, div);
                         global.ShellPointer.promptUid.push(uid);
-                        global.ShellPointer.inputLines.push(global.ShellPointer.promptSet[onfocus?.id.substring(1)].input.value);
-                        global.ShellPointer.batchInput.value = global.ShellPointer.inputLines.join('\n');
                         global.ShellPointer.promptIndex++;
                     }
                     global.ShellPointer.evalPrompt(
@@ -446,29 +440,48 @@ export class Shell {
                 }
                 if (!event.shiftKey) return false;
             } else if (
-                // apaga prompt anterior se for nulo e pressionar backspace na coluna 0
+                // Apaga prompt se for nulo e pressionar backspace na coluna 0.
                 event.key === 'Backspace' &&
-                onfocus.selectionStart == 0 &&
-                global.ShellPointer.promptIndex != 0 &&
-                global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].input.value == ''
+                onfocus.selectionStart == 0
             ) {
-                // apaga prompt anterior
-                global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].container.remove();
-                delete global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]];
-                global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex - 1, 1);
-                global.ShellPointer.inputLines.splice(global.ShellPointer.promptIndex - 1, 1);
-                global.ShellPointer.batchInput.value = global.ShellPointer.inputLines.join('\n');
-                global.ShellPointer.promptIndex--;
+                if (
+                    global.ShellPointer.promptIndex !== 0 &&
+                    global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].input.value.trim() === ''
+                ) {
+                    // Apaga prompt anterior.
+                    global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].container.remove();
+                    delete global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]];
+                    global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex - 1, 1);
+                    global.ShellPointer.promptIndex--;
+                    event.preventDefault();
+                } else if (global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].input.value.trim() === '') {
+                    // Apaga prompt atual.
+                    global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].container.remove();
+                    delete global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]];
+                    global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex, 1);
+                    global.ShellPointer.promptIndex--;
+                    global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].input.focus();
+                    event.preventDefault();
+                }
             } else if (event.key === 'ArrowUp') {
-                if (global.ShellPointer.promptIndex > 0)
+                if (global.ShellPointer.promptIndex > 0 && onfocus.selectionStart <= onfocus.value.split(/\r?\n/)[0].length) {
                     global.ShellPointer.promptSet[
                         global.ShellPointer.promptUid[global.ShellPointer.promptUid.indexOf(onfocus.id.substring(1)) - 1]
                     ].input.focus();
+                    event.preventDefault();
+                }
             } else if (event.key === 'ArrowDown') {
-                if (global.ShellPointer.promptIndex + 1 < global.ShellPointer.promptUid.length)
+                const promptLines = onfocus.value.split(/\r?\n/);
+                promptLines.pop();
+                if (
+                    global.ShellPointer.promptIndex + 1 < global.ShellPointer.promptUid.length &&
+                    onfocus.selectionStart >= promptLines.join('\n').length + 1
+                ) {
                     global.ShellPointer.promptSet[
                         global.ShellPointer.promptUid[global.ShellPointer.promptUid.indexOf(onfocus.id.substring(1)) + 1]
                     ].input.focus();
+                    event.preventDefault();
+                }
             }
         }
     }

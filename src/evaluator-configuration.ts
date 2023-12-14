@@ -189,7 +189,7 @@ export const insertOutput = { type: '' };
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
-    plot2d: function (parent: string): void {
+    plot2d: function (parent: string | HTMLElement): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
@@ -214,7 +214,7 @@ export const outputFunction: { [k: string]: Function } = {
         }
         insertOutput.type = '';
     },
-    histogram: function (parent: string): void {
+    histogram: function (parent: string | HTMLElement): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
@@ -397,7 +397,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                     promptSet.output.innerHTML = 'markdown function unavailable <b>offline</b>.';
                 } else {
                     global
-                        .compatibleFetch(url.string)
+                        .compatibleFetch(url.str)
                         .then((response) => {
                             if (response.ok) {
                                 return response.text();
@@ -412,11 +412,11 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                         /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                         .catch((error) => {
                             promptSet.box.className = 'bad';
-                            promptSet.output.innerHTML = `markdown: error loading ${url.string}`;
+                            promptSet.output.innerHTML = `markdown: error loading ${url.str}`;
                         });
                 }
                 return AST.nodeArgExpr(AST.nodeIdentifier('markdown'), {
-                    list: [url.string],
+                    list: [url.str],
                 });
             },
         },
@@ -431,7 +431,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                 } else {
                     url.forEach((file: CharString) => {
                         global
-                            .compatibleFetch(file.string)
+                            .compatibleFetch(file.str)
                             .then((response) => {
                                 if (response.ok) {
                                     return response.text();
@@ -456,7 +456,7 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                                         }
                                     } catch (e) {
                                         error = true;
-                                        errorMessage = `load: error loading ${file.string} at line ${lineno + 1}: ${e}`;
+                                        errorMessage = `load: error loading ${file.str} at line ${lineno + 1}: ${e}`;
                                         break;
                                     }
                                 }
@@ -465,14 +465,14 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                                     promptSet.output.innerHTML = errorMessage;
                                 } else {
                                     promptSet.box.className = 'good';
-                                    promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.string}</ br>`;
+                                    promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.str}</ br>`;
                                 }
                                 global.ShellPointer.refreshNameList();
                             })
                             /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                             .catch((error) => {
                                 promptSet.box.className = 'bad';
-                                promptSet.output.innerHTML = `load: error loading ${file.string}`;
+                                promptSet.output.innerHTML = `load: error loading ${file.str}`;
                             });
                     });
                 }

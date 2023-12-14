@@ -124,6 +124,11 @@
     "caption": "Configuration",
     "description": "Test configure function."
   },
+  "statements": {
+    "file": "statements.m",
+    "caption": "Statements",
+    "description": "Test statements, block comments..."
+  },
   "test1": {
     "file": "test1.m",
     "caption": "Test 1",

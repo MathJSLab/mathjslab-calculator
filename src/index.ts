@@ -1,16 +1,16 @@
-import { evalPrompt } from './eval-prompt';
+import evalInput from './eval-input';
+import evalPrompt from './eval-prompt';
 import { Shell } from './shell';
 import './style.css';
 
-export const inputLines: string[] = [];
+export const input: string = '';
 
 function bootstrap() {
     Shell.initialize({
         containerId: 'mathjslab-calculator',
         evalPrompt,
-        inputLines,
-        batch: true,
-        prompt: true,
+        evalInput,
+        input,
     });
 }
 bootstrap();
