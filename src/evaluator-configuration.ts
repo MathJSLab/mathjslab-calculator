@@ -440,32 +440,26 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                                 }
                             })
                             .then((responseFile: string) => {
-                                const lines = responseFile.replace('\r\n', '\n').split('\n');
-                                promptSet.output.innerHTML = '';
                                 let error: boolean = false;
                                 let errorMessage: string = '';
                                 let lineno: number;
                                 insertOutput.type = '';
-                                for (lineno = 0; lineno < lines.length; lineno++) {
-                                    try {
-                                        if (lines[lineno].trim()) {
-                                            const tree = global.EvaluatorPointer.Parse(lines[lineno]);
-                                            if (tree as any) {
-                                                global.EvaluatorPointer.Evaluate(tree);
-                                            }
-                                        }
-                                    } catch (e) {
-                                        error = true;
-                                        errorMessage = `load: error loading ${file.str} at line ${lineno + 1}: ${e}`;
-                                        break;
+                                promptSet.output.innerHTML = '';
+                                try {
+                                    const tree = global.EvaluatorPointer.Parse(responseFile);
+                                    if (tree) {
+                                        global.EvaluatorPointer.Evaluate(tree);
                                     }
+                                } catch (e) {
+                                    error = true;
+                                    errorMessage = `load: error loading ${file.str}: ${e}`;
                                 }
                                 if (error) {
                                     promptSet.box.className = 'bad';
                                     promptSet.output.innerHTML = errorMessage;
                                 } else {
                                     promptSet.box.className = 'good';
-                                    promptSet.output.innerHTML = `Loaded ${lineno + 1} lines from ${file.str}</ br>`;
+                                    promptSet.output.innerHTML = `Loaded script from ${file.str}</ br>`;
                                 }
                                 global.ShellPointer.refreshNameList();
                             })

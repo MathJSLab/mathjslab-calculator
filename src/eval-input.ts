@@ -9,26 +9,40 @@
  */
 export default function evalInput(input: HTMLTextAreaElement): [string[], string[]] {
     try {
+        const statements: string[] = [];
         const lines: string[] = input.value.split(/\r?\n/);
-        const getText = (start: { line: number; column: number }, stop: { line: number; column: number }): string => {
-            if (stop.line === start.line) {
-                return lines[start.line - 1].substring(start.column, stop.column + 1);
-            } else {
-                let result = lines[start.line - 1].substring(start.column) + '\n';
-                if (stop.line > start.line + 1) {
-                    result += lines.slice(start.line, stop.line - 1).join('\n') + '\n';
-                }
-                result += lines[stop.line - 1].substring(0, stop.column);
-                return result.trim();
-            }
-        };
-        const statement: string[] = [];
         const tree = global.EvaluatorPointer.Parse(input.value);
         if (tree) {
             for (let i = 0; i < tree.list.length; i++) {
-                statement[i] = getText(tree.list[i].start, tree.list[i].stop);
+                if (tree.list[i].stop.line === tree.list[i].start.line) {
+                    // if statement is single line and there's no other statement in the same line then pass entire line.
+                    if (
+                        (i === 0 || tree.list[i - 1].stop.line < tree.list[i].start.line) &&
+                        (i === tree.list.length - 1 || tree.list[i + 1].start.line > tree.list[i].start.line)
+                    ) {
+                        statements[i] = lines[tree.list[i].start.line - 1];
+                    } else {
+                        statements[i] = lines[tree.list[i].start.line - 1].substring(tree.list[i].start.column, tree.list[i].stop.column + 1);
+                    }
+                } else {
+                    let result: string;
+                    if (i === 0 || tree.list[i - 1].stop.line < tree.list[i].start.line) {
+                        result = lines[tree.list[i].start.line - 1] + '\n';
+                    } else {
+                        result = lines[tree.list[i].start.line - 1].substring(tree.list[i].start.column) + '\n';
+                    }
+                    if (tree.list[i].stop.line > tree.list[i].start.line + 1) {
+                        result += lines.slice(tree.list[i].start.line, tree.list[i].stop.line - 1).join('\n') + '\n';
+                    }
+                    if (i === tree.list.length - 1 || tree.list[i + 1].start.line > tree.list[i].start.line) {
+                        result += lines[tree.list[i].stop.line - 1];
+                    } else {
+                        result += lines[tree.list[i].stop.line - 1].substring(0, tree.list[i].stop.column);
+                    }
+                    statements[i] = result.trim();
+                }
             }
-            return [statement, lines];
+            return [statements, lines];
         } else {
             return [[], []];
         }
