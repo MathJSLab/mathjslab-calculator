@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.0
+- Support for multiline statements.
+
 ## 1.1.1
 - Translations of README.md file to portuguese LEIAME.md an spanish LEAME.md
 - Translation of spanish help completed.

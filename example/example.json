@@ -1,9 +1,4 @@
 {
-  "test0": {
-    "file": "test0.m",
-    "caption": "Test 0",
-    "description": "Test 0."
-  },
   "baskara": {
     "file": "baskara.m",
     "caption": "Baskara",
