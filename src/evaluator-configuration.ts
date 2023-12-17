@@ -1,6 +1,6 @@
 import $, { Tfetch } from 'basic-dom-helper';
 
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra } from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, TEvaluatorConfig, TAliasNameTable } from 'mathjslab';
 import { AST } from 'mathjslab';
 export { Evaluator };
 
@@ -27,7 +27,7 @@ declare global {
 }
 global.compatibleFetch = $.fetch;
 
-export const languageAlias: Record<string, Evaluator.TAliasNameTable> = {
+export const languageAlias: Record<string, TAliasNameTable> = {
     en: {
         /* Number functions */
         abs: /^abs(olute)?$/,
@@ -239,7 +239,7 @@ export const outputFunction: { [k: string]: Function } = {
     },
 };
 
-export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
+export const EvaluatorConfiguration: TEvaluatorConfig = {
     /**
      * Alias table
      */
@@ -369,15 +369,19 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                 for (let i = 0; i < IMAG.dimension[1]; i++) {
                     if (DOM) {
                         if ('re' in DOM.array[0][i]) {
-                            plotData.X[i] = DOM.array[0][i].re.toNumber();
+                            plotData.X[i] = (DOM.array[0][i] as ComplexDecimal).re.toNumber();
                         } else if ('str' in DOM.array[0][i]) {
                             plotData.X[i] = (DOM.array[0][i] as any).str;
                         }
                     } else {
                         plotData.X[i] = i;
                     }
-                    if (isFinite(IMAG.array[0][i].re.toNumber()) && isFinite(IMAG.array[0][i].im.toNumber()) && IMAG.array[0][i].im.eq(0)) {
-                        plotData.data[i] = IMAG.array[0][i].re.toNumber();
+                    if (
+                        isFinite((IMAG.array[0][i] as ComplexDecimal).re.toNumber()) &&
+                        isFinite((IMAG.array[0][i] as ComplexDecimal).im.toNumber()) &&
+                        (IMAG.array[0][i] as ComplexDecimal).im.eq(0)
+                    ) {
+                        plotData.data[i] = (IMAG.array[0][i] as ComplexDecimal).re.toNumber();
                     } else {
                         throw new Error('non real number in histogram y axis');
                     }
@@ -442,7 +446,6 @@ export const EvaluatorConfiguration: Evaluator.TEvaluatorConfig = {
                             .then((responseFile: string) => {
                                 let error: boolean = false;
                                 let errorMessage: string = '';
-                                let lineno: number;
                                 insertOutput.type = '';
                                 promptSet.output.innerHTML = '';
                                 try {

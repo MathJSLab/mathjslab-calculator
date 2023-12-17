@@ -1,6 +1,6 @@
 import $ from 'basic-dom-helper';
 import firstExample from './first-example.json';
-import { AST, MultiArray } from 'mathjslab';
+import { MultiArray } from 'mathjslab';
 
 /**
  * Evaluator handlers
