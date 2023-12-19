@@ -1,6 +1,6 @@
 import $ from 'basic-dom-helper';
 import firstExample from './first-example.json';
-import { MultiArray } from 'mathjslab';
+import { CharString, MultiArray } from 'mathjslab';
 
 /**
  * Evaluator handlers
@@ -259,22 +259,24 @@ export class Shell {
                 const nameTableEntry = global.EvaluatorPointer.nameTable[name];
                 const nameListEntry = $.create('li', this.nameList);
                 if (nameTableEntry.args.length !== 0) {
-                    nameListEntry.innerHTML = `&#x219B; ${name}(${nameTableEntry.args.map((arg) => arg.id).join(',')})`;
+                    nameListEntry.innerHTML = `&commat; ${name}(${nameTableEntry.args.map((arg) => arg.id).join(',')})`;
                 } else {
                     let resultType: string = '';
-                    if (nameTableEntry.expr['type'] !== undefined) {
+                    if (nameTableEntry.expr.type !== undefined) {
                         if (nameTableEntry.expr instanceof MultiArray) {
                             resultType = '[' + nameTableEntry.expr.dimension.join('x') + ']';
+                        } else if (nameTableEntry.expr instanceof CharString) {
+                            resultType = '(abc)';
                         } else {
                             resultType = '#';
                         }
-                        if (nameTableEntry.expr['type'] === 0) {
-                            if (resultType[0] === '#') {
-                                resultType = '¬';
+                        if (nameTableEntry.expr.type === 0) {
+                            if (resultType[0] === '[') {
+                                resultType += '&not;';
                             } else {
-                                resultType += '¬';
+                                resultType = '&not;';
                             }
-                        } else if (nameTableEntry.expr['type'] === 2) {
+                        } else if (nameTableEntry.expr.type === 2) {
                             resultType += '*';
                         }
                     }

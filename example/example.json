@@ -124,6 +124,11 @@
     "caption": "Configuration",
     "description": "Test configure function."
   },
+  "string": {
+    "file": "string.m",
+    "caption": "Strings",
+    "description": "Test strings."
+  },
   "statements": {
     "file": "statements.m",
     "caption": "Statements",

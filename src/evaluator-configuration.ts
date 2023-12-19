@@ -15,6 +15,8 @@ export type MathJSLabCalcConfiguration = {
 
 declare global {
     /* eslint-disable-next-line  no-var */
+    var EvaluatorPointer: Evaluator;
+    /* eslint-disable-next-line  no-var */
     var MathJSLabCalc: MathJSLabCalcConfiguration;
     /* eslint-disable-next-line  no-var */
     var MathJSLabCalcBuildMessage: string;
@@ -578,8 +580,8 @@ global.setLanguage = (lang?: string) => {
     }
     global.ShellPointer.setLanguage();
     EvaluatorConfiguration.aliasTable = languageAlias[global.lang];
-    const evaluator = Evaluator.initialize(EvaluatorConfiguration);
-    evaluator.debug = buildConfiguration.debug;
+    global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
+    global.EvaluatorPointer.debug = buildConfiguration.debug;
     global.ShellPointer.batchExec(new Event('click'));
 };
 
@@ -618,8 +620,8 @@ function bootstrap() {
         global.lang = global.MathJSLabCalc.defaultLanguage as string;
     }
     EvaluatorConfiguration.aliasTable = languageAlias[global.lang];
-    const evaluator = Evaluator.initialize(EvaluatorConfiguration);
-    evaluator.debug = buildConfiguration.debug;
+    global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
+    global.EvaluatorPointer.debug = buildConfiguration.debug;
     global.MathJSLabCalcBuildMessage = buildConfiguration.buildMessage;
     MathMarkdown.initialize();
 }
