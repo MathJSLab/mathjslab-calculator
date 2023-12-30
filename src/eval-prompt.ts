@@ -37,7 +37,7 @@ export default function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, i
                     output.innerHTML = '<table><tr><td>' + global.EvaluatorPointer.UnparseMathML(tree) + '</td></tr></table>';
                 }
                 if (insertOutput.type !== '') {
-                    const uid = $.uid();
+                    const uid = global.crypto.randomUUID();
                     $.create('div', output, 'o' + uid);
                     outputFunction[insertOutput.type]('o' + uid);
                 }

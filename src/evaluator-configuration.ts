@@ -252,12 +252,13 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
      */
     externalFunctionTable: {
         summation: {
+            mapper: false,
             ev: [false, true, true, false],
             func: (variable: AST.NodeIdentifier, start: ComplexDecimal, end: ComplexDecimal, expr: AST.NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number sum index');
                 if (!end.im.eq(0)) throw new Error('complex number sum index');
                 let result: ComplexDecimal = ComplexDecimal.zero();
-                const sum_function_name = `summation`;
+                const sum_function_name = `summation_${global.crypto.randomUUID()}`;
                 global.EvaluatorPointer.localTable[sum_function_name] = {};
                 for (let i = start.re.toNumber(); i <= end.re.toNumber(); i++) {
                     global.EvaluatorPointer.localTable[sum_function_name][variable.id] = new ComplexDecimal(i, 0);
@@ -283,12 +284,13 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         },
 
         productory: {
+            mapper: false,
             ev: [false, true, true, false],
             func: (variable: AST.NodeIdentifier, start: ComplexDecimal, end: ComplexDecimal, expr: AST.NodeExpr): ComplexDecimal => {
                 if (!start.im.eq(0)) throw new Error('complex number prod index');
                 if (!end.im.eq(0)) throw new Error('complex number prod index');
                 let result: ComplexDecimal = ComplexDecimal.one();
-                const prod_function_name = `productory`;
+                const prod_function_name = `productory_${global.crypto.randomUUID()}`;
                 global.EvaluatorPointer.localTable[prod_function_name] = {};
                 for (let i = start.re.toNumber(); i <= end.re.toNumber(); i++) {
                     global.EvaluatorPointer.localTable[prod_function_name][variable.id] = new ComplexDecimal(i, 0);
@@ -314,6 +316,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
         },
 
         plot2d: {
+            mapper: false,
             ev: [false, false, true, true],
             func: (expr: AST.NodeExpr, variable: AST.NodeIdentifier, minx: ComplexDecimal, maxx: ComplexDecimal): AST.NodeExpr => {
                 insertOutput.type = 'plot2d';
@@ -328,7 +331,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     plotData.MaxX = maxx.re.toNumber();
                 }
                 const deltaX = (plotData.MaxX - plotData.MinX) / plotWidth;
-                const plot_function_name = `plot2d`;
+                const plot_function_name = `plot2d_${global.crypto.randomUUID()}`;
                 global.EvaluatorPointer.localTable[plot_function_name] = {};
                 const save_precision = Decimal.precision;
                 Decimal.set({ precision: 20 });
@@ -350,11 +353,12 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 }
                 delete global.EvaluatorPointer.localTable[plot_function_name];
                 Decimal.set({ precision: save_precision });
-                return AST.nodeArgExpr(AST.nodeIdentifier('plot2d'), { list: [expr, variable, minx, maxx] });
+                return AST.nodeIndexExpr(AST.nodeIdentifier('plot2d'), AST.nodeList([expr, variable, minx, maxx]));
             },
         },
 
         histogram: {
+            mapper: false,
             ev: [true, true],
             func: (IMAG: MultiArray, DOM?: MultiArray): AST.NodeExpr => {
                 insertOutput.type = 'histogram';
@@ -370,9 +374,9 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                 plotData.data = [];
                 for (let i = 0; i < IMAG.dimension[1]; i++) {
                     if (DOM) {
-                        if ('re' in DOM.array[0][i]) {
+                        if (DOM.array[0][i] instanceof ComplexDecimal) {
                             plotData.X[i] = (DOM.array[0][i] as ComplexDecimal).re.toNumber();
-                        } else if ('str' in DOM.array[0][i]) {
+                        } else if (DOM.array[0][i] instanceof CharString) {
                             plotData.X[i] = (DOM.array[0][i] as any).str;
                         }
                     } else {
@@ -390,11 +394,12 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     plotData.MaxY = Math.max(plotData.MaxY, plotData.data[i]);
                     plotData.MinY = Math.min(plotData.MinY, plotData.data[i]);
                 }
-                return AST.nodeArgExpr(AST.nodeIdentifier('histogram'), { list: [IMAG, DOM] });
+                return AST.nodeIndexExpr(AST.nodeIdentifier('histogram'), AST.nodeList([IMAG, DOM]));
             },
         },
 
         markdown: {
+            mapper: false,
             ev: [true],
             func: (url: CharString): AST.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
@@ -421,13 +426,12 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                             promptSet.output.innerHTML = `markdown: error loading ${url.str}`;
                         });
                 }
-                return AST.nodeArgExpr(AST.nodeIdentifier('markdown'), {
-                    list: [url.str],
-                });
+                return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeList([url.str]));
             },
         },
 
         load: {
+            mapper: false,
             ev: [true],
             func: (...url: CharString[]): AST.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
@@ -475,9 +479,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                             });
                     });
                 }
-                return AST.nodeArgExpr(AST.nodeIdentifier('load'), {
-                    list: [...url.map((url) => AST.nodeString(url.str))],
-                });
+                return AST.nodeIndexExpr(AST.nodeIdentifier('load'), AST.nodeList([...url.map((url) => AST.nodeString(url.str))]));
             },
         },
     },
@@ -554,15 +556,6 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                     promptSet.box.className = 'bad';
                     promptSet.output.innerHTML = `help: function called with too many inputs`;
                 }
-            },
-        },
-        clear: {
-            func: (...args: string[]): void => {
-                const promptSet = global.ShellPointer.currentPromptSet;
-                insertOutput.type = '';
-                global.EvaluatorPointer.Clear(...args);
-                promptSet.box.className = 'good';
-                promptSet.output.innerHTML = `clear ${args.length > 0 ? args.join(', ') : 'variables'}`;
             },
         },
     },

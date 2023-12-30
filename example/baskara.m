@@ -11,4 +11,4 @@ x2 = (-b - sqrt(Delta))/(2*a)
 % definition of the quadratic function
 f(x) = a*x^2+b*x+c
 % shows plot of the roots of f(x)
-plot2d(f(x),x,min([x1,x2,0])-1,max([x1,x2,0])+1)
+plot2d(f(X),X,min([x1,x2,0])-1,max([x1,x2,0])+1)

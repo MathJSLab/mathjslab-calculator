@@ -255,28 +255,28 @@ export class Shell {
     public refreshNameList(): void {
         this.cleanNameList();
         for (const name in global.EvaluatorPointer.nameTable) {
-            if (!global.EvaluatorPointer.readonlyNameTable.includes(name)) {
+            if (!global.EvaluatorPointer.nativeNameTableList.includes(name)) {
                 const nameTableEntry = global.EvaluatorPointer.nameTable[name];
                 const nameListEntry = $.create('li', this.nameList);
-                if (nameTableEntry.args.length !== 0) {
-                    nameListEntry.innerHTML = `&commat; ${name}(${nameTableEntry.args.map((arg) => arg.id).join(',')})`;
+                if (nameTableEntry.parameter.length !== 0) {
+                    nameListEntry.innerHTML = `&commat; ${name}(${nameTableEntry.parameter.map((arg) => arg.id).join(',')})`;
                 } else {
                     let resultType: string = '';
-                    if (nameTableEntry.expr.type !== undefined) {
-                        if (nameTableEntry.expr instanceof MultiArray) {
-                            resultType = '[' + nameTableEntry.expr.dimension.join('x') + ']';
-                        } else if (nameTableEntry.expr instanceof CharString) {
+                    if (nameTableEntry.expression.type !== undefined) {
+                        if (nameTableEntry.expression instanceof MultiArray) {
+                            resultType = '[' + nameTableEntry.expression.dimension.join('x') + ']';
+                        } else if (nameTableEntry.expression instanceof CharString) {
                             resultType = '(abc)';
                         } else {
                             resultType = '#';
                         }
-                        if (nameTableEntry.expr.type === 0) {
+                        if (nameTableEntry.expression.type === 0) {
                             if (resultType[0] === '[') {
                                 resultType += '&not;';
                             } else {
                                 resultType = '&not;';
                             }
-                        } else if (nameTableEntry.expr.type === 2) {
+                        } else if (nameTableEntry.expression.type === 2) {
                             resultType += '*';
                         }
                     }
@@ -287,9 +287,11 @@ export class Shell {
     }
 
     public loadInput(): void {
+        // Separe statements and lines.
         const [statements, lines] = this.evalInput(this.batchInput);
         this.statements = statements;
         this.inputLines = lines;
+        // Append empty statement if last statement is not an empty string (to create an empty prompt at the end).
         if (this.statements.length === 0) {
             this.statements = [''];
         } else if (this.statements[this.statements.length - 1].trim() !== '') {
@@ -334,7 +336,7 @@ export class Shell {
     }
 
     public promptAppend(text?: string | null): void {
-        const uid = $.uid();
+        const uid = global.crypto.randomUUID();
         const div = $.create('div', this.promptContainer, 'd' + uid);
         this.promptCreate(uid, div);
         this.promptIndex++;
@@ -407,7 +409,7 @@ export class Shell {
                 if (onfocus.selectionStart == 0) {
                     // cria prompt anterior se pressionado enter com o cursor em 0
                     const pdiv = document.getElementById('d' + onfocus?.id.substring(1));
-                    const uid = $.uid();
+                    const uid = global.crypto.randomUUID();
                     const div = $.create('div', null, 'd' + uid);
                     global.ShellPointer.promptCreate(uid, div);
                     global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex, 0, uid);
@@ -419,7 +421,7 @@ export class Shell {
                 } else {
                     if (global.ShellPointer.promptIndex + 1 == global.ShellPointer.promptUid.length) {
                         // adiciona ao final
-                        const uid = $.uid();
+                        const uid = global.crypto.randomUUID();
                         const div = $.create('div', global.ShellPointer.promptContainer, 'd' + uid);
                         global.ShellPointer.promptCreate(uid, div);
                         global.ShellPointer.promptUid.push(uid);

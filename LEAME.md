@@ -102,7 +102,7 @@ npm run build:prod
 
 >MIT License
 >
->Copyright &copy; 2016-2023 Sergio Lindau, ISBN 978-65-00-84828-1
+>Copyright &copy; 2016-2024 Sergio Lindau, ISBN 978-65-00-84828-1
 >
 >Permission is hereby granted, free of charge, to any person obtaining a copy
 >of this software and associated documentation files (the "Software"), to deal

@@ -47,6 +47,7 @@ export default function evalInput(input: HTMLTextAreaElement): [string[], string
             return [[], []];
         }
     } catch (error) {
+        // TODO: Better error handling.
         global.alert(error);
         return [[], []];
     }

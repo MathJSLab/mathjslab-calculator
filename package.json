@@ -50,18 +50,18 @@
     "do:all": "npm run clean && npm run update && npm run format:lint && npm run build:prod && npm run git:add:commit:push"
   },
   "dependencies": {
-    "basic-dom-helper": "^1.0.9",
-    "mathjslab": "^1.4.0"
+    "basic-dom-helper": "^1.0.11",
+    "mathjslab": "^1.4.1"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.10.6",
     "@types/webpack": "^5.28.5",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-prettier": "^5.1.2",
     "html-webpack-plugin": "^5.6.0",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",

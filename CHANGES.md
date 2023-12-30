@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.0
 - Support for multiline statements.
+- External function names assigned in `Evaluator.localTable` with random UUID.
 
 ## 1.1.1
 - Translations of README.md file to portuguese LEIAME.md an spanish LEAME.md
