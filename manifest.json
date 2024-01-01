@@ -1,0 +1,53 @@
+{
+  "name": "MathJSLab Calculator",
+  "short_name": "MathJSLabCalc",
+  "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB®/Octave",
+  "categories": [
+    "mathematics",
+    "math",
+    "educational",
+    "MATLAB",
+    "Octave",
+    "MathML"
+  ],
+  "start_url": ".",
+  "background_color": "#fff",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "images/icons/16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/24.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

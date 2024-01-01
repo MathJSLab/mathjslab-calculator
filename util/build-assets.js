@@ -3,6 +3,7 @@ const path = require('node:path');
 
 console.log('Copying assets to /dist directory...');
 try {
+    // Create dist directory.
     let directory = path.resolve(__dirname, '..', 'dist');
     if (fs.existsSync(directory)) {
         fs.rmSync(directory, { recursive: true });
@@ -11,11 +12,29 @@ try {
     else {
         fs.mkdirSync(directory);
     }
+    // Copy manifest.json
+    fs.copyFileSync(path.resolve(__dirname, '..', 'manifest.json'), path.resolve(__dirname, '..', 'dist', 'manifest.json'));
+    // Create dist/images/icons directory and copy contents of images/icons to it.
+    directory = path.resolve(__dirname, '..', 'dist', 'images');
+    if (!fs.existsSync(directory)) {
+        fs.mkdirSync(directory);
+    }
+    directory = path.resolve(__dirname, '..', 'dist', 'images', 'icons');
+    if (!fs.existsSync(directory)) {
+        fs.mkdirSync(directory);
+    }
+    const icons = fs.readdirSync(path.resolve(__dirname, '..', 'images', 'icons'));
+    icons.forEach((icon) => {
+        fs.copyFileSync(path.resolve(__dirname, '..', 'images', 'icons', icon), path.resolve(__dirname, '..', 'dist', 'images', 'icons', icon));
+    });
+    // Create dist/example directory.
     directory = path.resolve(__dirname, '..', 'dist', 'example');
     if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory);
     }
+    // Copy example/example.json to dist/example/example.json
     fs.copyFileSync(path.resolve(__dirname, '..', 'example', 'example.json'), path.resolve(__dirname, '..', 'dist', 'example', 'example.json'));
+    // Copy files in example directory to dist/example. Create first-example.json.
     const example = JSON.parse(fs.readFileSync(path.resolve(__dirname, '..', 'example', 'example.json')));
     let first = true;
     for (let name in example) {
@@ -30,10 +49,12 @@ try {
             first = false;
         }
     }
+    // Create dist/help directory.
     directory = path.resolve(__dirname, '..', 'dist', 'help');
     if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory);
     }
+    // Copy help/[languages]/*.* to dist/help/[languages]/*.*
     const languages = fs.readdirSync(path.resolve(__dirname, '..', 'help'));
     languages.forEach((language) => {
         directory = path.resolve(__dirname, '..', 'dist', 'help', language);
@@ -45,6 +66,7 @@ try {
             fs.copyFileSync(path.resolve(__dirname, '..', 'help', language, file), path.resolve(__dirname, '..', 'dist', 'help', language, file));
         })
     });
+    // Copy README.md, LEIAME.MD and LEAME.md to dist/
     fs.copyFileSync(path.resolve(__dirname, '..', 'README.md'), path.resolve(__dirname, '..', 'dist', 'README.md'));
     fs.copyFileSync(path.resolve(__dirname, '..', 'LEIAME.md'), path.resolve(__dirname, '..', 'dist', 'LEIAME.md'));
     fs.copyFileSync(path.resolve(__dirname, '..', 'LEAME.md'), path.resolve(__dirname, '..', 'dist', 'LEAME.md'));

@@ -2,13 +2,18 @@ import path from 'path';
 import webpack from 'webpack';
 import 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
+const isProduction = process.env.NODE_ENV?.startsWith('prod');
+
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
 const config: webpack.Configuration = {
     entry: './src/index.ts',
     module: {
         rules: [
             {
-                test: /(\.tsx?)|(\.js)$/,
+                test: /\.(tsx?|jsx?)$/i,
                 use: [
                     {
                         loader: 'ts-loader',
@@ -17,16 +22,16 @@ const config: webpack.Configuration = {
                         },
                     },
                 ],
-                exclude: [/node_modules/, /test/],
+                exclude: [/node_modules/],
             },
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                test: /\.css$/i,
+                use: [stylesHandler, 'css-loader'],
             },
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js'],
         alias: {
             parser: path.resolve(__dirname, 'src/'),
         },
@@ -43,16 +48,19 @@ const config: webpack.Configuration = {
     ],
 };
 
-if (process.env.MODE_ENV?.startsWith('prod')) {
-    console.log('Building production bundle.');
-} else if (process.env.MODE_ENV?.startsWith('dev')) {
+if (isProduction) {
+    config.mode = 'production';
+    config.plugins!.push(new MiniCssExtractPlugin());
+    console.log('webpack.config.ts: Building production bundle.');
+} else {
+    config.mode = 'development';
     config.devtool = 'inline-source-map';
     config.devServer = {
         static: path.join(__dirname, 'dist'),
         compress: true,
         port: 4000,
     };
-    console.log('Building development bundle.');
+    console.log('webpack.config.ts: Building development bundle.');
 }
 
 export default config;

@@ -7,7 +7,7 @@ If there are two nearest integers, return the one further away from
 zero.
 
 >> `round ([-2.7, 2.7])`
->> %% [-3, 3]%%
+>> %%[-3, 3]%%
 
 See also: `ceil`, `floor`, `fix`, `roundb`.
 

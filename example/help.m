@@ -137,6 +137,7 @@ help sind
 help sinh
 help size
 help sqrt
+help struct
 help sub2ind
 help sum
 help summation

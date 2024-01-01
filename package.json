@@ -40,23 +40,23 @@
     "assets": "node util/build-assets.js",
     "bundle": "node util/save-bundle.js",
     "prebuild:dev": "npm run build-configuration && npm run assets",
-    "build:dev": "set MODE_ENV=development && webpack-dev-server --mode development",
+    "build:dev": "set NODE_ENV=development && webpack-dev-server --mode development",
     "prebuild:debug": "set DEBUG=true && npm run build-configuration && npm run assets",
-    "build:debug": "set MODE_ENV=development && webpack-dev-server --mode development",
+    "build:debug": "set NODE_ENV=development && webpack-dev-server --mode development",
     "prebuild:prod": "npm run prebuild:dev",
-    "build:prod": "set MODE_ENV=production && webpack --mode production",
+    "build:prod": "set NODE_ENV=production && webpack --mode production",
     "postbuild:prod": "npm run bundle",
     "build": "npm run build:prod",
     "do:all": "npm run clean && npm run update && npm run format:lint && npm run build:prod && npm run git:add:commit:push"
   },
   "dependencies": {
     "basic-dom-helper": "^1.0.11",
-    "mathjslab": "^1.4.1"
+    "mathjslab": "^1.4.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
     "@types/webpack": "^5.28.5",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -64,6 +64,7 @@
     "eslint-plugin-prettier": "^5.1.2",
     "html-webpack-plugin": "^5.6.0",
     "lint-staged": "^15.2.0",
+    "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.1.1",
     "rimraf": "^5.0.5",
     "style-loader": "^3.3.3",
