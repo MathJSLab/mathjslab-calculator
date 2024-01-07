@@ -1,6 +1,6 @@
 import $, { Tfetch } from 'basic-dom-helper';
 
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, TEvaluatorConfig, TAliasNameTable } from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, EvaluatorConfig, AliasNameTable } from 'mathjslab';
 import { AST } from 'mathjslab';
 export { Evaluator };
 
@@ -29,7 +29,7 @@ declare global {
 }
 global.compatibleFetch = $.fetch;
 
-export const languageAlias: Record<string, TAliasNameTable> = {
+export const languageAlias: Record<string, AliasNameTable> = {
     en: {
         /* Number functions */
         abs: /^abs(olute)?$/,
@@ -241,11 +241,11 @@ export const outputFunction: { [k: string]: Function } = {
     },
 };
 
-export const EvaluatorConfiguration: TEvaluatorConfig = {
+export const EvaluatorConfiguration: EvaluatorConfig = {
     /**
      * Alias table
      */
-    aliasTable: languageAlias[global.lang],
+    aliasNameTable: languageAlias[global.lang],
 
     /**
      * External function table
@@ -545,7 +545,7 @@ export const EvaluatorConfiguration: TEvaluatorConfig = {
                         .then((responseText) => {
                             promptSet.output.innerHTML = MathMarkdown.md2html(
                                 responseText +
-                                    global.EvaluatorPointer.baseFunctionList
+                                    global.EvaluatorPointer.builtInFunctionList
                                         .map((func) => `\`${func}\``)
                                         .sort()
                                         .join(', '),
@@ -572,7 +572,7 @@ global.setLanguage = (lang?: string) => {
         global.lang = lang in languageAlias ? lang : (MathJSLabCalc.defaultLanguage as string);
     }
     global.ShellPointer.setLanguage();
-    EvaluatorConfiguration.aliasTable = languageAlias[global.lang];
+    EvaluatorConfiguration.aliasNameTable = languageAlias[global.lang];
     global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
     global.EvaluatorPointer.debug = buildConfiguration.debug;
     global.ShellPointer.batchExec(new Event('click'));
@@ -612,7 +612,7 @@ function bootstrap() {
     if (!(global.lang in languageAlias)) {
         global.lang = global.MathJSLabCalc.defaultLanguage as string;
     }
-    EvaluatorConfiguration.aliasTable = languageAlias[global.lang];
+    EvaluatorConfiguration.aliasNameTable = languageAlias[global.lang];
     global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
     global.EvaluatorPointer.debug = buildConfiguration.debug;
     global.MathJSLabCalcBuildMessage = buildConfiguration.buildMessage;

@@ -1,4 +1,9 @@
 {
+  "test0": {
+    "file": "test0.m",
+    "caption": "Test 0",
+    "description": "Test 0."
+  },
   "baskara": {
     "file": "baskara.m",
     "caption": "Baskara",
@@ -138,6 +143,11 @@
     "file": "statements.m",
     "caption": "Statements",
     "description": "Test statements, block comments..."
+  },
+  "debug": {
+    "file": "debug.m",
+    "caption": "Debug",
+    "description": "Debug related commands and functions."
   },
   "test1": {
     "file": "test1.m",

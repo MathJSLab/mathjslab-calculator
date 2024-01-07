@@ -1,6 +1,6 @@
 import $ from 'basic-dom-helper';
 import firstExample from './first-example.json';
-import { CharString, MultiArray } from 'mathjslab';
+import { CharString, FunctionHandle, MultiArray } from 'mathjslab';
 
 /**
  * Evaluator handlers
@@ -258,25 +258,25 @@ export class Shell {
             if (!global.EvaluatorPointer.nativeNameTableList.includes(name)) {
                 const nameTableEntry = global.EvaluatorPointer.nameTable[name];
                 const nameListEntry = $.create('li', this.nameList);
-                if (nameTableEntry.parameter.length !== 0) {
-                    nameListEntry.innerHTML = `&commat; ${name}(${nameTableEntry.parameter.map((arg) => arg.id).join(',')})`;
+                if (nameTableEntry instanceof FunctionHandle) {
+                    nameListEntry.innerHTML = `&commat; ${name}(${nameTableEntry.parameter.map((arg: { id: any }) => arg.id).join(',')})`;
                 } else {
                     let resultType: string = '';
-                    if (nameTableEntry.expression.type !== undefined) {
-                        if (nameTableEntry.expression instanceof MultiArray) {
-                            resultType = '[' + nameTableEntry.expression.dimension.join('x') + ']';
-                        } else if (nameTableEntry.expression instanceof CharString) {
+                    if (nameTableEntry.type !== undefined) {
+                        if (nameTableEntry instanceof MultiArray) {
+                            resultType = '[' + nameTableEntry.dimension.join('x') + ']';
+                        } else if (nameTableEntry instanceof CharString) {
                             resultType = '(abc)';
                         } else {
                             resultType = '#';
                         }
-                        if (nameTableEntry.expression.type === 0) {
+                        if (nameTableEntry.type === 0) {
                             if (resultType[0] === '[') {
                                 resultType += '&not;';
                             } else {
                                 resultType = '&not;';
                             }
-                        } else if (nameTableEntry.expression.type === 2) {
+                        } else if (nameTableEntry.type === 2) {
                             resultType += '*';
                         }
                     }
