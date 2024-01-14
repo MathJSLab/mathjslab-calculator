@@ -1,7 +1,7 @@
 import evalInput from './eval-input';
 import evalPrompt from './eval-prompt';
 import { Shell } from './shell';
-import './style.css';
+import './main.css';
 
 export const input: string = '';
 

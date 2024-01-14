@@ -1,0 +1,250 @@
+@import './base.css';
+
+#app {
+    margin: 0 auto;
+    display: block;
+    padding: 1vh 1vw;
+    font-weight: normal;
+}
+
+a,
+.green {
+    text-decoration: none;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.4s;
+    padding: 3px;
+}
+
+@media (hover: hover) {
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
+}
+
+header {
+    line-height: 1.5;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 2rem;
+}
+
+@media (min-width: 1024px) {
+    header {
+        display: flex;
+        place-items: center;
+        padding-right: calc(var(--section-gap) / 2);
+    }
+
+    .logo {
+        margin: 0 2rem 0 0;
+    }
+
+    header .header-wrapper {
+        display: flex;
+        place-items: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 2.6rem;
+    position: relative;
+    top: -10px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.green-panel {
+    background-color: #d0f0d0;
+    border: 2px solid green;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+.width-fit-content {
+    width: fit-content;
+}
+
+.header-panel h1,
+.header-panel h3,
+.header-panel p {
+    text-align: center;
+}
+
+div.right-align-panel {
+    display: block;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+
+    .header-panel h1,
+    .header-panel h3 {
+        text-align: left;
+    }
+
+    .header-panel p {
+        text-align: right;
+    }
+
+    div.right-align-panel {
+        margin: auto 0 auto auto;
+    }
+
+}
+
+.container {
+    position: relative;
+}
+
+.examples {
+    flex: 1;
+}
+
+.shell {
+    flex: 1;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    padding: 1em;
+    /* Add padding for spacing */
+    max-width: calc(100% - 15% - 2em);
+    /* Calculate max width, considering the fixed panel */
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+    z-index: 1;
+    /* Ensure the content is above the fixed panel */
+}
+
+.variables {
+    width: 14%;
+    /* Adjust the width as needed */
+    background-color: #d0f0d0;
+    border: 2px solid green;
+    padding: 1em;
+    border-radius: 1em;
+    /* Add any other styles for your fixed panel */
+    position: absolute;
+    /* Fix the panel */
+    right: 0;
+    /* Position it on the right side */
+    top: 7em;
+    /* Position it at the top */
+    height: 20em;
+}
+
+.namelist {
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margins */
+}
+
+.inputarea {
+    background-color: #e0f0e0;
+    font-family: monospace;
+    font-size: 1.225em;
+    border: 0px thin black;
+    border-radius: 5px;
+    overflow: scroll;
+    padding: 0.2em;
+    line-height: 1.225em;
+    white-space: pre-wrap;
+    width: calc(100% - 3em);
+}
+
+.inputarea:hover {
+    background-color: #f5f5f5;
+    border: 1px solid black;
+}
+
+.inputarea:focus {
+    background-color: #ffffbf;
+    color: #1a1a1a;
+    border: 1px solid black;
+}
+
+.cursor {
+    width: 1em;
+    font-family: 1em monospace;
+    position: relative;
+    top: -0.175em;
+}
+
+.inputprompt {
+    background-color: #e0e0e0;
+    font-family: 1em monospace;
+    overflow: hidden;
+    outline: none;
+    resize: none;
+    white-space: nowrap;
+    height: 1em;
+    width: calc(100% - 3em);
+    line-height: 1em;
+    border-radius: 5px;
+    border: 0px solid #000000;
+    box-shadow: 0 0 0 0;
+    outline: none;
+}
+
+.inputprompt:hover {
+    background-color: #f5f5f5
+}
+
+.inputprompt:focus {
+    background-color: #ffffbf;
+    color: #1A1A1A
+}
+
+.good {
+    background-color: #d0f0d0;
+    border: 2px solid green;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.bad {
+    background-color: #f0d0d0;
+    border: 2px solid red;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.warning {
+    background-color: #b0b0b0;
+    border: 2px solid yellow;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.info {
+    background-color: #d0d0f0;
+    border: 2px solid blue;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.doc {
+    background-color: white;
+    border: 2px solid black;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+canvas {
+    display: block;
+    width: calc(100% - 1em);
+    height: 100%;
+}

@@ -252,6 +252,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
      */
     externalFunctionTable: {
         summation: {
+            type: 'BUILTIN',
             mapper: false,
             ev: [false, true, true, false],
             func: (variable: AST.NodeIdentifier, start: ComplexDecimal, end: ComplexDecimal, expr: AST.NodeExpr): ComplexDecimal => {
@@ -284,6 +285,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
 
         productory: {
+            type: 'BUILTIN',
             mapper: false,
             ev: [false, true, true, false],
             func: (variable: AST.NodeIdentifier, start: ComplexDecimal, end: ComplexDecimal, expr: AST.NodeExpr): ComplexDecimal => {
@@ -316,6 +318,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
 
         plot2d: {
+            type: 'BUILTIN',
             mapper: false,
             ev: [false, false, true, true],
             func: (expr: AST.NodeExpr, variable: AST.NodeIdentifier, minx: ComplexDecimal, maxx: ComplexDecimal): AST.NodeExpr => {
@@ -358,6 +361,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
 
         histogram: {
+            type: 'BUILTIN',
             mapper: false,
             ev: [true, true],
             func: (IMAG: MultiArray, DOM?: MultiArray): AST.NodeExpr => {
@@ -399,6 +403,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
 
         markdown: {
+            type: 'BUILTIN',
             mapper: false,
             ev: [true],
             func: (url: CharString): AST.NodeExpr => {
@@ -431,6 +436,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
 
         load: {
+            type: 'BUILTIN',
             mapper: false,
             ev: [true],
             func: (...url: CharString[]): AST.NodeExpr => {
@@ -571,6 +577,7 @@ global.setLanguage = (lang?: string) => {
     if (lang) {
         global.lang = lang in languageAlias ? lang : (MathJSLabCalc.defaultLanguage as string);
     }
+    document.querySelector('html')!.setAttribute('lang', global.lang);
     global.ShellPointer.setLanguage();
     EvaluatorConfiguration.aliasNameTable = languageAlias[global.lang];
     global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);

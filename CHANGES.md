@@ -5,7 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## 1.2.0
 - Support for multiline statements.
 - External function names assigned in `Evaluator.localTable` with random UUID.
-- Start implementation as a Progressive Web Application. The file 'manifest.json' has been created and the folder images/icons has been created too with icons from Flaticon ([Maths icons created by Prosymbols - Flaticon](https://www.flaticon.com/free-icons/maths))
+- Logo in svg format (at images/mathjslab-logo.svg).
+- Start implementation as a Progressive Web Application. The file 'manifest.json' has been created and the folder images/icons has been created too with icons.
+- Improves in responsiveness.
 
 ## 1.1.1
 - Translations of README.md file to portuguese LEIAME.md an spanish LEAME.md

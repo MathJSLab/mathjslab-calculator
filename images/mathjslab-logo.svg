@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="67.296 141.941 125.49 123.714" xmlns="http://www.w3.org/2000/svg">
+  <ellipse style="fill: rgb(192, 240, 192); stroke: rgb(0, 128, 0); stroke-width: 2px;" cx="130.344" cy="203.385" rx="56.71" ry="56.71"/>
+  <path style="stroke: rgb(0, 0, 0); fill: none; stroke-linecap: round; stroke-width: 3px;" d="M 91.433 158.542 L 92.003 237.662 L 179.76 237.155"/>
+  <path style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 3px;" d="M 92.208 227.401 L 102.492 227.401 L 102.492 237.838"/>
+  <ellipse style="stroke: rgb(0, 0, 0);" cx="97.001" cy="232.71" rx="0.759" ry="0.762"/>
+  <path style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round;" d="M 138.007 209.533 L 142.728 220.829 L 150.821 198.405 L 188.588 198.405"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 6.7px; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px; white-space: pre;" x="-13" y="3"><tspan style="font-family: Symbol; font-size: 24px; word-spacing: 0px;" x="159.914" y="215.097">p</tspan><tspan style="font-size: 6.7px; word-spacing: 0px;"> </tspan></text>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 2px; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5;" d="M 91.455 162.359 L 174.408 237.05"/>
+  <text style="fill: rgb(51, 51, 51); font-family: 'Times New Roman'; font-size: 20px; white-space: pre;" x="129.559" y="252.056">x</text>
+  <text style="fill: rgb(51, 51, 51); font-family: 'Times New Roman'; font-size: 20px; white-space: pre;" x="77.351" y="202.196">y</text>
+  <path style="stroke: rgb(0, 0, 0); fill: none; stroke-linecap: round; stroke-linejoin: round;" d="M 117.67 180.556 L 152.403 180.725 L 152.065 162.853 L 117.67 180.556 Z"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 10px; white-space: pre;" x="153.46" y="185.167">A</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 10px; white-space: pre;" x="111.984" y="179.771">B</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 10px; white-space: pre;" x="148.065" y="160.382">C</text>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 0px;" cx="130.041" cy="203.798" rx="62.745" ry="61.857"/>
+</svg>

@@ -359,11 +359,11 @@ export class Shell {
         table.style.width = '100%';
         const tr = $.create('tr', table);
         let td: HTMLTableCellElement;
-        td = $.create('td', tr);
+        td = $.create('td', tr, null, 'cursor');
         td.innerHTML = '&#x300B;';
-        td.style.width = '1em';
-        td.style.position = 'relative';
-        td.style.top = '-0.175em';
+        // td.style.width = '1em';
+        // td.style.position = 'relative';
+        // td.style.top = '-0.175em';
         td = $.create('td', tr);
         const input = $.create('textarea', td, 'i' + uid, 'inputprompt');
         $.addEventListener(input, 'focus', this.promptFocus);

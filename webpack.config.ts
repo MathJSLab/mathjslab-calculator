@@ -9,7 +9,7 @@ const isProduction = process.env.NODE_ENV?.startsWith('prod');
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
 const config: webpack.Configuration = {
-    entry: './src/index.ts',
+    entry: './src/main.ts',
     module: {
         rules: [
             {

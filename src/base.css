@@ -1,0 +1,68 @@
+:root {
+    --mathjslab-c-white: #ffffff;
+    --mathjslab-c-white-soft: #f8f8f8;
+    --mathjslab-c-white-mute: #f2f2f2;
+
+    --mathjslab-c-black: #181818;
+    --mathjslab-c-black-soft: #222222;
+    --mathjslab-c-black-mute: #282828;
+
+    --mathjslab-c-indigo: #2c3e50;
+
+    --mathjslab-c-divider-light-1: rgba(60, 60, 60, 0.29);
+    --mathjslab-c-divider-light-2: rgba(60, 60, 60, 0.12);
+    --mathjslab-c-divider-dark-1: rgba(84, 84, 84, 0.65);
+    --mathjslab-c-divider-dark-2: rgba(84, 84, 84, 0.48);
+
+    --mathjslab-c-text-light-1: var(--mathjslab-c-indigo);
+    --mathjslab-c-text-light-2: rgba(60, 60, 60, 0.66);
+    --mathjslab-c-text-dark-1: var(--mathjslab-c-white);
+    --mathjslab-c-text-dark-2: rgba(235, 235, 235, 0.64);
+}
+
+/* semantic color variables for this project */
+:root {
+    --color-background: var(--mathjslab-c-white);
+    --color-background-soft: var(--mathjslab-c-white-soft);
+    --color-background-mute: var(--mathjslab-c-white-mute);
+
+    --color-border: var(--mathjslab-c-divider-light-2);
+    --color-border-hover: var(--mathjslab-c-divider-light-1);
+
+    --color-heading: var(--mathjslab-c-text-light-1);
+    --color-text: var(--mathjslab-c-text-light-1);
+
+    --section-gap: 160px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: var(--mathjslab-c-black);
+        --color-background-soft: var(--mathjslab-c-black-soft);
+        --color-background-mute: var(--mathjslab-c-black-mute);
+
+        --color-border: var(--mathjslab-c-divider-dark-2);
+        --color-border-hover: var(--mathjslab-c-divider-dark-1);
+
+        --color-heading: var(--mathjslab-c-text-dark-1);
+        --color-text: var(--mathjslab-c-text-dark-2);
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition:
+        color 0.5s,
+        background-color 0.5s;
+    line-height: 1.6;
+    font-family: sans-serif;
+    font-size: 15px;
+}
