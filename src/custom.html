@@ -48,6 +48,16 @@
                 es: 'Esta es una aplicación de demostración del <a href="https://es.wikipedia.org/wiki/Npm" target="_blank" rel="noopener">paquete npm</a> <a href="https://www.npmjs.com/package/mathjslab" target="_blank" rel="noopener">MathJSLab</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank" rel="noopener">repositorio</a>), un emulador de un subconjunto del lenguaje <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a> escrito completamente en <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">Typescript</a>. Esta aplicación está destinada a fines educativos. Consulte las <a href="#notes">notas</a> a continuación para obtener información detallada.',
                 pt: 'Este é um aplicativo de demonstração do <a href="https://pt.wikipedia.org/wiki/Npm_(software)" target="_blank" rel="noopener">pacote npm</a> <a href="https://www.npmjs.com/package/mathjslab" target="_blank" rel="noopener">MathJSLab</a> (<a href="https://github.com/sergiolindau/mathjslab" target="_blank" rel="noopener">repositório</a>), um emulador de um subconjunto da linguagem <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a> escrito completamente em <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">Typescript</a>. Este aplicativo é destinado a fins educacionais. Consulte as <a href="#notes">notas</a> abaixo para obter informações detalhadas.',
             }[window.lang];
+            document.getElementById('examples-title').innerHTML = {
+                en: 'Examples',
+                es: 'Ejemplos',
+                pt: 'Exemplos',
+            }[window.lang];
+            document.getElementById('readme-title').innerHTML = {
+                en: 'More Info',
+                es: 'Más información',
+                pt: 'Mais Informações',
+            }[window.lang];
             document.getElementById('github-repository').innerHTML = {
                 en: 'GitHub Repository',
                 es: 'Repositorio GitHub',
@@ -90,14 +100,26 @@
         <main>
             <p id="abstract"></p>
 
-            <div id="mathjslab-calculator"></div>
+            <div class="wrap-collabsible">
+                <input id="examples-collapsible" class="toggle" type="checkbox">
+                <label id="examples-title" for="examples-collapsible" class="lbl-toggle"></label>
+                <div class="collapsible-content">
+                    <div id="mathjslab-examples" class="content-inner"></div>
+                </div>
+            </div>
 
             <br />
+            <div id="mathjslab-calculator"></div>
+            <br />
 
-            <hr />
-            <a id="notes"></a>
-            <div id="readme"></div>
-            <hr />
+            <div class="wrap-collabsible">
+                <a id="notes"></a>
+                <input id="readme-collapsible" class="toggle" type="checkbox">
+                <label id="readme-title" for="readme-collapsible" class="lbl-toggle"></label>
+                <div class="collapsible-content">
+                    <div id="readme" class="content-inner"></div>
+                </div>
+            </div>
         </main>
 
         <footer>

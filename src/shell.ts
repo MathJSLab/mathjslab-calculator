@@ -13,6 +13,7 @@ export type EvalPromptHandler = (frame: HTMLDivElement, box: HTMLDivElement, inp
  */
 export interface ShellOptions {
     containerId: string;
+    examplesId: string;
     evalInput?: EvalInputHandler;
     evalPrompt?: EvalPromptHandler;
     input: string;
@@ -50,7 +51,6 @@ export class Shell {
     options: ShellOptions;
     examples: Record<string, ExampleEntry>;
     examplesAvailable: boolean;
-    examplesHeading: HTMLHeadingElement;
     container: HTMLDivElement;
     shell: HTMLDivElement;
     variables: HTMLDivElement;
@@ -106,7 +106,8 @@ export class Shell {
         }
         shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
-            shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
+            // shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
+            shell.examplesContainer = $.i(options.examplesId) as HTMLDivElement;
             await global
                 .compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
                 .then((response) => {
@@ -125,7 +126,7 @@ export class Shell {
                 });
         }
         shell.variables = $.create('div', shell.container, 'variables_' + options.containerId, 'variables');
-        shell.variablesHeading = $.create('h2', shell.variables);
+        shell.variablesHeading = $.create('h2', shell.variables, null, 'green');
         shell.variablesHeading.setAttribute('align', 'center');
         const setVariablesPanel = () => {
             let Y = window.scrollY - shell.container.offsetTop + window.innerHeight * 0.025;
@@ -143,7 +144,7 @@ export class Shell {
         window.addEventListener('resize', setVariablesPanel);
         shell.nameTable = $.create('div', shell.variables, 'nameTable_' + options.containerId);
         shell.nameList = $.create('ul', shell.nameTable, null, 'namelist');
-        shell.batchContainer = $.create('div', shell.shell, 'batch_' + options.containerId);
+        shell.batchContainer = $.create('div', shell.shell, 'batch_' + options.containerId, 'batch');
         shell.batchBox = $.create('div', shell.batchContainer, 'batchbox_' + options.containerId, 'good');
         shell.batchWrapper = $.create('div', shell.batchBox, 'batchwrapper_' + options.containerId);
         shell.batchInput = $.create('textarea', shell.batchWrapper, 'batchtext_' + options.containerId, 'inputarea');
@@ -155,7 +156,6 @@ export class Shell {
         shell.batchInput.focus();
         shell.batchInput.select();
         shell.batchButton = $.create('button', shell.batchBox, 'batchbutton_', 'inputbutton');
-        (shell.batchButton as any).style = 'width:calc(100% - 3em);height:50px';
         $.addEventListener(shell.batchButton, 'click', shell.batchExec);
         $.addEventListener(shell.batchInput, 'focus', shell.batchFocus);
         $.addEventListener(shell.batchInput, 'blur', shell.batchBlur);
@@ -173,7 +173,6 @@ export class Shell {
             global.ShellPointer.batchInput.value = firstExample.content;
             global.ShellPointer.batchExec(new Event('click'));
         } else {
-            shell.examplesHeading = $.create('h2', shell.examplesContainer);
             let first = true;
             for (const example in shell.examples) {
                 const button = $.create('button', shell.examplesContainer, 'example-' + example);
@@ -211,11 +210,6 @@ export class Shell {
             en: 'Evaluate',
             es: 'Computar',
             pt: 'Computar',
-        }[global.lang] as string;
-        this.examplesHeading.innerHTML = {
-            en: 'Examples',
-            es: 'Ejemplos',
-            pt: 'Exemplos',
         }[global.lang] as string;
     }
 
@@ -342,7 +336,6 @@ export class Shell {
         this.promptIndex++;
         this.promptUid.push(uid);
         this.promptSet[uid].input.value = text ?? '';
-        this.promptSet[uid].input.style.width = '97%';
         this.promptSet[uid].input.style.height = '1em';
         this.promptSet[uid].input.style.height = this.promptSet[uid].input.scrollHeight + 'px';
         this.promptSet[uid].input.focus();
@@ -371,7 +364,6 @@ export class Shell {
         $.addEventListener(input, 'keydown', this.promptKeydown);
 
         const promptResize = () => {
-            input.style.width = '97%';
             input.style.height = '1em';
             input.style.height = input.scrollHeight + 'px';
         };
@@ -390,7 +382,7 @@ export class Shell {
         $.addEventListener(box, 'click', inputFocus);
         promptResize();
 
-        const output = $.create('div', box, 'o' + uid);
+        const output = $.create('div', box, 'o' + uid, 'output');
 
         this.promptSet[uid] = {
             container: promptFrame,

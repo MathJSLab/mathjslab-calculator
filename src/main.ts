@@ -8,6 +8,7 @@ export const input: string = '';
 function bootstrap() {
     Shell.initialize({
         containerId: 'mathjslab-calculator',
+        examplesId: 'mathjslab-examples',
         evalPrompt,
         evalInput,
         input,

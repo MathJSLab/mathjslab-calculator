@@ -1,4 +1,5 @@
 :root {
+
     --mathjslab-c-white: #ffffff;
     --mathjslab-c-white-soft: #f8f8f8;
     --mathjslab-c-white-mute: #f2f2f2;
@@ -18,10 +19,61 @@
     --mathjslab-c-text-light-2: rgba(60, 60, 60, 0.66);
     --mathjslab-c-text-dark-1: var(--mathjslab-c-white);
     --mathjslab-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+    --mathjslab-c-code-background-light: hsla(0, 0%, 90%, 1);
+    --mathjslab-c-code-background-dark: hsla(0, 0%, 90%, 1);
+
+    --mathjslab-c-a-light: hsla(160, 100%, 37%, 1);
+    --mathjslab-c-a-hover-light: hsla(160, 100%, 23%, 1);
+    --mathjslab-c-a-dark: hsla(160, 100%, 37%, 1);
+    --mathjslab-c-a-hover-dark: hsla(160, 100%, 23%, 1);
+    --mathjslab-c-a-background-hover-light: hsla(160, 100%, 37%, 0.2);
+    --mathjslab-c-a-background-hover-dark: hsla(160, 100%, 37%, 0.2);
+
+    --mathjslab-c-input-background-light: #e0f0e0;
+    --mathjslab-c-input-background-dark: #e0f0e0;
+
+    --mathjslab-c-input-background-hover-light: #f5f5f5;
+    --mathjslab-c-input-background-hover-dark: #f5f5f5;
+
+    --mathjslab-c-input-background-focus-light: #ffffbf;
+    --mathjslab-c-input-background-focus-dark: #ffffbf;
+
+    --mathjslab-c-input-text-focus-light: #1a1a1a;
+
+    --mathjslab-c-backgroung-red-light: #f0d0d0;
+    --mathjslab-c-backgroung-green-light: #d0f0d0;
+    --mathjslab-c-backgroung-blue-light: #d0d0f0;
+    --mathjslab-c-backgroung-yellow-light: #f0f0d0;
+
+    --mathjslab-c-backgroung-red-dark: #f0d0d0;
+    --mathjslab-c-backgroung-green-dark: #d0f0d0;
+    --mathjslab-c-backgroung-blue-dark: #d0d0f0;
+    --mathjslab-c-backgroung-yellow-dark: #f0f0d0;
+
+    --mathjslab-c-divider-red-light-1: red;
+    --mathjslab-c-divider-red-light-2: red;
+    --mathjslab-c-divider-green-light-1: green;
+    --mathjslab-c-divider-green-light-2: green;
+    --mathjslab-c-divider-blue-light-1: blue;
+    --mathjslab-c-divider-blue-light-2: blue;
+    --mathjslab-c-divider-yellow-light-1: yellow;
+    --mathjslab-c-divider-yellow-light-2: yellow;
+
+    --mathjslab-c-divider-red-dark-1: red;
+    --mathjslab-c-divider-red-dark-2: red;
+    --mathjslab-c-divider-green-dark-1: green;
+    --mathjslab-c-divider-green-dark-2: green;
+    --mathjslab-c-divider-blue-dark-1: blue;
+    --mathjslab-c-divider-blue-dark-2: blue;
+    --mathjslab-c-divider-yellow-dark-1: yellow;
+    --mathjslab-c-divider-yellow-dark-2: yellow;
+
 }
 
-/* semantic color variables for this project */
+/* semantic color variables */
 :root {
+
     --color-background: var(--mathjslab-c-white);
     --color-background-soft: var(--mathjslab-c-white-soft);
     --color-background-mute: var(--mathjslab-c-white-mute);
@@ -32,11 +84,37 @@
     --color-heading: var(--mathjslab-c-text-light-1);
     --color-text: var(--mathjslab-c-text-light-1);
 
-    --section-gap: 160px;
+    --color-code-background: var(--mathjslab-c-code-background-light);
+
+    --color-a-text: var(--mathjslab-c-a-light);
+    --color-a-text-hover: var(--mathjslab-c-a-hover-light);
+    --color-a-background-hover: var(--mathjslab-c-a-background-hover-light);
+
+    --color-input-background: var(--mathjslab-c-input-background-light);
+    --color-input-background-hover: var(--mathjslab-c-input-background-hover-light);
+    --color-input-background-focus: var(--mathjslab-c-input-background-focus-light);
+
+    --color-input-text-focus: var(--mathjslab-c-input-text-focus-light);
+
+    --red-backgroung: var(--mathjslab-c-backgroung-red-light);
+    --red-border: var(--mathjslab-c-divider-red-light-2);
+    --red-border-hover: var(--mathjslab-c-divider-red-light-1);
+    --green-backgroung: var(--mathjslab-c-backgroung-green-light);
+    --green-border: var(--mathjslab-c-divider-green-light-2);
+    --green-border-hover: var(--mathjslab-c-divider-green-light-1);
+    --blue-backgroung: var(--mathjslab-c-backgroung-blue-light);
+    --blue-border: var(--mathjslab-c-divider-blue-light-2);
+    --blue-border-hover: var(--mathjslab-c-divider-blue-light-1);
+    --yellow-backgroung: var(--mathjslab-c-backgroung-yellow-light);
+    --yellow-border: var(--mathjslab-c-divider-yellow-light-2);
+    --yellow-border-hover: var(--mathjslab-c-divider-yellow-light-1);
+
 }
 
 @media (prefers-color-scheme: dark) {
+
     :root {
+
         --color-background: var(--mathjslab-c-black);
         --color-background-soft: var(--mathjslab-c-black-soft);
         --color-background-mute: var(--mathjslab-c-black-mute);
@@ -46,7 +124,34 @@
 
         --color-heading: var(--mathjslab-c-text-dark-1);
         --color-text: var(--mathjslab-c-text-dark-2);
+
+        --color-code-background: var(--mathjslab-c-code-background-dark);
+
+        --color-a-text: var(--mathjslab-c-a-dark);
+        --color-a-text-hover: var(--mathjslab-c-a-hover-dark);
+        --color-a-background-hover: var(--mathjslab-c-a-background-hover-dark);
+
+        --color-input-background: var(--mathjslab-c-input-background-dark);
+        --color-input-background-hover: var(--mathjslab-c-input-background-hover-dark);
+        --color-input-background-focus: var(--mathjslab-c-input-background-focus-dark);
+
+        --color-input-text-focus: var(--mathjslab-c-input-text-focus-dark);
+
+        --red-backgroung: var(--mathjslab-c-backgroung-red-dark);
+        --red-border: var(--mathjslab-c-divider-red-dark-2);
+        --red-border-hover: var(--mathjslab-c-divider-red-dark-1);
+        --green-backgroung: var(--mathjslab-c-backgroung-green-dark);
+        --green-border: var(--mathjslab-c-divider-green-dark-2);
+        --green-border-hover: var(--mathjslab-c-divider-green-dark-1);
+        --blue-backgroung: var(--mathjslab-c-backgroung-blue-dark);
+        --blue-border: var(--mathjslab-c-divider-blue-dark-2);
+        --blue-border-hover: var(--mathjslab-c-divider-blue-dark-1);
+        --yellow-backgroung: var(--mathjslab-c-backgroung-yellow-dark);
+        --yellow-border: var(--mathjslab-c-divider-yellow-dark-2);
+        --yellow-border-hover: var(--mathjslab-c-divider-yellow-dark-1);
+
     }
+
 }
 
 *,
@@ -64,5 +169,10 @@ body {
         background-color 0.5s;
     line-height: 1.6;
     font-family: sans-serif;
+    font-size: 15px;
+}
+
+math {
+    math-style: normal;
     font-size: 15px;
 }

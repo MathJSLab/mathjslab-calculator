@@ -3,21 +3,20 @@
 #app {
     margin: 0 auto;
     display: block;
-    padding: 1vh 1vw;
-    font-weight: normal;
+    padding: 0;
 }
 
 a,
 .green {
     text-decoration: none;
-    color: hsla(160, 100%, 37%, 1);
+    color: var(--color-a-text);
     transition: 0.4s;
     padding: 3px;
 }
 
 @media (hover: hover) {
     a:hover {
-        background-color: hsla(160, 100%, 37%, 0.2);
+        background-color: var(--color-a-background-hover);
     }
 }
 
@@ -34,7 +33,6 @@ header {
     header {
         display: flex;
         place-items: center;
-        padding-right: calc(var(--section-gap) / 2);
     }
 
     .logo {
@@ -61,8 +59,8 @@ h3 {
 }
 
 .green-panel {
-    background-color: #d0f0d0;
-    border: 2px solid green;
+    background-color: var(--green-backgroung);
+    border: 2px solid var(--green-border);
     border-radius: 1em;
     padding: 1em;
 }
@@ -99,76 +97,85 @@ div.right-align-panel {
 
 }
 
-.container {
-    position: relative;
+pre {
+    overflow-x: auto;
+    background-color: var(--color-code-background);
+    padding: 1em;
+    border-radius: 1em;
 }
 
-.examples {
-    flex: 1;
+.container {
+    position: relative;
 }
 
 .shell {
     flex: 1;
     overflow-y: auto;
-    /* Enable vertical scrolling */
-    padding: 1em;
-    /* Add padding for spacing */
-    max-width: calc(100% - 15% - 2em);
-    /* Calculate max width, considering the fixed panel */
+    padding: 0;
+    max-width: 100%;
     box-sizing: border-box;
-    /* Include padding and border in width calculation */
     z-index: 1;
-    /* Ensure the content is above the fixed panel */
+}
+
+@media (min-width: 1024px) {
+    .shell {
+        padding: 1em;
+        max-width: calc(100% - 15%);
+    }
+}
+
+.batch {
+    display: none;
 }
 
 .variables {
-    width: 14%;
-    /* Adjust the width as needed */
-    background-color: #d0f0d0;
-    border: 2px solid green;
-    padding: 1em;
-    border-radius: 1em;
-    /* Add any other styles for your fixed panel */
-    position: absolute;
-    /* Fix the panel */
-    right: 0;
-    /* Position it on the right side */
-    top: 7em;
-    /* Position it at the top */
-    height: 20em;
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .batch {
+        display: block;
+    }
+
+    .variables {
+        width: 14%;
+        background-color: var(--green-backgroung);
+        border: 2px solid var(--green-border);
+        padding: 1em;
+        border-radius: 1em;
+        position: absolute;
+        right: 0;
+        top: 7em;
+        display: block;
+    }
 }
 
 .namelist {
     list-style-type: none;
-    /* Remove bullets */
     padding: 0;
-    /* Remove padding */
     margin: 0;
-    /* Remove margins */
 }
 
 .inputarea {
-    background-color: #e0f0e0;
+    background-color: var(--color-input-background);
     font-family: monospace;
     font-size: 1.225em;
-    border: 0px thin black;
-    border-radius: 5px;
+    border: 1px thin black;
     overflow: scroll;
     padding: 0.2em;
     line-height: 1.225em;
     white-space: pre-wrap;
-    width: calc(100% - 3em);
+    width: 100%;
+    resize: none;
 }
 
 .inputarea:hover {
-    background-color: #f5f5f5;
-    border: 1px solid black;
+    background-color: var(--color-input-background-hover);
 }
 
 .inputarea:focus {
-    background-color: #ffffbf;
-    color: #1a1a1a;
-    border: 1px solid black;
+    background-color: var(--color-input-background-focus);
+    color: var(--color-input-text-focus);
 }
 
 .cursor {
@@ -179,65 +186,74 @@ div.right-align-panel {
 }
 
 .inputprompt {
-    background-color: #e0e0e0;
+    background-color: var(--color-input-background);
     font-family: 1em monospace;
     overflow: hidden;
     outline: none;
     resize: none;
     white-space: nowrap;
     height: 1em;
-    width: calc(100% - 3em);
+    width: 100%;
     line-height: 1em;
-    border-radius: 5px;
-    border: 0px solid #000000;
+    border-radius: 0.3em;
+    border: 0;
     box-shadow: 0 0 0 0;
     outline: none;
 }
 
 .inputprompt:hover {
-    background-color: #f5f5f5
+    background-color: var(--color-input-background-hover);
 }
 
 .inputprompt:focus {
-    background-color: #ffffbf;
-    color: #1A1A1A
+    background-color: var(--color-input-background-focus);
+    color: var(--color-input-text-focus);
+}
+
+.inputbutton {
+    width: 100%;
+    height: 4em;
+}
+
+.output {
+    overflow-x: auto;
 }
 
 .good {
-    background-color: #d0f0d0;
-    border: 2px solid green;
+    background-color: var(--green-backgroung);
+    border: 2px solid var(--green-border);
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
 }
 
 .bad {
-    background-color: #f0d0d0;
-    border: 2px solid red;
+    background-color: var(--red-backgroung);
+    border: 2px solid var(--red-border);
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
 }
 
 .warning {
-    background-color: #b0b0b0;
-    border: 2px solid yellow;
+    background-color: var(--yellow-backgroung);
+    border: 2px solid var(--yellow-border);
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
 }
 
 .info {
-    background-color: #d0d0f0;
-    border: 2px solid blue;
+    background-color: var(--blue-backgroung);
+    border: 2px solid var(--blue-border);
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
 }
 
 .doc {
-    background-color: white;
-    border: 2px solid black;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-border);
     margin: 1em;
     padding: 1em;
     border-radius: 1em;
@@ -245,6 +261,85 @@ div.right-align-panel {
 
 canvas {
     display: block;
-    width: calc(100% - 1em);
+    width: 100%;
     height: 100%;
+}
+
+.wrap-collabsible {
+    margin-bottom: 1.2rem 0;
+}
+
+input.toggle {
+    display: none;
+}
+
+.lbl-toggle {
+    display: block;
+
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+
+    padding: 1rem;
+
+    color: var(--color-a-text);
+    background: var(--green-backgroung);
+
+    cursor: pointer;
+
+    border: 2px solid var(--green-border);
+    border-radius: 1em;
+    transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+    color: var(--color-a-text-hover);
+}
+
+.lbl-toggle::before {
+    content: ' ';
+    display: inline-block;
+
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+
+    vertical-align: middle;
+    margin-right: .7rem;
+    transform: translateY(-2px);
+
+    transition: transform .2s ease-out;
+}
+
+.collapsible-content .content-inner {
+    background: var(--color-background);
+    border-left: 2px solid var(--green-border);
+    border-right: 2px solid var(--green-border);
+    border-bottom: 2px solid var(--green-border);
+
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding: .5rem 1rem;
+}
+
+.collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+
+    transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked+.lbl-toggle+.collapsible-content {
+    max-height: fit-content;
+}
+
+.toggle:checked+.lbl-toggle::before {
+    transform: rotate(90deg) translateX(-3px);
+}
+
+.toggle:checked+.lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom: 0;
 }
