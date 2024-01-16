@@ -8,10 +8,16 @@
 
 a,
 .green {
+    border-radius: 0.5em;
     text-decoration: none;
     color: var(--color-a-text);
     transition: 0.4s;
     padding: 3px;
+}
+
+button {
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
 @media (hover: hover) {
@@ -99,9 +105,21 @@ div.right-align-panel {
 
 pre {
     overflow-x: auto;
-    background-color: var(--color-code-background);
+    background-color: var(--color-pre-code-background);
     padding: 1em;
     border-radius: 1em;
+}
+
+mn > pre {
+    background-color: inherit;
+}
+
+pre > code {
+    color: inherit;
+}
+
+code {
+    color: red;
 }
 
 .container {
@@ -158,10 +176,11 @@ pre {
 
 .inputarea {
     background-color: var(--color-input-background);
+    color: var(--color-input-text);
     font-family: monospace;
     font-size: 1.225em;
     border: 1px thin black;
-    overflow: scroll;
+    overflow-x: auto;
     padding: 0.2em;
     line-height: 1.225em;
     white-space: pre-wrap;
@@ -187,6 +206,7 @@ pre {
 
 .inputprompt {
     background-color: var(--color-input-background);
+    color: var(--color-input-text);
     font-family: 1em monospace;
     overflow: hidden;
     outline: none;
@@ -210,8 +230,9 @@ pre {
     color: var(--color-input-text-focus);
 }
 
-.inputbutton {
+button.inputbutton {
     width: 100%;
+    margin: auto;
     height: 4em;
 }
 

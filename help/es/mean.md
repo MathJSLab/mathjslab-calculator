@@ -8,7 +8,7 @@ Calcula la media de los elementos de `X`.
 * Si X es un vector, entonces `mean(X)` devuelve la media de los
 elementos en `X` definidos como
 
->> `média (X) = SOMA_i X(i) / N`
+>> `mean (X) = SUM_i X(i) / N`
 
 donde `N` es el número de elementos en el vector `X`.
 
@@ -18,7 +18,7 @@ donde `N` es el número de elementos en el vector `X`.
 
 La entrada opcional `DIM` obliga a `mean` a operar en las dimensiones especificadas. `DIM` puede ser una dimensión escalar o un vector de dimensiones no repetidas. Las dimensiones deben ser números enteros positivos y el promedio se calcula sobre el segmento de la matriz definido por `DIM`.
 
-Especificar la dimensión `todos` forzará a `media` a operar en todos los elementos de `X` y es equivalente a `media (X(:))`.
+Especificar la dimensión `'all'` forzará `mean` a operar en todos los elementos de `X` y es equivalente a `mean (X(:))`.
 
 La entrada opcional `NANFLAG` especifica si se incluyen/excluyen los valores `NaN` del cálculo. Por defecto, se incluyen valores `NaN`
 en el cálculo (`NANFLAG` tiene el valor `'includenan'`). Para excluir los valores `NaN`, establezca el valor de `NANFLAG` en `omitnan`.

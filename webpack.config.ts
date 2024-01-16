@@ -43,7 +43,7 @@ const config: webpack.Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'MathJSLab Calculator',
-            template: 'src/custom.html',
+            template: 'src/main.html',
         }),
     ],
 };

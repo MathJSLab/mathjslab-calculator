@@ -16,13 +16,16 @@ try {
     fs.copyFileSync(path.resolve(__dirname, '..', 'manifest.json'), path.resolve(__dirname, '..', 'dist', 'manifest.json'));
     // Copy robots.txt
     fs.copyFileSync(path.resolve(__dirname, '..', 'robots.txt'), path.resolve(__dirname, '..', 'dist', 'robots.txt'));
-    // Create dist/images/icons directory and copy contents of images/icons to it.
+    // Create dist/images directory and copy contents of images to it.
     directory = path.resolve(__dirname, '..', 'dist', 'images');
     if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory);
     }
     // Copy mathjslab-logo.svg
     fs.copyFileSync(path.resolve(__dirname, '..', 'images', 'mathjslab-logo.svg'), path.resolve(__dirname, '..', 'dist', 'images', 'mathjslab-logo.svg'));
+    // Copy github-mark.svg
+    fs.copyFileSync(path.resolve(__dirname, '..', 'images', 'github-mark.svg'), path.resolve(__dirname, '..', 'dist', 'images', 'github-mark.svg'));
+    // Create dist/images/icons directory and copy contents of images/icons to it.
     directory = path.resolve(__dirname, '..', 'dist', 'images', 'icons');
     if (!fs.existsSync(directory)) {
         fs.mkdirSync(directory);

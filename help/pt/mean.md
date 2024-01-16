@@ -8,7 +8,7 @@ Calcula a média dos elementos de `X`.
 * Se X for um vetor, então `mean (X)` retorna a média dos
 elementos em `X` definidos como
 
->> `média (X) = SOMA_i X(i) / N`
+>> `mean (X) = SUM_i X(i) / N`
 
 onde `N` é o número de elementos no vetor `X`.
 
@@ -18,7 +18,7 @@ média de cada coluna em `X`.
 * Se `X` for um array multidimensional, então `mean` opera junto
 a primeira dimensão não singular de `X`.
 
-A entrada opcional `DIM` força `mean` a operar sobre a(s) dimensão(ões) o especificada(s).
+A entrada opcional `DIM` força `mean` a operar sobre a(s) dimensão(ões) especificada(s).
 `DIM` pode ser uma dimensão escalar ou um vetor de
 dimensões não repetidas. As dimensões devem ser números inteiros positivos,
 e a média é calculada sobre a fatia da matriz definida por `DIM`.
