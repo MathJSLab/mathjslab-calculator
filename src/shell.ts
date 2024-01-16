@@ -106,7 +106,6 @@ export class Shell {
         }
         shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
-            // shell.examplesContainer = $.create('div', shell.shell, 'examples_' + options.containerId, 'examples');
             shell.examplesContainer = $.i(options.examplesId) as HTMLDivElement;
             await global
                 .compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
@@ -354,9 +353,6 @@ export class Shell {
         let td: HTMLTableCellElement;
         td = $.create('td', tr, null, 'cursor');
         td.innerHTML = '&#x300B;';
-        // td.style.width = '1em';
-        // td.style.position = 'relative';
-        // td.style.top = '-0.175em';
         td = $.create('td', tr);
         const input = $.create('textarea', td, 'i' + uid, 'inputprompt');
         $.addEventListener(input, 'focus', this.promptFocus);
