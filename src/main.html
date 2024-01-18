@@ -6,7 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="An interpreter with language syntax like MATLAB®/Octave" />
     <meta name="author" content="Sergio Lindau" />
-    <meta name="keywords" content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,grammar,ANTLR" />
+    <meta name="keywords"
+        content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,grammar,ANTLR" />
     <meta name="robots" content="index,follow">
     <link rel="icon" href="images/icons/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +16,7 @@
         function loadText() {
             if (!document.location.href.startsWith('file:')) {
                 const container = document.getElementById('readme');
-                window.compatibleFetch({
+                window.fetch({
                     en: 'README.md',
                     es: 'LEAME.md',
                     pt: 'LEIAME.md',
@@ -53,6 +54,11 @@
                 es: 'Ejemplos',
                 pt: 'Exemplos',
             }[window.lang];
+            document.getElementById('open-file').innerHTML = {
+                en: 'Open...',
+                es: 'Abrir...',
+                pt: 'Abrir...',
+            }[window.lang];
             document.getElementById('readme-title').innerHTML = {
                 en: 'More Info',
                 es: 'Más información',
@@ -86,13 +92,15 @@
                 </div>
             </div>
             <div class="right-align-panel">
-                <div class="green-panel width-fit-content right-align-panel">
+                <div class="green-panel width-fit-content right-align-panel" align="center">
                     <select id="language"
                         onchange="javascript:window.setLanguage(document.getElementById('language').value);loadText();">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="pt">Português</option>
                     </select>
+                    <br />
+                    <button id="open-file" onclick="openFile()"></button>
                 </div>
             </div>
         </header>
@@ -109,7 +117,7 @@
             </div>
 
             <br />
-            <div id="mathjslab-calculator"></div>
+            <div id="mathjslab-prompt"></div>
             <br />
 
             <div class="wrap-collabsible">

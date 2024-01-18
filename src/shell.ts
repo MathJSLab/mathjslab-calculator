@@ -108,7 +108,7 @@ export class Shell {
         if (!shell.isFileProtocol) {
             shell.examplesContainer = $.i(options.examplesId) as HTMLDivElement;
             await global
-                .compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
+                .fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error('Examples unavailable.');
@@ -178,7 +178,7 @@ export class Shell {
                 button.innerHTML = shell.examples[example].caption;
                 $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
                     const exampleId = (event.target as any).id.substring(8);
-                    const response = await global.compatibleFetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${shell.examples[exampleId].file}`);
+                    const response = await global.fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${shell.examples[exampleId].file}`);
                     if (!response.ok) {
                         throw new Error('Network response error.');
                     }
@@ -238,6 +238,33 @@ export class Shell {
         global.ShellPointer.promptClean();
         global.ShellPointer.loadInput();
         global.ShellPointer.batchButton.focus();
+    }
+
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+    public openFile(): void {
+        global
+            .showOpenFilePicker({
+                multiple: false,
+                types: [
+                    {
+                        description: 'Text Files',
+                        accept: { 'text/plain': ['.txt', '.m'] },
+                    },
+                ],
+                excludeAcceptAllOption: true,
+            })
+            .then(
+                ([fileHandle]) => fileHandle.getFile(),
+                (reason: any): any => null,
+            )
+            .then((file) => (file ? file.text() : null))
+            .then((content) => {
+                if (content) {
+                    this.batchInput.value = content;
+                    this.promptClean();
+                    this.cleanNameList();
+                }
+            });
     }
 
     public cleanNameList(): void {

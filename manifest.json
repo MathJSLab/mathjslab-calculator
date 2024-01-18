@@ -10,8 +10,10 @@
     "Octave",
     "MathML"
   ],
+  "lang": "en",
   "start_url": ".",
-  "background_color": "#fff",
+  "background_color": "white",
+  "theme_color": "green",
   "display": "standalone",
   "icons": [
     {

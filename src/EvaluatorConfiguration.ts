@@ -1,10 +1,12 @@
-import $, { Tfetch } from 'basic-dom-helper';
+import $ from 'basic-dom-helper';
+import './fetchPolyfill';
+import './showOpenFilePickerPolyfill';
 
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, EvaluatorConfig, AliasNameTable } from 'mathjslab';
 import { AST } from 'mathjslab';
 export { Evaluator };
 
-import { MathMarkdown } from './math-markdown';
+import { MathMarkdown } from './MathMarkdown';
 export { MathMarkdown };
 
 export type MathJSLabCalcConfiguration = {
@@ -21,13 +23,12 @@ declare global {
     /* eslint-disable-next-line  no-var */
     var MathJSLabCalcBuildMessage: string;
     /* eslint-disable-next-line  no-var */
-    var compatibleFetch: Tfetch;
-    /* eslint-disable-next-line  no-var */
     var lang: string;
     /* eslint-disable-next-line  no-var */
     var setLanguage: (lang?: string) => void;
+    /* eslint-disable-next-line  no-var */
+    var openFile: () => void;
 }
-global.compatibleFetch = $.fetch;
 
 export const languageAlias: Record<string, AliasNameTable> = {
     en: {
@@ -413,7 +414,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                     promptSet.output.innerHTML = 'markdown function unavailable <b>offline</b>.';
                 } else {
                     global
-                        .compatibleFetch(url.str)
+                        .fetch(url.str)
                         .then((response) => {
                             if (response.ok) {
                                 return response.text();
@@ -447,7 +448,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                 } else {
                     url.forEach((file: CharString) => {
                         global
-                            .compatibleFetch(file.str)
+                            .fetch(file.str)
                             .then((response) => {
                                 if (response.ok) {
                                     return response.text();
@@ -520,7 +521,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                         promptSet.output.innerHTML = 'help command unavailable <b>offline</b>.';
                     } else {
                         global
-                            .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${global.lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
+                            .fetch(`${global.MathJSLabCalc.helpBaseUrl}help/${global.lang}/${encodeURIComponent(encodeName(args[0]))}.md`)
                             .then((response) => {
                                 if (response.ok) {
                                     promptSet.box.className = 'info';
@@ -538,7 +539,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                 } else if (args.length == 0) {
                     promptSet.box.className = 'info';
                     global
-                        .compatibleFetch(`${global.MathJSLabCalc.helpBaseUrl}help/${global.lang}/help.md`)
+                        .fetch(`${global.MathJSLabCalc.helpBaseUrl}help/${global.lang}/help.md`)
                         .then((response) => {
                             if (response.ok) {
                                 promptSet.box.className = 'info';
@@ -564,6 +565,12 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                 }
             },
         },
+
+        openfile: {
+            func: (...args: string[]): void => {
+                global.openFile();
+            },
+        },
     },
 };
 
@@ -573,7 +580,7 @@ import buildConfiguration from './build-configuration.json';
  * To change the language after load (to be used in a language selection menu, for example).
  * @param lang
  */
-global.setLanguage = (lang?: string) => {
+global.setLanguage = (lang?: string): void => {
     if (lang) {
         global.lang = lang in languageAlias ? lang : (MathJSLabCalc.defaultLanguage as string);
     }
@@ -583,6 +590,10 @@ global.setLanguage = (lang?: string) => {
     global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
     global.EvaluatorPointer.debug = buildConfiguration.debug;
     global.ShellPointer.batchExec(new Event('click'));
+};
+
+global.openFile = (): void => {
+    global.ShellPointer.openFile();
 };
 
 /**

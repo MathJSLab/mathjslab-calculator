@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.1
+- Full responsiveness, including light/dark mode.
+- command 'openfile' to open file from computer.
+- Polyfill for `window.fetch` (for old browsers) and `window.showOpenFilePicker` (for other than Chrome).
+- File names converted to camel case.
+
 ## 1.2.0
 - Support for multiline statements.
 - External function names assigned in `Evaluator.localTable` with random UUID.

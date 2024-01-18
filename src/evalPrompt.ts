@@ -2,7 +2,7 @@
  * Prompt Evaluator
  */
 import $ from 'basic-dom-helper';
-import { insertOutput, outputFunction, MathMarkdown } from './evaluator-configuration';
+import { insertOutput, outputFunction, MathMarkdown } from './EvaluatorConfiguration';
 
 /**
  * evalPrompt function
