@@ -1,4 +1,4 @@
-import $ from 'basic-dom-helper';
+import createHTMLElement from './createHTMLElement';
 import './fetchPolyfill';
 import './showOpenFilePickerPolyfill';
 
@@ -8,6 +8,8 @@ export { Evaluator };
 
 import { MathMarkdown } from './MathMarkdown';
 export { MathMarkdown };
+
+import buildConfiguration from './build-configuration.json';
 
 export type MathJSLabCalcConfiguration = {
     exampleBaseUrl?: string;
@@ -29,6 +31,29 @@ declare global {
     /* eslint-disable-next-line  no-var */
     var openFile: () => void;
 }
+
+/**
+ * To change the language after load (to be used in a language selection menu, for example).
+ * @param lang
+ */
+global.setLanguage = (lang?: string): void => {
+    if (lang) {
+        global.lang = lang in languageAlias ? lang : (MathJSLabCalc.defaultLanguage as string);
+    }
+    document.querySelector('html')!.setAttribute('lang', global.lang);
+    global.ShellPointer.setLanguage();
+    EvaluatorConfiguration.aliasNameTable = languageAlias[global.lang];
+    global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
+    global.EvaluatorPointer.debug = buildConfiguration.debug;
+    global.ShellPointer.batchExec(new Event('click'));
+};
+
+/**
+ * To open file from device.
+ */
+global.openFile = (): void => {
+    global.ShellPointer.openFile();
+};
 
 export const languageAlias: Record<string, AliasNameTable> = {
     en: {
@@ -192,13 +217,13 @@ export const insertOutput = { type: '' };
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
-    plot2d: function (parent: string | HTMLElement): void {
+    plot2d: function (parent: HTMLElement): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
             promptSet.output.innerHTML = 'plot2d command unavailable <b>offline</b>.';
         } else {
-            const ctx = $.create('canvas', parent);
+            const ctx = createHTMLElement('canvas', parent);
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -217,13 +242,13 @@ export const outputFunction: { [k: string]: Function } = {
         }
         insertOutput.type = '';
     },
-    histogram: function (parent: string | HTMLElement): void {
+    histogram: function (parent: HTMLElement): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
             promptSet.output.innerHTML = 'histogram command unavailable <b>offline</b>.';
         } else {
-            const ctx = $.create('canvas', parent);
+            const ctx = createHTMLElement('canvas', parent);
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -572,28 +597,6 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
             },
         },
     },
-};
-
-import buildConfiguration from './build-configuration.json';
-
-/**
- * To change the language after load (to be used in a language selection menu, for example).
- * @param lang
- */
-global.setLanguage = (lang?: string): void => {
-    if (lang) {
-        global.lang = lang in languageAlias ? lang : (MathJSLabCalc.defaultLanguage as string);
-    }
-    document.querySelector('html')!.setAttribute('lang', global.lang);
-    global.ShellPointer.setLanguage();
-    EvaluatorConfiguration.aliasNameTable = languageAlias[global.lang];
-    global.EvaluatorPointer = new Evaluator(EvaluatorConfiguration);
-    global.EvaluatorPointer.debug = buildConfiguration.debug;
-    global.ShellPointer.batchExec(new Event('click'));
-};
-
-global.openFile = (): void => {
-    global.ShellPointer.openFile();
 };
 
 /**

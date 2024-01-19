@@ -1,24 +1,25 @@
 :root {
 
     --mathjslab-c-white: hsl(0, 0%, 100%);
-    --mathjslab-c-white-soft: hsl(0, 0%, 97%);
-    --mathjslab-c-white-mute: hsl(0, 0%, 95%);
+    --mathjslab-c-white-soft: hsl(0, 0%, 96%);
+    --mathjslab-c-white-mute: hsl(0, 0%, 93%);
 
     --mathjslab-c-black: hsl(0, 0%, 9%);
     --mathjslab-c-black-soft: hsl(0, 0%, 13%);
     --mathjslab-c-black-mute: hsl(0, 0%, 16%);
 
-    --mathjslab-c-indigo: hsl(210, 29%, 24%);
+    --mathjslab-c-divider-light-1: hsla(0, 0%, 24%, 0.3);
+    --mathjslab-c-divider-light-2: hsla(0, 0%, 24%, 0.1);
+    --mathjslab-c-divider-dark-1: hsla(0, 0%, 33%, 0.7);
+    --mathjslab-c-divider-dark-2: hsla(0, 0%, 33%, 0.5);
 
-    --mathjslab-c-divider-light-1: hsla(0, 0%, 24%, 0.29);
-    --mathjslab-c-divider-light-2: hsla(0, 0%, 24%, 0.12);
-    --mathjslab-c-divider-dark-1: hsla(0, 0%, 33%, 0.65);
-    --mathjslab-c-divider-dark-2: hsla(0, 0%, 33%, 0.48);
+    --mathjslab-c-text-light-1: hsl(0, 0%, 16%);
+    --mathjslab-c-text-light-2: hsla(0, 0%, 24%, 0.6);
+    --mathjslab-c-text-dark-1: hsl(0, 0%, 100%);
+    --mathjslab-c-text-dark-2: hsla(0, 0%, 92%, 0.6);
 
-    --mathjslab-c-text-light-1: var(--mathjslab-c-indigo);
-    --mathjslab-c-text-light-2: hsla(0, 0%, 24%, 0.66);
-    --mathjslab-c-text-dark-1: var(--mathjslab-c-white);
-    --mathjslab-c-text-dark-2: hsla(0, 0%, 92%, 0.64);
+    --mathjslab-c-math-text-light: hsla(0, 0%, 24%, 0.8);
+    --mathjslab-c-math-text-dark: hsla(0, 0%, 92%, 0.8);
 
     --mathjslab-c-panel-box-shadow-light: hsl(113, 49%, 30%);
     --mathjslab-c-panel-box-shadow-dark: hsl(113, 49%, 30%);
@@ -51,15 +52,13 @@
 
     --mathjslab-c-input-background-hover-light: hsl(0, 0%, 96%);
     --mathjslab-c-input-background-hover-dark: hsl(0, 0%, 96%);
-
     --mathjslab-c-input-background-focus-light: hsl(60, 100%, 87%);
     --mathjslab-c-input-background-focus-dark: hsl(60, 100%, 87%);
 
-    --mathjslab-c-input-text-light: hsl(0, 0%, 10%);
-    --mathjslab-c-input-text-dark: hsl(0, 0%, 10%);
-
-    --mathjslab-c-input-text-focus-light: hsl(0, 0%, 10%);
-    --mathjslab-c-input-text-focus-dark: hsl(0, 0%, 10%);
+    --mathjslab-c-input-text-light: hsl(0, 100%, 50%);
+    --mathjslab-c-input-text-dark: hsl(0, 100%, 35%);
+    --mathjslab-c-input-text-focus-light: hsl(0, 100%, 40%);
+    --mathjslab-c-input-text-focus-dark: hsl(0, 100%, 25%);
 
     --mathjslab-c-backgroung-red-light: hsl(0, 52%, 88%);
     --mathjslab-c-backgroung-green-light: hsl(120, 52%, 88%);
@@ -103,6 +102,8 @@
 
     --color-heading: var(--mathjslab-c-text-light-1);
     --color-text: var(--mathjslab-c-text-light-1);
+
+    --color-math-text: var(--mathjslab-c-math-text-light);
 
     --color-panel-box-shadow: var(--mathjslab-c-panel-box-shadow-light);
 
@@ -154,6 +155,8 @@
 
         --color-heading: var(--mathjslab-c-text-dark-1);
         --color-text: var(--mathjslab-c-text-dark-2);
+
+        --color-math-text: var(--mathjslab-c-math-text-dark);
 
         --color-panel-box-shadow: var(--mathjslab-c-panel-box-shadow-dark);
 
@@ -214,4 +217,5 @@ body {
 math {
     math-style: normal;
     font-size: 15px;
+    color: var(--color-math-text);
 }

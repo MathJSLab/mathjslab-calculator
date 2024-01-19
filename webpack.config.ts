@@ -31,7 +31,7 @@ const config: webpack.Configuration = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js'],
+        extensions: ['.ts', '.js'],
         alias: {
             parser: path.resolve(__dirname, 'src/'),
         },

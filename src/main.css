@@ -8,39 +8,42 @@
 
 a,
 .green {
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
     text-decoration: none;
     color: var(--color-a-text);
     transition: 0.4s;
-    padding: 3px;
+    padding: 0.1rem;
 }
 
-select, button {
-    margin: 0.5em;
+select,
+button {
+    margin: 0.5rem;
 	box-shadow: 0px 10px 14px -7px var(--color-button-box-shadow);
 	background: linear-gradient(to bottom, var(--color-button-backgroung-to) 5%, var(--color-button-backgroung-from) 100%);
 	background-color: var(--color-button-backgroung-to);
     border: 1px outset var(--color-button-border);
-	border-radius: 0.5em;
-	display:inline-block;
-	cursor:pointer;
-	color:var(--color-button-text);
-	font-family:Arial;
+	border-radius: 0.5rem;
+	display: inline-block;
+	cursor: pointer;
+	color: var(--color-button-text);
+	font-family: Arial;
 	font-size: 1rem;
 	font-weight: bold;
-	padding: 0.5em;
-	text-decoration:none;
+	padding: 0.5rem;
+	text-decoration: none;
 	text-shadow:0px 1px 0px var(--color-button-text-shadow);
 }
 
-select:hover, button:hover {
-	background:linear-gradient(to bottom, var(--color-button-backgroung-from) 5%, var(--color-button-backgroung-to) 100%);
-	background-color:var(--color-button-backgroung-from);
+select:hover,
+button:hover {
+	background: linear-gradient(to bottom, var(--color-button-backgroung-from) 5%, var(--color-button-backgroung-to) 100%);
+	background-color: var(--color-button-backgroung-from);
 }
 
-select:active, button:active {
-	position:relative;
-	top:1px;
+select:active,
+button:active {
+	position: relative;
+	top: 1px;
 }
 
 @media (hover: hover) {
@@ -90,9 +93,9 @@ h3 {
 .green-panel {
     background-color: var(--green-backgroung);
     border: 2px solid var(--green-border);
-    border-radius: 1em;
+    border-radius: 1rem;
     box-shadow: 0px 10px 14px -7px var(--color-panel-box-shadow);
-    padding: 1em;
+    padding: 1rem;
 }
 
 .width-fit-content {
@@ -111,7 +114,6 @@ div.right-align-panel {
 }
 
 @media (min-width: 1024px) {
-
     .header-panel h1,
     .header-panel h3 {
         text-align: left;
@@ -124,18 +126,19 @@ div.right-align-panel {
     div.right-align-panel {
         margin: auto 0 auto auto;
     }
-
 }
 
 pre {
     overflow-x: auto;
     background-color: var(--color-pre-code-background);
-    padding: 1em;
-    border-radius: 1em;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 mn > pre {
     background-color: inherit;
+    padding: 0;
+    margin: 0;
 }
 
 pre > code {
@@ -143,10 +146,10 @@ pre > code {
 }
 
 code {
-    color: red;
+    color: var(--color-input-text);;
 }
 
-.container {
+.prompt-container {
     position: relative;
 }
 
@@ -161,7 +164,7 @@ code {
 
 @media (min-width: 1024px) {
     .shell {
-        padding: 1em;
+        padding: 1rem;
         max-width: calc(100% - 15%);
     }
 }
@@ -183,11 +186,10 @@ code {
         width: 14%;
         background-color: var(--green-backgroung);
         border: 2px solid var(--green-border);
-        padding: 1em;
-        border-radius: 1em;
+        padding: 1rem;
+        border-radius: 1rem;
         position: absolute;
         right: 0;
-        top: 7em;
         display: block;
     }
 }
@@ -204,12 +206,13 @@ code {
     font-family: monospace;
     font-size: 1.225rem;
     border: 1px thin black;
-    padding: 0.2em;
+    padding: 0.2rem;
     line-height: 1.225rem;
     white-space: pre-wrap;
     overflow-wrap: normal;
     overflow-x: auto;
-    width: 100%;
+    width: 98%;
+    margin: 1rem;
     resize: none;
 }
 
@@ -223,26 +226,25 @@ code {
 }
 
 .cursor {
-    width: 1em;
-    font-family: 1em monospace;
+    width: 1rem;
+    font-family: 1rem monospace;
     position: relative;
-    top: -0.175em;
+    top: -0.175rem;
 }
 
 .inputprompt {
     background-color: var(--color-input-background);
     color: var(--color-input-text);
-    font-family: 1em monospace;
+    font-family: 1rem monospace;
     overflow: hidden;
     outline: none;
     resize: none;
     white-space: nowrap;
-    height: 1em;
+    height: 1rem;
     width: 100%;
     line-height: 1rem;
-    border-radius: 0.3em;
+    border-radius: 0.3rem;
     border: 0;
-    box-shadow: 0 0 0 0;
     outline: none;
 }
 
@@ -256,9 +258,10 @@ code {
 }
 
 button.inputbutton {
-    width: 100%;
+    width: 50%;
     margin: auto;
-    height: 4em;
+    height: 3rem;
+    border-radius: 3rem;
 }
 
 .output {
@@ -268,41 +271,41 @@ button.inputbutton {
 .good {
     background-color: var(--green-backgroung);
     border: 2px solid var(--green-border);
-    margin: 1em;
-    padding: 1em;
-    border-radius: 1em;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .bad {
     background-color: var(--red-backgroung);
     border: 2px solid var(--red-border);
-    margin: 1em;
-    padding: 1em;
-    border-radius: 1em;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .warning {
     background-color: var(--yellow-backgroung);
     border: 2px solid var(--yellow-border);
-    margin: 1em;
-    padding: 1em;
-    border-radius: 1em;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .info {
     background-color: var(--blue-backgroung);
     border: 2px solid var(--blue-border);
-    margin: 1em;
-    padding: 1em;
-    border-radius: 1em;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 .doc {
     background-color: var(--color-background);
     border: 2px solid var(--color-border);
-    margin: 1em;
-    padding: 1em;
-    border-radius: 1em;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 
 canvas {
@@ -312,9 +315,8 @@ canvas {
 }
 
 .wrap-collabsible {
-    margin-bottom: 1.2rem 0;
     box-shadow: 0px 10px 14px -7px var(--color-panel-box-shadow);
-    border-radius: 1em;
+    border-radius: 1rem;
 }
 
 input.toggle {
@@ -323,21 +325,16 @@ input.toggle {
 
 .lbl-toggle {
     display: block;
-
     font-weight: bold;
     font-size: 1.2rem;
     text-transform: uppercase;
     text-align: center;
-
     padding: 1rem;
-
     color: var(--color-a-text);
     background: var(--green-backgroung);
-
     cursor: pointer;
-
     border: 2px solid var(--green-border);
-    border-radius: 1em;
+    border-radius: 1rem;
     transition: all 0.25s ease-out;
 }
 
@@ -348,15 +345,12 @@ input.toggle {
 .lbl-toggle::before {
     content: ' ';
     display: inline-block;
-
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
     border-left: 5px solid currentColor;
-
     vertical-align: middle;
     margin-right: .7rem;
     transform: translateY(-2px);
-
     transition: transform .2s ease-out;
 }
 
@@ -365,16 +359,14 @@ input.toggle {
     border-left: 2px solid var(--green-border);
     border-right: 2px solid var(--green-border);
     border-bottom: 2px solid var(--green-border);
-
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-    padding: 0.5em;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 0.5rem;
 }
 
 .collapsible-content {
     max-height: 0px;
     overflow: hidden;
-
     transition: max-height .25s ease-in-out;
 }
 

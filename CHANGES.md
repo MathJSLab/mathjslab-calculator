@@ -4,9 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.1
 - Full responsiveness, including light/dark mode.
-- command 'openfile' to open file from computer.
-- Polyfill for `window.fetch` (for old browsers) and `window.showOpenFilePicker` (for other than Chrome).
+- Button and command 'openfile' to open file from computer.
 - File names converted to camel case.
+- Polyfill for `window.fetch` (for old browsers) and `window.showOpenFilePicker` (for other than Chrome).
+- Functions from `basic-dom-helper` package moved to inside project (files 'createHTMLElement.ts' and 'ScriptLinkLoad.ts') and package dependency removed.
 
 ## 1.2.0
 - Support for multiline statements.

@@ -25,7 +25,9 @@ copy the following HTML code:
 
 <body>
     ...
-    <div id="mathjslab-calculator"></div>
+    <div id="mathjslab-examples"></div>
+    ...
+    <div id="mathjslab-prompt"></div>
     ...
 </body>
 ```
@@ -53,7 +55,9 @@ script using:
 
 <body>
     ...
-    <div id="mathjslab-calculator"></div>
+    <div id="mathjslab-examples"></div>
+    ...
+    <div id="mathjslab-prompt"></div>
     ...
 </body>
 ```

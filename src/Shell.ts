@@ -1,4 +1,4 @@
-import $ from 'basic-dom-helper';
+import createHTMLElement from './createHTMLElement';
 import firstExample from './first-example.json';
 import { CharString, FunctionHandle, MultiArray } from 'mathjslab';
 
@@ -83,11 +83,11 @@ export class Shell {
     public static async initialize(options: ShellOptions): Promise<Shell> {
         const shell = new Shell();
         shell.options = options;
-        shell.container = $.i(options.containerId) as HTMLDivElement;
+        shell.container = document.getElementById(options.containerId) as HTMLDivElement;
         while (shell.container.firstChild) {
             shell.container.removeChild(shell.container.firstChild);
         }
-        shell.container.className = 'container';
+        shell.container.className = 'prompt-container';
         if (options.evalInput) {
             shell.evalInput = options.evalInput;
         } else {
@@ -104,9 +104,9 @@ export class Shell {
                 output.innerHTML = `evalPrompt(${input.value})`;
             };
         }
-        shell.shell = $.create('div', shell.container, 'shell_' + options.containerId, 'shell');
+        shell.shell = createHTMLElement('div', shell.container, 'shell_' + options.containerId, 'shell');
         if (!shell.isFileProtocol) {
-            shell.examplesContainer = $.i(options.examplesId) as HTMLDivElement;
+            shell.examplesContainer = document.getElementById(options.examplesId) as HTMLDivElement;
             await global
                 .fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/example.json`)
                 .then((response) => {
@@ -124,43 +124,32 @@ export class Shell {
                     shell.examplesAvailable = false;
                 });
         }
-        shell.variables = $.create('div', shell.container, 'variables_' + options.containerId, 'variables');
-        shell.variablesHeading = $.create('h2', shell.variables, null, 'green');
+        shell.variables = createHTMLElement('div', shell.container, 'variables_' + options.containerId, 'variables');
+        shell.variablesHeading = createHTMLElement('h2', shell.variables, null, 'green');
         shell.variablesHeading.setAttribute('align', 'center');
-        const setVariablesPanel = () => {
-            let Y = window.scrollY - shell.container.offsetTop + window.innerHeight * 0.025;
-            const maxY = shell.container.offsetHeight - shell.variables.offsetHeight;
-            if (Y < 0) {
-                Y = 0;
-            } else if (Y > maxY) {
-                Y = maxY;
-            }
-            shell.variables.style.top = Y + 'px';
-            shell.variables.style.left = shell.shell.offsetWidth + 'px';
-            shell.variables.style.height = window.innerHeight * 0.9 + 'px';
-        };
-        window.addEventListener('scroll', setVariablesPanel);
-        window.addEventListener('resize', setVariablesPanel);
-        shell.nameTable = $.create('div', shell.variables, 'nameTable_' + options.containerId);
-        shell.nameList = $.create('ul', shell.nameTable, null, 'namelist');
-        shell.batchContainer = $.create('div', shell.shell, 'batch_' + options.containerId, 'batch');
-        shell.batchBox = $.create('div', shell.batchContainer, 'batchbox_' + options.containerId, 'good');
-        shell.batchWrapper = $.create('div', shell.batchBox, 'batchwrapper_' + options.containerId);
-        shell.batchInput = $.create('textarea', shell.batchWrapper, 'batchtext_' + options.containerId, 'inputarea');
-        $.addEventListener(shell.batchInput, 'change', shell.batchResize);
-        $.addEventListener(shell.batchInput, 'cut', shell.batchDelayedResize);
-        $.addEventListener(shell.batchInput, 'paste', shell.batchDelayedResize);
-        $.addEventListener(shell.batchInput, 'drop', shell.batchDelayedResize);
-        $.addEventListener(shell.batchInput, 'keydown', shell.batchDelayedResize);
+        window.addEventListener('scroll', shell.variablesPanelResize);
+        window.addEventListener('resize', shell.variablesPanelResize);
+        shell.nameTable = createHTMLElement('div', shell.variables, 'nameTable_' + options.containerId);
+        shell.nameList = createHTMLElement('ul', shell.nameTable, null, 'namelist');
+        shell.batchContainer = createHTMLElement('div', shell.shell, 'batch_' + options.containerId, 'batch');
+        shell.batchBox = createHTMLElement('div', shell.batchContainer, 'batchbox_' + options.containerId, 'good');
+        shell.batchBox.setAttribute('align', 'center');
+        shell.batchWrapper = createHTMLElement('div', shell.batchBox, 'batchwrapper_' + options.containerId);
+        shell.batchInput = createHTMLElement('textarea', shell.batchWrapper, 'batchtext_' + options.containerId, 'inputarea');
+        shell.batchInput.addEventListener('change', shell.batchResize);
+        shell.batchInput.addEventListener('cut', shell.batchDelayedResize);
+        shell.batchInput.addEventListener('paste', shell.batchDelayedResize);
+        shell.batchInput.addEventListener('drop', shell.batchDelayedResize);
+        shell.batchInput.addEventListener('keydown', shell.batchDelayedResize);
         shell.batchInput.focus();
         shell.batchInput.select();
-        shell.batchButton = $.create('button', shell.batchBox, 'batchbutton_', 'inputbutton');
-        $.addEventListener(shell.batchButton, 'click', shell.batchExec);
-        $.addEventListener(shell.batchInput, 'focus', shell.batchFocus);
-        $.addEventListener(shell.batchInput, 'blur', shell.batchBlur);
-        shell.promptContainer = $.create('div', shell.shell, 'prompt_' + options.containerId);
+        shell.batchButton = createHTMLElement('button', shell.batchBox, 'batchbutton_', 'inputbutton');
+        shell.batchButton.addEventListener('click', shell.batchExec);
+        shell.batchInput.addEventListener('focus', shell.batchFocus);
+        shell.batchInput.addEventListener('blur', shell.batchBlur);
+        shell.promptContainer = createHTMLElement('div', shell.shell, 'prompt_' + options.containerId);
         if (global.EvaluatorPointer.debug) {
-            const promptFoot = $.create('p', shell.shell);
+            const promptFoot = createHTMLElement('p', shell.shell);
             promptFoot.innerHTML = global.MathJSLabCalcBuildMessage;
         }
         shell.promptUid = [];
@@ -174,9 +163,9 @@ export class Shell {
         } else {
             let first = true;
             for (const example in shell.examples) {
-                const button = $.create('button', shell.examplesContainer, 'example-' + example);
+                const button = createHTMLElement('button', shell.examplesContainer, 'example-' + example);
                 button.innerHTML = shell.examples[example].caption;
-                $.addEventListener(button, 'click', async (event: Event): Promise<void> => {
+                button.addEventListener('click', async (event: Event): Promise<void> => {
                     const exampleId = (event.target as any).id.substring(8);
                     const response = await global.fetch(`${global.MathJSLabCalc.exampleBaseUrl}example/${shell.examples[exampleId].file}`);
                     if (!response.ok) {
@@ -220,6 +209,21 @@ export class Shell {
     public batchResize(event?: Event): void {
         global.ShellPointer.batchInput.style.height = '1em';
         global.ShellPointer.batchInput.style.height = global.ShellPointer.batchInput.scrollHeight + 27 + 'px';
+        global.ShellPointer.variablesPanelResize();
+    }
+
+    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+    public variablesPanelResize(event?: Event): void {
+        let Y = window.scrollY - global.ShellPointer.container.offsetTop + window.innerHeight * 0.025;
+        const maxY = global.ShellPointer.container.offsetHeight - global.ShellPointer.variables.offsetHeight;
+        if (Y < 0) {
+            Y = 0;
+        } else if (Y > maxY) {
+            Y = maxY;
+        }
+        global.ShellPointer.variables.style.top = Y + 'px';
+        global.ShellPointer.variables.style.left = global.ShellPointer.shell.offsetWidth + 'px';
+        global.ShellPointer.variables.style.height = Math.min(global.ShellPointer.container.offsetHeight, window.innerHeight) * 0.9 + 'px';
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
@@ -237,10 +241,10 @@ export class Shell {
     public batchExec(event: Event): void {
         global.ShellPointer.promptClean();
         global.ShellPointer.loadInput();
+        global.ShellPointer.variablesPanelResize();
         global.ShellPointer.batchButton.focus();
     }
 
-    /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public openFile(): void {
         global
             .showOpenFilePicker({
@@ -263,13 +267,14 @@ export class Shell {
                     this.batchInput.value = content;
                     this.promptClean();
                     this.cleanNameList();
+                    this.loadInput();
                 }
             });
     }
 
     public cleanNameList(): void {
         this.nameList.remove();
-        this.nameList = $.create('ul', this.nameTable, null, 'namelist');
+        this.nameList = createHTMLElement('ul', this.nameTable, null, 'namelist');
     }
 
     public refreshNameList(): void {
@@ -277,7 +282,7 @@ export class Shell {
         for (const name in global.EvaluatorPointer.nameTable) {
             if (!global.EvaluatorPointer.nativeNameTableList.includes(name)) {
                 const nameTableEntry = global.EvaluatorPointer.nameTable[name];
-                const nameListEntry = $.create('li', this.nameList);
+                const nameListEntry = createHTMLElement('li', this.nameList);
                 if (nameTableEntry instanceof FunctionHandle) {
                     nameListEntry.innerHTML = `&commat; ${name}(${nameTableEntry.parameter.map((arg: { id: any }) => arg.id).join(',')})`;
                 } else {
@@ -327,7 +332,9 @@ export class Shell {
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchBlur(event: Event): void {
         global.EvaluatorPointer.Restart();
+        global.ShellPointer.cleanNameList();
         global.ShellPointer.promptClean();
+        global.ShellPointer.variablesPanelResize();
     }
 
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
@@ -357,7 +364,7 @@ export class Shell {
 
     public promptAppend(text?: string | null): void {
         const uid = global.crypto.randomUUID();
-        const div = $.create('div', this.promptContainer, 'd' + uid);
+        const div = createHTMLElement('div', this.promptContainer, 'd' + uid);
         this.promptCreate(uid, div);
         this.promptIndex++;
         this.promptUid.push(uid);
@@ -373,18 +380,18 @@ export class Shell {
     }
 
     public promptCreate(uid: string, promptFrame: HTMLDivElement): void {
-        const box = $.create('div', promptFrame, 'p' + uid, 'good');
-        const table = $.create('table', box);
+        const box = createHTMLElement('div', promptFrame, 'p' + uid, 'good');
+        const table = createHTMLElement('table', box);
         table.style.width = '100%';
-        const tr = $.create('tr', table);
+        const tr = createHTMLElement('tr', table);
         let td: HTMLTableCellElement;
-        td = $.create('td', tr, null, 'cursor');
+        td = createHTMLElement('td', tr, null, 'cursor');
         td.innerHTML = '&#x300B;';
-        td = $.create('td', tr);
-        const input = $.create('textarea', td, 'i' + uid, 'inputprompt');
-        $.addEventListener(input, 'focus', this.promptFocus);
-        $.addEventListener(input, 'blur', this.promptBlur);
-        $.addEventListener(input, 'keydown', this.promptKeydown);
+        td = createHTMLElement('td', tr);
+        const input = createHTMLElement('textarea', td, 'i' + uid, 'inputprompt');
+        input.addEventListener('focus', this.promptFocus);
+        input.addEventListener('blur', this.promptBlur);
+        input.addEventListener('keydown', this.promptKeydown);
 
         const promptResize = () => {
             input.style.height = '1em';
@@ -397,15 +404,15 @@ export class Shell {
         const inputFocus = () => {
             if (!this.isTouchCapable) input.focus();
         };
-        $.addEventListener(input, 'change', promptResize);
-        $.addEventListener(input, 'cut', promptDelayedResize);
-        $.addEventListener(input, 'paste', promptDelayedResize);
-        $.addEventListener(input, 'drop', promptDelayedResize);
-        $.addEventListener(input, 'keydown', promptDelayedResize);
-        $.addEventListener(box, 'click', inputFocus);
+        input.addEventListener('change', promptResize);
+        input.addEventListener('cut', promptDelayedResize);
+        input.addEventListener('paste', promptDelayedResize);
+        input.addEventListener('drop', promptDelayedResize);
+        input.addEventListener('keydown', promptDelayedResize);
+        box.addEventListener('click', inputFocus);
         promptResize();
 
-        const output = $.create('div', box, 'o' + uid, 'output');
+        const output = createHTMLElement('div', box, 'o' + uid, 'output');
 
         this.promptSet[uid] = {
             container: promptFrame,
@@ -425,7 +432,7 @@ export class Shell {
                     // cria prompt anterior se pressionado enter com o cursor em 0
                     const pdiv = document.getElementById('d' + onfocus?.id.substring(1));
                     const uid = global.crypto.randomUUID();
-                    const div = $.create('div', null, 'd' + uid);
+                    const div = createHTMLElement('div', null, 'd' + uid);
                     global.ShellPointer.promptCreate(uid, div);
                     global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex, 0, uid);
                     global.ShellPointer.promptIndex++;
@@ -437,7 +444,7 @@ export class Shell {
                     if (global.ShellPointer.promptIndex + 1 == global.ShellPointer.promptUid.length) {
                         // adiciona ao final
                         const uid = global.crypto.randomUUID();
-                        const div = $.create('div', global.ShellPointer.promptContainer, 'd' + uid);
+                        const div = createHTMLElement('div', global.ShellPointer.promptContainer, 'd' + uid);
                         global.ShellPointer.promptCreate(uid, div);
                         global.ShellPointer.promptUid.push(uid);
                         global.ShellPointer.promptIndex++;

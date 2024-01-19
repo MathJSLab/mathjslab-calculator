@@ -14,7 +14,7 @@ Observação: os elementos da matriz podem ser especificados por um método line
 índice que começa em 1 e percorre o número de elementos em
 a matriz, ou eles podem ser especificados com subscritos para a linha,
 coluna, página, etc. As funções `ind2sub` e `sub2ind`
-interconverter entre as duas formas.
+interconvertem entre as duas formas.
 
 O índice linear atravessa a dimensão 1 (linhas) e depois a dimensão 2
 (colunas), depois dimensão 3 (páginas), etc. até numerar todos

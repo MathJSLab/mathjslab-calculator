@@ -1,7 +1,7 @@
 /**
  * Prompt Evaluator
  */
-import $ from 'basic-dom-helper';
+import createHTMLElement from './createHTMLElement';
 import { insertOutput, outputFunction, MathMarkdown } from './EvaluatorConfiguration';
 
 /**
@@ -38,7 +38,7 @@ export default function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, i
                 }
                 if (insertOutput.type !== '') {
                     const uid = global.crypto.randomUUID();
-                    $.create('div', output, 'o' + uid);
+                    createHTMLElement('div', output, 'o' + uid);
                     outputFunction[insertOutput.type]('o' + uid);
                 }
                 if (global.EvaluatorPointer.debug) {

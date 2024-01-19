@@ -1,4 +1,4 @@
-import $, { LoadScriptOptions, LoadLinkOptions } from 'basic-dom-helper';
+import ScriptLinkLoad, { LoadScriptOptions, LoadLinkOptions } from './ScriptLinkLoad';
 
 declare const marked: { parse: (text: string) => string };
 declare const MathJax: { typeset: () => void };
@@ -43,24 +43,24 @@ export abstract class MathMarkdown {
     public static loadIfNeed(name: string, aditionalTest = true): void {
         if (!ResourceTable[name].loaded && aditionalTest) {
             if (!!ResourceTable[name].linkOptions) {
-                $.appendLinkToHeadSync(
+                ScriptLinkLoad.appendLinkToHeadSync(
                     ResourceTable[name].linkOptions as LoadLinkOptions,
                     () => {
                         ResourceTable[name].loaded = true;
                     },
                     (error) => {
-                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
+                        throw new URIError(`ScriptLinkLoad{ResourceTable[name].extendedName} didn't load correctly: ScriptLinkLoad{error}`);
                     },
                 );
             }
             if (!!ResourceTable[name].scriptOptions) {
-                $.appendScriptToHeadSync(
+                ScriptLinkLoad.appendScriptToHeadSync(
                     ResourceTable[name].scriptOptions as LoadScriptOptions,
                     () => {
                         ResourceTable[name].loaded = true;
                     },
                     (error) => {
-                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
+                        throw new URIError(`ScriptLinkLoad{ResourceTable[name].extendedName} didn't load correctly: ScriptLinkLoad{error}`);
                     },
                 );
             }
