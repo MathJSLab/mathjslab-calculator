@@ -217,13 +217,13 @@ export const insertOutput = { type: '' };
 
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
-    plot2d: function (parent: HTMLElement): void {
+    plot2d: function (parent: string): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
             promptSet.output.innerHTML = 'plot2d command unavailable <b>offline</b>.';
         } else {
-            const ctx = createHTMLElement('canvas', parent);
+            const ctx = createHTMLElement('canvas', document.getElementById(parent));
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -242,13 +242,13 @@ export const outputFunction: { [k: string]: Function } = {
         }
         insertOutput.type = '';
     },
-    histogram: function (parent: HTMLElement): void {
+    histogram: function (parent: string): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
             promptSet.box.className = 'bad';
             promptSet.output.innerHTML = 'histogram command unavailable <b>offline</b>.';
         } else {
-            const ctx = createHTMLElement('canvas', parent);
+            const ctx = createHTMLElement('canvas', document.getElementById(parent));
             new Chart(ctx, {
                 type: 'bar',
                 data: {
