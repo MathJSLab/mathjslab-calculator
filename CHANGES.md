@@ -7,7 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Button and command 'openfile' to open file from computer.
 - File names converted to camel case.
 - Polyfill for `window.fetch` (for old browsers) and `window.showOpenFilePicker` (for other than Chrome).
-- Functions from `basic-dom-helper` package moved to inside project (files 'createHTMLElement.ts' and 'ScriptLinkLoad.ts') and package dependency removed.
+- Functions from `basic-dom-helper` package moved to inside project (files 'createHTMLElement.ts' and 'ScriptLinkLoad.ts') and `basic-dom-helper` package dependency removed.
+- Mermaid charts rendered in markdown files.
+- Open files from device with `load()` and `markdown()` (without parameters).
 
 ## 1.2.0
 - Support for multiline statements.

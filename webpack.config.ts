@@ -40,6 +40,7 @@ const config: webpack.Configuration = {
         filename: 'mathjslab-calculator.js',
         path: path.resolve(__dirname, 'dist'),
         environment: {
+            // https://webpack.js.org/configuration/output/#outputenvironment
             module: true,
             dynamicImport: true,
         },

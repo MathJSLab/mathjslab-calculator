@@ -1,6 +1,6 @@
 import createHTMLElement from './createHTMLElement';
 import './fetchPolyfill';
-import './showOpenFilePickerPolyfill';
+import openFileDialog from './openFileDialog';
 
 import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, EvaluatorConfig, AliasNameTable } from 'mathjslab';
 import { AST } from 'mathjslab';
@@ -432,33 +432,54 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
             type: 'BUILTIN',
             mapper: false,
             ev: [true],
-            func: (url: CharString): AST.NodeExpr => {
+            func: (url?: CharString): AST.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
-                if (global.ShellPointer.isFileProtocol) {
-                    promptSet.box.className = 'bad';
-                    promptSet.output.innerHTML = 'markdown function unavailable <b>offline</b>.';
+                if (url) {
+                    if (global.ShellPointer.isFileProtocol) {
+                        promptSet.box.className = 'bad';
+                        promptSet.output.innerHTML = 'markdown function unavailable <b>offline</b>.';
+                    } else {
+                        global
+                            .fetch(url.str)
+                            .then((response) => {
+                                if (response.ok) {
+                                    return response.text();
+                                } else {
+                                    throw new URIError('Load error.');
+                                }
+                            })
+                            .then((responseFile: string) => {
+                                promptSet.box.className = 'doc';
+                                promptSet.output.innerHTML = MathMarkdown.md2html(responseFile);
+                                MathMarkdown.typeset();
+                            })
+                            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+                            .catch((error) => {
+                                promptSet.box.className = 'bad';
+                                promptSet.output.innerHTML = `markdown: error loading ${url.str}`;
+                            });
+                    }
+                    return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeList([url.str]));
                 } else {
-                    global
-                        .fetch(url.str)
-                        .then((response) => {
-                            if (response.ok) {
-                                return response.text();
-                            } else {
-                                throw new URIError('Load error.');
-                            }
-                        })
-                        .then((responseFile: string) => {
+                    openFileDialog(
+                        (content: string) => {
                             promptSet.box.className = 'doc';
-                            promptSet.output.innerHTML = MathMarkdown.md2html(responseFile);
+                            promptSet.output.innerHTML = MathMarkdown.md2html(content);
                             MathMarkdown.typeset();
-                        })
-                        /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
-                        .catch((error) => {
-                            promptSet.box.className = 'bad';
-                            promptSet.output.innerHTML = `markdown: error loading ${url.str}`;
-                        });
+                        },
+                        {
+                            multiple: false,
+                            types: [
+                                {
+                                    description: 'Markdown Files',
+                                    accept: { 'text/plain': ['.txt', '.md'] },
+                                },
+                            ],
+                            excludeAcceptAllOption: true,
+                        },
+                    );
+                    return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeListFirst());
                 }
-                return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeList([url.str]));
             },
         },
 
@@ -468,51 +489,73 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
             ev: [true],
             func: (...url: CharString[]): AST.NodeExpr => {
                 const promptSet = global.ShellPointer.currentPromptSet;
-                if (global.ShellPointer.isFileProtocol) {
-                    promptSet.box.className = 'bad';
-                    promptSet.output.innerHTML = 'load function unavailable <b>offline</b>.';
-                } else {
-                    url.forEach((file: CharString) => {
-                        global
-                            .fetch(file.str)
-                            .then((response) => {
-                                if (response.ok) {
-                                    return response.text();
-                                } else {
-                                    throw new URIError('Load error.');
-                                }
-                            })
-                            .then((responseFile: string) => {
-                                let error: boolean = false;
-                                let errorMessage: string = '';
-                                insertOutput.type = '';
-                                promptSet.output.innerHTML = '';
-                                try {
-                                    const tree = global.EvaluatorPointer.Parse(responseFile);
-                                    if (tree) {
-                                        global.EvaluatorPointer.Evaluate(tree);
+                const loadContent = (content: string, name: string) => {
+                    let error: boolean = false;
+                    let errorMessage: string = '';
+                    insertOutput.type = '';
+                    promptSet.output.innerHTML = '';
+                    try {
+                        const tree = global.EvaluatorPointer.Parse(content);
+                        if (tree) {
+                            global.EvaluatorPointer.Evaluate(tree);
+                        }
+                    } catch (e) {
+                        error = true;
+                        errorMessage = `load: error loading ${name}: ${e}`;
+                    }
+                    if (error) {
+                        promptSet.box.className = 'bad';
+                        promptSet.output.innerHTML = errorMessage;
+                    } else {
+                        promptSet.box.className = 'good';
+                        promptSet.output.innerHTML = `Loaded script from ${name}</ br>`;
+                    }
+                    global.ShellPointer.refreshNameList();
+                };
+                if (url.length > 0) {
+                    if (global.ShellPointer.isFileProtocol) {
+                        promptSet.box.className = 'bad';
+                        promptSet.output.innerHTML = 'load function unavailable <b>offline</b>.';
+                    } else {
+                        url.forEach((file: CharString) => {
+                            global
+                                .fetch(file.str)
+                                .then((response) => {
+                                    if (response.ok) {
+                                        return response.text();
+                                    } else {
+                                        throw new URIError('Load error.');
                                     }
-                                } catch (e) {
-                                    error = true;
-                                    errorMessage = `load: error loading ${file.str}: ${e}`;
-                                }
-                                if (error) {
+                                })
+                                .then((responseFile: string) => {
+                                    loadContent(responseFile, file.str);
+                                })
+                                /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+                                .catch((error) => {
                                     promptSet.box.className = 'bad';
-                                    promptSet.output.innerHTML = errorMessage;
-                                } else {
-                                    promptSet.box.className = 'good';
-                                    promptSet.output.innerHTML = `Loaded script from ${file.str}</ br>`;
-                                }
-                                global.ShellPointer.refreshNameList();
-                            })
-                            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
-                            .catch((error) => {
-                                promptSet.box.className = 'bad';
-                                promptSet.output.innerHTML = `load: error loading ${file.str}`;
-                            });
-                    });
+                                    promptSet.output.innerHTML = `load: error loading ${file.str}`;
+                                });
+                        });
+                    }
+                    return AST.nodeIndexExpr(AST.nodeIdentifier('load'), AST.nodeList([...url.map((url) => AST.nodeString(url.str))]));
+                } else {
+                    openFileDialog(
+                        (content: string) => {
+                            loadContent(content, 'file');
+                        },
+                        {
+                            multiple: false,
+                            types: [
+                                {
+                                    description: 'MathJSLab Files',
+                                    accept: { 'text/plain': ['.txt', '.m'] },
+                                },
+                            ],
+                            excludeAcceptAllOption: true,
+                        },
+                    );
+                    return AST.nodeIndexExpr(AST.nodeIdentifier('load'), AST.nodeListFirst());
                 }
-                return AST.nodeIndexExpr(AST.nodeIdentifier('load'), AST.nodeList([...url.map((url) => AST.nodeString(url.str))]));
             },
         },
     },
@@ -599,8 +642,6 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
     },
 };
-
-declare const marked: { Renderer: () => void };
 
 /**
  * Evaluator and MathMarkdown initialization.

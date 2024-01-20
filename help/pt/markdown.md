@@ -1,6 +1,9 @@
 * `markdow(URL)`
+* `markdown()`
 
-Carrega um arquivo markdown de uma URL (absoluta ou relativa) e exibe.
+Se chamado com um parâmetro, carrega o arquivo markdown da URL (absoluta ou relativa) e exibe.
+
+Se chamado sem parâmetros, mostra uma caixa de diálogo para escolher o arquivo a ser aberto no dispositivo.
 
 Veja também: `load`.
 

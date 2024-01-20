@@ -2,7 +2,7 @@ import ScriptLinkLoad, { LoadScriptOptions, LoadLinkOptions } from './ScriptLink
 
 declare const marked: {
     parse: (text: string) => string;
-    use: (renderer: any) => void;
+    use: (options: any) => void;
 };
 
 declare const MathJax: { typeset: () => void };
@@ -13,6 +13,8 @@ export interface Resource {
     linkOptions?: LoadLinkOptions;
     scriptOptions?: LoadScriptOptions;
     loaded: boolean;
+    onLoadLink?: () => void;
+    onLoadScript?: () => void;
 }
 
 export const ResourceTable: Record<string, Resource> = {
@@ -20,7 +22,7 @@ export const ResourceTable: Record<string, Resource> = {
         name: 'mathjax',
         extendedName: 'MathJax',
         scriptOptions: {
-            src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
+            src: 'https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
         },
         loaded: false,
     },
@@ -28,16 +30,33 @@ export const ResourceTable: Record<string, Resource> = {
         name: 'marked',
         extendedName: 'Marked',
         scriptOptions: {
-            src: 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+            src: 'https://cdn.jsdelivr.net/npm/marked@latest/marked.min.js',
         },
         loaded: false,
+        onLoadScript: () => {
+            const renderer = {
+                code(code: string, language: string) {
+                    if (language === 'mermaid') {
+                        renderMermaid = true;
+                        return '<div class="mermaid" align="center">' + code + '</div>';
+                    } else {
+                        return (
+                            '<pre><code>' +
+                            code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;') +
+                            '</code></pre>'
+                        );
+                    }
+                },
+            };
+            marked.use({ renderer });
+        },
     },
     chartjs: {
         /* homepage: https://www.chartjs.org/docs/latest/ */
         name: 'chartjs',
         extendedName: 'Chart.js',
         scriptOptions: {
-            src: 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js',
+            src: 'https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js',
         },
         loaded: false,
     },
@@ -53,9 +72,12 @@ export abstract class MathMarkdown {
                     ResourceTable[name].linkOptions as LoadLinkOptions,
                     () => {
                         ResourceTable[name].loaded = true;
+                        if (typeof ResourceTable[name].onLoadLink !== 'undefined') {
+                            ResourceTable[name].onLoadLink!();
+                        }
                     },
                     (error) => {
-                        throw new URIError(`ScriptLinkLoad{ResourceTable[name].extendedName} didn't load correctly: ScriptLinkLoad{error}`);
+                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
                     },
                 );
             }
@@ -64,9 +86,12 @@ export abstract class MathMarkdown {
                     ResourceTable[name].scriptOptions as LoadScriptOptions,
                     () => {
                         ResourceTable[name].loaded = true;
+                        if (typeof ResourceTable[name].onLoadScript !== 'undefined') {
+                            ResourceTable[name].onLoadScript!();
+                        }
                     },
                     (error) => {
-                        throw new URIError(`ScriptLinkLoad{ResourceTable[name].extendedName} didn't load correctly: ScriptLinkLoad{error}`);
+                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
                     },
                 );
             }
@@ -104,17 +129,6 @@ export abstract class MathMarkdown {
     }
 
     public static md2html(text: string): string {
-        const renderer = {
-            code(code: string, language: string) {
-                renderMermaid = true;
-                if (code.match(/^sequenceDiagram/) || code.match(/^graph/)) {
-                    return '<pre class="mermaid">' + code + '</pre>';
-                } else {
-                    return '<pre><code>' + code + '</code></pre>';
-                }
-            },
-        };
-        marked.use({ renderer });
         return marked.parse(MathMarkdown.replaceMath(text));
     }
 
@@ -128,7 +142,7 @@ export abstract class MathMarkdown {
         if (renderMermaid) {
             /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
             // @ts-ignore
-            import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(async (module) => {
+            import('https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs').then(async (module) => {
                 const mermaid = await module.default;
                 document.querySelectorAll('.mermaid').forEach((m) => {
                     mermaid.default.init(undefined, m);

@@ -1,4 +1,5 @@
 import createHTMLElement from './createHTMLElement';
+import openFileDialog from './openFileDialog';
 import firstExample from './first-example.json';
 import { CharString, FunctionHandle, MultiArray } from 'mathjslab';
 
@@ -249,30 +250,24 @@ export class Shell {
     }
 
     public openFile(): void {
-        global
-            .showOpenFilePicker({
+        openFileDialog(
+            (content: string) => {
+                this.batchInput.value = content;
+                this.promptClean();
+                this.cleanNameList();
+                this.loadInput();
+            },
+            {
                 multiple: false,
                 types: [
                     {
-                        description: 'Text Files',
+                        description: 'MathJSLab Files',
                         accept: { 'text/plain': ['.txt', '.m'] },
                     },
                 ],
                 excludeAcceptAllOption: true,
-            })
-            .then(
-                ([fileHandle]) => fileHandle.getFile(),
-                (reason: any): any => null,
-            )
-            .then((file) => (file ? file.text() : null))
-            .then((content) => {
-                if (content) {
-                    this.batchInput.value = content;
-                    this.promptClean();
-                    this.cleanNameList();
-                    this.loadInput();
-                }
-            });
+            },
+        );
     }
 
     public cleanNameList(): void {

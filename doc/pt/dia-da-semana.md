@@ -113,7 +113,9 @@ indexada de 1 a 12, representando o resultado anterior. Assim, por exemplo, `MD[
 Considere o ano na variável `A`, o mês na variável `M` e o dia na variável `D`. Os meses, de janeiro a dezembro, são indicados de 1 a 12, como na squência `MD`.
 
 > `A = ano`
+>
 > `M = mês`
+>
 > `D = data`
 
 Então fazemos:
