@@ -70,5 +70,5 @@ export default function evalPrompt(frame: HTMLDivElement, box: HTMLDivElement, i
                 : '');
         if (global.EvaluatorPointer.debug) throw error;
     }
-    MathMarkdown.typeset();
+    MathMarkdown.mathTypeset();
 }

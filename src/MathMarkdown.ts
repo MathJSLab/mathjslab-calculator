@@ -1,6 +1,10 @@
 import ScriptLinkLoad, { LoadScriptOptions, LoadLinkOptions } from './ScriptLinkLoad';
 
-declare const marked: { parse: (text: string) => string };
+declare const marked: {
+    parse: (text: string) => string;
+    use: (renderer: any) => void;
+};
+
 declare const MathJax: { typeset: () => void };
 
 export interface Resource {
@@ -38,6 +42,8 @@ export const ResourceTable: Record<string, Resource> = {
         loaded: false,
     },
 };
+
+export let renderMermaid: boolean = false;
 
 export abstract class MathMarkdown {
     public static loadIfNeed(name: string, aditionalTest = true): void {
@@ -98,12 +104,42 @@ export abstract class MathMarkdown {
     }
 
     public static md2html(text: string): string {
+        const renderer = {
+            code(code: string, language: string) {
+                renderMermaid = true;
+                if (code.match(/^sequenceDiagram/) || code.match(/^graph/)) {
+                    return '<pre class="mermaid">' + code + '</pre>';
+                } else {
+                    return '<pre><code>' + code + '</code></pre>';
+                }
+            },
+        };
+        marked.use({ renderer });
         return marked.parse(MathMarkdown.replaceMath(text));
     }
 
-    public static typeset(): void {
+    public static mathTypeset(): void {
         if (ResourceTable['mathjax'].loaded) {
             MathJax.typeset();
         }
+    }
+
+    public static renderMermaid(): void {
+        if (renderMermaid) {
+            /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
+            // @ts-ignore
+            import('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs').then(async (module) => {
+                const mermaid = await module.default;
+                document.querySelectorAll('.mermaid').forEach((m) => {
+                    mermaid.default.init(undefined, m);
+                });
+                renderMermaid = false;
+            });
+        }
+    }
+
+    public static typeset(): void {
+        MathMarkdown.mathTypeset();
+        MathMarkdown.renderMermaid();
     }
 }

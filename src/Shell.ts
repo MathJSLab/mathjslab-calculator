@@ -128,7 +128,10 @@ export class Shell {
         shell.variablesHeading = createHTMLElement('h2', shell.variables, null, 'green');
         shell.variablesHeading.setAttribute('align', 'center');
         window.addEventListener('scroll', shell.variablesPanelResize);
-        window.addEventListener('resize', shell.variablesPanelResize);
+        window.addEventListener('resize', () => {
+            shell.batchResize();
+            shell.variablesPanelResize();
+        });
         shell.nameTable = createHTMLElement('div', shell.variables, 'nameTable_' + options.containerId);
         shell.nameList = createHTMLElement('ul', shell.nameTable, null, 'namelist');
         shell.batchContainer = createHTMLElement('div', shell.shell, 'batch_' + options.containerId, 'batch');

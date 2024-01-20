@@ -62,6 +62,7 @@ Esta aplicação de demontração também usa:
 * [MathJax](https://www.mathjax.org/), para navegadores sem suporte [MathML](https://www.w3.org/Math/).
 * [Marked](https://www.npmjs.com/package/marked), para formatar arquivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML).
 * [Chart.js](https://www.chartjs.org/), para gerar gráficos e histogramas.
+* [Mermaid](https://mermaid.js.org/), para gerar grafos e diagramas.
 
 ## Contribuindo
 

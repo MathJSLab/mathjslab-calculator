@@ -450,6 +450,7 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                         .then((responseFile: string) => {
                             promptSet.box.className = 'doc';
                             promptSet.output.innerHTML = MathMarkdown.md2html(responseFile);
+                            MathMarkdown.typeset();
                         })
                         /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                         .catch((error) => {
@@ -598,6 +599,8 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
     },
 };
+
+declare const marked: { Renderer: () => void };
 
 /**
  * Evaluator and MathMarkdown initialization.
