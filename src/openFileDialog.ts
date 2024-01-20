@@ -8,6 +8,7 @@ export default function openFileDialog(
         .showOpenFilePicker(options)
         .then(
             ([fileHandle]) => fileHandle.getFile(),
+            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
             (reason) => null,
         )
         .then((file) => (file ? file.text() : null))

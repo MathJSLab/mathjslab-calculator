@@ -90,6 +90,7 @@ help isempty
 help ldivide
 help le
 help length
+help load
 help log
 help log10
 help logb
@@ -110,6 +111,7 @@ help ne
 help not
 help numel
 help ones
+help open
 help or
 help pivot
 help plot2d

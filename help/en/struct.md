@@ -41,6 +41,28 @@ the following examples:
 
 >> `struct ("foo", {1, 2, 3})`
 
+>> `[`
+
+>> `    struct {`
+
+>> `        foo: 1`
+
+>> `    },`
+
+>> `    struct {`
+
+>> `        foo: 2`
+
+>> `    },`
+
+>> `    struct {`
+
+>> `        foo: 3`
+
+>> `    },`
+
+>> `]`
+
 The first case is an ordinary scalar struct--one field, one value.
 The second produces an empty struct array with one field and no
 values, since being passed an empty cell array of struct array
@@ -53,3 +75,8 @@ produces a struct *array*.
 
 See also: `cell2struct`, `fieldnames`, `getfield`, `setfield`, `rmfield`,
 `isfield`, `orderfields`, `isstruct`, `structfun`.
+
+### References
+
+* https://www.mathworks.com/help/matlab/ref/struct.html
+* https://octave.sourceforge.io/octave/function/struct.html

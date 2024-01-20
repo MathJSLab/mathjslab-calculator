@@ -5,4 +5,4 @@ Carga archivos desde URL (absolutas o relativas) y se ejecuta de forma asincrón
 
 Si se llama sin parámetros, muestra un cuadro de diálogo para elegir el archivo a cargar desde el dispositivo.
 
-Véase también: `markdown`.
+Véase también: `markdown`, `open`.

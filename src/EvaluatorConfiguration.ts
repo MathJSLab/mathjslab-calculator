@@ -52,7 +52,29 @@ global.setLanguage = (lang?: string): void => {
  * To open file from device.
  */
 global.openFile = (): void => {
-    global.ShellPointer.openFile();
+    EvaluatorConfiguration.externalFunctionTable!.open.func();
+};
+
+const openFileOptionMathJSLab: OpenFilePickerOptions & { multiple?: false | undefined } = {
+    multiple: false,
+    types: [
+        {
+            description: 'MathJSLab files',
+            accept: { 'text/plain': ['.txt', '.m'] },
+        },
+    ],
+    excludeAcceptAllOption: true,
+};
+
+const openFileOptionMarkdown: OpenFilePickerOptions & { multiple?: false | undefined } = {
+    multiple: false,
+    types: [
+        {
+            description: 'Markdown files',
+            accept: { 'text/plain': ['.txt', '.md'] },
+        },
+    ],
+    excludeAcceptAllOption: true,
 };
 
 export const languageAlias: Record<string, AliasNameTable> = {
@@ -428,6 +450,45 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
             },
         },
 
+        open: {
+            type: 'BUILTIN',
+            mapper: false,
+            ev: [true],
+            func: (url?: CharString): AST.NodeExpr => {
+                const promptSet = global.ShellPointer.currentPromptSet;
+                if (url) {
+                    if (global.ShellPointer.isFileProtocol) {
+                        promptSet.box.className = 'bad';
+                        promptSet.output.innerHTML = 'open function unavailable <b>offline</b>.';
+                    } else {
+                        global
+                            .fetch(url.str)
+                            .then((response) => {
+                                if (response.ok) {
+                                    return response.text();
+                                } else {
+                                    throw new URIError('Load error.');
+                                }
+                            })
+                            .then((responseFile: string) => {
+                                global.ShellPointer.openContent(responseFile);
+                            })
+                            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
+                            .catch((error) => {
+                                promptSet.box.className = 'bad';
+                                promptSet.output.innerHTML = `open: error loading ${url.str}`;
+                            });
+                    }
+                    return AST.nodeIndexExpr(AST.nodeIdentifier('open'), AST.nodeList([url.str]));
+                } else {
+                    openFileDialog((content: string) => {
+                        global.ShellPointer.openContent(content);
+                    }, openFileOptionMathJSLab);
+                    return AST.nodeIndexExpr(AST.nodeIdentifier('open'), AST.nodeListFirst());
+                }
+            },
+        },
+
         markdown: {
             type: 'BUILTIN',
             mapper: false,
@@ -461,23 +522,11 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                     }
                     return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeList([url.str]));
                 } else {
-                    openFileDialog(
-                        (content: string) => {
-                            promptSet.box.className = 'doc';
-                            promptSet.output.innerHTML = MathMarkdown.md2html(content);
-                            MathMarkdown.typeset();
-                        },
-                        {
-                            multiple: false,
-                            types: [
-                                {
-                                    description: 'Markdown Files',
-                                    accept: { 'text/plain': ['.txt', '.md'] },
-                                },
-                            ],
-                            excludeAcceptAllOption: true,
-                        },
-                    );
+                    openFileDialog((content: string) => {
+                        promptSet.box.className = 'doc';
+                        promptSet.output.innerHTML = MathMarkdown.md2html(content);
+                        MathMarkdown.typeset();
+                    }, openFileOptionMarkdown);
                     return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeListFirst());
                 }
             },
@@ -539,21 +588,9 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                     }
                     return AST.nodeIndexExpr(AST.nodeIdentifier('load'), AST.nodeList([...url.map((url) => AST.nodeString(url.str))]));
                 } else {
-                    openFileDialog(
-                        (content: string) => {
-                            loadContent(content, 'file');
-                        },
-                        {
-                            multiple: false,
-                            types: [
-                                {
-                                    description: 'MathJSLab Files',
-                                    accept: { 'text/plain': ['.txt', '.m'] },
-                                },
-                            ],
-                            excludeAcceptAllOption: true,
-                        },
-                    );
+                    openFileDialog((content: string) => {
+                        loadContent(content, 'file');
+                    }, openFileOptionMathJSLab);
                     return AST.nodeIndexExpr(AST.nodeIdentifier('load'), AST.nodeListFirst());
                 }
             },
@@ -635,9 +672,10 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
             },
         },
 
-        openfile: {
+        open: {
+            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
             func: (...args: string[]): void => {
-                global.openFile();
+                EvaluatorConfiguration.externalFunctionTable!.open.func(...args);
             },
         },
     },

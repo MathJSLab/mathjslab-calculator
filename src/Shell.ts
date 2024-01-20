@@ -1,5 +1,4 @@
 import createHTMLElement from './createHTMLElement';
-import openFileDialog from './openFileDialog';
 import firstExample from './first-example.json';
 import { CharString, FunctionHandle, MultiArray } from 'mathjslab';
 
@@ -43,7 +42,7 @@ declare global {
 }
 
 /**
- * Shell prompt class.
+ * Shell class.
  */
 export class Shell {
     baseUrl: string;
@@ -81,6 +80,11 @@ export class Shell {
         this.isTouchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || (navigator as any).msMaxTouchPoints > 0;
     }
 
+    /**
+     * Shell initialization (instantiation).
+     * @param options
+     * @returns
+     */
     public static async initialize(options: ShellOptions): Promise<Shell> {
         const shell = new Shell();
         shell.options = options;
@@ -162,8 +166,7 @@ export class Shell {
         shell.batchInput.value = shell.input = options.input;
         shell.batchResize();
         if (shell.isFileProtocol || !shell.examplesAvailable) {
-            global.ShellPointer.batchInput.value = firstExample.content;
-            global.ShellPointer.batchExec(new Event('click'));
+            shell.openContent(firstExample.content);
         } else {
             let first = true;
             for (const example in shell.examples) {
@@ -175,8 +178,7 @@ export class Shell {
                     if (!response.ok) {
                         throw new Error('Network response error.');
                     }
-                    global.ShellPointer.batchInput.value = global.ShellPointer.input = await response.text();
-                    global.ShellPointer.batchExec(event);
+                    global.ShellPointer.openContent(await response.text());
                 });
                 if (first) {
                     button.click();
@@ -189,6 +191,10 @@ export class Shell {
         return shell;
     }
 
+    /**
+     * Change strings depending on the language.
+     * @param lang Language.
+     */
     public setLanguage(lang?: string) {
         if (lang) {
             global.lang = lang;
@@ -205,10 +211,17 @@ export class Shell {
         }[global.lang] as string;
     }
 
+    /**
+     * Get current promptSet.
+     */
     public get currentPromptSet(): PromptEntry {
         return this.promptSet[this.promptUid[this.promptIndex]];
     }
 
+    /**
+     * Batch input resize.
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchResize(event?: Event): void {
         global.ShellPointer.batchInput.style.height = '1em';
@@ -216,6 +229,10 @@ export class Shell {
         global.ShellPointer.variablesPanelResize();
     }
 
+    /**
+     * Variables panel resize.
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public variablesPanelResize(event?: Event): void {
         let Y = window.scrollY - global.ShellPointer.container.offsetTop + window.innerHeight * 0.025;
@@ -230,17 +247,29 @@ export class Shell {
         global.ShellPointer.variables.style.height = Math.min(global.ShellPointer.container.offsetHeight, window.innerHeight) * 0.9 + 'px';
     }
 
+    /**
+     * Batch input delayed resize.
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchDelayedResize(event: Event): void {
         window.setTimeout(global.ShellPointer.batchResize, 0);
     }
 
+    /**
+     * Batch input focus event handler.
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchFocus(event: Event): void {
         /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
         const onfocus = document.activeElement;
     }
 
+    /**
+     * Batch execution (button click) event handler.
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchExec(event: Event): void {
         global.ShellPointer.promptClean();
@@ -249,32 +278,28 @@ export class Shell {
         global.ShellPointer.batchButton.focus();
     }
 
-    public openFile(): void {
-        openFileDialog(
-            (content: string) => {
-                this.batchInput.value = content;
-                this.promptClean();
-                this.cleanNameList();
-                this.loadInput();
-            },
-            {
-                multiple: false,
-                types: [
-                    {
-                        description: 'MathJSLab Files',
-                        accept: { 'text/plain': ['.txt', '.m'] },
-                    },
-                ],
-                excludeAcceptAllOption: true,
-            },
-        );
+    /**
+     * Open content.
+     * @param content
+     */
+    public openContent(content: string): void {
+        this.batchInput.value = content;
+        this.promptClean();
+        this.cleanNameList();
+        this.loadInput();
     }
 
+    /**
+     * Clean name list in variables panel.
+     */
     public cleanNameList(): void {
         this.nameList.remove();
         this.nameList = createHTMLElement('ul', this.nameTable, null, 'namelist');
     }
 
+    /**
+     * Refresh name list in variables panel.
+     */
     public refreshNameList(): void {
         this.cleanNameList();
         for (const name in global.EvaluatorPointer.nameTable) {
@@ -309,6 +334,9 @@ export class Shell {
         }
     }
 
+    /**
+     * Load code from batchInput, separing statements and creating prompts.
+     */
     public loadInput(): void {
         // Separe statements and lines.
         const [statements, lines] = this.evalInput(this.batchInput);
@@ -327,6 +355,10 @@ export class Shell {
         this.promptSet[this.promptUid[0]].input.focus();
     }
 
+    /**
+     * Batch blur event handler
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public batchBlur(event: Event): void {
         global.EvaluatorPointer.Restart();
@@ -335,11 +367,19 @@ export class Shell {
         global.ShellPointer.variablesPanelResize();
     }
 
+    /**
+     * Prompt focus event handler
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptFocus(event: Event): void {
         global.ShellPointer.promptIndex = global.ShellPointer.promptUid.indexOf(document.activeElement?.id.substring(1) as string);
     }
 
+    /**
+     * Prompt blur event handler
+     * @param event
+     */
     /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
     public promptBlur(event: Event): void {
         const onblur = global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].input;
@@ -353,6 +393,9 @@ export class Shell {
         }
     }
 
+    /**
+     *
+     */
     public promptClean(): void {
         for (const i in this.promptSet) {
             this.promptSet[i].container.remove();
@@ -360,6 +403,10 @@ export class Shell {
         this.cleanNameList();
     }
 
+    /**
+     * Append prompt with optional expression.
+     * @param text Expression to evaluate in prompt appended.
+     */
     public promptAppend(text?: string | null): void {
         const uid = global.crypto.randomUUID();
         const div = createHTMLElement('div', this.promptContainer, 'd' + uid);
@@ -377,6 +424,11 @@ export class Shell {
         }
     }
 
+    /**
+     * Creates prompt structure.
+     * @param uid
+     * @param promptFrame
+     */
     public promptCreate(uid: string, promptFrame: HTMLDivElement): void {
         const box = createHTMLElement('div', promptFrame, 'p' + uid, 'good');
         const table = createHTMLElement('table', box);
@@ -421,13 +473,18 @@ export class Shell {
         this.refreshNameList();
     }
 
+    /**
+     * Prompt keyboard event handler.
+     * @param event
+     * @returns
+     */
     public promptKeydown(event: KeyboardEvent) {
         let onfocus = document.activeElement as HTMLTextAreaElement;
         if (!event.ctrlKey && !event.altKey && !event.metaKey) {
             if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();
                 if (onfocus.selectionStart == 0) {
-                    // cria prompt anterior se pressionado enter com o cursor em 0
+                    // Creates previous prompt if enter is pressed with cursor at 0.
                     const pdiv = document.getElementById('d' + onfocus?.id.substring(1));
                     const uid = global.crypto.randomUUID();
                     const div = createHTMLElement('div', null, 'd' + uid);
@@ -440,7 +497,7 @@ export class Shell {
                     onfocus.style.height = onfocus.scrollHeight + 'px';
                 } else {
                     if (global.ShellPointer.promptIndex + 1 == global.ShellPointer.promptUid.length) {
-                        // adiciona ao final
+                        // Append to end.
                         const uid = global.crypto.randomUUID();
                         const div = createHTMLElement('div', global.ShellPointer.promptContainer, 'd' + uid);
                         global.ShellPointer.promptCreate(uid, div);
@@ -453,7 +510,7 @@ export class Shell {
                         global.ShellPointer.promptSet[onfocus.id.substring(1)].input,
                         global.ShellPointer.promptSet[onfocus.id.substring(1)].output,
                     );
-                    // passa ao próximo prompt
+                    // Go to the next prompt.
                     onfocus =
                         global.ShellPointer.promptSet[
                             global.ShellPointer.promptUid[global.ShellPointer.promptUid.indexOf(onfocus.id.substring(1)) + 1]
@@ -464,7 +521,7 @@ export class Shell {
                 }
                 if (!event.shiftKey) return false;
             } else if (
-                // Apaga prompt se for nulo e pressionar backspace na coluna 0.
+                // Deletes prompt if it is null and press backspace in column 0.
                 event.key === 'Backspace' &&
                 onfocus.selectionStart == 0
             ) {
@@ -472,14 +529,14 @@ export class Shell {
                     global.ShellPointer.promptIndex !== 0 &&
                     global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].input.value.trim() === ''
                 ) {
-                    // Apaga prompt anterior.
+                    // Deletes previous prompt.
                     global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]].container.remove();
                     delete global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex - 1]];
                     global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex - 1, 1);
                     global.ShellPointer.promptIndex--;
                     event.preventDefault();
                 } else if (global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].input.value.trim() === '') {
-                    // Apaga prompt atual.
+                    // Deletes current prompt.
                     global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]].container.remove();
                     delete global.ShellPointer.promptSet[global.ShellPointer.promptUid[global.ShellPointer.promptIndex]];
                     global.ShellPointer.promptUid.splice(global.ShellPointer.promptIndex, 1);

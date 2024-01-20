@@ -75,10 +75,13 @@
                 pt: 'Currículo Lattes',
             }[window.lang];
         }
+        function scrollToTop() {
+            window.setTimeout(() => {window.scrollTo(0,0)}, 600);
+        }
     </script>
 </head>
 
-<body onload="javascript:loadText();document.getElementById('language').value=window.lang;">
+<body onload="javascript:loadText();document.getElementById('language').value=window.lang;scrollToTop();">
     <div id="app">
 
         <header>
@@ -94,7 +97,7 @@
             <div class="right-align-panel">
                 <div class="green-panel width-fit-content right-align-panel" align="center">
                     <select id="language"
-                        onchange="javascript:window.setLanguage(document.getElementById('language').value);loadText();">
+                        onchange="javascript:window.setLanguage(document.getElementById('language').value);loadText();scrollToTop();">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="pt">Português</option>
