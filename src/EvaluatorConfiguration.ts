@@ -1,8 +1,10 @@
 import createHTMLElement from './createHTMLElement';
 import './fetchPolyfill';
+import './showOpenFilePickerPolyfill';
 import openFileDialog from './openFileDialog';
+import importUMD from './importUMD';
 
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, EvaluatorConfig, AliasNameTable } from 'mathjslab';
+import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, EvaluatorConfig, AliasNameTable, ElementType } from 'mathjslab';
 import { AST } from 'mathjslab';
 export { Evaluator };
 
@@ -237,8 +239,171 @@ export const plotWidth = 100;
 
 export const insertOutput = { type: '' };
 
+const visOnMouseUpFix = function (this: any, event: Event) {
+    this.frame.style.cursor = 'auto';
+    this.leftButtonDown = false;
+    // remove event listeners here
+    document.removeEventListener('mousemove', this.onmousemove);
+    document.removeEventListener('mouseup', this.onmouseup);
+    event.preventDefault();
+};
+
 /* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
+    plot: function (parent: string): void {
+        importUMD('https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.js').then((chart: any) => {
+            const DATA_COUNT = 12;
+            const labels = [];
+            for (let i = 0; i < DATA_COUNT; ++i) {
+                labels.push(i.toString());
+            }
+            const datapoints = [0, 20, 20, 60, 60, 120, NaN, 180, 120, 125, 105, 110, 170];
+            const data = {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Cubic interpolation (monotone)',
+                        data: datapoints,
+                        borderColor: 'rgb(255, 0, 0)',
+                        fill: false,
+                        cubicInterpolationMode: 'monotone',
+                        tension: 0.4,
+                    },
+                    {
+                        label: 'Cubic interpolation',
+                        data: datapoints,
+                        borderColor: 'rgb(0, 0, 255)',
+                        fill: false,
+                        tension: 0.4,
+                    },
+                    {
+                        label: 'Linear interpolation (default)',
+                        data: datapoints,
+                        borderColor: 'rgb(0, 255, 0)',
+                        fill: false,
+                    },
+                ],
+            };
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Chart.js Line Chart - Cubic interpolation mode',
+                        },
+                    },
+                    interaction: {
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                            },
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Value',
+                            },
+                            suggestedMin: -10,
+                            suggestedMax: 200,
+                        },
+                    },
+                },
+            };
+            const ctx = createHTMLElement('canvas', document.getElementById(parent));
+            new chart(ctx, config);
+        });
+        insertOutput.type = '';
+    },
+    plot3: function (parent: string): void {
+        insertOutput.type = '';
+        /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
+        // @ts-ignore
+        import('https://cdn.jsdelivr.net/npm/vis-graph3d@latest/dist/esm.js').then(async (module) => {
+            const vis = await module.default;
+            // Create and populate a data table.
+            const data = new vis.DataSet();
+
+            // create some nice looking data with sin/cos
+            const steps = 500;
+            const axisMax = 314;
+            const tmax = 4 * 2 * Math.PI;
+            const axisStep = axisMax / steps;
+            for (let t = 0; t < tmax; t += tmax / steps) {
+                const r = 1;
+                const x = r * Math.sin(t);
+                const y = r * Math.cos(t);
+                const z = t / tmax;
+                data.add({ x: x, y: y, z: z });
+            }
+
+            // specify options
+            const options = {
+                width: '600px',
+                height: '600px',
+                style: 'line',
+                showPerspective: false,
+                showGrid: true,
+                keepAspectRatio: true,
+                verticalRatio: 1.0,
+            };
+
+            // create our graph
+            const container = document.getElementById(parent);
+            const graph3d = new vis.Graph3d(container, data, options);
+            graph3d._onMouseUp = visOnMouseUpFix;
+
+            graph3d.setCameraPosition(0.4, undefined, undefined);
+        });
+    },
+    surf: function (parent: string): void {
+        /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
+        // @ts-ignore
+        import('https://cdn.jsdelivr.net/npm/vis-graph3d@latest/dist/esm.js').then(async (module) => {
+            const vis = await module.default;
+            function custom(x: number, y: number) {
+                return Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50;
+            }
+            // Create and populate a data table.
+            const data = new vis.DataSet();
+            // create some nice looking data with sin/cos
+            let counter = 0;
+            const steps = 50; // number of datapoints will be steps*steps
+            const axisMax = 314;
+            const axisStep = axisMax / steps;
+            for (let x = 0; x < axisMax; x += axisStep) {
+                for (let y = 0; y < axisMax; y += axisStep) {
+                    const value = custom(x, y);
+                    data.add({ id: counter++, x: x, y: y, z: value, style: value });
+                }
+            }
+
+            // specify options
+            const options = {
+                width: '600px',
+                height: '600px',
+                style: 'surface',
+                showPerspective: true,
+                showGrid: true,
+                showShadow: false,
+                keepAspectRatio: true,
+                verticalRatio: 0.5,
+            };
+
+            // Instantiate our graph object.
+            const container = document.getElementById(parent);
+            const graph3d = new vis.Graph3d(container, data, options);
+            graph3d._onMouseUp = visOnMouseUpFix;
+        });
+        insertOutput.type = '';
+    },
     plot2d: function (parent: string): void {
         if (global.ShellPointer.isFileProtocol) {
             const promptSet = global.ShellPointer.currentPromptSet;
@@ -362,6 +527,36 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
                     global.EvaluatorPointer.unparserMathML(tree.args[3]) +
                     '</mstyle>'
                 );
+            },
+        },
+
+        plot: {
+            type: 'BUILTIN',
+            mapper: false,
+            ev: [],
+            func: (...args: ElementType[]): AST.NodeExpr => {
+                insertOutput.type = 'plot';
+                return AST.nodeIndexExpr(AST.nodeIdentifier('plot'), AST.nodeList(args));
+            },
+        },
+
+        plot3: {
+            type: 'BUILTIN',
+            mapper: false,
+            ev: [],
+            func: (...args: ElementType[]): AST.NodeExpr => {
+                insertOutput.type = 'plot3';
+                return AST.nodeIndexExpr(AST.nodeIdentifier('plot3'), AST.nodeList(args));
+            },
+        },
+
+        surf: {
+            type: 'BUILTIN',
+            mapper: false,
+            ev: [],
+            func: (...args: ElementType[]): AST.NodeExpr => {
+                insertOutput.type = 'surf';
+                return AST.nodeIndexExpr(AST.nodeIdentifier('surf'), AST.nodeList(args));
             },
         },
 

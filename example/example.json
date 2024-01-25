@@ -144,6 +144,11 @@
     "caption": "Debug",
     "description": "Debug related commands and functions."
   },
+  "plot": {
+    "file": "plot.m",
+    "caption": "Plot",
+    "description": "Test plot related functions."
+  },
   "test1": {
     "file": "test1.m",
     "caption": "Test 1",

@@ -50,6 +50,7 @@ help atand
 help atanh
 help ceil
 help clear
+help colon
 help columns
 help configure
 help conj
@@ -90,15 +91,18 @@ help isempty
 help ldivide
 help le
 help length
+help linspace
 help load
 help log
 help log10
 help logb
 help logical
+help logspace
 help lu
 help markdown
 help max
 help mean
+help meshgrid
 help min
 help minus
 help mldivide
@@ -106,6 +110,7 @@ help mod
 help mpower
 help mrdivide
 help mtimes
+help ndgrid
 help ndims
 help ne
 help not

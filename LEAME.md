@@ -2,6 +2,7 @@
 
 [![Estado Netlify](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![Licencia MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8396263.svg)](https://doi.org/10.5281/zenodo.8396263)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sergiolindau/mathjslab-calculator/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sergiolindau/mathjslab-calculator/tree/main)
 
 > Un intérprete con sintaxis de lenguaje como [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) escrito en [Typescript](https://www.typescriptlang.org/).
@@ -59,10 +60,11 @@ Otra opción es configurar para usar directamente desde
 
 Esta demostración también utiliza:
 
-* [MathJax](https://www.mathjax.org/), para navegadores sin soporte [MathML](https://www.w3.org/Math/).
-* [Marked](https://www.npmjs.com/package/marked), para formatear archivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/es/docs/Web/HTML).
-* [Chart.js](https://www.chartjs.org/), para generar gráficos e histogramas.
-* [Mermaid](https://mermaid.js.org/), para generar gráficos y diagramas.
+* [MathJax](https://www.mathjax.org/) para navegadores sin soporte [MathML](https://www.w3.org/Math/).
+* [Marked](https://www.npmjs.com/package/marked) para formatear archivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/es/docs/Web/HTML).
+* [Chart.js](https://www.chartjs.org/) para generar gráficos e histogramas.
+* [vis.js Graph3d](https://visjs.org/) para generar gráficos 3D.
+* [Mermaid](https://mermaid.js.org/) para generar grafos y diagramas.
 
 ## Contribuyendo
 

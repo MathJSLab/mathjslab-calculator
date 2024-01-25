@@ -1,4 +1,3 @@
-clear
 % source: http://physics.nist.gov/cuu/Constants/Table/allascii.txt
 cte.g = 9.80665 % standard acceleration of gravity
 cte.G = 6.67408e-11 % Newtonian constant of gravitation
@@ -12,6 +11,7 @@ cte.ep0 = 8.854187817e-12 % vacuum electric permittivity
 cte.mi0 = 4.0e-7 * pi % vacuum magnetic permeability
 cte.c = 2.99792458e8 % speed of light in vacuum
 cte.h = 6.62607004e-34 % Planck constant
+
 % Unit conversion factors
 cte.cal = 4.1868 % calorie in Joules
 cte.kWh = 3.6e6 % kWh in Joules
@@ -20,7 +20,7 @@ cte.hp = 745.7 % Horse Power in Watts
 cte.cv = 735.3 % Cavalo Vapor
 cte.in = 2.54e-2 % Inch in meters
 
-
+% Periodic table of elements
 atom.H.Z = 1
 atom.H.M = 1.007947
 atom.He.Z = 2

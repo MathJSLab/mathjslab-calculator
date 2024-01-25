@@ -55,10 +55,10 @@
     "path": false
   },
   "devDependencies": {
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.6",
     "@types/webpack": "^5.28.5",
     "@types/wicg-file-system-access": "^2023.10.4",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
     "css-loader": "^6.9.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -73,11 +73,11 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
-    "webpack": "^5.89.0",
+    "webpack": "^5.90.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "mathjslab": "^1.5.1"
+    "mathjslab": "^1.5.4"
   }
 }

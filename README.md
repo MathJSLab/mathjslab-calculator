@@ -2,6 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8396263.svg)](https://doi.org/10.5281/zenodo.8396263)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sergiolindau/mathjslab-calculator/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sergiolindau/mathjslab-calculator/tree/main)
 
 > An interpreter with language syntax like [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) written in [Typescript](https://www.typescriptlang.org/).
@@ -64,9 +65,10 @@ script using:
 
 This demo also uses:
 
-* [MathJax](https://www.mathjax.org/), for navigators without [MathML](https://www.w3.org/Math/) support.
-* [Marked](https://www.npmjs.com/package/marked), to format [Markdown](https://www.markdownguide.org/) files as [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML).
-* [Chart.js](https://www.chartjs.org/), to generate plots and histograms.
+* [MathJax](https://www.mathjax.org/) for navigators without [MathML](https://www.w3.org/Math/) support.
+* [Marked](https://www.npmjs.com/package/marked) to format [Markdown](https://www.markdownguide.org/) files as [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML).
+* [Chart.js](https://www.chartjs.org/) to generate plots and histograms.
+* [vis.js Graph3d](https://visjs.org/) to generate 3D graphics.
 * [Mermaid](https://mermaid.js.org/) to generate charts and diagrams.
 
 ## Contributing

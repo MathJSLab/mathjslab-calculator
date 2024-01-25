@@ -1,5 +1,3 @@
-import './showOpenFilePickerPolyfill';
-
 export default function openFileDialog(
     callbackfn: (content: string) => void,
     options?: (OpenFilePickerOptions & { multiple?: false | undefined }) | undefined,
