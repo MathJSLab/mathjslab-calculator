@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="images/mathjslab-logo.svg" alt="logo" width="250" height="250">
+    <img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200">
 </p>
 
 # Calculadora MathJSLab

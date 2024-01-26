@@ -78,6 +78,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "mathjslab": "^1.5.6"
+    "mathjslab": "^1.5.7"
   }
 }
