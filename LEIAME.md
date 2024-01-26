@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="images/mathjslab-logo.svg" alt="logo" width="250" height="250">
+</p>
+
 # Calculadora MathJSLab
 
 [![Status Netlify](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)

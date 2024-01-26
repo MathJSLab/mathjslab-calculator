@@ -87,7 +87,13 @@ help hypot
 help imag
 help ind2sub
 help inv
+help iscell
+help iscolumn
 help isempty
+help ismatrix
+help isrow
+help isscalar
+help isvector
 help ldivide
 help le
 help length
@@ -144,6 +150,7 @@ help sind
 help sinh
 help size
 help sqrt
+help squeeze
 help struct
 help sub2ind
 help sum
