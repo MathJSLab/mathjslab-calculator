@@ -21,5 +21,5 @@ function fetchPolyfill(input: RequestInfo | URL, init?: RequestInit): Promise<Re
 }
 
 if (typeof window.fetch !== 'function') {
-    (window as any).fetch = fetchPolyfill;
+    window.fetch = fetchPolyfill;
 }

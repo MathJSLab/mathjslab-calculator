@@ -57,13 +57,6 @@ ter o mesmo número de linhas e colunas e nenhuma tentativa é
 feito para transpor os argumentos para fazer o número de linhas
 corresponder.
 
-Multiple property-value pairs may be specified, but they must
-appear in pairs.  These arguments are applied to the line objects
-drawn by 'plot'.  Useful properties to modify are `"linestyle"`,
-`"linewidth"`, `"color"`, `"marker"`, `"markersize"`, `"markeredgecolor"`,
-`"markerfacecolor"`.  The full list of properties is documented at
-Line Properties.
-
 Vários pares propriedade-valor podem ser especificados, mas eles devem
 aparecer aos pares. Esses argumentos são aplicados aos objetos de linha
 desenhado por `plot`. Propriedades úteis para modificar são `"linestyle"`,
@@ -71,7 +64,7 @@ desenhado por `plot`. Propriedades úteis para modificar são `"linestyle"`,
 `"markerfacecolor"`. A lista completa de propriedades está documentada em
 Propriedades da linha.
 
-The FMT format argument can also be used to control the plot style.
+The `FMT` format argument can also be used to control the plot style.
 It is a string composed of four optional parts:
 "\<linestyle\>\<marker\>\<color\>\<;displayname;\>".  When a marker is
 specified, but no linestyle, only the markers are plotted.

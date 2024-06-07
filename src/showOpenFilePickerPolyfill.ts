@@ -1,4 +1,4 @@
-function showOpenFilePickerPolyfill(options?: OpenFilePickerOptions) {
+function showOpenFilePickerPolyfill(options?: OpenFilePickerOptions): Promise<[FileSystemFileHandle]> {
     return new Promise((resolve) => {
         const input = document.createElement('input') as HTMLInputElement;
         input.type = 'file';
@@ -18,7 +18,7 @@ function showOpenFilePickerPolyfill(options?: OpenFilePickerOptions) {
                                 resolve(file);
                             }),
                     };
-                }),
+                }) as [FileSystemFileHandle],
             );
         });
 
@@ -27,5 +27,5 @@ function showOpenFilePickerPolyfill(options?: OpenFilePickerOptions) {
 }
 
 if (typeof window.showOpenFilePicker !== 'function') {
-    (window as any).showOpenFilePicker = showOpenFilePickerPolyfill;
+    window.showOpenFilePicker = showOpenFilePickerPolyfill;
 }

@@ -64,7 +64,7 @@ drawn by 'plot'.  Useful properties to modify are `"linestyle"`,
 `"markerfacecolor"`.  The full list of properties is documented at
 Line Properties.
 
-The FMT format argument can also be used to control the plot style.
+The `FMT` format argument can also be used to control the plot style.
 It is a string composed of four optional parts:
 "\<linestyle\>\<marker\>\<color\>\<;displayname;\>".  When a marker is
 specified, but no linestyle, only the markers are plotted.

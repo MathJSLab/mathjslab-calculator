@@ -1,39 +1,22 @@
-import ScriptLinkLoad, { LoadScriptOptions, LoadLinkOptions } from './ScriptLinkLoad';
+import DynamicModule from './DynamicModule';
 
-declare const marked: {
-    parse: (text: string) => string;
-    use: (options: any) => void;
-};
-
-declare const MathJax: { typeset: () => void };
-
-export interface Resource {
-    name: string;
-    extendedName: string;
-    linkOptions?: LoadLinkOptions;
-    scriptOptions?: LoadScriptOptions;
-    loaded: boolean;
-    onLoadLink?: () => void;
-    onLoadScript?: () => void;
+declare global {
+    var marked: {
+        parse: (text: string) => string;
+        use: (options: any) => void;
+    };
+    var MathJax: { typeset: () => void } | undefined;
 }
 
-export const ResourceTable: Record<string, Resource> = {
-    mathjax: {
-        name: 'mathjax',
-        extendedName: 'MathJax',
-        scriptOptions: {
-            src: 'https://cdn.jsdelivr.net/npm/mathjax@latest/es5/tex-mml-chtml.js?config=TeX-MML-AM_CHTML',
-        },
-        loaded: false,
-    },
-    marked: {
-        name: 'marked',
-        extendedName: 'Marked',
-        scriptOptions: {
-            src: 'https://cdn.jsdelivr.net/npm/marked@latest/marked.min.js',
-        },
-        loaded: false,
-        onLoadScript: () => {
+let renderMermaid: boolean = false;
+
+export abstract class MathMarkdown {
+    public static initialize() {
+        if (!window.MathMLElement) {
+            DynamicModule.load('mathjax');
+        }
+        DynamicModule.load('marked').then((module) => {
+            global.marked = module;
             const renderer = {
                 code(code: string, language: string) {
                     if (language === 'mermaid') {
@@ -48,60 +31,8 @@ export const ResourceTable: Record<string, Resource> = {
                     }
                 },
             };
-            marked.use({ renderer });
-        },
-    },
-    chartjs: {
-        /* homepage: https://www.chartjs.org/docs/latest/ */
-        name: 'chartjs',
-        extendedName: 'Chart.js',
-        scriptOptions: {
-            src: 'https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js',
-        },
-        loaded: false,
-    },
-};
-
-export let renderMermaid: boolean = false;
-
-export abstract class MathMarkdown {
-    public static loadIfNeed(name: string, aditionalTest = true): void {
-        if (!ResourceTable[name].loaded && aditionalTest) {
-            if (!!ResourceTable[name].linkOptions) {
-                ScriptLinkLoad.appendLinkToHeadSync(
-                    ResourceTable[name].linkOptions as LoadLinkOptions,
-                    () => {
-                        ResourceTable[name].loaded = true;
-                        if (typeof ResourceTable[name].onLoadLink !== 'undefined') {
-                            ResourceTable[name].onLoadLink!();
-                        }
-                    },
-                    (error) => {
-                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
-                    },
-                );
-            }
-            if (!!ResourceTable[name].scriptOptions) {
-                ScriptLinkLoad.appendScriptToHeadSync(
-                    ResourceTable[name].scriptOptions as LoadScriptOptions,
-                    () => {
-                        ResourceTable[name].loaded = true;
-                        if (typeof ResourceTable[name].onLoadScript !== 'undefined') {
-                            ResourceTable[name].onLoadScript!();
-                        }
-                    },
-                    (error) => {
-                        throw new URIError(`${ResourceTable[name].extendedName} didn't load correctly: ${error}`);
-                    },
-                );
-            }
-        }
-    }
-
-    public static initialize() {
-        MathMarkdown.loadIfNeed('mathjax', !window.MathMLElement);
-        MathMarkdown.loadIfNeed('marked');
-        MathMarkdown.loadIfNeed('chartjs');
+            global.marked.use({ renderer });
+        });
     }
 
     public static replaceMath(text: string): string {
@@ -133,17 +64,14 @@ export abstract class MathMarkdown {
     }
 
     public static mathTypeset(): void {
-        if (ResourceTable['mathjax'].loaded) {
-            MathJax.typeset();
+        if (global.MathJax) {
+            global.MathJax.typeset();
         }
     }
 
     public static renderMermaid(): void {
         if (renderMermaid) {
-            /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
-            // @ts-ignore
-            import('https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs').then(async (module) => {
-                const mermaid = await module.default;
+            DynamicModule.use('mermaid', (mermaid) => {
                 document.querySelectorAll('.mermaid').forEach((m) => {
                     mermaid.default.init(undefined, m);
                 });

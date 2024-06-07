@@ -40,7 +40,7 @@ copiar os diretórios `example` e `help` para a raiz da página web.
 
 Outra opção é configurar para usar diretamente do
 [repositório](https://github.com/sergiolindau/mathjslab-calculator) via
-[CDN jsDelivr](https://www.jsdelivr.com/) também, antes de carregar o script `mathjs-calculator.min.js` usando:
+[CDN jsDelivr](https://www.jsdelivr.com/) também, antes de carregar o script `mathjslab-calculator.min.js` usando:
 
 ```html
 <head>
@@ -66,8 +66,7 @@ Esta aplicação de demontração também usa:
 
 * [MathJax](https://www.mathjax.org/) para navegadores sem suporte [MathML](https://www.w3.org/Math/).
 * [Marked](https://www.npmjs.com/package/marked) para formatar arquivos [Markdown](https://www.markdownguide.org/) como [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML).
-* [Chart.js](https://www.chartjs.org/) para gerar gráficos e histogramas.
-* [vis.js Graph3d](https://visjs.org/) para gerar gráficos 3D.
+* [Plotly.js](https://plotly.com/javascript/) para gerar gráficos, histogramas e gráficos 3D.
 * [Mermaid](https://mermaid.js.org/) para gerar grafos e diagramas.
 
 ## Contribuindo

@@ -1,5 +1,5 @@
 import path from 'path';
-import webpack from 'webpack';
+import webpack, { Compilation, WebpackError } from 'webpack';
 import 'webpack-dev-server';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
@@ -51,6 +51,7 @@ const config: webpack.Configuration = {
             template: 'src/main.html',
         }),
     ],
+    ignoreWarnings: [(warning: WebpackError, compilation: Compilation) => warning.constructor.name === 'ModuleDependencyWarning'],
 };
 
 if (isProduction) {

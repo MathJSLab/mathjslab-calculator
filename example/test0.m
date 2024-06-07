@@ -1,6 +1,6 @@
 clear
-A = {1,2,3;4,5,6}
-A(1)
-A{1}
-A = [1,2,3;4,5,6]
-A{1}
+rad2deg(asin(0.5))
+asin(0.5)
+#plot()
+#plot3()
+#surf()

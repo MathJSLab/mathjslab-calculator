@@ -37,7 +37,6 @@ export interface ExampleEntry {
  * compromised (like in event listeners).
  */
 declare global {
-    /* eslint-disable-next-line  no-var */
     var ShellPointer: Shell;
 }
 

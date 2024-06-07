@@ -1,17 +1,27 @@
-import createHTMLElement from './createHTMLElement';
 import './fetchPolyfill';
 import './showOpenFilePickerPolyfill';
 import openFileDialog from './openFileDialog';
-import importUMD from './importUMD';
 
-import { Decimal, ComplexDecimal, MultiArray, Evaluator, CharString, LinearAlgebra, EvaluatorConfig, AliasNameTable, ElementType } from 'mathjslab';
-import { AST } from 'mathjslab';
+import {
+    AST,
+    Decimal,
+    ComplexDecimal,
+    MultiArray,
+    Evaluator,
+    CharString,
+    LinearAlgebra,
+    EvaluatorConfig,
+    AliasNameTable,
+    ElementType,
+} from 'mathjslab';
+
 export { Evaluator };
 
 import { MathMarkdown } from './MathMarkdown';
 export { MathMarkdown };
 
 import buildConfiguration from './build-configuration.json';
+import DynamicModule from './DynamicModule';
 
 export type MathJSLabCalcConfiguration = {
     exampleBaseUrl?: string;
@@ -20,17 +30,16 @@ export type MathJSLabCalcConfiguration = {
 };
 
 declare global {
-    /* eslint-disable-next-line  no-var */
     var EvaluatorPointer: Evaluator;
-    /* eslint-disable-next-line  no-var */
+
     var MathJSLabCalc: MathJSLabCalcConfiguration;
-    /* eslint-disable-next-line  no-var */
+
     var MathJSLabCalcBuildMessage: string;
-    /* eslint-disable-next-line  no-var */
+
     var lang: string;
-    /* eslint-disable-next-line  no-var */
+
     var setLanguage: (lang?: string) => void;
-    /* eslint-disable-next-line  no-var */
+
     var openFile: () => void;
 }
 
@@ -239,98 +248,38 @@ export const plotWidth = 100;
 
 export const insertOutput = { type: '' };
 
-const visOnMouseUpFix = function (this: any, event: Event) {
-    this.frame.style.cursor = 'auto';
-    this.leftButtonDown = false;
-    // remove event listeners here
-    document.removeEventListener('mousemove', this.onmousemove);
-    document.removeEventListener('mouseup', this.onmouseup);
-    event.preventDefault();
-};
+export const _plotData: Plotly.Data[] = [];
 
-/* eslint-disable-next-line  @typescript-eslint/ban-types */
 export const outputFunction: { [k: string]: Function } = {
     plot: function (parent: string): void {
-        importUMD('https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.js').then((chart: any) => {
-            const DATA_COUNT = 12;
-            const labels = [];
-            for (let i = 0; i < DATA_COUNT; ++i) {
-                labels.push(i.toString());
-            }
-            const datapoints = [0, 20, 20, 60, 60, 120, NaN, 180, 120, 125, 105, 110, 170];
-            const data = {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Cubic interpolation (monotone)',
-                        data: datapoints,
-                        borderColor: 'rgb(255, 0, 0)',
-                        fill: false,
-                        cubicInterpolationMode: 'monotone',
-                        tension: 0.4,
-                    },
-                    {
-                        label: 'Cubic interpolation',
-                        data: datapoints,
-                        borderColor: 'rgb(0, 0, 255)',
-                        fill: false,
-                        tension: 0.4,
-                    },
-                    {
-                        label: 'Linear interpolation (default)',
-                        data: datapoints,
-                        borderColor: 'rgb(0, 255, 0)',
-                        fill: false,
-                    },
-                ],
+        DynamicModule.use('plotly', (Plotly: any) => {
+            const trace1 = {
+                x: [1, 2.5, 3, 4],
+                y: [10, 15, 13, 17],
+                type: 'scatter',
             };
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Chart.js Line Chart - Cubic interpolation mode',
-                        },
-                    },
-                    interaction: {
-                        intersect: false,
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            title: {
-                                display: true,
-                            },
-                        },
-                        y: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Value',
-                            },
-                            suggestedMin: -10,
-                            suggestedMax: 200,
-                        },
-                    },
-                },
+
+            const trace2 = {
+                x: [1, 2, 3, 4],
+                y: [16, 5, 11, 9],
+                type: 'scatter',
             };
-            const ctx = createHTMLElement('canvas', document.getElementById(parent));
-            new chart(ctx, config);
+
+            const data = [trace1, trace2];
+
+            Plotly.newPlot(parent, data);
         });
         insertOutput.type = '';
     },
     plot3: function (parent: string): void {
-        insertOutput.type = '';
-        /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
-        // @ts-ignore
-        import('https://cdn.jsdelivr.net/npm/vis-graph3d@latest/dist/esm.js').then(async (module) => {
-            const vis = await module.default;
-            // Create and populate a data table.
-            const data = new vis.DataSet();
-
+        DynamicModule.use('plotly', (Plotly: any) => {
+            const line3d = {
+                x: [] as number[],
+                y: [] as number[],
+                z: [] as number[],
+                type: 'scatter3d',
+                mode: 'lines',
+            };
             // create some nice looking data with sin/cos
             const steps = 500;
             const axisMax = 314;
@@ -341,115 +290,85 @@ export const outputFunction: { [k: string]: Function } = {
                 const x = r * Math.sin(t);
                 const y = r * Math.cos(t);
                 const z = t / tmax;
-                data.add({ x: x, y: y, z: z });
+                line3d.x.push(x);
+                line3d.y.push(y);
+                line3d.z.push(z);
             }
 
-            // specify options
-            const options = {
-                width: '600px',
-                height: '600px',
-                style: 'line',
-                showPerspective: false,
-                showGrid: true,
-                keepAspectRatio: true,
-                verticalRatio: 1.0,
+            const data = [line3d];
+
+            const layout = {
+                autosize: true,
             };
-
-            // create our graph
-            const container = document.getElementById(parent);
-            const graph3d = new vis.Graph3d(container, data, options);
-            graph3d._onMouseUp = visOnMouseUpFix;
-
-            graph3d.setCameraPosition(0.4, undefined, undefined);
+            Plotly.newPlot(parent, data, layout);
         });
+        insertOutput.type = '';
     },
     surf: function (parent: string): void {
-        /* eslint-disable-next-line  @typescript-eslint/ban-ts-comment */
-        // @ts-ignore
-        import('https://cdn.jsdelivr.net/npm/vis-graph3d@latest/dist/esm.js').then(async (module) => {
-            const vis = await module.default;
+        insertOutput.type = '';
+        DynamicModule.use('plotly', (Plotly: any) => {
             function custom(x: number, y: number) {
                 return Math.sin(x / 50) * Math.cos(y / 50) * 50 + 50;
             }
-            // Create and populate a data table.
-            const data = new vis.DataSet();
-            // create some nice looking data with sin/cos
-            let counter = 0;
+
             const steps = 50; // number of datapoints will be steps*steps
             const axisMax = 314;
             const axisStep = axisMax / steps;
-            for (let x = 0; x < axisMax; x += axisStep) {
-                for (let y = 0; y < axisMax; y += axisStep) {
-                    const value = custom(x, y);
-                    data.add({ id: counter++, x: x, y: y, z: value, style: value });
+
+            const surface1 = {
+                x: new Array(steps) as number[],
+                y: new Array(steps) as number[],
+                z: new Array(steps) as number[][],
+                type: 'surface',
+            };
+
+            for (let x = 0, i = 0; x < axisMax; x += axisStep, i++) {
+                surface1.x[i] = x;
+                surface1.z[i] = new Array(steps) as number[];
+                for (let y = 0, j = 0; y < axisMax; y += axisStep, j++) {
+                    if (i === 0) {
+                        surface1.y[j] = y;
+                    }
+                    surface1.z[i][j] = custom(x, y);
                 }
             }
 
-            // specify options
-            const options = {
-                width: '600px',
-                height: '600px',
-                style: 'surface',
-                showPerspective: true,
-                showGrid: true,
-                showShadow: false,
-                keepAspectRatio: true,
-                verticalRatio: 0.5,
-            };
+            const data = [surface1];
 
-            // Instantiate our graph object.
-            const container = document.getElementById(parent);
-            const graph3d = new vis.Graph3d(container, data, options);
-            graph3d._onMouseUp = visOnMouseUpFix;
+            const layout = {
+                title: '3D Plot',
+                autosize: true,
+            };
+            Plotly.newPlot(parent, data, layout);
         });
         insertOutput.type = '';
     },
     plot2d: function (parent: string): void {
-        if (global.ShellPointer.isFileProtocol) {
-            const promptSet = global.ShellPointer.currentPromptSet;
-            promptSet.box.className = 'bad';
-            promptSet.output.innerHTML = 'plot2d command unavailable <b>offline</b>.';
-        } else {
-            const ctx = createHTMLElement('canvas', document.getElementById(parent));
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: plotData.X,
-                    datasets: [
-                        {
-                            label: 'Plot',
-                            data: plotData.data,
-                            fill: false,
-                            borderColor: 'rgb(75, 192, 192)',
-                            tension: 0.1,
-                        },
-                    ],
-                },
-            });
-        }
+        DynamicModule.use('plotly', (Plotly: any) => {
+            const trace = {
+                x: plotData.X,
+                y: plotData.data,
+                type: 'lines',
+            };
+
+            const data = [trace];
+
+            Plotly.newPlot(parent, data);
+        });
         insertOutput.type = '';
     },
     histogram: function (parent: string): void {
-        if (global.ShellPointer.isFileProtocol) {
-            const promptSet = global.ShellPointer.currentPromptSet;
-            promptSet.box.className = 'bad';
-            promptSet.output.innerHTML = 'histogram command unavailable <b>offline</b>.';
-        } else {
-            const ctx = createHTMLElement('canvas', document.getElementById(parent));
-            new Chart(ctx, {
+        DynamicModule.use('plotly', (Plotly: any) => {
+            const histogram = {
+                x: plotData.X,
+                y: plotData.data,
                 type: 'bar',
-                data: {
-                    labels: plotData.X,
-                    datasets: [
-                        {
-                            label: 'Histogram',
-                            data: plotData.data,
-                            borderWidth: 1,
-                        },
-                    ],
-                },
-            });
-        }
+            };
+
+            const data = [histogram];
+
+            Plotly.newPlot(parent, data);
+        });
         insertOutput.type = '';
     },
 };
@@ -868,7 +787,6 @@ export const EvaluatorConfiguration: EvaluatorConfig = {
         },
 
         open: {
-            /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
             func: (...args: string[]): void => {
                 EvaluatorConfiguration.externalFunctionTable!.open.func(...args);
             },
