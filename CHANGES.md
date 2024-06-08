@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.3
+- Dependecies update.
+- Configurations in '.eslintrc.js' (removed) changed to flat config in 'eslint.config.js'.
+- File '.npmrc' created. Configuration legacy-peer-deps set to true.
+
 ## 1.2.2
 - Files 'importUMD.ts' and 'DynamicModule.ts' to load external modules by CDN dynamically. Now 'ScriptLinkLoad.ts' is unused and removed.
 - [Plotly.js](https://plotly.com/javascript/) to generate graphics. "@types/plotly.js" devDependencies installed.

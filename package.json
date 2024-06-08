@@ -1,6 +1,6 @@
 {
   "name": "mathjslab-calculator",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB®/Octave",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/sergiolindau/mathjslab-calculator#readme",
   "scripts": {
     "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calculator.min.js",
-    "update": "npx ncu -u && npm install --legacy-peer-deps",
+    "update": "npx ncu -u && npm install",
     "git:add": "git add .",
     "git:commit": "git commit -m \"Initial Commit\"",
     "git:push": "git push",
