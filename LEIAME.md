@@ -8,6 +8,7 @@
 [![Licença MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8396263.svg)](https://doi.org/10.5281/zenodo.8396263)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sergiolindau/mathjslab-calculator/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sergiolindau/mathjslab-calculator/tree/main)
+[![GitHub Created At](https://img.shields.io/github/created-at/sergiolindau/mathjslab-calculator)](https://github.com/sergiolindau/mathjslab-calculator)
 
 > Um interpretador com sintaxe de linguagem tipo [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) escrito em [Typescript](https://www.typescriptlang.org/).
 

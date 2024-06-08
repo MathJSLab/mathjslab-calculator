@@ -4,8 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3
 - Dependecies update.
-- Configurations in '.eslintrc.js' (removed) changed to flat config in 'eslint.config.js'.
+- Configurations in '.eslintrc.js' (removed) modified to flat config in 'eslint.config.js'.
 - File '.npmrc' created. Configuration legacy-peer-deps set to true.
+- Target modified to es2015.
+- Badge 'GitHub Created At' added to 'README.md' (and portuguese 'LEIAME.md' and spanish 'LEAME.md').
 
 ## 1.2.2
 - Files 'importUMD.ts' and 'DynamicModule.ts' to load external modules by CDN dynamically. Now 'ScriptLinkLoad.ts' is unused and removed.
@@ -28,14 +30,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Improves in responsiveness.
 
 ## 1.1.1
-- Translations of README.md file to portuguese LEIAME.md an spanish LEAME.md
+- Translations of 'README.md' file to portuguese 'LEIAME.md' and spanish 'LEAME.md'
 - Translation of spanish help completed.
 - Multiple languages and menu of language selection.
 - Creation of bootstrap function in evaluator-configuration.ts file.
 - Changes in build scripts of package.json.
 - Creation of script folder with some examples.
 - Creation of CONTRIBUTING.md and CODE_OF_CONDUCT.md files.
-- Creation of 'Contributing' session in README.md file (in portuguese LEIAME.md and spanish LEAME.md too).
+- Creation of 'Contributing' session in 'README.md' file (in portuguese 'LEIAME.md' and spanish 'LEAME.md' too).
 - More examples (to test multidimensional arrays).
 
 ## 1.1.0

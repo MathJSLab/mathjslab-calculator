@@ -47,7 +47,7 @@ const modulesConfiguration: ModulesConfiguration = {
     mermaid: {
         module: null,
 
-        /* @ts-ignore */
+        /* @ts-expect-error load mermaid as a module */
         import: () => import('https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.esm.min.mjs').then((module) => module.default),
         timeout: 10000,
     },
