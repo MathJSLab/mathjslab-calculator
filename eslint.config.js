@@ -36,6 +36,7 @@ module.exports = [
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/no-unused-vars': 'warn',
             '@typescript-eslint/ban-types': 'off',
+            '@typescript-eslint/no-unsafe-function-type': 'off',
             'no-console': 'warn',
             ...prettierPlugin.configs.recommended.rules,
             ...eslintConfigPrettier.rules,
