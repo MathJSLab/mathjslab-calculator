@@ -6,8 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="An interpreter with language syntax like MATLAB®/Octave" />
     <meta name="author" content="Sergio Lindau" />
-    <meta name="keywords"
-        content="MathJSLab,mathematics,math,educational,MATLAB,Octave,MathML,interpreter,parser,grammar,ANTLR" />
+    <meta name="keywords" content="MathJSLab,Mathematics,Educational,MATLAB,Octave,MathML,ANTLR,math,lexer,parser,grammar,interpreter" />
     <meta name="robots" content="index,follow">
     <link rel="icon" href="images/icons/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +14,6 @@
     <script>
         function loadText() {
             if (!document.location.href.startsWith('file:')) {
-                const container = document.getElementById('readme');
                 window.fetch({
                     en: 'README.md',
                     es: 'LEAME.md',
@@ -28,7 +26,7 @@
                         return response.text();
                     })
                     .then((readme) => {
-                        container.innerHTML = marked.parse(readme);
+                        document.getElementById('readme').innerHTML = marked.parse(readme);
                     })
                     .catch((error) => {
                         console.error(error);
@@ -149,6 +147,7 @@
         </footer>
 
     </div>
+
 </body>
 
 </html>

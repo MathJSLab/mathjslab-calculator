@@ -8,24 +8,24 @@
   },
   "keywords": [
     "MathJSLab",
-    "mathematics",
-    "math",
-    "educational",
+    "Mathematics",
+    "Educational",
     "MATLAB",
     "Octave",
     "MathML",
-    "interpreter",
+    "ANTLR",
+    "math",
     "lexer",
     "parser",
     "grammar",
-    "ANTLR"
+    "interpreter"
   ],
   "author": "Sergio Lindau <sergiolindau@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sergiolindau/mathjslab-calculator/issues"
   },
-  "homepage": "https://github.com/sergiolindau/mathjslab-calculator#readme",
+  "homepage": "https://mathjslab.com/",
   "scripts": {
     "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calculator.min.js",
     "update": "npx ncu -u && npm install",
@@ -59,8 +59,8 @@
     "@types/plotly.js": "^2.33.4",
     "@types/webpack": "^5.28.5",
     "@types/wicg-file-system-access": "^2023.10.5",
-    "@typescript-eslint/eslint-plugin": "^8.6.0",
-    "@typescript-eslint/parser": "^8.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
     "ajv": "^8.17.1",
     "css-loader": "^7.1.2",
     "eslint": "^9.11.0",
@@ -81,6 +81,6 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "mathjslab": "^1.5.10"
+    "mathjslab": "^1.5.11"
   }
 }

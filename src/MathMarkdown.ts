@@ -18,14 +18,19 @@ export abstract class MathMarkdown {
         DynamicModule.load('marked').then((module) => {
             global.marked = module;
             const renderer = {
-                code(code: string, language: string) {
-                    if (language === 'mermaid') {
+                code(token: { text: string; lang: string; escaped: boolean }) {
+                    if (token.lang === 'mermaid') {
                         renderMermaid = true;
-                        return '<div class="mermaid" align="center">' + code + '</div>';
+                        return '<div class="mermaid" align="center">' + token.text + '</div>';
                     } else {
                         return (
                             '<pre><code>' +
-                            code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;') +
+                            token.text
+                                .replace(/&/g, '&amp;')
+                                .replace(/</g, '&lt;')
+                                .replace(/>/g, '&gt;')
+                                .replace(/"/g, '&quot;')
+                                .replace(/'/g, '&#039;') +
                             '</code></pre>'
                         );
                     }

@@ -2,7 +2,7 @@
     <img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200">
 </p>
 
-# MathJSLab Calculator
+# MathJSLab Calculator - [mathjslab.com](https://mathjslab.com/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
@@ -17,7 +17,7 @@
 
 This is a demo application of [MathJSLab](https://www.npmjs.com/package/mathjslab) [npm package](https://en.wikipedia.org/wiki/Npm).
 
-See this demo hosted on [Netlify](https://mathjslab.netlify.app/).
+See this demo on the project page at [mathjslab.com](https://mathjslab.com/)
 
 Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
 To embed [MathJSLab](https://www.npmjs.com/package/mathjslab) Calculator in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/)

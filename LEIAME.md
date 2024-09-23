@@ -2,7 +2,7 @@
     <img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200">
 </p>
 
-# Calculadora MathJSLab
+# Calculadora MathJSLab - [mathjslab.com](https://mathjslab.com/)
 
 [![Status Netlify](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![Licença MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
@@ -16,7 +16,7 @@
 
 Este é um aplicativo de demonstração do [pacote npm](https://pt.wikipedia.org/wiki/Npm_(software)) [MathJSLab](https://www.npmjs.com/package/mathjslab).
 
-Veja esta demonstração hospedada na [Netlify](https://mathjslab.netlify.app/).
+Veja esta demonstração na página do projeto em [mathjslab.com](https://mathjslab.com/).
 
 Obtenha uma versão reduzida através de [CDN](https://pt.wikipedia.org/wiki/Rede_de_fornecimento_de_conte%C3%BAdo).
 Para incorporar a calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) em uma página da web usando [CDN jsDelivr](https://www.jsdelivr.com/)

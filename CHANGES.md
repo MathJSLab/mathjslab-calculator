@@ -3,11 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 1.2.3
+- Domain setup (mathjslab.com). Set as "homepage" in 'package.json' file.
 - Dependecies update.
 - Configurations in '.eslintrc.js' (removed) modified to flat config in 'eslint.config.js'.
 - File '.npmrc' created. Configuration legacy-peer-deps set to true.
-- Target modified to es2015.
 - Badge 'GitHub Created At' added to 'README.md' (and portuguese 'LEIAME.md' and spanish 'LEAME.md').
+- Changes in MathMarkdown.initialize (`renderer` methods definition) due to marked package updates.
+- Redefinition of "keywords" in 'package.json' and 'meta' HTML tags.
 
 ## 1.2.2
 - Files 'importUMD.ts' and 'DynamicModule.ts' to load external modules by CDN dynamically. Now 'ScriptLinkLoad.ts' is unused and removed.
