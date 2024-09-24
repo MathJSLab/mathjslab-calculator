@@ -3,12 +3,17 @@
   "short_name": "MathJSLabCalc",
   "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB®/Octave",
   "categories": [
-    "mathematics",
-    "math",
-    "educational",
+    "Mathematics",
+    "Educational",
     "MATLAB",
     "Octave",
-    "MathML"
+    "MathML",
+    "ANTLR",
+    "math",
+    "lexer",
+    "parser",
+    "grammar",
+    "interpreter"
   ],
   "lang": "en",
   "start_url": ".",

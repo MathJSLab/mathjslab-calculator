@@ -9,7 +9,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - File '.npmrc' created. Configuration legacy-peer-deps set to true.
 - Badge 'GitHub Created At' added to 'README.md' (and portuguese 'LEIAME.md' and spanish 'LEAME.md').
 - Changes in MathMarkdown.initialize (`renderer` methods definition) due to marked package updates.
-- Redefinition of "keywords" in 'package.json' and 'meta' HTML tags.
+- Redefinition of "keywords" in 'package.json' and 'meta' HTML tags. Same keywords set in "categories" of 'manifest.json'.
+- Updates to the 'robots.txt' file and the creation of the 'sitemap.xml' file for better SEO practices.
 
 ## 1.2.2
 - Files 'importUMD.ts' and 'DynamicModule.ts' to load external modules by CDN dynamically. Now 'ScriptLinkLoad.ts' is unused and removed.
