@@ -16,6 +16,8 @@ try {
     fs.copyFileSync(path.resolve(__dirname, '..', 'manifest.json'), path.resolve(__dirname, '..', 'dist', 'manifest.json'));
     // Copy robots.txt
     fs.copyFileSync(path.resolve(__dirname, '..', 'robots.txt'), path.resolve(__dirname, '..', 'dist', 'robots.txt'));
+    // Copy sitemap.xml
+    fs.copyFileSync(path.resolve(__dirname, '..', 'sitemap.xml'), path.resolve(__dirname, '..', 'dist', 'sitemap.xml'));
     // Create dist/images directory and copy contents of images to it.
     directory = path.resolve(__dirname, '..', 'dist', 'images');
     if (!fs.existsSync(directory)) {
