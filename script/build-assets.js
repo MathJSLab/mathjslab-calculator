@@ -1,6 +1,10 @@
+/**
+ * build-assets.js: This script creates the build directory and copies all the project assets.
+ */
 const fs = require('node:fs');
 const path = require('node:path');
 
+console.log(`Running ${__filename} ...`);
 console.log('Copying assets to /dist directory...');
 try {
     // Create dist directory.
@@ -79,8 +83,8 @@ try {
     fs.copyFileSync(path.resolve(__dirname, '..', 'README.md'), path.resolve(__dirname, '..', 'dist', 'README.md'));
     fs.copyFileSync(path.resolve(__dirname, '..', 'LEIAME.md'), path.resolve(__dirname, '..', 'dist', 'LEIAME.md'));
     fs.copyFileSync(path.resolve(__dirname, '..', 'LEAME.md'), path.resolve(__dirname, '..', 'dist', 'LEAME.md'));
-}
-catch (err) {
+} catch (err) {
     console.error(err);
 }
 console.log('Copying assets to /dist directory done.');
+console.log(`Running ${__filename} done.`);

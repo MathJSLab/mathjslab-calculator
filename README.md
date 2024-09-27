@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200">
+    <a href="https://mathjslab.com/" target="_blank" rel="noopener"><img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200" /></a>
 </p>
 
-# MathJSLab Calculator - [mathjslab.com](https://mathjslab.com/)
+# [MathJSLab](https://mathjslab.com/) - [mathjslab.com](https://mathjslab.com/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![MIT License](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
@@ -10,17 +10,14 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sergiolindau/mathjslab-calculator/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sergiolindau/mathjslab-calculator/tree/main)
 [![GitHub Created At](https://img.shields.io/github/created-at/sergiolindau/mathjslab-calculator)](https://github.com/sergiolindau/mathjslab-calculator)
 
-
 > An interpreter with language syntax like [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) written in [Typescript](https://www.typescriptlang.org/).
 
 **ISBN 978-65-00-84828-1**
 
-This is a demo application of [MathJSLab](https://www.npmjs.com/package/mathjslab) [npm package](https://en.wikipedia.org/wiki/Npm).
-
-See this demo on the project page at [mathjslab.com](https://mathjslab.com/)
+This is a demo application of [MathJSLab](https://www.npmjs.com/package/mathjslab) [npm package](https://en.wikipedia.org/wiki/Npm). See this demo on the project page at [mathjslab.com](https://mathjslab.com/)
 
 Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
-To embed [MathJSLab](https://www.npmjs.com/package/mathjslab) Calculator in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/)
+To embed [MathJSLab](https://www.npmjs.com/package/mathjslab) in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/)
 copy the following HTML code:
 
 ```html
@@ -115,7 +112,7 @@ Join the community chat:
 
 >MIT License
 >
->Copyright &copy; 2016-2024 Sergio Lindau, ISBN 978-65-00-84828-1
+>Copyright &copy; 2016-2024 [Sergio Lindau](mailto:sergiolindau@gmail.com), [mathjslab.com](https://mathjslab.com/), ISBN 978-65-00-84828-1
 >
 >Permission is hereby granted, free of charge, to any person obtaining a copy
 >of this software and associated documentation files (the "Software"), to deal

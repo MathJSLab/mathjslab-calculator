@@ -1,8 +1,8 @@
 <p align="center">
-    <img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200">
+    <a href="https://mathjslab.com/" target="_blank" rel="noopener"><img src="images/mathjslab-logo.svg" alt="logo" width="200" height="200" /></a>
 </p>
 
-# Calculadora MathJSLab - [mathjslab.com](https://mathjslab.com/)
+# [MathJSLab](https://mathjslab.com/) - [mathjslab.com](https://mathjslab.com/)
 
 [![Estado Netlify](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
 [![Licencia MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
@@ -14,9 +14,7 @@
 
 **ISBN 978-65-00-84828-1**
 
-Esta es una aplicación de demostración del [paquete npm](https://es.wikipedia.org/wiki/Npm) [MathJSLab](https://www.npmjs.com/package/mathjslab) .
-
-Vea esta demostración en la página del proyecto en [mathjslab.com](https://mathjslab.com/).
+Esta es una aplicación de demostración del [paquete npm](https://es.wikipedia.org/wiki/Npm) [MathJSLab](https://www.npmjs.com/package/mathjslab). Vea esta demostración en la página del proyecto en [mathjslab.com](https://mathjslab.com/).
 
 Obtenga una versión minimizada de un [CDN](https://es.wikipedia.org/wiki/Red_de_distribuci%C3%B3n_de_contenidos).
 Para insertar la calculadora [MathJSLab](https://www.npmjs.com/package/mathjslab) en una página web usando [CDN jsDelivr](https://www.jsdelivr.com/)
@@ -109,7 +107,7 @@ npm run build:prod
 
 >MIT License
 >
->Copyright &copy; 2016-2024 Sergio Lindau, ISBN 978-65-00-84828-1
+>Copyright &copy; 2016-2024 [Sergio Lindau](mailto:sergiolindau@gmail.com), [mathjslab.com](https://mathjslab.com/), ISBN 978-65-00-84828-1
 >
 >Permission is hereby granted, free of charge, to any person obtaining a copy
 >of this software and associated documentation files (the "Software"), to deal

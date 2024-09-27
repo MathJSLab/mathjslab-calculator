@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "webpack.config.ts", "test", "util", "dist", "**/*spec.ts"]
+  "exclude": ["node_modules", "eslint.config.*", "webpack.config.*", "dist", "doc", "example", "help", "images", "m-file", "script", "mathjs-calculator.js"]
 }

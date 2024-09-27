@@ -1,19 +1,11 @@
 {
-  "name": "MathJSLab Calculator",
-  "short_name": "MathJSLabCalc",
-  "description": "MathJSLab Calculator - An interpreter with language syntax like MATLAB®/Octave",
+  "name": "MathJSLab",
+  "short_name": "MathJSLab",
+  "description": "MathJSLab - An interpreter with language syntax like MATLAB®/Octave. https://mathjslab.com/, ISBN 978-65-00-82338-7. A demo application from the mathjslab npm package, https://www.npmjs.com/package/mathjslab, ISBN 978-65-00-84828-1.",
   "categories": [
-    "Mathematics",
-    "Educational",
-    "MATLAB",
-    "Octave",
-    "MathML",
-    "ANTLR",
-    "math",
-    "lexer",
-    "parser",
-    "grammar",
-    "interpreter"
+    "Education",
+    "Tools",
+    "Utilities"
   ],
   "lang": "en",
   "start_url": ".",

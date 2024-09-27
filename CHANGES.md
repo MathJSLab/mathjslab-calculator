@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.4
+- The 'script' directory has been renamed to 'm-file' and the 'util' directory
+has been renamed to 'script'.
+- The 'clean-package-lock.cjs' file was copied from the mathjslab package to
+the 'script' directory and the corresponding build script was created in the 'package.json' file.
+- The constant `modulesConfiguration` in 'DynamicModule.ts' was moved to a static property inside DynamicModule class.
+- The 'ts-node' package has been removed and the 'tsconfig-paths' and 'tsx' packages have been included in the development dependencies. Webpack set to run under 'tsx' in 'package.json' scripts.
+- Improvements to the 'webpack.config.ts' file to remove the need to configure the NODE_ENV environment variable before building with Webpack. Webpack configuration was hardcoded as factory.
+- Changes in 'manifest.json' file ("description" and "categories" fields).
+
 ## 1.2.3
 - Domain setup (mathjslab.com). Set as "homepage" in 'package.json' file.
 - Dependecies update.
@@ -11,6 +21,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Changes in MathMarkdown.initialize (`renderer` methods definition) due to marked package updates.
 - Redefinition of "keywords" in 'package.json' and 'meta' HTML tags. Same keywords set in "categories" of 'manifest.json'.
 - Updates to the 'robots.txt' file and the creation of the 'sitemap.xml' file for better SEO practices.
+- The application title has been changed to 'MathJSLab'. The application is the project page.
 
 ## 1.2.2
 - Files 'importUMD.ts' and 'DynamicModule.ts' to load external modules by CDN dynamically. Now 'ScriptLinkLoad.ts' is unused and removed.
