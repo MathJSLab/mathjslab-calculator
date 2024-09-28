@@ -14,6 +14,7 @@
     "Octave",
     "MathML",
     "ANTLR",
+    "ANTLR4",
     "math",
     "lexer",
     "parser",
@@ -85,6 +86,6 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "mathjslab": "^1.5.12"
+    "mathjslab": "^1.5.13"
   }
 }

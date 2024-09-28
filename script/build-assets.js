@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 console.log(`Running ${__filename} ...`);
-console.log('Copying assets to /dist directory...');
+console.warn('Copying assets to /dist directory...');
 try {
     // Create dist directory.
     let directory = path.resolve(__dirname, '..', 'dist');
@@ -86,5 +86,5 @@ try {
 } catch (err) {
     console.error(err);
 }
-console.log('Copying assets to /dist directory done.');
+console.warn('Copying assets to /dist directory done.');
 console.log(`Running ${__filename} done.`);

@@ -65,6 +65,7 @@ export default (env: any, argv: any): webpack.Configuration => {
         };
     }
     console.warn(`webpack.config.ts: Building ${argv.mode} bundle.`);
+    console.log('Environment variables:');
     console.table(env);
     return configuration;
 };

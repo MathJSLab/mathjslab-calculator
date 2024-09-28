@@ -6,7 +6,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 console.log(`Running ${__filename} ...`);
-console.log('Setting lastmod on sitemap.xml file...');
+console.warn('Setting lastmod on sitemap.xml file...');
 try {
     const sitemapPath = path.resolve(__dirname, '..', 'sitemap.xml');
     fs.writeFileSync(sitemapPath, fs.readFileSync(sitemapPath, 'utf-8').split(/\r?\n/g).map(line => {
@@ -16,5 +16,5 @@ try {
 } catch (err) {
     console.error(err);
 }
-console.log('Setting lastmod on sitemap.xml file done.');
+console.warn('Setting lastmod on sitemap.xml file done.');
 console.log(`Running ${__filename} done.`);

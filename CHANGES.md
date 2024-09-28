@@ -11,6 +11,8 @@ the 'script' directory and the corresponding build script was created in the 'pa
 - The 'ts-node' package has been removed and the 'tsconfig-paths' and 'tsx' packages have been included in the development dependencies. Webpack set to run under 'tsx' in 'package.json' scripts.
 - Improvements to the 'webpack.config.ts' file to remove the need to configure the NODE_ENV environment variable before building with Webpack. Webpack configuration was hardcoded as factory.
 - Changes in 'manifest.json' file ("description" and "categories" fields).
+- Changes to build scripts ('script' directory): some console messages issued
+using `console.warn` and `console.error` instead of `console.log`.
 
 ## 1.2.3
 - Domain setup (mathjslab.com). Set as "homepage" in 'package.json' file.
