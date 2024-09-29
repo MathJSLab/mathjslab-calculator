@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="67.296 141.941 1200 630.00002"
+   version="1.1"
+   id="svg8"
+   width="1200"
+   height="630"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <style
+     id="style1">
+    .trace-stroke {
+      stroke: hsl(0, 0%, 24%);
+    }
+    .trace-fill {
+      fill: hsl(0, 0%, 24%);
+    }
+    .panel-fill {
+      fill: hsl(120, 52%, 88%);
+    }
+    @media (prefers-color-scheme: dark) {
+      .trace-stroke {
+        stroke: hsl(0, 0%, 92%);
+      }
+      .trace-fill {
+        fill: hsl(0, 0%, 92%);
+      }
+      .panel-fill {
+        fill: hsl(120, 52%, 16%);
+      }
+    }
+  </style>
+  <ellipse
+     style="fill:none;stroke-width:0"
+     cx="667.29602"
+     cy="456.94101"
+     id="circle1"
+     rx="600"
+     ry="315" />
+  <circle
+     class="panel-fill"
+     style="stroke:#008000;stroke-width:10.9167px"
+     cx="663.10944"
+     cy="456.94101"
+     r="309.54169"
+     id="circle2" />
+  <path
+     class="trace-stroke"
+     style="fill:none;stroke-width:16.375px;stroke-linecap:round"
+     d="m 450.72055,212.17331 3.11124,431.86277 479.00633,-2.76737"
+     id="path2" />
+  <path
+     class="trace-stroke"
+     style="fill:none;stroke-width:16.375px"
+     d="m 454.95075,588.0282 h 56.13343 v 56.96855"
+     id="path3" />
+  <circle
+     class="trace-fill"
+     cx="481.11252"
+     cy="617.00647"
+     r="4.1592445"
+     id="circle3"
+     style="stroke-width:5.45833" />
+  <text
+     class="trace-fill"
+     style="font-size:109.167px;font-family:'Times New Roman';stroke-width:5.45833"
+     x="658.82471"
+     y="722.60321"
+     id="text3">x</text>
+  <text
+     class="trace-fill"
+     style="font-size:109.167px;font-family:'Times New Roman';stroke-width:5.45833"
+     x="373.85638"
+     y="450.45108"
+     id="text4">y</text>
+  <path
+     class="trace-stroke"
+     style="fill:none;stroke-width:10.9167px;stroke-linecap:round;stroke-linejoin:round"
+     d="m 704.93663,490.49882 25.76876,61.65726 44.17423,-122.39751 h 206.14461"
+     id="path4" />
+  <text
+     class="trace-fill"
+     style="font-size:131px;font-family:Symbol;stroke-width:5.45833"
+     x="824.51221"
+     y="520.86896"
+     id="text5">p</text>
+  <path
+     class="trace-stroke"
+     style="fill:none;stroke-width:10.9167px;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:27.2916"
+     d="M 450.84063,233.00774 903.62516,640.69559"
+     id="path5" />
+  <path
+     class="trace-stroke"
+     style="fill:none;stroke-width:5.45833;stroke-linecap:round;stroke-linejoin:round"
+     d="m 593.93065,332.33291 189.58404,0.92245 -1.84491,-97.5512 z"
+     id="path6" />
+  <text
+     class="trace-fill"
+     style="font-size:54.5833px;font-family:Arial, sans-serif;stroke-width:5.45833"
+     x="789.28418"
+     y="357.50131"
+     id="text6">A</text>
+  <text
+     class="trace-fill"
+     style="font-size:54.5833px;font-family:Arial, sans-serif;stroke-width:5.45833"
+     x="562.89459"
+     y="328.0481"
+     id="text7">B</text>
+  <text
+     class="trace-fill"
+     style="font-size:54.5833px;font-family:Arial, sans-serif;stroke-width:5.45833"
+     x="759.83649"
+     y="222.21664"
+     id="text8">C</text>
+</svg>

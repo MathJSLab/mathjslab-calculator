@@ -29,6 +29,8 @@ try {
     }
     // Copy mathjslab-logo.svg
     fs.copyFileSync(path.resolve(__dirname, '..', 'images', 'mathjslab-logo.svg'), path.resolve(__dirname, '..', 'dist', 'images', 'mathjslab-logo.svg'));
+    // Copy mathjslab-logo-1200x630.png
+    fs.copyFileSync(path.resolve(__dirname, '..', 'images', 'mathjslab-logo-1200x630.png'), path.resolve(__dirname, '..', 'dist', 'images', 'mathjslab-logo-1200x630.png'));
     // Copy github-mark.svg
     fs.copyFileSync(path.resolve(__dirname, '..', 'images', 'github-mark.svg'), path.resolve(__dirname, '..', 'dist', 'images', 'github-mark.svg'));
     // Create dist/images/icons directory and copy contents of images/icons to it.

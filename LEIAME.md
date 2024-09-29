@@ -84,25 +84,49 @@ Participe do bate-papo da comunidade:
 
 [![Participe do bate-papo em https://matrix.to/#/#mathjslab:gitter.im](https://badges.gitter.im/Join%20Chat.svg)](https://matrix.to/#/#mathjslab:gitter.im?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Compilação
+## Scripts de compilação
 
-Compile o `mathjslab-calculator` no modo de desenvolvimento usando:
+Os seguintes scripts de compilação são definidos:
 
+1. **Antes de compilar** `mathjslab-calculator`, para **iniciar** a área de trabalho do projeto, execute:
+```bash
+npm run update
+```
+Isso atualizará as dependências e instalará todas elas, preparando todos os
+recursos necessários para compilar o projeto.
+
+2. Para **formatar** e aplicar a **ferramenta de lint** no código do `mathjslab-calculator`, execute:
+```bash
+npm run format:lint
+```
+
+3. **Compile** o `mathjslab-calculator` no **modo de desenvolvimento** usando:
 ```bash
 npm run build:dev
 ```
 
-Compile o `mathjslab-calculator` no modo de depuração usando:
-
+4. **Compile** o `mathjslab-calculator` no **modo de depuração** usando:
 ```bash
 npm run build:debug
 ```
 
-Compile o `mathjslab-calculator` no modo de produção:
-
+5. **Compile** o `mathjslab-calculator` no **modo de produção** usando:
 ```bash
 npm run build:prod
 ```
+
+6. Para **apagar** todos os arquivos de compilação na área de trabalho, use:
+```bash
+npm run clean
+```
+
+7. Para também **excluir todas as dependências**, no arquivo
+`package-lock.json` e no diretório `node_modules`, use:
+```bash
+npm run clean:all
+```
+Após executar este comando, você precisará fazer a configuração do espaço de trabalho executando
+`npm run update` novamente.
 
 ## Comunidade
 

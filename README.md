@@ -85,25 +85,49 @@ Join the community chat:
 
 [![Join the chat at https://matrix.to/#/#mathjslab:gitter.im](https://badges.gitter.im/Join%20Chat.svg)](https://matrix.to/#/#mathjslab:gitter.im?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Build
+## Build scripts
 
-Build `mathjslab-calculator` in development mode:
+The following build scripts are defined:
 
+1. **Before building** `mathjslab-calculator`, to **initialize** the project workspace, run:
+```bash
+npm run update
+```
+This will update the dependencies and install all of them, preparing any
+resources needed to build the project.
+
+2. **Format** and **lint** `mathjslab-calculator` code:
+```bash
+npm run format:lint
+```
+
+3. Build `mathjslab-calculator` in **development mode**:
 ```bash
 npm run build:dev
 ```
 
-Build `mathjslab-calculator` in debug mode:
-
+4. Build `mathjslab-calculator` in **debug mode**:
 ```bash
 npm run build:debug
 ```
 
-Build `mathjslab-calculator` in production mode:
-
+5. Build `mathjslab-calculator` in **production mode**:
 ```bash
 npm run build:prod
 ```
+
+6. To **cleanup** all build files in workspace use:
+```bash
+npm run clean
+```
+
+7. To **delete dependencies**, the `package-lock.json` file and `node_modules`
+directory too, use:
+```bash
+npm run clean:all
+```
+After run this command you will need to do workspace setup running
+`npm run update` again.
 
 ## Community
 

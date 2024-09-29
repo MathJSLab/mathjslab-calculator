@@ -64,8 +64,7 @@ export default (env: any, argv: any): webpack.Configuration => {
             port: 4000,
         };
     }
-    console.warn(`webpack.config.ts: Building ${argv.mode} bundle.`);
-    console.log('Environment variables:');
+    console.warn(`Webpack configuration path: ${__filename}\n- Building ${argv.mode} bundle.\n- Environment variables:`);
     console.table(env);
     return configuration;
 };

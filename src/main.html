@@ -3,13 +3,24 @@
 
 <head>
     <title>MathJSLab</title>
+    <!-- Default tags -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="description" content="An interpreter with language syntax like MATLAB®/Octave" />
+    <meta name="description" content="An interpreter with language syntax like MATLAB®/Octave." />
     <meta name="author" content="Sergio Lindau" />
-    <meta name="keywords" content="MathJSLab,Mathematics,Educational,MATLAB,Octave,MathML,ANTLR,ANTLR4,math,lexer,parser,grammar,interpreter" />
+    <meta name="keywords"
+        content="MathJSLab,Mathematics,Educational,MATLAB,Octave,MathML,ANTLR,ANTLR4,math,lexer,parser,grammar,interpreter" />
     <meta name="robots" content="index,follow">
-    <link rel="icon" href="images/icons/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="MathJSLab" />
+    <meta property="og:description" content="An interpreter with language syntax like MATLAB®/Octave." />
+    <meta property="og:url" content="https://mathjslab.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mathjslab.com/images/mathjslab-logo-1200x630.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <link rel="icon" href="images/icons/favicon.ico">
     <link rel="manifest" href="manifest.json" />
     <script>
         function loadText() {
@@ -21,7 +32,7 @@
                 }[window.lang])
                     .then((response) => {
                         if (!response.ok) {
-                            throw new Error('Network error.');
+                            throw new URIError('loadText: Network error.');
                         }
                         return response.text();
                     })
@@ -74,22 +85,24 @@
             }[window.lang];
         }
         function scrollToTop() {
-            window.setTimeout(() => {window.scrollTo(0,0)}, 600);
+            window.setTimeout(() => { window.scrollTo(0, 0) }, 600);
         }
     </script>
 </head>
 
 <body onload="javascript:loadText();document.getElementById('language').value=window.lang;scrollToTop();">
+
     <div id="app">
 
         <header>
             <img alt="MathJSLab logo" class="logo" src="./images/mathjslab-logo.svg" width="125" height="125" />
-            <noscript>You need to enable JavaScript to run MathJSLab Calculator.</noscript>
+            <noscript>You need to enable JavaScript to run MathJSLab.</noscript>
             <div class="header-wrapper">
                 <div class="header-panel">
                     <h1 id="title" class="green"></h1>
                     <h3 id="subtitle"></h3>
-                    <p><a href="https://grp.isbn-international.org/search/piid_solr?keys=978-65-00-84828-1" target="_blank" rel="noopener"><b>ISBN 978-65-00-84828-1</b></a></p>
+                    <p><a href="https://grp.isbn-international.org/search/piid_solr?keys=978-65-00-84828-1"
+                            target="_blank" rel="noopener"><b>ISBN 978-65-00-84828-1</b></a></p>
                 </div>
             </div>
             <div class="right-align-panel">

@@ -12,7 +12,9 @@ the 'script' directory and the corresponding build script was created in the 'pa
 - Improvements to the 'webpack.config.ts' file to remove the need to configure the NODE_ENV environment variable before building with Webpack. Webpack configuration was hardcoded as factory.
 - Changes in 'manifest.json' file ("description" and "categories" fields).
 - Changes to build scripts ('script' directory): some console messages issued
-using `console.warn` and `console.error` instead of `console.log`.
+using `console.warn` instead of `console.log`.
+- Change `throw new Error( ...` to `throw new URIError( ...` in function `loadText()` in the 'main.html' file.
+- Setting Open Graph meta tags in the 'main.html' file. The files 'mathjslab-logo-1200x630.svg' and 'mathjslab-logo-1200x630.png' have been added to the 'images' directory.
 
 ## 1.2.3
 - Domain setup (mathjslab.com). Set as "homepage" in 'package.json' file.
