@@ -5,28 +5,28 @@
 # [MathJSLab](https://mathjslab.com/) - [mathjslab.com](https://mathjslab.com/)
 
 [![Estado Netlify](https://api.netlify.com/api/v1/badges/b5d64f05-80e8-4cc6-b428-923447f43621/deploy-status)](https://app.netlify.com/sites/mathjslab/deploys)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/sergiolindau/mathjslab-calculator/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sergiolindau/mathjslab-calculator/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/MathJSLab/mathjslab-calculator/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/MathJSLab/mathjslab-calculator/tree/main)
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fmathjslab.com%2F)](https://mathjslab.com/)
-[![Criado no GitHub em](https://img.shields.io/github/created-at/sergiolindau/mathjslab-calculator)](https://github.com/sergiolindau/mathjslab-calculator)
-[![Licença MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/sergiolindau/mathjslab-calculator/blob/main/LICENSE)
+[![Criado no GitHub em](https://img.shields.io/github/created-at/MathJSLab/mathjslab-calculator)](https://github.com/MathJSLab/mathjslab-calculator)
+[![Licença MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://github.com/MathJSLab/mathjslab-calculator/blob/main/LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8396263.svg)](https://doi.org/10.5281/zenodo.8396263)
 [![ISBN](https://img.shields.io/badge/ISBN-978--65--00--84828--1-green?style=flat&link=https://grp.isbn-international.org/search/piid_solr?keys=978-65-00-84828-1)](https://grp.isbn-international.org/search/piid_solr?keys=978-65-00-84828-1)
-[![Acessos jsDelivr](https://data.jsdelivr.com/v1/package/gh/sergiolindau/mathjslab-calculator/badge)](https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/)
+[![Acessos jsDelivr](https://data.jsdelivr.com/v1/package/gh/MathJSLab/mathjslab-calculator/badge)](https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/)
 
 > Um interpretador com sintaxe de linguagem tipo [MATLAB&reg;](https://www.mathworks.com/)/[Octave](https://www.gnu.org/software/octave/) escrito em [Typescript](https://www.typescriptlang.org/).
 
 **[ISBN 978-65-00-84828-1](https://grp.isbn-international.org/search/piid_solr?keys=978-65-00-84828-1)**
 
-Este é um aplicativo de demonstração do [pacote npm](https://pt.wikipedia.org/wiki/Npm_(software)) [MathJSLab](https://www.npmjs.com/package/mathjslab). Veja esta demonstração na página do projeto em [mathjslab.com](https://mathjslab.com/).
+Este é um aplicativo de demonstração do [pacote npm](https://pt.wikipedia.org/wiki/Npm_(software)) [MathJSLab](https://www.npmjs.com/package/mathjslab). Veja esta demonstração na página do projeto em [mathjslab.com](https://mathjslab.com/). O repositório está na [Organização MathJSLab](https://github.com/MathJSLab) no [GitHub](https://github.com/).
 
 Obtenha uma versão reduzida através de [CDN](https://pt.wikipedia.org/wiki/Rede_de_fornecimento_de_conte%C3%BAdo).
-Para incorporar a [demonstração do MathJSLab](https://github.com/sergiolindau/mathjslab-calculator) em uma página da web usando [CDN jsDelivr](https://www.jsdelivr.com/package/gh/sergiolindau/mathjslab-calculator)
+Para incorporar a [demonstração do MathJSLab](https://github.com/MathJSLab/mathjslab-calculator) em uma página da web usando [CDN jsDelivr](https://www.jsdelivr.com/package/gh/MathJSLab/mathjslab-calculator)
 copie o seguinte código [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML):
 
 ```html
 <head>
     ...
-    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calculator.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/mathjslab-calculator.min.js"></script>
     ...
 </head>
 
@@ -43,7 +43,7 @@ Para que os exemplos e o comando `help` estejam disponíveis, é necessário
 copiar os diretórios `example` e `help` para a raiz da página web.
 
 Outra opção é configurar para usar diretamente do
-[repositório](https://github.com/sergiolindau/mathjslab-calculator) via
+[repositório](https://github.com/MathJSLab/mathjslab-calculator) via
 [CDN jsDelivr](https://www.jsdelivr.com/) também, antes de carregar o script `mathjslab-calculator.min.js` usando:
 
 ```html
@@ -51,11 +51,11 @@ Outra opção é configurar para usar diretamente do
     ...
     <script>
         MathJSLabCalc = {
-            exampleBaseUrl: "https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/",
-            helpBaseUrl: "https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/",
+            exampleBaseUrl: "https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/",
+            helpBaseUrl: "https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/",
         }
     </script>
-    <script defer src="https://cdn.jsdelivr.net/gh/sergiolindau/mathjslab-calculator/mathjslab-calculator.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/mathjslab-calculator.min.js"></script>
     ...
 </head>
 
@@ -78,7 +78,7 @@ Esta aplicação de demontração também usa:
 ## Contribuindo
 
 Para contribuir com este projeto, consulte nossas
-[diretrizes de contribuição](https://github.com/sergiolindau/mathjslab-calculator/blob/main/CONTRIBUTING.md).
+[diretrizes de contribuição](https://github.com/MathJSLab/mathjslab-calculator/blob/main/CONTRIBUTING.md).
 
 Participe do bate-papo da comunidade:
 
