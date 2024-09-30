@@ -20,7 +20,7 @@
 Este é um aplicativo de demonstração do [pacote npm](https://pt.wikipedia.org/wiki/Npm_(software)) [MathJSLab](https://www.npmjs.com/package/mathjslab). Veja esta demonstração na página do projeto em [mathjslab.com](https://mathjslab.com/). O repositório está na [Organização MathJSLab](https://github.com/MathJSLab) no [GitHub](https://github.com/).
 
 Obtenha uma versão reduzida através de [CDN](https://pt.wikipedia.org/wiki/Rede_de_fornecimento_de_conte%C3%BAdo).
-Para incorporar a [demonstração do MathJSLab](https://github.com/MathJSLab/mathjslab-calculator) em uma página da web usando [CDN jsDelivr](https://www.jsdelivr.com/package/gh/MathJSLab/mathjslab-calculator)
+Para incorporar a [demonstração do MathJSLab](https://github.com/MathJSLab/mathjslab-calculator) em uma página da web usando [CDN jsDelivr](https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/)
 copie o seguinte código [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML):
 
 ```html

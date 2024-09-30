@@ -22,7 +22,7 @@ This is a demo application of [MathJSLab](https://www.npmjs.com/package/mathjsla
 [GitHub](https://github.com/).
 
 Get a minified version from a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network).
-To embed [MathJSLab Demo](https://github.com/MathJSLab/mathjslab-calculator) in a webpage using [jsDelivr CDN](https://www.jsdelivr.com/package/gh/MathJSLab/mathjslab-calculator)
+To embed [MathJSLab Demo](https://github.com/MathJSLab/mathjslab-calculator) in a webpage using [jsDelivr CDN](https://cdn.jsdelivr.net/gh/MathJSLab/mathjslab-calculator/)
 copy the following [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) code:
 
 ```html
