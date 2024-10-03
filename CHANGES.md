@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## 1.3.0
 - Change repository owner to MathJSLab GitHub organization: https://github.com/MathJSLab .
 Changes in repository references in 'package.json' file and documentation.
+- The 'dotenv' and 'dotenv-webpack' packages has been installed and some boilerplate values
+has been defined as environment variables in the 'build.env'. The
+exception to save this file in the repository has been added to '.gitignore'
+file and 'webpack.config.ts' has been modified too to include plugin and environment variables use.
+- Changes in the 'webpack.config.ts': `path.resolve` changed to `path.join` when possible. More rational path specifications. JavaScript files selection removed from regular expression test (`configuration.module.rules[0].test`). The exclude field has been specified by full path. The `ignoreWarnings` field has been removed. The entire configuration file has been revised.
+- The 'images/icons' directory has been removed. Multi-sized versions of the 'mathjslab-logo.svg' file have been created in PNG format in the 'images' directory. And two versions (light and dark) of the favicon have also been created. The definitions of the standard and maskable icons in the 'manifest.json' file are the same.
 
 ## 1.2.4
 - The 'script' directory has been renamed to 'm-file' and the 'util' directory
