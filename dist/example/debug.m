@@ -1,0 +1,8 @@
+clear
+% debug commands
+__operators__
+__keywords__
+__builtins__
+__list_functions__
+localfunctions
+__dump_symtab_info__

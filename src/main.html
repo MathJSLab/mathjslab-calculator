@@ -30,8 +30,8 @@
     <meta name="twitter:title" content="<%= process.env.MATHJSLAB_APP_TITLE %>" />
     <meta name="twitter:description" content="<%= process.env.MATHJSLAB_APP_DESCRIPTION_PKG_ISBN %>" />
     <!-- Icons and manifest -->
-    <link rel="icon" href="images/favicon.ico" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="icon" href="images/favicon-dark.ico" media="(prefers-color-scheme: dark)" />
     <link rel="manifest" href="manifest.json" />
     <script>
         function loadText() {
@@ -55,14 +55,14 @@
                     });
             }
             document.getElementById('title').innerHTML = {
-                en: '<a href="https://github.com/MathJSLab/mathjslab-calculator" target="_blank" rel="noopener">MathJSLab Calculator</a>',
-                es: '<a href="https://github.com/MathJSLab/mathjslab-calculator" target="_blank" rel="noopener">Calculadora MathJSLab</a>',
-                pt: '<a href="https://github.com/MathJSLab/mathjslab-calculator" target="_blank" rel="noopener">Calculadora MathJSLab</a>',
+                en: '<a href="<%= process.env.MATHJSLAB_APP_REPO %>" target="_blank" rel="noopener"><%= process.env.MATHJSLAB_APP_TITLE %></a>',
+                es: '<a href="<%= process.env.MATHJSLAB_APP_REPO %>" target="_blank" rel="noopener"><%= process.env.MATHJSLAB_APP_TITLE %></a>',
+                pt: '<a href="<%= process.env.MATHJSLAB_APP_REPO %>" target="_blank" rel="noopener"><%= process.env.MATHJSLAB_APP_TITLE %></a>',
             }[window.lang];
             document.getElementById('subtitle').innerHTML = {
-                en: 'An interpreter with language syntax like <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a>',
-                es: 'Un intérprete con sintaxis de lenguaje como <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a>',
-                pt: 'Um interpretador com sintaxe de linguagem como o <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a>',
+                en: 'An <a href="https://en.wikipedia.org/wiki/Interpreter_(computing)" target="_blank" rel="noopener">interpreter</a> with language syntax like <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a>',
+                es: 'Un <a href="https://es.wikipedia.org/wiki/Int%C3%A9rprete_(inform%C3%A1tica)" target="_blank" rel="noopener">intérprete</a> con sintaxis de lenguaje como <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a>',
+                pt: 'Um <a href="https://pt.wikipedia.org/wiki/Interpretador" target="_blank" rel="noopener">interpretador</a> com sintaxe de linguagem como o <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a>',
             }[window.lang];
             document.getElementById('abstract').innerHTML = {
                 en: 'This is a demo application of the <a href="https://www.npmjs.com/package/mathjslab" target="_blank" rel="noopener">MathJSLab</a> <a href="https://en.wikipedia.org/wiki/Npm" target="_blank" rel="noopener">npm package</a> (<a href="https://github.com/MathJSLab/mathjslab" target="_blank" rel="noopener">repository</a>), an emulator of a subset of the <a href="https://www.mathworks.com/" target="_blank" rel="noopener">MATLAB&reg;</a>/<a href="https://www.gnu.org/software/octave/" target="_blank" rel="noopener">Octave</a> language written completely in <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">Typescript</a>. This application is intended for educational purposes. See the <a href="#notes">notes</a> below for detailed information.',

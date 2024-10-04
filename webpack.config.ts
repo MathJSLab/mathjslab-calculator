@@ -84,7 +84,7 @@ export default (env: any, argv: any): webpack.Configuration => {
         };
     }
     console.warn(
-        `Webpack configuration path: ${__filename}\n- Building ${process.env.MATHJSLAB_APP_TITLE} ${argv.mode} bundle.\n- Environment file: ${buildEnvPath}\n- Environment variables:`,
+        `Webpack configuration path: ${__filename}\n- Building ${process.env.MATHJSLAB_APP_TITLE} ${argv.mode} bundle.\n- Environment file: ${buildEnvPath}\n- Build environment variables:`,
     );
     console.table(envVars.parsed);
     return configuration;

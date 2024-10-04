@@ -1,10 +1,10 @@
 {
-  "name": "mathjslab-calculator",
-  "version": "1.3.0",
+  "name": "mathjslab-demo",
+  "version": "1.4.0",
   "description": "MathJSLab - An interpreter with language syntax like MATLAB®/Octave, ISBN 978-65-00-82338-7. A demo application from the mathjslab npm package, ISBN 978-65-00-84828-1.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MathJSLab/mathjslab-calculator.git"
+    "url": "git+https://github.com/MathJSLab/mathjslab-demo.git"
   },
   "keywords": [
     "MathJSLab",
@@ -24,12 +24,12 @@
   "author": "Sergio Lindau <sergiolindau@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MathJSLab/mathjslab-calculator/issues"
+    "url": "https://github.com/MathJSLab/mathjslab-demo/issues"
   },
   "homepage": "https://mathjslab.com/",
   "scripts": {
     "clean:package-lock": "node script/clean-package-lock.cjs",
-    "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-calculator.min.js",
+    "clean": "rimraf dist src/first-example.json src/build-configuration.json mathjslab-demo.min.js",
     "clean:all": "npm run clean && npm run clean:package-lock",
     "update": "npx ncu -u && npm install",
     "git:add": "git add .",
@@ -71,7 +71,7 @@
     "dotenv": "^16.4.5",
     "dotenv-expand": "^11.0.6",
     "dotenv-webpack": "^8.1.0",
-    "eslint": "^9.11.1",
+    "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -90,6 +90,6 @@
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "mathjslab": "^1.6.0"
+    "mathjslab": "^1.6.1"
   }
 }
