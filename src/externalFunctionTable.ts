@@ -94,8 +94,10 @@ const externalFunctionTable: BuiltInFunctionTable = {
                     outputTarget.setState('bad');
                     outputTarget.setHTML('markdown function unavailable <b>offline</b>.');
                 } else {
+                    // Resolve document paths one directory above the localized page.
+                    const baseUrl = new URL('../', globalThis.location.href);
                     globalThis
-                        .fetch(url.str)
+                        .fetch(new URL(url.str, baseUrl))
                         .then((response) => {
                             if (response.ok) {
                                 return response.text();
@@ -103,10 +105,10 @@ const externalFunctionTable: BuiltInFunctionTable = {
                                 throw new URIError('Load error.');
                             }
                         })
-                        .then((responseFile: string) => {
+                        .then(async (responseFile: string) => {
                             outputTarget.setState('doc');
                             outputTarget.setHTML(Markdown.parse(responseFile));
-                            Markdown.typeset(outputTarget.content);
+                            await Markdown.typeset(outputTarget.content);
                         })
                         /* eslint-disable-next-line  @typescript-eslint/no-unused-vars */
                         .catch((error) => {
@@ -119,7 +121,7 @@ const externalFunctionTable: BuiltInFunctionTable = {
                 openFileDialog((content: string) => {
                     outputTarget.setState('doc');
                     outputTarget.setHTML(Markdown.parse(content));
-                    Markdown.typeset(outputTarget.content);
+                    void Markdown.typeset(outputTarget.content);
                 }, openFileOptionMarkdown);
                 return AST.nodeIndexExpr(AST.nodeIdentifier('markdown'), AST.nodeListFirst());
             }

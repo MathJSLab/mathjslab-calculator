@@ -53,10 +53,10 @@ const externalCmdWListTable = {
                 } else {
                     const topic = args[0]!;
                     loadHelpFile(`${appEngine.config.helpBaseUrl}help/${i18n.locale}/${encodeURIComponent(encodeName(topic))}.md`, topic)
-                        .then((responseText) => {
+                        .then(async (responseText) => {
                             outputTarget.setState('info');
                             outputTarget.setHTML(Markdown.parse(responseText));
-                            Markdown.typeset(outputTarget.content);
+                            await Markdown.typeset(outputTarget.content);
                         })
                         .catch((error) => {
                             outputTarget.setState('bad');
@@ -64,9 +64,14 @@ const externalCmdWListTable = {
                         });
                 }
             } else if (args.length == 0) {
+                if (appEngine.shell.isFileProtocol) {
+                    outputTarget.setState('bad');
+                    outputTarget.setHTML(i18n.page.help.unavailableOfflineHtml);
+                    return;
+                }
                 outputTarget.setState('info');
                 loadHelpFile(`${appEngine.config.helpBaseUrl}help/${i18n.locale}/help.md`, 'help')
-                    .then((responseText) => {
+                    .then(async (responseText) => {
                         outputTarget.setState('info');
                         outputTarget.setHTML(
                             Markdown.parse(
@@ -77,7 +82,7 @@ const externalCmdWListTable = {
                                         .join(', '),
                             ),
                         );
-                        Markdown.typeset(outputTarget.content);
+                        await Markdown.typeset(outputTarget.content);
                     })
                     .catch((error) => {
                         outputTarget.setState('bad');

@@ -109,6 +109,7 @@ const loadReadme = async (): Promise<void> => {
             throw new URIError(i18n.page.error.loadTextNetwork);
         }
         byId('mathjslab-readme').innerHTML = appEngine.Markdown.parse(await response.text());
+        await appEngine.Markdown.typeset(byId('mathjslab-readme'));
     } catch (error) {
         console.error(error);
     }
